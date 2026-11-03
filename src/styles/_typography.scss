@@ -1,6 +1,6 @@
 @import './variables';
 
-// Typography styles - "current" theme
+
 .current-typo--h1-light {
 	font-family: $font-codenext-extralight;
 	font-size: 4.5rem;
@@ -165,7 +165,7 @@
 	text-transform: none;
 }
 
-// Utility typography classes
+
 .tb-typo--h4 {
 	font-size: 2rem;
 	line-height: 1.4;
@@ -201,7 +201,7 @@
 	letter-spacing: 0.5px;
 }
 
-// Responsive typography utilities
+
 @media (max-width: 600px) {
 	.xs\:current-typo--h3 {
 		font-size: 1.75rem;

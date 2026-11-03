@@ -1,17 +1,17 @@
-// Color Variables
+
 $color-black: #000000;
 $color-white: #ffffff;
 $color-primary: #dd206b;
 $color-secondary: #667eea;
 
-// Color opacity variants
+
 $color-black-4: rgba(0, 0, 0, 0.04);
 $color-black-6: rgba(0, 0, 0, 0.06);
 $color-black-38: rgba(0, 0, 0, 0.38);
 $color-black-54: rgba(0, 0, 0, 0.54);
 $color-black-75: rgba(0, 0, 0, 0.75);
 
-// Spacing units (in rem)
+
 $spacings: (
 	'8': 0.5rem,
 	'12': 0.75rem,
@@ -28,13 +28,13 @@ $spacings: (
 	'126': 7.875rem
 );
 
-// Font families
-$font-primary: 'Roboto', 'Helvetica Neue', sans-serif;
-$font-codenext-light: 'CodeNext-Light', sans-serif;
-$font-codenext-extralight: 'CodeNext-ExtraLight', sans-serif;
-$font-codenext-heavy: 'CodeNext-Heavy', sans-serif;
 
-// Font weights
+$font-primary: 'Poppins', 'Roboto', 'Helvetica Neue', sans-serif;
+$font-codenext-light: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+$font-codenext-extralight: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+$font-codenext-heavy: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+
+
 $font-weights: (
 	'light': 300,
 	'regular': 400,
@@ -43,7 +43,7 @@ $font-weights: (
 	'bold': 700
 );
 
-// Z-index layers
+
 $z-layers: (
 	'base': 1,
 	'dropdown': 10,
@@ -55,7 +55,7 @@ $z-layers: (
 	'tooltip': 600
 );
 
-// Breakpoints
+
 $breakpoints: (
 	'xs': 0,
 	'sm': 600px,

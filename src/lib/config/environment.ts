@@ -1,5 +1,5 @@
-// Environment configuration
-// Can be overridden with environment variables at build time
+
+
 
 export const environment = {
 	production: import.meta.env.PROD,

@@ -2,48 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Font Faces */
-@font-face {
-	font-family: 'CodeNext-ExtraLight';
-	src: url('/assets/fonts/CodeNext-Trial-Thin.otf') format('opentype');
-	font-weight: 100;
-	font-style: normal;
-	font-display: swap;
-}
-
-@font-face {
-	font-family: 'CodeNext-Light';
-	src: url('/assets/fonts/CodeNext-Trial-Light.otf') format('opentype');
-	font-weight: 300;
-	font-style: normal;
-	font-display: swap;
-}
-
-@font-face {
-	font-family: 'CodeNext-Regular';
-	src: url('/assets/fonts/CodeNext-Trial-Regular.otf') format('opentype');
-	font-weight: 400;
-	font-style: normal;
-	font-display: swap;
-}
-
-@font-face {
-	font-family: 'CodeNext-SemiBold';
-	src: url('/assets/fonts/CodeNext-Trial-SemiBold.otf') format('opentype');
-	font-weight: 600;
-	font-style: normal;
-	font-display: swap;
-}
-
-@font-face {
-	font-family: 'CodeNext-Heavy';
-	src: url('/assets/fonts/CodeNext-Trial-Heavy.otf') format('opentype');
-	font-weight: 900;
-	font-style: normal;
-	font-display: swap;
-}
-
-/* Global Resets */
 *,
 *::before,
 *::after {
@@ -58,11 +16,17 @@ body {
 	font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6, p {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
 	margin: 0;
 }
 
-/* Responsive Font Sizing */
+
 @media screen and (max-width: 1910px) {
 	:root {
 		font-size: 86%;
@@ -75,76 +39,94 @@ h1, h2, h3, h4, h5, h6, p {
 	}
 }
 
-/* Smooth Scrolling */
+
 html {
-	scroll-behavior: smooth !important;
-	scroll-padding-top: 100px; /* Account for fixed navbar */
+	scroll-padding-top: 100px;
+	
 }
 
-body {
-	scroll-behavior: smooth !important;
-}
 
-* {
-	scroll-behavior: smooth !important;
-}
-
-/* Container utilities */
 .tb-container {
 	max-width: 1200px;
 	margin: 0 auto;
 	padding: 0 24px;
-	
+
 	@media (max-width: 600px) {
 		padding: 0 16px;
 	}
 }
 
-/* Height utilities */
-.tb-height--8 { height: 0.5rem; }
-.tb-height--12 { height: 0.75rem; }
-.tb-height--20 { height: 1.25rem; }
-.tb-height--24 { height: 1.5rem; }
-.tb-height--32 { height: 2rem; }
-.tb-height--36 { height: 2.25rem; }
-.tb-height--48 { height: 3rem; }
-.tb-height--56 { height: 3.5rem; }
-.tb-height--64 { height: 4rem; }
-.tb-height--126 { height: 7.875rem; }
 
-/* Hide reCAPTCHA if present */
+.tb-height--8 {
+	height: 0.5rem;
+}
+
+.tb-height--12 {
+	height: 0.75rem;
+}
+
+.tb-height--20 {
+	height: 1.25rem;
+}
+
+.tb-height--24 {
+	height: 1.5rem;
+}
+
+.tb-height--32 {
+	height: 2rem;
+}
+
+.tb-height--36 {
+	height: 2.25rem;
+}
+
+.tb-height--48 {
+	height: 3rem;
+}
+
+.tb-height--56 {
+	height: 3.5rem;
+}
+
+.tb-height--64 {
+	height: 4rem;
+}
+
+.tb-height--126 {
+	height: 7.875rem;
+}
+
+
 .grecaptcha-badge {
 	opacity: 0 !important;
 }
 
-/* Custom Scrollbar Styling */
+
 ::-webkit-scrollbar {
-	width: 12px;
-	height: 12px;
+	width: 6px;
+	height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-	background: rgba(0, 0, 0, 0.04);
-	border-radius: 10px;
+	background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-	background: rgba(0, 0, 0, 0.2);
-	border-radius: 10px;
-	border: 2px solid rgba(0, 0, 0, 0.04);
-	transition: background 0.2s ease;
+	background: rgba(0, 0, 0, 0.12);
+	border-radius: 100px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-	background: rgba(0, 0, 0, 0.35);
+	background: rgba(0, 0, 0, 0.25);
 }
 
 ::-webkit-scrollbar-thumb:active {
-	background: rgba(0, 0, 0, 0.5);
+	background: rgba(0, 0, 0, 0.35);
 }
 
-/* Firefox scrollbar */
+
 * {
 	scrollbar-width: thin;
-	scrollbar-color: rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0.04);
+	scrollbar-color: rgba(0, 0, 0, 0.12) transparent;
 }

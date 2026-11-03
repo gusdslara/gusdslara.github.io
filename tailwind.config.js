@@ -3,6 +3,10 @@ export default {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 	theme: {
 		extend: {
+			fontFamily: {
+				sans: ['Poppins', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+				display: ['Outfit', 'sans-serif']
+			},
 			colors: {
 				primary: {
 					DEFAULT: '#dd206b',
@@ -22,4 +26,3 @@ export default {
 	},
 	plugins: []
 };
-

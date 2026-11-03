@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <linearGradient id="hsGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10B981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#059669" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+  <rect width="200" height="200" rx="40" fill="#f0fdf4"/>
+  <g transform="translate(10, 10)">
+    <!-- Circuit lines & IoT nodes -->
+    <path d="M50 90 L50 60 L75 35" stroke="#10B981" stroke-width="6" stroke-linecap="round" fill="none" opacity="0.6"/>
+    <circle cx="75" cy="35" r="7" fill="#10B981"/>
+    <path d="M130 90 L130 60 L105 35" stroke="#10B981" stroke-width="6" stroke-linecap="round" fill="none" opacity="0.6"/>
+    <circle cx="105" cy="35" r="7" fill="#10B981"/>
+    <path d="M90 145 L90 160" stroke="#059669" stroke-width="6" stroke-linecap="round" fill="none"/>
+    <circle cx="90" cy="165" r="6" fill="#059669"/>
+
+    <!-- Stylized Plant/Leaf Icon -->
+    <path d="M90 140 C55 140 40 100 40 70 C70 70 90 95 90 140 Z" fill="url(#hsGrad)" filter="url(#shadow)"/>
+    <path d="M90 140 C125 140 140 100 140 70 C110 70 90 95 90 140 Z" fill="#047857" opacity="0.85"/>
+    <path d="M90 140 L90 85" stroke="#ffffff" stroke-width="4" stroke-linecap="round" opacity="0.8"/>
+  </g>
+</svg>

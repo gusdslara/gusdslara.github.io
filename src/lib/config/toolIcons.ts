@@ -19,16 +19,22 @@ export const toolIcons: Record<string, string> = {
   'Three.js': '/assets/img/tools/threejs.png',
   Qt: '/assets/img/tools/qt.png',
   TailwindCSS: '/assets/img/tools/tailwind.png',
-  WebSocket: '/assets/img/tools/nodejs.png'
+  WebSocket: '/assets/img/tools/nodejs.png',
+  Unity: '/assets/img/tools/unity.png',
+  Blender: '/assets/img/tools/blender.png',
+  Docker: '/assets/img/tools/docker.png',
+  Azure: '/assets/img/tools/azure.png',
+  PixiJS: '/assets/img/tools/pixijs.png',
+  'Pixi.js': '/assets/img/tools/pixijs.png'
 };
 
 export function getToolIcon(tool: string): string | undefined {
   if (!tool) return undefined;
 
-  // Exact match
+
   if (toolIcons[tool]) return toolIcons[tool];
 
-  // Normalize: case-insensitive and punctuation-agnostic
+
   const normalize = (s: string) => s.toLowerCase().replace(/[^a-z0-9]/gi, '');
   const normalized = normalize(tool);
 
@@ -39,11 +45,14 @@ export function getToolIcon(tool: string): string | undefined {
   return undefined;
 }
 
-// Add known alias keys to improve matching when different naming styles are used
+
 const aliasMapping: Record<string, string> = {
   'Three.js': toolIcons['Three.js'] ?? '/assets/img/tools/threejs.png',
   ThreeJS: toolIcons['Three.js'] ?? '/assets/img/tools/threejs.png',
-  threejs: toolIcons['Three.js'] ?? '/assets/img/tools/threejs.png'
+  threejs: toolIcons['Three.js'] ?? '/assets/img/tools/threejs.png',
+  pixijs: toolIcons['PixiJS'] ?? '/assets/img/tools/pixijs.png',
+  'pixi.js': toolIcons['PixiJS'] ?? '/assets/img/tools/pixijs.png',
+  Pixi: toolIcons['PixiJS'] ?? '/assets/img/tools/pixijs.png'
 };
 
 Object.assign(toolIcons, aliasMapping);
