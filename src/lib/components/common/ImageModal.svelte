@@ -52,27 +52,19 @@
 <svelte:window on:keydown={handleKeydown} />
 
 {#if isOpen}
-	<!-- Backdrop -->
+	
 	<div
 		class="fixed inset-0 bg-black/80 backdrop-blur-md z-[60] flex items-center justify-center p-4"
 		on:click={handleBackdropClick}
-		on:keydown={handleKeydown}
-		role="button"
-		tabindex="-1"
+		role="presentation"
 		transition:fade={{ duration: 200 }}
 	>
-		<!-- Modal Content -->
-		<!-- svelte-ignore a11y-click-events-have-key-events -->
-		<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
-		<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
 		<div
 			class="relative max-w-5xl w-full max-h-[90vh] flex items-center justify-center"
 			transition:scale={{ duration: 300, easing: quintOut, start: 0.9 }}
-			on:click|stopPropagation
-			on:keydown|stopPropagation
 			role="dialog"
 			aria-modal="true"
-			tabindex="0"
+			tabindex="-1"
 		>
 			<button
 				on:click={closeModal}
@@ -89,7 +81,7 @@
 				</svg>
 			</button>
 
-			<!-- Previous Button -->
+			
 			{#if images.length > 1}
 				<button
 					class="absolute left-0 md:-left-16 top-1/2 -translate-y-1/2 p-2 text-white/70 hover:text-white transition-colors z-50 bg-black/20 md:bg-transparent rounded-full"
@@ -118,7 +110,7 @@
 				class="max-w-full max-h-[85vh] rounded-lg shadow-2xl object-contain"
 			/>
 
-			<!-- Next Button -->
+			
 			{#if images.length > 1}
 				<button
 					class="absolute right-0 md:-right-16 top-1/2 -translate-y-1/2 p-2 text-white/70 hover:text-white transition-colors z-50 bg-black/20 md:bg-transparent rounded-full"

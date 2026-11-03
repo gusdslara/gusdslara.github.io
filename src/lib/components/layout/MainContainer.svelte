@@ -7,7 +7,7 @@
 	let toolbarAnimDone = false;
 
 	onMount(() => {
-		// Simulate toolbar animation completion
+		
 		setTimeout(() => {
 			toolbarAnimDone = true;
 		}, 500);
@@ -19,7 +19,7 @@
 <div class="main tb-height--full junkie">
 	<Navbar {scrollY} scrollContainer={contentScroller} />
 
-	<!-- Container div -->
+	
 	<div class="tb-height--full">
 		<div class="tb-height--full">
 			<div

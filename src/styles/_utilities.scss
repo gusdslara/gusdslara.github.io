@@ -1,6 +1,6 @@
 @import './variables';
 
-// Position utilities
+
 .tb-position--relative {
 	position: relative;
 }
@@ -17,7 +17,7 @@
 	position: sticky;
 }
 
-// Display utilities
+
 .tb-display--flex {
 	display: flex;
 }
@@ -34,7 +34,7 @@
 	display: none;
 }
 
-// Flex utilities
+
 .tb-flex--shrink-0 {
 	flex-shrink: 0;
 }
@@ -44,7 +44,7 @@
 	justify-content: center;
 }
 
-// Width utilities
+
 .tb-width--full {
 	width: 100%;
 }
@@ -55,7 +55,7 @@
 	}
 }
 
-// Height utilities
+
 .tb-height--full {
 	height: 100%;
 }
@@ -78,7 +78,7 @@
 	}
 }
 
-// Padding utilities
+
 @each $name, $value in $spacings {
 	.tb-padding--#{$name} {
 		padding: $value;
@@ -140,14 +140,14 @@
 	}
 }
 
-// Margin utilities
+
 @each $name, $value in $spacings {
 	.tb-margin--#{$name} {
 		margin: $value;
 	}
 }
 
-// Container utilities
+
 .tb-container {
 	max-width: 1200px;
 	margin: 0 auto;
@@ -163,7 +163,7 @@
 	max-width: none;
 }
 
-// Color utilities
+
 .tb-color--black {
 	color: $color-black;
 }
@@ -196,7 +196,7 @@
 	color: #212121;
 }
 
-// Background color utilities
+
 .tb-color-bg--white {
 	background-color: $color-white;
 }
@@ -217,12 +217,12 @@
 	background-color: $color-black-6;
 }
 
-// Border utilities
+
 .tb-border--r6 {
 	border-radius: 6px;
 }
 
-// Z-index utilities
+
 @each $name, $value in $z-layers {
 	.tb-z-index--#{$name} {
 		z-index: $value;
@@ -233,7 +233,7 @@
 	z-index: 3;
 }
 
-// Overflow utilities
+
 .tb-overflow--hidden {
 	overflow: hidden;
 }
@@ -242,7 +242,7 @@
 	overflow: auto;
 }
 
-// Text utilities
+
 .tb-text--align-center,
 .tb-text-align--center {
 	text-align: center;
@@ -256,19 +256,19 @@
 	text-align: right;
 }
 
-// Font weight utilities
+
 @each $name, $value in $font-weights {
 	.tb-font-weight--#{$name} {
 		font-weight: $value;
 	}
 }
 
-// Cursor utilities
+
 .tb-cursor--pointer {
 	cursor: pointer;
 }
 
-// Image utilities
+
 .tb-image {
 	max-width: 100%;
 	height: auto;
@@ -280,7 +280,7 @@
 	height: 16px;
 }
 
-// Link utilities
+
 .tb-a--unset {
 	text-decoration: none;
 	color: inherit;

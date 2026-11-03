@@ -22,7 +22,7 @@ export async function submitContactForm(data: ContactForm): Promise<boolean> {
 	}
 }
 
-// Add more API functions as needed
+
 export const api = {
 	contact: {
 		submit: submitContactForm
