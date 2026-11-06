@@ -729,7 +729,7 @@
 												on:click={(e) => onChipClick(e, tool)}
 											>
 												<img
-													src={tool.logo}
+													src={tool.logo} loading="lazy" decoding="async"
 													alt=""
 													class="h-4 md:h-5 w-auto object-contain"
 													style="max-height: 20px; max-width: 100px;"
@@ -852,7 +852,7 @@
 								class:opacity-90={exp.isFreelance}
 							>
 								<img
-									src={exp.logo}
+									src={exp.logo} loading="lazy" decoding="async"
 									alt="{exp.company} logo"
 									class="w-full h-full object-contain p-1"
 								/>

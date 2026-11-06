@@ -61,9 +61,9 @@
 
 			
 			<Motion
-				initial={{ opacity: 0, scale: 0.9, y: 20 }}
+				initial={{ opacity: 1, scale: 1, y: 0 }}
 				animate={{ opacity: 1, scale: 1, y: 0 }}
-				transition={{ type: 'spring', stiffness: 200, damping: 20, delay: 0.3 }}
+				transition={{ type: 'spring', stiffness: 200, damping: 20 }}
 				let:motion
 			>
 				<div use:motion class="flex items-center justify-center lg:justify-end">
@@ -72,7 +72,7 @@
 						transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
 						let:motion
 					>
-						<div use:motion class="relative w-full max-w-md lg:max-w-lg">
+						<div use:motion class="relative w-full max-w-md lg:max-w-lg aspect-[612/816]">
 							<div
 								class="absolute inset-0 bg-gradient-to-br from-[#dd206b]/20 to-[#667eea]/20 rounded-full blur-3xl transform scale-110"
 							></div>
@@ -82,12 +82,21 @@
 								transition={{ type: 'spring', stiffness: 300 }}
 								let:motion
 							>
-								<img
-									use:motion
-									src="/assets/img/avatar/perfil-transparente.png"
-									alt="Gustavo Lara"
-									class="relative w-full h-auto rounded-full shadow-2xl cursor-pointer"
-								/>
+								<picture class="contents">
+									<source srcset="/assets/img/avatar/perfil-transparente.webp" type="image/webp" />
+									<img
+										use:motion
+										src="/assets/img/avatar/perfil-transparente.png"
+										alt="Gustavo Lara"
+										width="612"
+										height="816"
+										fetchpriority="high"
+										loading="eager"
+										decoding="async"
+										class="relative w-full h-auto rounded-full shadow-2xl cursor-pointer"
+										style="aspect-ratio: 612 / 816;"
+									/>
+								</picture>
 							</Motion>
 						</div>
 					</Motion>

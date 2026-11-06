@@ -331,7 +331,7 @@
 			</svg>
 			<p class="text-gray-600 font-medium mb-2">{$t('common.model3d.error')}</p>
 			{#if fallbackImage}
-				<img src={fallbackImage} alt="Fallback" class="max-h-32 opacity-50 grayscale mt-4" />
+				<img src={fallbackImage} loading="lazy" decoding="async" alt="Fallback" class="max-h-32 opacity-50 grayscale mt-4" />
 			{:else}
 				<p class="text-gray-400 text-sm">{$t('common.model3d.checkPath')}</p>
 			{/if}

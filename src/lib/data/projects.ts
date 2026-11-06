@@ -4,29 +4,33 @@ import type { ClientApp, MyApp, Tab, ProjectData } from '$lib/types/projects';
 export const clientApps: ClientApp[] = [
     {
         id: '1',
-        name: 'acannabis.legal: Plataforma de Cannabis Medicinal',
-        image: '/assets/img/clients/acannabis.gif',
-        link: 'https://acannabis.legal/',
+        name: 'Simbium: Plataforma de Atendimento & Gestão com IA',
+        image: '/assets/img/clients/simbium.jpg',
+        link: 'https://simbium.com/',
         description:
-            'Plataforma web completa para o mercado legal de cannabis, oferecendo informações regulatórias, produtos certificados e conexão entre usuários e fornecedores autorizados.',
-        role: 'Arquiteto de Software & Full Stack Developer',
-        year: '2023',
-        technologies: ['Angular', 'TailwindCSS', 'ThreeJS', 'Go', 'WebRTC', 'Stripe'],
+            'Plataforma SaaS de inteligência conversacional e gestão (SGA) para o mercado fitness. Automatiza vendas e suporte 24/7 via WhatsApp e Instagram com IA humanizada, qualificação de leads, agendamento de aulas experimentais e funil CRM em tempo real.',
+        role: 'Tech Lead & Arquiteto de Software',
+        year: '2026',
+        technologies: ['Go', 'TypeScript', 'PostgreSQL', 'Docker', 'TailwindCSS', 'Redis'],
         features: [
-            'Sistema de autenticação e autorização multi-nível',
-            'Catálogo de produtos com filtros avançados',
-            'Painel administrativo para gerenciamento de conteúdo',
-            'Integração com APIs de pagamento',
-            'Sistema de notificações em tempo real'
+            'Atendimento automatizado 24/7 com IA conversacional humanizada via WhatsApp e Instagram',
+            'Qualificação inteligente de leads e agendamento automático de aulas experimentais',
+            'Funil de vendas CRM em formato Kanban com inbox multicanal unificado',
+            'Arquitetura de microsserviços em Go (Fiber, gRPC) e PostgreSQL de alta performance',
+            'Orquestração de LLMs com validação determinística contra alucinações'
         ],
-        stackImages: ['Angular', 'Go', 'WebRTC', 'Stripe'].map((t) => getToolIcon(t) ?? ''),
-        stackImageNames: ['Angular', 'Go', 'WebRTC', 'Stripe'],
-        backgroundColor: '#E2F1E7',
+        stackImages: ['Go', 'TypeScript', 'PostgreSQL', 'Docker'].map((t) => getToolIcon(t) ?? ''),
+        stackImageNames: ['Go', 'TypeScript', 'PostgreSQL', 'Docker'],
+        backgroundColor: '#FFEFEA',
         titleColor: '#000000',
         type: 'desktop',
         phoneImages: [
-            '/assets/img/clients/cannabislegal-logo.png',
-            '/assets/img/clients/acannabis.jpg'
+            '/assets/img/clients/simbium-logo.png',
+            '/assets/img/clients/simbium.jpg'
+        ],
+        additionalImages: [
+            '/assets/img/clients/simbium-mobile.png',
+            '/assets/img/clients/simbium.jpg'
         ]
     },
     {

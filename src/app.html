@@ -12,11 +12,17 @@
 	<meta name="author" content="Gustavo Lara" />
 
 
+	<!-- Preload LCP Hero Avatar -->
+	<link rel="preload" as="image" href="%sveltekit.assets%/assets/img/avatar/perfil-transparente.webp" type="image/webp" fetchpriority="high" />
+
+	<!-- Google Fonts: Async Non-Render-Blocking -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link
-		href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap"
-		rel="stylesheet">
+	<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" media="print" onload="this.media='all'">
+	<noscript>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap">
+	</noscript>
 
 	<!-- Open Graph / Facebook -->
 	<meta property="og:type" content="website" />

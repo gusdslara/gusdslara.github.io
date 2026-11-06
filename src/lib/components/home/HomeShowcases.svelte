@@ -30,8 +30,78 @@
 	}
 
 	$: easeProgress = easeInOutCubic(scrollProgress);
-	$: currentScale = 30 - easeProgress * 29;
-	$: bgLevel = Math.floor(easeProgress * 255);
+
+	// "Zoom out of the letter": the transform origin sits inside the first
+	// glyph's solid stroke, and the max scale is large enough for that stroke
+	// alone to cover the whole viewport. So the black seen at the start IS the
+	// letter (no fake black background).
+	let immersiveText: HTMLElement;
+	let firstCharEl: HTMLElement;
+	let originX = 0;
+	let originY = 0;
+	let maxScale = 30;
+
+	$: platformsLabel = $t('home.showcases.myPlatforms');
+	// Re-measure when the label (locale) changes.
+	$: if (platformsLabel && firstCharEl) tick().then(measureLetterStroke);
+
+	// Linear progress in log space = constant perceived zoom speed (no long
+	// all-black stall at the start).
+	$: currentScale = Math.exp(Math.log(maxScale) * (1 - scrollProgress));
+
+	function measureLetterStroke() {
+		if (typeof document === 'undefined' || typeof window === 'undefined') return;
+		if (!immersiveText || !firstCharEl) return;
+		const style = getComputedStyle(immersiveText);
+		const fontSize = parseFloat(style.fontSize);
+		const char = firstCharEl.textContent || 'M';
+
+		const canvas = document.createElement('canvas');
+		const ctx = canvas.getContext('2d', { willReadFrequently: true });
+		if (!ctx) return;
+		const font = `${style.fontStyle} ${style.fontWeight} ${fontSize}px ${style.fontFamily}`;
+		ctx.font = font;
+		const m = ctx.measureText(char);
+		const pad = Math.ceil(fontSize);
+		canvas.width = Math.ceil(m.width + pad * 2);
+		canvas.height = Math.ceil(fontSize * 2 + pad * 2);
+		ctx.font = font;
+		ctx.fillStyle = '#000';
+		ctx.textBaseline = 'alphabetic';
+		const baseline = pad + fontSize * 1.2;
+		ctx.fillText(char, pad, baseline);
+
+		const capH = m.actualBoundingBoxAscent || fontSize * 0.7;
+		const rowY = Math.round(baseline - capH * 0.5);
+		const row = ctx.getImageData(0, rowY, canvas.width, 1).data;
+		let x0 = -1;
+		let x1 = -1;
+		for (let x = 0; x < canvas.width; x++) {
+			const solid = row[x * 4 + 3] > 200;
+			if (solid && x0 < 0) x0 = x;
+			if (!solid && x0 >= 0) {
+				x1 = x;
+				break;
+			}
+		}
+		if (x0 < 0 || x1 < 0) return;
+		const stemW = Math.max(1, x1 - x0 - 1); // ignore anti-aliased edge
+		const stemH = capH;
+
+		// Baseline inside the DOM span: content-area top + font ascent.
+		const ascent = m.fontBoundingBoxAscent ?? fontSize * 1.05;
+		originX = firstCharEl.offsetLeft + (x0 + x1) / 2 - pad;
+		originY = firstCharEl.offsetTop + ascent - capH * 0.5;
+
+		// Screen position of the origin (container is the sticky viewport).
+		const sx = immersiveText.offsetLeft + originX;
+		const sy = immersiveText.offsetTop + originY;
+		const vw = window.innerWidth;
+		const vh = window.innerHeight;
+		const needX = (2 * Math.max(sx, vw - sx)) / stemW;
+		const needY = (2 * Math.max(sy, vh - sy)) / stemH;
+		maxScale = Math.max(needX, needY) * 1.1;
+	}
 
 	function updateScrollProgress() {
 		if (!wrapperNode || screenHeight <= 0) return;
@@ -57,6 +127,7 @@
 
 	function onResize() {
 		screenHeight = window.innerHeight;
+		measureLetterStroke();
 		updateScrollProgress();
 	}
 
@@ -64,6 +135,8 @@
 		screenHeight = window.innerHeight;
 		window.addEventListener('scroll', onScroll, { passive: true });
 		window.addEventListener('resize', onResize, { passive: true });
+		measureLetterStroke();
+		document.fonts?.ready.then(measureLetterStroke);
 		updateScrollProgress();
 
 		return () => {
@@ -269,22 +342,20 @@
 >
 	<div
 		class="immersive-container sticky top-0 h-screen flex items-end justify-start overflow-hidden pb-16 md:pb-24 px-4 md:px-8 lg:px-12"
-		style="z-index: 1; background-color: rgb({bgLevel}, {bgLevel}, {bgLevel}); contain: layout style paint; pointer-events: {easeProgress <
+		style="z-index: 1; background-color: #ffffff; contain: layout style paint; pointer-events: {easeProgress <
 		0.95
 			? 'none'
 			: 'auto'};"
 	>
 		<h2
-			class="immersive-text text-3xl md:text-4xl font-medium text-left whitespace-nowrap"
+			bind:this={immersiveText}
+			class="immersive-text relative text-3xl md:text-4xl font-medium text-left whitespace-nowrap"
 			style="transform: scale({Math.max(
 				1,
 				currentScale
-			)}); color: #000000; transform-origin: left center; opacity: {Math.min(
-				1,
-				easeProgress * 2.5
-			)}; will-change: transform, opacity;"
+			)}); color: #000000; transform-origin: {originX}px {originY}px;"
 		>
-			{$t('home.showcases.myPlatforms')}
+			<span bind:this={firstCharEl}>{platformsLabel.charAt(0)}</span>{platformsLabel.slice(1)}
 		</h2>
 	</div>
 	<span id="platforms"></span>

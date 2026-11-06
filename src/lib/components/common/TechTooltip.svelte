@@ -123,7 +123,7 @@
 			<div class="p-4">
 				<div class="flex items-center gap-2 mb-3">
 					<span class="w-7 h-7 rounded-lg bg-gray-100 flex items-center justify-center shrink-0">
-						<img src={tool.logo} alt="" class="max-h-4 max-w-[18px] object-contain" />
+						<img src={tool.logo} loading="lazy" decoding="async" alt="" class="max-h-4 max-w-[18px] object-contain" />
 					</span>
 					<span class="text-sm font-semibold text-black">{tool.name}</span>
 					<span class="ml-auto text-[11px] uppercase tracking-wide text-black/40 font-medium">
@@ -142,7 +142,7 @@
 										class:border-dashed={job.isFreelance}
 										style="border-color:{job.color};"
 									>
-										<img src={job.logo} alt="" class="w-full h-full object-contain p-0.5" />
+										<img src={job.logo} loading="lazy" decoding="async" alt="" class="w-full h-full object-contain p-0.5" />
 									</span>
 									<div class="min-w-0 flex-1">
 										<p class="text-[13px] leading-snug text-black">

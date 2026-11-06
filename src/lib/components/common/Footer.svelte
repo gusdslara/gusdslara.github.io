@@ -66,6 +66,10 @@
 					<img
 						src="/assets/svg/icons/social/{social.icon}.svg"
 						alt={social.name}
+						width="16"
+						height="16"
+						loading="lazy"
+						decoding="async"
 						class="w-4 h-4 opacity-70 transition-opacity duration-300 hover:opacity-100"
 					/>
 				</a>

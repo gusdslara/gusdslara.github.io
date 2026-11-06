@@ -25,7 +25,8 @@ export const toolIcons: Record<string, string> = {
   Docker: '/assets/img/tools/docker.png',
   Azure: '/assets/img/tools/azure.png',
   PixiJS: '/assets/img/tools/pixijs.png',
-  'Pixi.js': '/assets/img/tools/pixijs.png'
+  'Pixi.js': '/assets/img/tools/pixijs.png',
+  Redis: '/assets/img/tools/redis.png'
 };
 
 export function getToolIcon(tool: string): string | undefined {

@@ -60,6 +60,8 @@
 								<img
 									src={getToolIcon(tech)}
 									alt={tech}
+									loading="lazy"
+									decoding="async"
 									class="w-full h-full object-contain opacity-90"
 								/>
 							</div>
@@ -72,23 +74,29 @@
 			<img
 				src={app.image}
 				alt={app.name}
+				loading="lazy"
+				decoding="async"
 				class="max-w-[140px] md:max-w-[180px] h-auto rounded-xl drop-shadow-2xl transition-transform duration-500 group-hover:scale-105 group-hover:rotate-2"
 			/>
 		</div>
 
 		<div
-			class="absolute inset-0 bg-black/95 opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-all duration-300 flex flex-col items-center justify-center p-6 md:p-8 gap-5 transform scale-95 group-hover:scale-100 z-20 backdrop-blur-sm"
+			class="absolute inset-0 bg-black/90 opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-all duration-300 flex flex-col items-center justify-center p-4 sm:p-6 md:p-8 gap-2.5 sm:gap-3.5 md:gap-4 transform scale-95 group-hover:scale-100 z-20 backdrop-blur-md overflow-hidden"
 		>
-			<h5 class="text-white font-bold text-xl md:text-2xl text-center">{app.name}</h5>
-			<p class="text-white/80 text-[clamp(0.7rem,1.8vw,1rem)] text-center">
-				{app.description}
-			</p>
-			<div class="flex gap-3 flex-wrap justify-center mt-2">
+			<h5 class="text-white font-bold text-base sm:text-lg md:text-xl text-center leading-snug line-clamp-2 m-0 max-w-full">
+				{app.name}
+			</h5>
+			{#if app.description}
+				<p class="text-white/80 text-xs sm:text-sm text-center leading-relaxed line-clamp-3 sm:line-clamp-4 m-0 max-w-full">
+					{app.description}
+				</p>
+			{/if}
+			<div class="flex gap-2 sm:gap-3 flex-wrap justify-center mt-1 pointer-events-auto shrink-0">
 				<button
-					class="bg-white/10 text-white backdrop-blur-md px-5 py-2.5 rounded-xl text-sm font-semibold hover:bg-white/20 transition-all flex items-center gap-2 border border-white/20 shadow-xl"
+					class="bg-white/15 text-white backdrop-blur-md px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl text-xs sm:text-sm font-semibold hover:bg-white/25 transition-all flex items-center gap-1.5 border border-white/20 shadow-lg active:scale-95"
 					on:click|stopPropagation={() => openProjectModal(app)}
 				>
-					<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 512 512">
+					<svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="currentColor" viewBox="0 0 512 512">
 						<path
 							d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"
 						/>
@@ -100,7 +108,7 @@
 						href={app.link}
 						target="_blank"
 						rel="noopener"
-						class="bg-white text-black px-5 py-2.5 rounded-xl text-sm font-semibold hover:bg-gray-100 transition-all no-underline shadow-xl"
+						class="bg-white text-black px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl text-xs sm:text-sm font-semibold hover:bg-gray-100 transition-all no-underline shadow-lg flex items-center active:scale-95"
 						on:click|stopPropagation
 					>
 						{$t('home.showcases.access')}

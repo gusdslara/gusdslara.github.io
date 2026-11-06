@@ -752,15 +752,6 @@ export const techUsage: Record<string, TechUsage[]> = {
 	],
 	'Three.js': [
 		{
-			project: 'acannabis.legal',
-			client: true,
-			how: l(
-				'Elementos 3D da plataforma.',
-				'3D elements of the platform.',
-				'Elementos 3D de la plataforma.'
-			)
-		},
-		{
 			project: 'Voxel Canvas',
 			how: l('Paint 3D cúbico interativo.', 'Interactive voxel 3D paint.', 'Paint 3D cúbico interactivo.')
 		},
