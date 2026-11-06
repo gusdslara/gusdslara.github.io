@@ -42,7 +42,7 @@
 		<div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 p-6 md:p-12 items-center">
 			<div class="text-content">
 				<div class="flex items-center justify-center my-4 md:hidden">
-					<img src={imgSrc} alt={imgAlt} class="max-w-[70%] h-auto" />
+					<img src={imgSrc} alt={imgAlt} loading="lazy" decoding="async" class="max-w-[70%] h-auto" />
 				</div>
 				<h3 class="text-3xl md:text-4xl font-medium mb-4">{title}</h3>
 				<p class="text-base md:text-lg leading-relaxed text-black/75 mb-6">
@@ -60,6 +60,8 @@
 									<img
 										src={getToolIcon(tech)}
 										alt={tech}
+										loading="lazy"
+										decoding="async"
 										class="w-full h-full object-contain opacity-90"
 									/>
 								</div>
@@ -76,7 +78,7 @@
 			</div>
 
 			<div class="hidden md:flex items-center justify-center">
-				<img src={imgSrc} alt={imgAlt} class="max-w-full h-auto" />
+				<img src={imgSrc} alt={imgAlt} loading="lazy" decoding="async" class="max-w-full h-auto" />
 			</div>
 		</div>
 	</a>

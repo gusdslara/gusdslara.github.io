@@ -93,15 +93,15 @@ export const en = {
     },
     projects: {
         '1': {
-            name: 'acannabis.legal: Medical Cannabis Platform',
-            description: 'Complete web platform for the legal cannabis market, offering regulatory information, certified products, and connecting users with authorized suppliers.',
-            role: 'Software Architect & Full Stack Developer',
+            name: 'Simbium: AI-Powered Customer Service & Management Platform',
+            description: 'SaaS conversational intelligence and management platform (SGA) for the fitness industry. Automates 24/7 sales and customer care via WhatsApp and Instagram with human-like AI, lead qualification, trial class booking, and real-time CRM funnel.',
+            role: 'Tech Lead & Software Architect',
             features: [
-                'Multi-level authentication and authorization system',
-                'Product catalog with advanced filters',
-                'Administrative panel for content management',
-                'Payment APIs integration',
-                'Real-time notification system'
+                '24/7 automated customer service with humanized conversational AI via WhatsApp and Instagram',
+                'Automated lead qualification and trial class scheduling',
+                'Kanban sales CRM funnel with unified omnichannel inbox',
+                'High-performance microservices architecture in Go (Fiber, gRPC) and PostgreSQL',
+                'LLM orchestration with deterministic validation preventing hallucinations'
             ]
         },
         '2': {

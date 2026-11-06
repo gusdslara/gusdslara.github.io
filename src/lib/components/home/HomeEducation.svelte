@@ -106,7 +106,7 @@
 							class="absolute left-0 top-0 w-12 h-12 rounded-full flex items-center justify-center shadow-md overflow-hidden bg-white z-10"
 						>
 							<img
-								src={edu.logo}
+								src={edu.logo} loading="lazy" decoding="async"
 								alt="{edu.institution} logo"
 								class="w-full h-full object-contain p-1"
 							/>

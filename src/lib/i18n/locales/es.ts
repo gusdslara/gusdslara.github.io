@@ -93,15 +93,15 @@ export const es = {
     },
     projects: {
         '1': {
-            name: 'acannabis.legal: Plataforma de Cannabis Medicinal',
-            description: 'Plataforma web completa para el mercado legal del cannabis, que ofrece información regulatoria, productos certificados y conexión entre usuarios y proveedores autorizados.',
-            role: 'Arquitecto de Software y Desarrollador Full Stack',
+            name: 'Simbium: Plataforma de Atención y Gestión con IA',
+            description: 'Plataforma SaaS de inteligencia conversacional y gestión (SGA) para la industria fitness. Automatiza ventas y soporte 24/7 vía WhatsApp e Instagram con IA humanizada, calificación de leads, agendamiento de clases de prueba y embudo CRM en tiempo real.',
+            role: 'Tech Lead y Arquitecto de Software',
             features: [
-                'Sistema de autenticación y autorización multinivel',
-                'Catálogo de productos con filtros avanzados',
-                'Panel administrativo para la gestión de contenidos',
-                'Integración con APIs de pago',
-                'Sistema de notificaciones en tiempo real'
+                'Atención automatizada 24/7 con IA conversacional humanizada por WhatsApp e Instagram',
+                'Calificación inteligente de leads y agendamiento automático de clases de prueba',
+                'Embudo de ventas CRM en formato Kanban con bandeja de entrada multicanal unificada',
+                'Arquitectura de microservicios de alto rendimiento en Go (Fiber, gRPC) y PostgreSQL',
+                'Orquestación de LLMs con validación determinista contra alucinaciones'
             ]
         },
         '2': {

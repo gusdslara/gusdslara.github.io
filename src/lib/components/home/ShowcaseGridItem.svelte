@@ -53,6 +53,8 @@
 					<img
 						src={logo.image}
 						alt={logo.name}
+						loading="lazy"
+						decoding="async"
 						class="max-w-full h-10 md:h-12 object-contain transition-transform duration-300 group-hover:scale-90"
 					/>
 					<span class="text-black font-semibold text-xs mt-3 text-center px-2">{logo.name}</span>
@@ -68,6 +70,8 @@
 										<img
 											src={getToolIcon(tech)}
 											alt={tech}
+											loading="lazy"
+											decoding="async"
 											class="w-full h-full object-contain opacity-90"
 										/>
 									</div>
@@ -86,15 +90,19 @@
 				</div>
 
 				<div
-					class="absolute inset-0 bg-black/95 opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-all duration-300 flex flex-col items-center justify-center p-3 gap-2 transform scale-95 group-hover:scale-100 z-30 backdrop-blur-sm"
+					class="absolute inset-0 bg-black/90 opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-all duration-300 flex flex-col items-center justify-center p-2.5 sm:p-3 gap-1.5 sm:gap-2 transform scale-95 group-hover:scale-100 z-30 backdrop-blur-md overflow-hidden"
 				>
-					<h5 class="text-white font-bold text-xs md:text-sm text-center">{logo.name}</h5>
-					<p class="text-white/80 text-[clamp(0.6rem,1.5vw,0.8rem)] text-center">
-						{logo.description}
-					</p>
-					<div class="flex flex-wrap gap-2 justify-center mt-1">
+					<h5 class="text-white font-bold text-xs sm:text-sm text-center line-clamp-1 leading-snug m-0 max-w-full">
+						{logo.name}
+					</h5>
+					{#if logo.description}
+						<p class="text-white/80 text-[10px] sm:text-xs text-center line-clamp-2 sm:line-clamp-3 leading-tight m-0 max-w-full">
+							{logo.description}
+						</p>
+					{/if}
+					<div class="flex flex-wrap gap-1.5 justify-center mt-0.5 pointer-events-auto shrink-0">
 						<button
-							class="bg-white/20 text-white backdrop-blur-md px-2.5 py-1.5 rounded-lg text-[10px] font-semibold hover:bg-white/30 transition-all border border-white/20 flex items-center gap-1"
+							class="bg-white/15 text-white backdrop-blur-md px-2.5 py-1 rounded-lg text-[10px] sm:text-xs font-semibold hover:bg-white/25 transition-all border border-white/20 flex items-center gap-1 active:scale-95"
 							on:click|stopPropagation={() => openProjectModal(logo)}
 						>
 							<svg class="w-3 h-3" fill="currentColor" viewBox="0 0 512 512">
@@ -102,17 +110,17 @@
 									d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"
 								/>
 							</svg>
-							Saiba Mais
+							{$t('home.showcases.learnMore')}
 						</button>
 						{#if logo.link}
 							<a
 								href={logo.link}
 								target="_blank"
 								rel="noopener"
-								class="bg-white text-black px-2.5 py-1.5 rounded-lg text-[10px] font-semibold hover:bg-gray-100 transition-all no-underline"
+								class="bg-white text-black px-2.5 py-1 rounded-lg text-[10px] sm:text-xs font-semibold hover:bg-gray-100 transition-all no-underline shadow-sm flex items-center active:scale-95"
 								on:click|stopPropagation
 							>
-								Acessar
+								{$t('home.showcases.access')}
 							</a>
 						{/if}
 					</div>

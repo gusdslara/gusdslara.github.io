@@ -14,6 +14,7 @@ export interface ClientApp {
     titleColor?: string;
     type: 'desktop' | 'desktop-left' | 'mobile';
     phoneImages: string[];
+    additionalImages?: string[];
 }
 
 export interface MyApp {

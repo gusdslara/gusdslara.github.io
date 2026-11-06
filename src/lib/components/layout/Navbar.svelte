@@ -81,7 +81,7 @@
 	}
 
 	function updateActiveSection() {
-		if (!navItems) return;
+		if (typeof document === 'undefined' || typeof window === 'undefined' || !navItems) return;
 		const sections = navItems.map((item) => item.id);
 		const scrollPosition = scrollY + 150;
 
@@ -169,7 +169,17 @@
 			href="/"
 			class="flex items-center no-underline transition-transform duration-200 hover:scale-105"
 		>
-			<img src="/assets/img/logos/gustavolara.png" alt="NP Logo" class="h-8 md:h-10 w-auto" />
+			<picture>
+				<source srcset="/assets/img/logos/gustavolara.webp" type="image/webp" />
+				<img
+					src="/assets/img/logos/gustavolara.png"
+					alt="Gustavo Lara"
+					width="40"
+					height="40"
+					fetchpriority="high"
+					class="h-8 md:h-10 w-auto aspect-square"
+				/>
+			</picture>
 		</a>
 
 		<div class="hidden lg:flex items-center gap-2">
