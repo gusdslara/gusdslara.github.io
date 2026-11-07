@@ -118,16 +118,27 @@ export const en = {
             ]
         },
         '3': {
-            name: 'Skill: Landing Page + LAN Management',
-            description: 'Modern web interface for a Local Area Network (LAN) management system, offering device control, traffic monitoring, and intuitive network configuration.',
-            role: 'Frontend Architect',
+            name: 'myQIMA: Global Certifications & AI Platform',
+            description: 'Global food safety and certification platform by QIMA. Led the modernization and migration of international organic certification modules, automating compliance audits, certificate issuance, and regulatory compliance using microservices architecture and artificial intelligence.',
+            role: 'Software Engineer',
             features: [
-                'Real-time dashboard with network metrics',
-                'Connected devices visualization',
-                'Bandwidth control',
-                'Alerts and logs system',
-                'Responsive and modern interface',
-                'Light and dark themes'
+                'Migration and modernization of international organic certification modules (USDA Organic, EU Organic, GFSI)',
+                'Angular microfrontends for audit management, inspections, and technical reporting',
+                'High-performance Quarkus BFF with GraalVM native compilation and Spring Boot microservices',
+                'AI pipeline using Python, Ollama, FastAPI, and gRPC for automated compliance document verification',
+                'Real-time dashboard for certification tracking, corrective action plans (CAPA), and automated renewals'
+            ]
+        },
+        '4': {
+            name: 'Sucesso360: CRM & After-Sales Platform',
+            description: 'Enterprise CRM platform designed for comprehensive customer success and after-sales management for Oi Soluções. Built with modular Angular microfrontends and microservices in Quarkus, .NET, and Node.js, covering multiple domains (Onboarding, Ongoing, Support, Playbooks, and Expansion) with DevOps infrastructure and CI/CD pipelines.',
+            role: 'Tech Lead & DevOps',
+            features: [
+                'Modular Angular microfrontend architecture enabling independent domain deployments',
+                'High-availability microservices built in Quarkus, .NET, and Node.js',
+                'Comprehensive after-sales coverage: Onboarding, Playbook Management, Action Plans, and Health Score',
+                'Integrated modules: Customer Profiling, Experience Panel, Issue Radar, and Executive Dashboard',
+                'DevOps leadership: full CI/CD pipeline automation (GitHub Actions) and infrastructure provisioning (Terraform & Docker)'
             ]
         },
         '1_my': {
