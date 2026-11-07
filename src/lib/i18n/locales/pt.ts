@@ -118,16 +118,27 @@ export const pt = {
             ]
         },
         '3': {
-            name: 'Skill: Landing Page + Gerenciamento de LAN',
-            description: 'Interface web moderna para sistema de gerenciamento de rede local (LAN), oferecendo controle de dispositivos, monitoramento de tráfego e configuração de rede de forma intuitiva.',
-            role: 'Frontend Architect',
+            name: 'myQIMA: Certificações Internacionais & Gestão com IA',
+            description: 'Plataforma global de certificações e segurança alimentar da QIMA. Atuação na modernização e migração dos módulos de certificações internacionais de produtos orgânicos, automatizando auditorias de conformidade, emissão de certificados e compliance regulatório com arquitetura de microsserviços e inteligência artificial.',
+            role: 'Engenheiro de Software',
             features: [
-                'Dashboard em tempo real com métricas de rede',
-                'Visualização de dispositivos conectados',
-                'Controle de largura de banda',
-                'Sistema de alertas e logs',
-                'Interface responsiva e moderna',
-                'Temas claro e escuro'
+                'Migração e modernização do módulo de certificações internacionais de orgânicos (USDA Organic, EU Organic, GFSI)',
+                'Microfrontends em Angular para gestão de auditorias, inspeções e relatórios técnicos',
+                'BFF de alta performance em Quarkus com compilação nativa (GraalVM) e microsserviços Spring Boot',
+                'Pipeline de IA com Python, Ollama, FastAPI e gRPC para auditoria e validação documental de conformidade',
+                'Dashboard em tempo real para rastreabilidade de certificações, planos de ação corretiva (CAPA) e renovações automatizadas'
+            ]
+        },
+        '4': {
+            name: 'Sucesso360: Plataforma de CRM & Pós-Vendas',
+            description: 'Plataforma corporativa de CRM voltada à gestão completa do ciclo de pós-vendas (Sucesso do Cliente) para a Oi Soluções. Construída com arquitetura modular de microfrontends em Angular e microsserviços em Quarkus, .NET e Node.js, cobrindo múltiplos domínios (Onboarding, Ongoing, Suporte, Playbooks e Expansão) com infraestrutura DevOps e automação CI/CD.',
+            role: 'Líder Técnico & DevOps',
+            features: [
+                'Arquitetura modular de microfrontends em Angular com deploys independentes por domínio',
+                'Microsserviços de alta disponibilidade desenvolvidos em Quarkus, .NET e Node.js',
+                'Cobertura completa de pós-vendas: Onboarding, Gestão de Playbooks, Planos de Ação e Health Score',
+                'Módulos integrados: Conhecer o Cliente, Painel de Experiência, Radar de Pendências e Dashboard de Gestão',
+                'Atuação como DevOps: estruturação completa de pipelines CI/CD (GitHub Actions) e provisionamento de infraestrutura (Terraform e Docker)'
             ]
         },
         '1_my': {

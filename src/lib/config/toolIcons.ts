@@ -26,7 +26,19 @@ export const toolIcons: Record<string, string> = {
   Azure: '/assets/img/tools/azure.png',
   PixiJS: '/assets/img/tools/pixijs.png',
   'Pixi.js': '/assets/img/tools/pixijs.png',
-  Redis: '/assets/img/tools/redis.png'
+  Redis: '/assets/img/tools/redis.png',
+  'Spring Boot': '/assets/img/tools/springboot.png',
+  SpringBoot: '/assets/img/tools/springboot.png',
+  Quarkus: '/assets/img/tools/quarkus.png',
+  Python: '/assets/img/tools/python.svg',
+  FastAPI: '/assets/img/tools/fastapi.png',
+  Ollama: '/assets/img/tools/ollama.png',
+  gRPC: '/assets/img/tools/grpc.png',
+  '.NET': '/assets/img/tools/dotnet.svg',
+  DotNet: '/assets/img/tools/dotnet.svg',
+  NodeJS: '/assets/img/tools/nodejs.png',
+  Terraform: '/assets/img/tools/terraform.png',
+  'CI/CD': '/assets/img/tools/github.png'
 };
 
 export function getToolIcon(tool: string): string | undefined {

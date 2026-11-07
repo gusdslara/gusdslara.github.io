@@ -264,15 +264,6 @@ export const techUsage: Record<string, TechUsage[]> = {
 			)
 		},
 		{
-			project: 'Skill',
-			client: true,
-			how: l(
-				'Interface de gerenciamento de LAN com métricas em tempo real.',
-				'LAN management UI with real-time metrics.',
-				'Interfaz de gestión de LAN con métricas en tiempo real.'
-			)
-		},
-		{
 			project: 'gustavolara.pro',
 			how: l(
 				'Este portfólio, em SvelteKit (SSG).',
@@ -351,20 +342,19 @@ export const techUsage: Record<string, TechUsage[]> = {
 				'ATM frontend migration from Java Swing to Qt.',
 				'Migración del frontend de cajeros de Java Swing a Qt.'
 			)
-		},
-		{
-			project: 'Skill',
-			client: true,
-			how: l(
-				'Cliente desktop do gerenciador de LAN.',
-				'Desktop client for the LAN manager.',
-				'Cliente de escritorio del gestor de LAN.'
-			)
 		}
 	],
 
 	// ───────── Backend ─────────
 	'Spring Boot': [
+		{
+			job: 2,
+			how: l(
+				'Microsserviços de certificação e auditoria integrados ao BFF Quarkus.',
+				'Certification and audit microservices integrated with the Quarkus BFF.',
+				'Microservicios de certificación y auditoría integrados con el BFF Quarkus.'
+			)
+		},
 		{
 			job: 5,
 			how: l(
@@ -401,6 +391,14 @@ export const techUsage: Record<string, TechUsage[]> = {
 				'BFF nativo (GraalVM) com baixo consumo de memória.',
 				'Native (GraalVM) BFF with a low memory footprint.',
 				'BFF nativo (GraalVM) con bajo consumo de memoria.'
+			)
+		},
+		{
+			job: 5,
+			how: l(
+				'Microsserviços Java de pós-vendas no Sucesso360.',
+				'Java after-sales microservices in Sucesso360.',
+				'Microservicios Java de posventa en Sucesso360.'
 			)
 		}
 	],

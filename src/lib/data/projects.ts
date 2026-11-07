@@ -29,14 +29,16 @@ export const clientApps: ClientApp[] = [
             '/assets/img/clients/simbium.jpg'
         ],
         additionalImages: [
-            '/assets/img/clients/simbium-mobile.png',
-            '/assets/img/clients/simbium.jpg'
+            '/assets/img/clients/simbium.jpg',
+            '/assets/img/clients/simbium-sga.jpg',
+            '/assets/img/clients/simbium-demo.jpg',
+            '/assets/img/clients/simbium-mobile.png'
         ]
     },
     {
         id: '2',
         name: 'EduCanoas: App de gestão educacional',
-        image: '/assets/img/clients/educanoas.gif',
+        image: '/assets/img/clients/educanoas-preview.png',
         link: 'https://apkpure.com/br/educanoas/br.com.abaco.rs.canoas.educanoas',
         description:
             'Aplicativo mobile de gestão educacional para escolas, permitindo acompanhamento de alunos, comunicação com pais, gerenciamento de notas, frequência e atividades escolares.',
@@ -56,32 +58,67 @@ export const clientApps: ClientApp[] = [
         backgroundColor: '#E1F0FF',
         titleColor: '#000000',
         type: 'mobile',
-        phoneImages: ['/assets/img/clients/educanoas1.png', '/assets/img/clients/educanoas2.png']
+        phoneImages: ['/assets/img/clients/educanoas1.png', '/assets/img/clients/educanoas2.png'],
+        additionalImages: [
+            '/assets/img/clients/educanoas-preview.png',
+            '/assets/img/clients/educanoas1.png',
+            '/assets/img/clients/educanoas2.png'
+        ]
     },
     {
         id: '3',
-        name: 'Skill: Landing Page + Gerenciamento de LAN',
-        image: '/assets/img/clients/skill.gif',
-        link: 'https://skill.unrender.dev/',
+        name: 'myQIMA: Certificações Internacionais & Gestão com IA',
+        image: '/assets/img/clients/myqima-dashboard.png',
+        link: 'https://www.qima.com.br/food/myqima-food-safety-certification-platform',
         description:
-            'Interface web moderna para sistema de gerenciamento de rede local (LAN), oferecendo controle de dispositivos, monitoramento de tráfego e configuração de rede de forma intuitiva.',
-        role: 'Frontend Architect',
-        year: '2023',
-        technologies: ['Svelte', 'TailwindCSS', 'Go', 'Qt'],
+            'Plataforma global de certificações e segurança alimentar da QIMA. Atuação na modernização e migração dos módulos de certificações internacionais de produtos orgânicos, automatizando auditorias de conformidade, emissão de certificados e compliance regulatório com arquitetura de microsserviços e inteligência artificial.',
+        role: 'Engenheiro de Software',
+        year: '2024 - 2025',
+        technologies: ['Angular', 'Spring Boot', 'Quarkus', 'FastAPI', 'Python', 'Ollama', 'gRPC'],
         features: [
-            'Dashboard em tempo real com métricas de rede',
-            'Visualização de dispositivos conectados',
-            'Controle de largura de banda',
-            'Sistema de alertas e logs',
-            'Interface responsiva e moderna',
-            'Temas claro e escuro'
+            'Migração e modernização do módulo de certificações internacionais de orgânicos (USDA Organic, EU Organic, GFSI)',
+            'Microfrontends em Angular para gestão de auditorias, inspeções e relatórios técnicos',
+            'BFF de alta performance em Quarkus com compilação nativa (GraalVM) e microsserviços Spring Boot',
+            'Pipeline de IA com Python, Ollama, FastAPI e gRPC para auditoria e validação documental de conformidade',
+            'Dashboard em tempo real para rastreabilidade de certificações, planos de ação corretiva (CAPA) e renovações automatizadas'
         ],
-        stackImages: ['Svelte', 'TailwindCSS', 'Go', 'Qt'].map((t) => getToolIcon(t) ?? ''),
-        stackImageNames: ['Svelte', 'TailwindCSS', 'Go', 'Qt'],
-        backgroundColor: '#FFE2E2',
+        stackImages: ['Angular', 'Spring Boot', 'Quarkus', 'FastAPI', 'Python', 'Ollama', 'gRPC'].map((t) => getToolIcon(t) ?? ''),
+        stackImageNames: ['Angular', 'Spring Boot', 'Quarkus', 'FastAPI', 'Python', 'Ollama', 'gRPC'],
+        backgroundColor: '#FFF0F2',
         titleColor: '#000000',
         type: 'desktop-left',
-        phoneImages: ['/assets/img/clients/skilllan1.jpg', '/assets/img/clients/skilllan2.png']
+        phoneImages: ['/assets/img/clients/myqima-dashboard.png', '/assets/img/clients/myqima-nc-screen.png'],
+        additionalImages: [
+            '/assets/img/clients/myqima-dashboard.png',
+            '/assets/img/clients/myqima-nc-screen.png'
+        ]
+    },
+    {
+        id: '4',
+        name: 'Sucesso360: Plataforma de CRM & Pós-Vendas',
+        image: '/assets/img/clients/sucesso360-dashboard.png',
+        description:
+            'Plataforma corporativa de CRM voltada à gestão completa do ciclo de pós-vendas (Sucesso do Cliente) para a Oi Soluções. Construída com arquitetura modular de microfrontends em Angular e microsserviços em Quarkus, .NET e Node.js, cobrindo múltiplos domínios (Onboarding, Ongoing, Suporte, Playbooks e Expansão) com infraestrutura DevOps e automação CI/CD.',
+        role: 'Líder Técnico & DevOps',
+        year: '2022 - 2024',
+        technologies: ['Angular', 'Quarkus', '.NET', 'Node.js', 'Docker', 'Terraform', 'CI/CD'],
+        features: [
+            'Arquitetura modular de microfrontends em Angular com deploys independentes por domínio',
+            'Microsserviços de alta disponibilidade desenvolvidos em Quarkus, .NET e Node.js',
+            'Cobertura completa de pós-vendas: Onboarding, Gestão de Playbooks, Planos de Ação e Health Score',
+            'Módulos integrados: Conhecer o Cliente, Painel de Experiência, Radar de Pendências e Dashboard de Gestão',
+            'Atuação como DevOps: estruturação completa de pipelines CI/CD (GitHub Actions) e provisionamento de infraestrutura (Terraform e Docker)'
+        ],
+        stackImages: ['Angular', 'Quarkus', '.NET', 'Node.js', 'Docker', 'Terraform'].map((t) => getToolIcon(t) ?? ''),
+        stackImageNames: ['Angular', 'Quarkus', '.NET', 'Node.js', 'Docker', 'Terraform'],
+        backgroundColor: '#E8F7EC',
+        titleColor: '#000000',
+        type: 'desktop',
+        phoneImages: ['/assets/img/clients/sucesso360-login.png', '/assets/img/clients/sucesso360-dashboard.png'],
+        additionalImages: [
+            '/assets/img/clients/sucesso360-dashboard.png',
+            '/assets/img/clients/sucesso360-login.png'
+        ]
     }
 ];
 

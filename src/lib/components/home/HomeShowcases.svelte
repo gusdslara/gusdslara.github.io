@@ -241,7 +241,7 @@
 		<div class="h-12 md:h-16"></div>
 
 		<div class="mb-12 md:mb-16">
-			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 md:gap-8">
 				{#each translatedClientApps as app, i}
 					<div class="showcase-card-wrapper h-full" style="animation-delay: {i * 0.1}s;">
 						<ShowcaseCard
