@@ -41,6 +41,7 @@ export const toolIcons: Record<string, string> = {
   'CI/CD': '/assets/img/tools/github.png',
   C: '/assets/img/tools/c.png',
   'C++': '/assets/img/tools/c++.png',
+  Lua: '/assets/img/tools/lua.svg',
   'Wear OS': '/assets/img/tools/android.png',
   WearOS: '/assets/img/tools/android.png',
   SDL: '/assets/img/tools/c++.png',

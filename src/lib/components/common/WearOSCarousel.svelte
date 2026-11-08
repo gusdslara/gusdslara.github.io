@@ -59,15 +59,15 @@
 	}
 
 	function handleSlotClick(item: { originalIndex: number; src: string; isCenter: boolean }) {
-		if (onImageClick) {
-			onImageClick(item.src, item.originalIndex);
-		} else {
-			if (!item.isCenter && dynamicVisible > 1) {
-				const centerSlot = Math.floor(dynamicVisible / 2);
-				const slot = visibleItems.findIndex((v) => v.originalIndex === item.originalIndex);
-				const diff = slot - centerSlot;
-				currentIndex = (currentIndex + diff + images.length) % images.length;
+		if (item.isCenter || dynamicVisible <= 1) {
+			if (onImageClick) {
+				onImageClick(item.src, item.originalIndex);
 			}
+		} else {
+			const centerSlot = Math.floor(dynamicVisible / 2);
+			const slot = visibleItems.findIndex((v) => v.originalIndex === item.originalIndex);
+			const diff = slot - centerSlot;
+			currentIndex = (currentIndex + diff + images.length) % images.length;
 		}
 	}
 
@@ -124,7 +124,7 @@
 				>
 					<!-- Circular Watch Print -->
 					<div
-						class="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-full overflow-hidden bg-gray-100 shadow-md border-2 transition-all duration-300 {item.isCenter ? 'border-emerald-500 shadow-emerald-500/20 ring-2 ring-emerald-500/30' : 'border-gray-200 hover:border-gray-300'}"
+						class="w-24 h-24 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-full overflow-hidden bg-gray-100 shadow-lg border-2 transition-all duration-300 {item.isCenter ? 'border-emerald-500 shadow-emerald-500/25 ring-4 ring-emerald-500/20' : 'border-gray-200 hover:border-gray-300'}"
 					>
 						<img
 							src={item.src}
@@ -134,6 +134,14 @@
 							class="w-full h-full object-cover pointer-events-none transition-transform duration-300 group-hover/watch:scale-105"
 						/>
 					</div>
+					{#if item.isCenter || dynamicVisible <= 1}
+						<span class="mt-1 text-[10px] font-medium text-gray-500 flex items-center gap-1 opacity-0 group-hover/watch:opacity-100 transition-opacity">
+							<svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+							</svg>
+							Clique para ampliar
+						</span>
+					{/if}
 				</button>
 			{/each}
 		</div>

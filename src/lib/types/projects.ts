@@ -53,6 +53,7 @@ export interface ProjectData {
     color: string;
     description: string;
     technologies: string[];
+    features?: string[];
     githubUrl?: string;
     link?: string;
     apkUrl?: string;

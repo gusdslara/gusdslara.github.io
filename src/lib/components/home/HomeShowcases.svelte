@@ -164,20 +164,26 @@
 		features: $t(`projects.${app.id}.features`, { default: app.features })
 	}));
 
-	$: translatedMyApps = myApps.map(app => ({
-		...app,
-		name: $t(`projects.${app.id}_my.name`, { default: app.name }),
-		caption: $t(`projects.${app.id}_my.caption`, { default: app.caption }),
-		description: $t(`projects.${app.id}_my.description`, { default: app.description }),
-		features: $t(`projects.${app.id}_my.features`, { default: app.features })
-	}));
+	$: translatedMyApps = myApps.map(app => {
+		const trFeatures = $t(`projects.${app.id}_my.features`, { default: null });
+		return {
+			...app,
+			name: $t(`projects.${app.id}_my.name`, { default: app.name }),
+			caption: $t(`projects.${app.id}_my.caption`, { default: app.caption }),
+			description: $t(`projects.${app.id}_my.description`, { default: app.description }),
+			features: Array.isArray(trFeatures) ? trFeatures : app.features
+		};
+	});
 
-	$: translatedMoreProjects = moreProjects.map(app => ({
-		...app,
-		name: $t(`projects.${app.id}.name`, { default: app.name }),
-		description: $t(`projects.${app.id}.description`, { default: app.description }),
-		features: $t(`projects.${app.id}.features`, { default: (app as any).features })
-	}));
+	$: translatedMoreProjects = moreProjects.map(app => {
+		const trFeatures = $t(`projects.${app.id}.features`, { default: null });
+		return {
+			...app,
+			name: $t(`projects.${app.id}.name`, { default: app.name }),
+			description: $t(`projects.${app.id}.description`, { default: app.description }),
+			features: Array.isArray(trFeatures) ? trFeatures : (app as any).features
+		};
+	});
 
 	function hasCategory(item: any, catId: string): boolean {
 		if (item.categories && Array.isArray(item.categories)) {

@@ -168,7 +168,7 @@ export const en = {
         '3_my': {
             name: 'Crash Team Racing Native (Wear OS)',
             caption: 'Native port of Crash Team Racing (PS1) in C/SDL3 running at 60 FPS on smartwatch',
-            description: 'High performance native port based on the decompilation of Crash Team Racing (PS1, 1999) using C, SDL3, and OpenGL ES engineered specifically for Wear OS smartwatches and 432x432 circular displays (Galaxy Watch / One UI Watch). Features hardware acceleration, stereo audio, PlayStation touch mapping, and direct APK installation.',
+            description: 'High performance native port for Wear OS smartwatches (Galaxy Watch / One UI Watch), based on open-source reverse-engineering and mobile ports of CTR (such as <a href="https://github.com/Simon358/ctr-native-android" target="_blank" rel="noopener noreferrer" class="text-emerald-600 underline font-medium hover:text-emerald-500">ctr-native-android</a> and <a href="https://github.com/CTR-ModSDK/CTR-ModSDK" target="_blank" rel="noopener noreferrer" class="text-emerald-600 underline font-medium hover:text-emerald-500">CTR-ModSDK</a>). Built in C with SDL3 and OpenGL ES 60 FPS acceleration, tailored for 432x432 circular displays with ergonomic arc PlayStation controls and central D-pad.',
             features: [
                 'Hardware accelerated graphics via OpenGL ES at rock-solid 60 FPS',
                 'Interface and HUD fully adapted for circular 432x432 displays (One UI Watch)',
@@ -181,7 +181,7 @@ export const en = {
         '4_my': {
             name: 'Super Mario World (Wear OS)',
             caption: 'Native port of Super Mario World tailored for circular Wear OS displays',
-            description: 'Native adaptation of the legendary Super Mario World compiled natively for the Wear OS platform. Features transparent circular touch controls, pixel-perfect round rendering, and ultra-low latency response.',
+            description: 'Native adaptation for Wear OS smartwatches based on the Super Mario World decompilation and the open-source <a href="https://github.com/freyta/smw-android" target="_blank" rel="noopener noreferrer" class="text-emerald-600 underline font-medium hover:text-emerald-500">smw-android</a> project. Compiled natively in C and SDL with high-contrast translucent circular touch controls, radial vignette scrim, and zero ghost-tap gameplay.',
             features: [
                 'Precise native rendering preserving original physics and frame timing',
                 'Standardized touch overlay: Top (L, SELECT, R), Left (B), Right (A), and Bottom (START)',
@@ -194,7 +194,7 @@ export const en = {
         '5_my': {
             name: 'Pokémon FireRed (Wear OS)',
             caption: 'Port & Recompilation of Pokémon FireRed optimized for circular smartwatch screen',
-            description: 'Extended execution of Pokémon FireRed adapted for Wear OS smartwatches. Features streamlined dialog and battle navigation for round screens, digital bezel / crown rotation support, and persistent saves.',
+            description: 'Native port and recompilation of Pokémon FireRed for Wear OS smartwatches powered by the open-source <a href="https://github.com/bryanthaboi/gen1recomp" target="_blank" rel="noopener noreferrer" class="text-emerald-600 underline font-medium hover:text-emerald-500">gen1recomp</a> engine (LÖVE2D/Lua). Rigorously standardized to the exact same high-contrast UI and color scheme as SMW, optimized for round dialogs and rotating crown navigation.',
             features: [
                 'Standardized UI matching SMW: Top (L, SELECT, R), Left (B), Right (A), and Bottom (START)',
                 'Decoupled directional swipe and B button area eliminating input conflicts',
@@ -258,15 +258,39 @@ export const en = {
         },
         'game-1': {
             name: 'Crash Team Racing Native (Wear OS)',
-            description: 'Native port of CTR (PS1) for Wear OS Smartwatches at 60 FPS'
+            description: 'Native port of CTR (PS1) for Wear OS Smartwatches at 60 FPS',
+            features: [
+                'Hardware accelerated graphics via OpenGL ES at rock-solid 60 FPS',
+                'Interface and HUD fully adapted for circular 432x432 displays (One UI Watch)',
+                'Classic PlayStation controls (△, ✕, □, ○, L1/R1, L2/R2) and ergonomic arc D-Pad',
+                'Original synthesized stereo soundtrack and SFX via SDL3',
+                'Save State system and game progress preserved on smartwatch local storage',
+                'Direct APK download compatible with modern Android Wear OS devices'
+            ]
         },
         'game-2': {
             name: 'Super Mario World (Wear OS)',
-            description: 'Super Mario World natively adapted for circular Wear OS displays'
+            description: 'Super Mario World natively adapted for circular Wear OS displays',
+            features: [
+                'Precise native rendering preserving original physics and frame timing',
+                'Standardized touch overlay: Top (L, SELECT, R), Left (B), Right (A), and Bottom (START)',
+                'Ghost tap fix: Decoupled virtual D-Pad gesture and B button area to prevent accidental presses while walking',
+                'Full support for world map (Yoshi Island) and all levels',
+                'Power-efficient execution with high performance',
+                'Installable APK package for Wear OS smartwatches'
+            ]
         },
         'game-3': {
             name: 'Pokémon FireRed (Wear OS)',
-            description: 'Port & Recompilation of Pokémon FireRed for Wear OS'
+            description: 'Port & Recompilation of Pokémon FireRed for Wear OS',
+            features: [
+                'Standardized UI matching SMW: Top (L, SELECT, R), Left (B), Right (A), and Bottom (START)',
+                'Decoupled directional swipe and B button area eliminating input conflicts',
+                'Typography and UI scaled for ergonomic smartwatch reading',
+                'Fast-paced Pokémon battle commands via touchscreen gestures',
+                'Rotating crown / bezel navigation support',
+                'Synchronized native audio and sound effects'
+            ]
         }
     },
     jobs: {

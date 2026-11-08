@@ -86,13 +86,16 @@
 
 		<!-- Right Side Image: 2 Rounded Watch Prints for Wear OS or Standard App Mockup -->
 		{#if app.isWearOS && app.wearosImages && app.wearosImages.length >= 2}
+			{@const gameImg = app.image || app.wearosImages[1]}
+			{@const controlsImg = app.wearosImages[0]}
 			<div class="flex-shrink-0 flex items-center -space-x-4 sm:-space-x-5 py-2">
 				<div
 					class="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-full overflow-hidden border-2 sm:border-3 border-white/90 shadow-xl bg-neutral-900 transition-transform duration-500 group-hover:-translate-x-1 group-hover:-rotate-3"
+					title="{app.name} - Controles"
 				>
 					<img
-						src={app.wearosImages[0]}
-						alt="{app.name} tela 1"
+						src={controlsImg}
+						alt="{app.name} controles"
 						loading="lazy"
 						decoding="async"
 						class="w-full h-full object-cover"
@@ -100,10 +103,11 @@
 				</div>
 				<div
 					class="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-full overflow-hidden border-2 sm:border-3 border-white/90 shadow-xl bg-neutral-900 transition-transform duration-500 group-hover:translate-x-1 group-hover:rotate-3 z-10"
+					title="{app.name} - Gameplay"
 				>
 					<img
-						src={app.wearosImages[1]}
-						alt="{app.name} tela 2"
+						src={gameImg}
+						alt="{app.name} gameplay"
 						loading="lazy"
 						decoding="async"
 						class="w-full h-full object-cover"
