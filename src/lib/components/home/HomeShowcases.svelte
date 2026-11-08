@@ -179,15 +179,25 @@
 		features: $t(`projects.${app.id}.features`, { default: (app as any).features })
 	}));
 
+	function hasCategory(item: any, catId: string): boolean {
+		if (item.categories && Array.isArray(item.categories)) {
+			return item.categories.includes(catId);
+		}
+		if (Array.isArray(item.category)) {
+			return item.category.includes(catId);
+		}
+		return (item.category || 'software') === catId;
+	}
+
 	$: filteredMyApps =
 		selectedTab === 'all'
 			? translatedMyApps
-			: translatedMyApps.filter((p) => (p.category || 'software') === selectedTab);
+			: translatedMyApps.filter((p) => hasCategory(p, selectedTab));
 
 	$: filteredMoreProjects =
 		selectedTab === 'all'
 			? translatedMoreProjects
-			: translatedMoreProjects.filter((p) => p.category === selectedTab);
+			: translatedMoreProjects.filter((p) => hasCategory(p, selectedTab));
 
 	// Unified categories for modal navigation
 	$: projectCategories = [
@@ -198,7 +208,7 @@
 			.map((tab) => ({
 				id: tab.id,
 				label: $t(`projects.${tab.id}`),
-				projects: translatedMoreProjects.filter((p) => p.category === tab.id),
+				projects: translatedMoreProjects.filter((p) => hasCategory(p, tab.id)),
 				icon: tab.icon
 			}))
 	];
@@ -257,6 +267,7 @@
 								: app.type === 'desktop-left'
 									? 'desktop-left'
 									: 'mobile'}
+							secondaryInFront={app.secondaryInFront || false}
 							onImageClick={(src) => openImageModal(src, app.name, app.phoneImages)}
 							onClick={() => openProjectModal(app)}
 							link={app.link}

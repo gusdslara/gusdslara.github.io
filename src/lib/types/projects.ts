@@ -2,7 +2,7 @@ export interface ClientApp {
     id: string;
     name: string;
     image: string;
-    link: string;
+    link?: string;
     description: string;
     role: string;
     year: string;
@@ -13,6 +13,7 @@ export interface ClientApp {
     backgroundColor: string;
     titleColor?: string;
     type: 'desktop' | 'desktop-left' | 'mobile';
+    secondaryInFront?: boolean;
     phoneImages: string[];
     additionalImages?: string[];
 }
@@ -20,7 +21,8 @@ export interface ClientApp {
 export interface MyApp {
     id: number;
     name: string;
-    category?: string;
+    category?: string | string[];
+    categories?: string[];
     image: string;
     caption: string;
     description: string;
@@ -29,6 +31,10 @@ export interface MyApp {
     background: string;
     link?: string;
     githubUrl?: string;
+    apkUrl?: string;
+    apkSize?: string;
+    isWearOS?: boolean;
+    wearosImages?: string[];
     additionalImages?: string[];
 }
 
@@ -41,12 +47,18 @@ export interface Tab {
 export interface ProjectData {
     id: string;
     name: string;
-    category: string;
+    category?: string | string[];
+    categories?: string[];
     image: string;
     color: string;
     description: string;
     technologies: string[];
     githubUrl?: string;
     link?: string;
+    apkUrl?: string;
+    apkSize?: string;
+    isWearOS?: boolean;
+    wearosImages?: string[];
+    additionalImages?: string[];
     modelPath?: string;
 }

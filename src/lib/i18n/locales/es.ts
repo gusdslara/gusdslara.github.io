@@ -82,7 +82,8 @@ export const es = {
             architecture: 'Arquitectura de Software',
             gallery: 'Galería del Proyecto',
             viewProject: 'Ver Proyecto',
-            viewCode: 'Ver Código'
+            viewCode: 'Ver Código',
+            downloadApk: 'Descargar APK (Wear OS)'
         },
         model3d: {
             loading: 'Cargando modelo 3D...',
@@ -161,6 +162,45 @@ export const es = {
                 'Animaciones fluidas basadas en el desplazamiento (GSAP ScrollTrigger)',
                 'Arquitectura SvelteKit con transiciones rápidas',
                 'Layout moderno y responsivo'
+            ]
+        },
+        '3_my': {
+            name: 'Crash Team Racing Native (Wear OS)',
+            caption: 'Port nativo de Crash Team Racing (PS1) en C/SDL3 a 60 FPS en el smartwatch',
+            description: 'Port nativo de alto rendimiento basado en la descompilación de Crash Team Racing (PS1, 1999) utilizando C, SDL3 y OpenGL ES optimizado para smartwatches Wear OS y pantallas circulares de 432x432 (Galaxy Watch / One UI Watch). Incluye aceleración gráfica por hardware, audio estéreo, controles clásicos de PlayStation y soporte APK.',
+            features: [
+                'Aceleración gráfica nativa por hardware con OpenGL ES a 60 FPS fluidos',
+                'Interfaz y HUD adaptados para pantalla circular de 432x432 (One UI Watch)',
+                'Controles clásicos de PlayStation (△, ✕, □, ○, L1/R1, L2/R2) y D-Pad en arco ergonómico',
+                'Banda sonora y efectos originales sintetizados en tiempo real mediante SDL3',
+                'Sistema de guardado y progreso preservado en el almacenamiento del reloj',
+                'Instalación directa mediante APK compatible con Android Wear OS'
+            ]
+        },
+        '4_my': {
+            name: 'Super Mario World (Wear OS)',
+            caption: 'Port nativo de Super Mario World adaptado a pantallas circulares Wear OS',
+            description: 'Adaptación nativa del clásico Super Mario World compilado nativamente para la arquitectura Wear OS. Ofrece controles táctiles circulares transparentes, renderizado circular nítido y respuesta inmediata.',
+            features: [
+                'Renderizado preciso preservando físicas y tiempos originales',
+                'Overlay táctil estandarizado: Arriba (L, SELECT, R), Izquierda (B), Derecha (A) y Abajo (START)',
+                'Corrección de Ghost Tap: D-Pad virtual y botón B desacoplados para evitar toques involuntarios al caminar',
+                'Soporte completo para el mapa del mundo (Yoshi Island) e niveles',
+                'Bajo consumo de batería y excelente rendimiento',
+                'Paquete APK instalable en relojes Wear OS'
+            ]
+        },
+        '5_my': {
+            name: 'Pokémon FireRed (Wear OS)',
+            caption: 'Port & Recompilación de Pokémon FireRed optimizado para smartwatch circular',
+            description: 'Ejecución optimizada de Pokémon FireRed adaptada a smartwatches Wear OS. Navegación fluida en diálogos y batallas en pantallas redondas, soporte para bisel giratorio / corona física y guardados persistentes.',
+            features: [
+                'Interfaz estandarizada idéntica a SMW: Arriba (L, SELECT, R), Izquierda (B), Derecha (A) y Abajo (START)',
+                'Gesto direccional y botón B desacoplados sin conflictos de entrada',
+                'Tipografía e interfaz ajustadas para lectura ergonómica en el reloj',
+                'Comandos ágiles de batalla mediante gestos en pantalla',
+                'Navegación mediante la corona física / bisel digital',
+                'Audio y efectos de sonido sincronizados'
             ]
         },
         'all': 'Todos',

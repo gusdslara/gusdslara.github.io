@@ -8,7 +8,14 @@
 	export let logo: any;
 	export let openProjectModal: (project: any) => void;
 
-	$: categoryTab = tabs.find((tab) => tab.id === logo.category);
+	$: rawCategories = logo.categories
+		? logo.categories
+		: Array.isArray(logo.category)
+			? logo.category
+			: [logo.category || 'software'];
+	$: categoryTabs = rawCategories
+		.map((catId: string) => tabs.find((tab) => tab.id === catId))
+		.filter(Boolean);
 </script>
 
 <Motion variants={fadeUpVariant} initial="hidden" animate="visible" exit="hidden" let:motion>
@@ -28,14 +35,18 @@
 				use:hoverMotion
 				class="absolute inset-0 w-full h-full flex flex-col items-center justify-center p-4"
 			>
-				{#if categoryTab}
-					<div
-						class="absolute top-2.5 left-2.5 z-10 inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-white/70 backdrop-blur-sm border border-white/50 shadow-sm text-[10px] font-semibold text-black/80"
-					>
-						<svg class="w-3 h-3 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
-							<path d={categoryTab.icon} />
-						</svg>
-						<span>{$t(`projects.${categoryTab.id}`)}</span>
+				{#if categoryTabs.length > 0}
+					<div class="absolute top-2.5 left-2.5 z-10 flex flex-wrap gap-1 max-w-[85%]">
+						{#each categoryTabs as categoryTab}
+							<div
+								class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-white/70 backdrop-blur-sm border border-white/50 shadow-sm text-[10px] font-semibold text-black/80"
+							>
+								<svg class="w-3 h-3 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
+									<path d={categoryTab.icon} />
+								</svg>
+								<span>{$t(`projects.${categoryTab.id}`)}</span>
+							</div>
+						{/each}
 					</div>
 				{/if}
 

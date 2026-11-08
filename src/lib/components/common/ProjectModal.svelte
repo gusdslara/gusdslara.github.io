@@ -3,6 +3,7 @@
 	import { t } from '$lib/i18n';
 	import { toolIcons, getToolIcon } from '$lib/config/toolIcons';
 	import CustomSelect from './CustomSelect.svelte';
+	import WearOSCarousel from './WearOSCarousel.svelte';
 
 	export let isOpen = false;
 	export let project: {
@@ -13,6 +14,10 @@
 		features?: string[];
 		link?: string;
 		githubUrl?: string;
+		apkUrl?: string;
+		apkSize?: string;
+		isWearOS?: boolean;
+		wearosImages?: string[];
 		role?: string;
 		year?: string;
 		architectureDiagrams?: string[];
@@ -289,7 +294,38 @@
 				</div>
 
 				<!-- CAROUSEL / MEDIA SECTION -->
-				{#if slides.length > 0}
+				{#if project.isWearOS || (project.wearosImages && project.wearosImages.length > 0)}
+					<div class="mb-6 sm:mb-8 flex flex-col gap-3">
+						<WearOSCarousel
+							images={project.wearosImages && project.wearosImages.length > 0 ? project.wearosImages : [project.image]}
+							name={project.name}
+							maxVisible={5}
+						/>
+
+						{#if project.additionalImages && project.additionalImages.length > 0}
+							<div class="mt-2 p-3 sm:p-4 rounded-2xl bg-gray-50 border border-gray-200/70">
+								<h5 class="text-xs font-bold uppercase tracking-wider text-gray-600 mb-2.5 flex items-center gap-1.5">
+									<svg class="w-3.5 h-3.5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+									</svg>
+									Telas & Menus do Jogo
+								</h5>
+								<div class="flex items-center gap-2.5 overflow-x-auto py-1 px-1 no-scrollbar">
+									{#each project.additionalImages as addImg, idx}
+										<div class="relative flex-shrink-0 w-28 h-18 sm:w-36 sm:h-24 rounded-xl overflow-hidden border-2 border-gray-200 bg-gray-100 shadow-sm transition-all hover:scale-105 hover:border-[#dd206b]">
+											<img
+												src={addImg}
+												alt="{project.name} menu {idx + 1}"
+												class="w-full h-full object-contain"
+												loading="lazy"
+											/>
+										</div>
+									{/each}
+								</div>
+							</div>
+						{/if}
+					</div>
+				{:else if slides.length > 0}
 					<div class="mb-6 sm:mb-8 flex flex-col gap-3">
 						<!-- Main Viewport -->
 						<div
@@ -411,10 +447,10 @@
 					</div>
 				{/if}
 
-				<!-- About Section -->
+				<!-- Role / Importance Section (Meu Papel) -->
 				<div class="mb-6 sm:mb-8">
 					<h4 class="text-base sm:text-lg font-bold text-gray-900 mb-2 sm:mb-3">
-						{$t('common.modal.about')}
+						{$t('common.modal.role')}
 					</h4>
 					<p class="text-sm sm:text-base text-gray-700 leading-relaxed font-normal">
 						{project.description}
@@ -447,15 +483,15 @@
 					</div>
 				{/if}
 
-				<!-- Features Section -->
+				<!-- About Project / Topics Section (Sobre o Projeto) -->
 				{#if project.features && project.features.length > 0}
 					<div class="mb-6 sm:mb-8">
 						<h4 class="text-base sm:text-lg font-bold text-gray-900 mb-2 sm:mb-3">
 							{$t('common.modal.features')}
 						</h4>
-						<ul class="space-y-2.5 pl-0 list-none m-0">
+						<div class="grid grid-cols-1 md:grid-cols-2 gap-3">
 							{#each project.features as feature}
-								<li class="flex items-start gap-2.5 text-xs sm:text-sm md:text-base text-gray-700 leading-normal">
+								<div class="flex items-start gap-3 p-3 sm:p-3.5 rounded-xl bg-gray-50/80 border border-gray-200/70 text-xs sm:text-sm text-gray-800 leading-relaxed">
 									<svg
 										class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5"
 										fill="none"
@@ -469,15 +505,35 @@
 											d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
 										/>
 									</svg>
-									<span>{feature}</span>
-								</li>
+									<span class="font-normal">{feature}</span>
+								</div>
 							{/each}
-						</ul>
+						</div>
 					</div>
 				{/if}
 
 				<!-- Action Buttons (Bottom) -->
 				<div class="flex flex-wrap gap-3 pt-5 border-t border-gray-100 mt-6">
+					{#if project.apkUrl}
+						<a
+							href={project.apkUrl}
+							download
+							class="flex-1 min-w-[200px] px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-semibold text-center transition-all flex items-center justify-center gap-2 no-underline shadow-md active:scale-98"
+						>
+							<svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="2"
+									d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+								/>
+							</svg>
+							<span>{$t('common.modal.downloadApk')}</span>
+							{#if project.apkSize}
+								<span class="text-xs bg-emerald-800/80 px-2 py-0.5 rounded-full font-mono">{project.apkSize}</span>
+							{/if}
+						</a>
+					{/if}
 					{#if project.link}
 						<a
 							href={project.link}

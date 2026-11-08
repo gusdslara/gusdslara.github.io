@@ -11,6 +11,7 @@
 	export let titleColor: string = '#ffffff';
 	export let type: 'mobile' | 'desktop' | 'desktop-left' = 'mobile';
 	export let link: string = '';
+	export let secondaryInFront: boolean = false;
 
 	$: displayPhoneImages = [
 		phoneImages[0] || '/assets/img/placeholder-phone.png',
@@ -44,12 +45,12 @@
 			class="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden z-0"
 		>
 			<button
-				class="absolute transform transition-all duration-500 hover:scale-105 brightness-90 hover:brightness-100 pointer-events-auto cursor-zoom-in border-none bg-transparent p-0
-			{type === 'desktop-left' ? 'z-20' : ''}
+				class="absolute transform transition-all duration-500 hover:scale-105 pointer-events-auto cursor-zoom-in border-none bg-transparent p-0
+			{secondaryInFront ? 'z-10 brightness-90 hover:brightness-100' : (type === 'desktop' ? 'z-20' : 'z-10 brightness-90 hover:brightness-100')}
 			{type === 'mobile'
 					? 'translate-x-8 sm:translate-x-12 translate-y-0 rotate-[12deg] hover:translate-y-2 hover:rotate-[15deg] w-[32%] sm:w-[28%] md:w-[25%] max-h-[65%]'
 					: type === 'desktop-left'
-						? 'translate-x-8 sm:translate-x-12 translate-y-4 sm:translate-y-6 rotate-[12deg] hover:translate-y-4 hover:rotate-[15deg] w-[32%] sm:w-[28%] md:w-[25%] max-h-[60%]'
+						? 'translate-x-[55%] sm:translate-x-[65%] translate-y-4 sm:translate-y-6 rotate-[12deg] hover:translate-y-4 hover:rotate-[15deg] w-[38%] sm:w-[35%] md:w-[32%] max-h-[60%]'
 						: 'translate-x-6 sm:translate-x-8 translate-y-3 sm:translate-y-4 rotate-[6deg] hover:translate-y-6 hover:rotate-[8deg] w-[62%] sm:w-[58%] md:w-[55%] max-h-[78%]'}"
 				on:click={(e) => handleImageClick(e, displayPhoneImages[1])}
 				aria-label="{name} Screen 2"
@@ -59,8 +60,7 @@
 					alt="{name} Screen 2"
 					loading="lazy"
 					decoding="async"
-					class="w-full h-full object-contain drop-shadow-2xl {type === 'mobile' ||
-					type === 'desktop-left'
+					class="w-full h-full object-contain drop-shadow-2xl {type === 'mobile'
 						? 'rounded-[1.2rem] sm:rounded-[1.5rem] md:rounded-[2rem]'
 						: 'rounded-lg sm:rounded-xl'}"
 				/>
@@ -68,12 +68,12 @@
 
 			<button
 				class="absolute transform transition-all duration-500 hover:scale-110 pointer-events-auto cursor-zoom-in border-none bg-transparent p-0
-			{type === 'desktop-left' ? 'z-10' : 'z-10'}
+			{secondaryInFront ? 'z-20' : (type === 'desktop' ? 'z-10 brightness-90 hover:brightness-100' : 'z-20')}
 			{type === 'mobile'
 					? '-translate-x-6 sm:-translate-x-8 translate-y-0 rotate-[-12deg] hover:-translate-y-2 hover:rotate-[-15deg] w-[36%] sm:w-[32%] md:w-[30%] max-h-[65%]'
 					: type === 'desktop-left'
 						? '-translate-x-3 sm:-translate-x-4 -translate-y-2 rotate-[-6deg] hover:-translate-y-4 hover:rotate-[-8deg] w-[66%] sm:w-[62%] md:w-[60%] max-h-[78%]'
-						: '-translate-x-8 sm:-translate-x-12 translate-y-4 sm:translate-y-6 rotate-[-12deg] hover:-translate-y-4 hover:rotate-[-15deg] w-[30%] sm:w-[28%] md:w-[25%] max-h-[58%]'}"
+						: '-translate-x-[55%] sm:-translate-x-[65%] translate-y-4 sm:translate-y-6 rotate-[-12deg] hover:-translate-y-4 hover:rotate-[-15deg] w-[38%] sm:w-[35%] md:w-[32%] max-h-[58%]'}"
 				on:click={(e) => handleImageClick(e, displayPhoneImages[0])}
 				aria-label="{name} Screen 1"
 			>
@@ -82,8 +82,7 @@
 					alt="{name} Screen 1"
 					loading="lazy"
 					decoding="async"
-					class="w-full h-full object-contain drop-shadow-2xl {type === 'mobile' ||
-					type === 'desktop'
+					class="w-full h-full object-contain drop-shadow-2xl {type === 'mobile'
 						? 'rounded-[1.2rem] sm:rounded-[1.5rem] md:rounded-[2rem]'
 						: 'rounded-lg sm:rounded-xl'}"
 				/>
