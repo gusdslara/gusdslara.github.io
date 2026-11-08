@@ -76,13 +76,15 @@ export const en = {
         modal: {
             category: 'Category',
             project: 'Project',
+            role: 'My Role',
             about: 'About the Project',
             tech: 'Technologies',
-            features: 'Key Features',
+            features: 'About the Project',
             architecture: 'Software Architecture',
             gallery: 'Project Gallery',
             viewProject: 'View Project',
-            viewCode: 'View Code'
+            viewCode: 'View Code',
+            downloadApk: 'Download APK (Wear OS)'
         },
         model3d: {
             loading: 'Loading 3D model...',
@@ -163,6 +165,45 @@ export const en = {
                 'Modern and responsive layout'
             ]
         },
+        '3_my': {
+            name: 'Crash Team Racing Native (Wear OS)',
+            caption: 'Native port of Crash Team Racing (PS1) in C/SDL3 running at 60 FPS on smartwatch',
+            description: 'High performance native port based on the decompilation of Crash Team Racing (PS1, 1999) using C, SDL3, and OpenGL ES engineered specifically for Wear OS smartwatches and 432x432 circular displays (Galaxy Watch / One UI Watch). Features hardware acceleration, stereo audio, PlayStation touch mapping, and direct APK installation.',
+            features: [
+                'Hardware accelerated graphics via OpenGL ES at rock-solid 60 FPS',
+                'Interface and HUD fully adapted for circular 432x432 displays (One UI Watch)',
+                'Classic PlayStation controls (△, ✕, □, ○, L1/R1, L2/R2) and ergonomic arc D-Pad',
+                'Original synthesized stereo soundtrack and SFX via SDL3',
+                'Save State system and game progress preserved on smartwatch local storage',
+                'Direct APK download compatible with modern Android Wear OS devices'
+            ]
+        },
+        '4_my': {
+            name: 'Super Mario World (Wear OS)',
+            caption: 'Native port of Super Mario World tailored for circular Wear OS displays',
+            description: 'Native adaptation of the legendary Super Mario World compiled natively for the Wear OS platform. Features transparent circular touch controls, pixel-perfect round rendering, and ultra-low latency response.',
+            features: [
+                'Precise native rendering preserving original physics and frame timing',
+                'Standardized touch overlay: Top (L, SELECT, R), Left (B), Right (A), and Bottom (START)',
+                'Ghost tap fix: Decoupled virtual D-Pad gesture and B button area to prevent accidental presses while walking',
+                'Full support for world map (Yoshi Island) and all levels',
+                'Power-efficient execution with high performance',
+                'Installable APK package for Wear OS smartwatches'
+            ]
+        },
+        '5_my': {
+            name: 'Pokémon FireRed (Wear OS)',
+            caption: 'Port & Recompilation of Pokémon FireRed optimized for circular smartwatch screen',
+            description: 'Extended execution of Pokémon FireRed adapted for Wear OS smartwatches. Features streamlined dialog and battle navigation for round screens, digital bezel / crown rotation support, and persistent saves.',
+            features: [
+                'Standardized UI matching SMW: Top (L, SELECT, R), Left (B), Right (A), and Bottom (START)',
+                'Decoupled directional swipe and B button area eliminating input conflicts',
+                'Typography and UI scaled for ergonomic smartwatch reading',
+                'Fast-paced Pokémon battle commands via touchscreen gestures',
+                'Rotating crown / bezel navigation support',
+                'Synchronized native audio and sound effects'
+            ]
+        },
         'all': 'All',
         'software': 'Software',
         'hardware': 'Hardware',
@@ -215,8 +256,18 @@ export const en = {
             name: 'Steam Deck',
             description: 'Steam Deck portable console with detailed buttons, thumbsticks, and screen'
         },
-        'game-1': { description: 'Cyberpunk-themed infinite runner game' },
-        'game-2': { description: '2D space exploration with survival elements' }
+        'game-1': {
+            name: 'Crash Team Racing Native (Wear OS)',
+            description: 'Native port of CTR (PS1) for Wear OS Smartwatches at 60 FPS'
+        },
+        'game-2': {
+            name: 'Super Mario World (Wear OS)',
+            description: 'Super Mario World natively adapted for circular Wear OS displays'
+        },
+        'game-3': {
+            name: 'Pokémon FireRed (Wear OS)',
+            description: 'Port & Recompilation of Pokémon FireRed for Wear OS'
+        }
     },
     jobs: {
         '1': {

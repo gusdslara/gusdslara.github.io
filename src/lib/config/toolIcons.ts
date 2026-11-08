@@ -38,7 +38,13 @@ export const toolIcons: Record<string, string> = {
   DotNet: '/assets/img/tools/dotnet.svg',
   NodeJS: '/assets/img/tools/nodejs.png',
   Terraform: '/assets/img/tools/terraform.png',
-  'CI/CD': '/assets/img/tools/github.png'
+  'CI/CD': '/assets/img/tools/github.png',
+  C: '/assets/img/tools/c.png',
+  'C++': '/assets/img/tools/c++.png',
+  'Wear OS': '/assets/img/tools/android.png',
+  WearOS: '/assets/img/tools/android.png',
+  SDL: '/assets/img/tools/c++.png',
+  OpenGL: '/assets/img/tools/android.png'
 };
 
 export function getToolIcon(tool: string): string | undefined {

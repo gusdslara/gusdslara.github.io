@@ -24,6 +24,7 @@ export const clientApps: ClientApp[] = [
         backgroundColor: '#FFEFEA',
         titleColor: '#000000',
         type: 'desktop',
+        secondaryInFront: true,
         phoneImages: [
             '/assets/img/clients/simbium-logo.png',
             '/assets/img/clients/simbium.jpg'
@@ -163,6 +164,99 @@ export const myApps: MyApp[] = [
         link: 'https://techstore.gustavolara.pro/',
         githubUrl: 'https://github.com/gusdslara/svelte-threejs-tech-store',
         additionalImages: []
+    },
+    {
+        id: 3,
+        name: 'Crash Team Racing Native (Wear OS)',
+        category: ['games', 'software'],
+        categories: ['games', 'software'],
+        isWearOS: true,
+        image: '/assets/img/apps/wearos/ctr-round-controls.png',
+        caption: 'Port nativo de Crash Team Racing (PS1) em C/SDL3 rodando a 60 FPS no pulso',
+        description:
+            'Port nativo de alto desempenho baseado na descompilação de Crash Team Racing (PS1, 1999) utilizando C, SDL3 e OpenGL ES otimizado especialmente para smartwatches Wear OS e telas circulares de 432x432 (Galaxy Watch / One UI Watch). Inclui aceleração gráfica por hardware, áudio estéreo, mapeamento de toques PlayStation ergonômicos e suporte completo a APK.',
+        technologies: ['C', 'SDL', 'Android', 'Wear OS', 'OpenGL'],
+        features: [
+            'Aceleração gráfica nativa via hardware com OpenGL ES a 60 FPS fluidos',
+            'Interface e HUD adaptados para display circular de 432x432 (One UI Watch)',
+            'Controles clássicos de PlayStation (△, ✕, □, ○, L1/R1, L2/R2) e D-Pad em arco ergonômico',
+            'Áudio e trilha sonora original sintetizada em tempo real via SDL3',
+            'Sistema de Save State e progresso preservado no armazenamento do smartwatch',
+            'Instalação direta via APK compatível com Android Wear OS'
+        ],
+        background: '#FFF2EB',
+        githubUrl: 'https://github.com/gusdslara/ctr-wearos',
+        apkUrl: '/assets/downloads/ctr-wearos.apk',
+        apkSize: '11.4 MB',
+        wearosImages: [
+            '/assets/img/apps/wearos/ctr-round-controls.png',
+            '/assets/img/apps/wearos/ctr-round-cove.png',
+            '/assets/img/apps/wearos/ctr-round-boost.png',
+            '/assets/img/apps/wearos/ctr-round-trophy.png'
+        ],
+        additionalImages: [
+            '/assets/img/apps/wearos/ctr-menu-title.png',
+            '/assets/img/apps/wearos/ctr-menu-kart.png',
+            '/assets/img/apps/wearos/ctr-menu-track.png'
+        ]
+    },
+    {
+        id: 4,
+        name: 'Super Mario World (Wear OS)',
+        category: ['games', 'software'],
+        categories: ['games', 'software'],
+        isWearOS: true,
+        image: '/assets/img/apps/wearos/smw-round-controls.png',
+        caption: 'Port nativo de Super Mario World adaptado para relógios Wear OS',
+        description:
+            'Adaptação nativa do clássico Super Mario World compilado nativamente para a arquitetura Wear OS. Apresenta controles de toque circulares transparentes integrados, renderização circular perfeita e taxa de atualização instantânea.',
+        technologies: ['C', 'Android', 'Wear OS', 'SDL'],
+        features: [
+            'Renderização precisa preservando física e timing original',
+            'Overlay tátil padronizado: Topo (L, SELECT, R), Esquerda (B), Direita (A) e Base (START)',
+            'Correção de Ghost Tap: D-Pad virtual e área do botão B desacoplados para evitar toques involuntários ao andar',
+            'Mapeamento completo do mapa mundi (Yoshi Island) e fases',
+            'Baixo consumo de bateria e alta performance',
+            'Pacote APK instalável diretamente em smartwatches Wear OS'
+        ],
+        background: '#E8F8EE',
+        githubUrl: 'https://github.com/gusdslara/smw-wearos',
+        apkUrl: '/assets/downloads/smw-wearos.apk',
+        apkSize: '26.8 MB',
+        wearosImages: [
+            '/assets/img/apps/wearos/smw-round-controls.png',
+            '/assets/img/apps/wearos/smw-round-1.png',
+            '/assets/img/apps/wearos/smw-round-map-1.png',
+            '/assets/img/apps/wearos/smw-round-3.png'
+        ]
+    },
+    {
+        id: 5,
+        name: 'Pokémon FireRed (Wear OS)',
+        category: ['games', 'software'],
+        categories: ['games', 'software'],
+        isWearOS: true,
+        image: '/assets/img/apps/wearos/pkmn-round-controls.png',
+        caption: 'Port & Recompilação de Pokémon FireRed otimizado para display circular',
+        description:
+            'Execução estendida de Pokémon FireRed adaptada para relógios Wear OS. Navegação otimizada para diálogos e menus de batalha em telas circulares, suporte a rotação por aro/coroa do smartwatch e saves persistentes.',
+        technologies: ['Lua', 'C', 'Android', 'Wear OS'],
+        features: [
+            'Padronização de UI idêntica ao SMW: Topo (L, SELECT, R), Esquerda (B), Direita (A) e Base (START)',
+            'Gesto direcional e botão B desacoplados sem conflitos ao andar',
+            'Renderização e texto ajustados para leitura ergonômica em smartwatch',
+            'Navegação rápida em batalhas Pokémon por gestos na tela',
+            'Suporte a rotação de menus pela coroa física / aro digital',
+            'Sistema de áudio e efeitos sonoros sincronizados'
+        ],
+        background: '#FFF0F0',
+        githubUrl: 'https://github.com/gusdslara/gen1recomp-wearos',
+        wearosImages: [
+            '/assets/img/apps/wearos/pkmn-round-controls.png',
+            '/assets/img/apps/wearos/pkmn-round-pokecenter.png',
+            '/assets/img/apps/wearos/pkmn-round-battle-charmander.png',
+            '/assets/img/apps/wearos/pkmn-round-oak-dialog.png'
+        ]
     }
 ];
 
@@ -372,22 +466,60 @@ export const moreProjects: ProjectData[] = [
     },
     {
         id: 'game-1',
-        name: 'Cyber Run',
-        category: 'games',
-        image: '/assets/img/apps/techstore.webp',
-        color: '#FFE2E2',
-        description: 'Jogo de corrida infinita com tema cyberpunk',
-        technologies: ['Unity', 'C#'],
-        link: 'https://itch.io/jam/example-game'
+        name: 'Crash Team Racing Native (Wear OS)',
+        category: ['games', 'software'],
+        categories: ['games', 'software'],
+        image: '/assets/img/apps/wearos/ctr-round-controls.png',
+        color: '#FFF2EB',
+        description: 'Port nativo de CTR (PS1) para Smartwatches Wear OS a 60 FPS',
+        technologies: ['C', 'SDL', 'Android', 'Wear OS'],
+        githubUrl: 'https://github.com/gusdslara/ctr-wearos',
+        apkUrl: '/assets/downloads/ctr-wearos.apk',
+        apkSize: '11.4 MB',
+        isWearOS: true,
+        wearosImages: [
+            '/assets/img/apps/wearos/ctr-round-controls.png',
+            '/assets/img/apps/wearos/ctr-round-cove.png',
+            '/assets/img/apps/wearos/ctr-round-boost.png',
+            '/assets/img/apps/wearos/ctr-round-trophy.png'
+        ]
     },
     {
         id: 'game-2',
-        name: 'Space Explorer',
-        category: 'games',
-        image: '/assets/img/apps/techstore.webp',
-        color: '#E1F0FF',
-        description: 'Exploração espacial em 2D com elementos de survival',
-        technologies: ['PixiJS', 'TypeScript'],
-        link: 'https://store.steampowered.com/'
+        name: 'Super Mario World (Wear OS)',
+        category: ['games', 'software'],
+        categories: ['games', 'software'],
+        image: '/assets/img/apps/wearos/smw-round-controls.png',
+        color: '#E8F8EE',
+        description: 'Super Mario World adaptado nativamente para telas circulares Wear OS',
+        technologies: ['C', 'Android', 'Wear OS', 'SDL'],
+        githubUrl: 'https://github.com/gusdslara/smw-wearos',
+        apkUrl: '/assets/downloads/smw-wearos.apk',
+        apkSize: '26.8 MB',
+        isWearOS: true,
+        wearosImages: [
+            '/assets/img/apps/wearos/smw-round-controls.png',
+            '/assets/img/apps/wearos/smw-round-1.png',
+            '/assets/img/apps/wearos/smw-round-map-1.png',
+            '/assets/img/apps/wearos/smw-round-3.png'
+        ]
+    },
+    {
+        id: 'game-3',
+        name: 'Pokémon FireRed (Wear OS)',
+        category: ['games', 'software'],
+        categories: ['games', 'software'],
+        image: '/assets/img/apps/wearos/pkmn-round-controls.png',
+        color: '#FFF0F0',
+        description: 'Port & Recompilação de Pokémon FireRed para Wear OS',
+        technologies: ['Lua', 'C', 'Android', 'Wear OS'],
+        githubUrl: 'https://github.com/gusdslara/gen1recomp-wearos',
+        isWearOS: true,
+        wearosImages: [
+            '/assets/img/apps/wearos/pkmn-round-controls.png',
+            '/assets/img/apps/wearos/pkmn-round-pokecenter.png',
+            '/assets/img/apps/wearos/pkmn-round-battle-charmander.png',
+            '/assets/img/apps/wearos/pkmn-round-oak-dialog.png'
+        ]
     }
 ];
