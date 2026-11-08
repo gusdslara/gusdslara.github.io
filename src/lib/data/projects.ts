@@ -208,7 +208,7 @@ export const myApps: MyApp[] = [
             'Sincronização automática e conexão com servidores TropicaliaCraft'
         ],
         background: '#FFF2EB',
-        link: 'https://tropicaliacraft.online/',
+        link: 'https://tropicaliacraft.gustavolara.pro/downloads',
         githubUrl: 'https://github.com/gusdslara/tropicaliacraft-launcher',
         additionalImages: [
             '/assets/img/apps/tropicalia-launcher-app.webp',
@@ -359,7 +359,7 @@ export const moreProjects: ProjectData[] = [
             'Design responsivo e acessível'
         ],
         githubUrl: 'https://github.com/gusdslara/ng-tropicaliacraft-landing-page',
-        link: 'https://tropicaliacraft.online/'
+        link: 'https://tropicaliacraft.gustavolara.pro/'
     },
     {
         id: 'm1',
@@ -391,7 +391,7 @@ export const moreProjects: ProjectData[] = [
         color: '#E0FFF4',
         description: 'Infraestrutura de Minecraft',
         technologies: ['Go', 'Docker', 'Azure'],
-        link: 'https://tropicaliacraft.online/'
+        link: 'https://tropicaliacraft.gustavolara.pro/'
     },
     {
         id: '3d-2',
