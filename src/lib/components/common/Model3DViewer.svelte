@@ -50,14 +50,15 @@
 	let quadCam: THREE.OrthographicCamera | null = null;
 	let resolveMat: THREE.ShaderMaterial | null = null;
 
-	// Safehouse & Interactivity state
+	// Safehouse & Furniture automated open/close cycle
 	let hasRoofObject = false;
 	let hasDoorAnimations = false;
 	let hasFurnitureAnimations = false;
-	let furnOpen = false;
-	let safehouseTimer: ReturnType<typeof setTimeout> | null = null;
-	let safehouseMode: 'auto' | 'open' | 'closed' | 'manual' = 'auto';
-	let safehouseStep = 0;
+	let buildingTimer: ReturnType<typeof setTimeout> | null = null;
+	let buildingCycleMode: 'cycle' | 'open' | 'closed' = 'cycle';
+	let buildingStep = 0;
+
+	$: isHouseOrFurniture = hasRoofObject || activeModelPath.includes('furniture') || activeModelPath.includes('safehouse');
 
 	// Animation Auto-cycle state (at least 5s of each animation)
 	let animationCycleTimer: ReturnType<typeof setTimeout> | null = null;
@@ -103,7 +104,7 @@
 			resizeObserver.disconnect();
 			resizeObserver = null;
 		}
-		clearSafehouseCycle();
+		clearBuildingCycle();
 		clearAnimationCycle();
 		if (frameId) cancelAnimationFrame(frameId);
 		window.removeEventListener('resize', onWindowResize);
@@ -345,7 +346,7 @@
 
 		if (loading && lastLoadedPath === targetPath) return;
 
-		clearSafehouseCycle();
+		clearBuildingCycle();
 		clearAnimationCycle();
 
 		if (mixer) {
@@ -413,14 +414,14 @@
 				if (currentClips.length > 0) {
 					mixer = new THREE.AnimationMixer(model);
 
-					if (hasRoofObject) {
+					if (hasRoofObject || activeModelPath.includes('furniture') || activeModelPath.includes('safehouse')) {
 						// Always keep roof visible on house by default
 						if (roofObj) roofObj.visible = true;
-						// Safehouse starts automated non-stop cycle
-						startSafehouseCycle(800);
+						// House & Furniture starts automated open/close non-stop cycle
+						startBuildingCycle(600);
 					} else {
-						// Pick best initial animation for characters, showroom or weapon rack
-						const priorityClips = ['Idle', 'Zombie_Idle', 'Hunter_Crouch_Idle', 'Tank_Idle', 'Boomer_Idle', 'Open_Furniture', 'Inspect_Turntable'];
+						// Pick best initial animation for characters or weapon rack
+						const priorityClips = ['Idle', 'Zombie_Idle', 'Hunter_Crouch_Idle', 'Tank_Idle', 'Boomer_Idle', 'Inspect_Turntable'];
 						const chosen = currentClips.find((a) => priorityClips.includes(a.name)) || currentClips[0];
 						playAnimation(chosen.name, 0);
 
@@ -509,10 +510,10 @@
 		startAnimationCycle(ANIMATION_DURATION_MS);
 	}
 
-	function clearSafehouseCycle() {
-		if (safehouseTimer) {
-			clearTimeout(safehouseTimer);
-			safehouseTimer = null;
+	function clearBuildingCycle() {
+		if (buildingTimer) {
+			clearTimeout(buildingTimer);
+			buildingTimer = null;
 		}
 	}
 
@@ -548,118 +549,160 @@
 		isPlayingAnimation = true;
 	}
 
-	function startSafehouseCycle(initialDelay = 800) {
-		clearSafehouseCycle();
-		safehouseMode = 'auto';
-		safehouseStep = 0;
-		safehouseTimer = setTimeout(runSafehouseStep, initialDelay);
+	function startBuildingCycle(initialDelay = 600) {
+		clearBuildingCycle();
+		clearAnimationCycle();
+		buildingCycleMode = 'cycle';
+		buildingStep = 0;
+		isPlayingAnimation = true;
+		buildingTimer = setTimeout(runBuildingStep, initialDelay);
 	}
 
-	function runSafehouseStep() {
-		if (safehouseMode !== 'auto' || !mixer || !hasRoofObject) return;
+	function runBuildingStep() {
+		if (buildingCycleMode !== 'cycle' || !mixer) return;
 
-		switch (safehouseStep) {
-			case 0:
-				// Com teto na casa -> Abrir portas (mantém pelo menos 5s aberto)
-				playSafehouseAction('Open_Doors', 0.2);
-				showFeedback('🚪 Portas Abertas (Com Teto)');
-				safehouseStep = 1;
-				safehouseTimer = setTimeout(runSafehouseStep, 5000);
-				break;
+		if (hasRoofObject) {
+			// HOUSE (Safehouse): Opens everything (doors, windows, furniture) with roof, then without roof
+			switch (buildingStep) {
+				case 0:
+					// With roof -> Open All (doors, windows, furniture)
+					playSafehouseAction('Open_All', 0.25);
+					showFeedback('🚪 Portas, Janelas e Móveis Abertos');
+					buildingStep = 1;
+					buildingTimer = setTimeout(runBuildingStep, 5000);
+					break;
 
-			case 1:
-				// Com teto na casa -> Fechar portas
-				playSafehouseAction('Close_All', 0.2);
-				showFeedback('🚪 Fechando Portas');
-				safehouseStep = 2;
-				safehouseTimer = setTimeout(runSafehouseStep, 1500);
-				break;
+				case 1:
+					// With roof -> Close All
+					playSafehouseAction('Close_All', 0.25);
+					showFeedback('🏠 Fechando Tudo');
+					buildingStep = 2;
+					buildingTimer = setTimeout(runBuildingStep, 1500);
+					break;
 
-			case 2:
-				// Transição -> Levantar teto suavemente e inspecionar interior mobiliado
-				playSafehouseAction('Roof_Lift_Inspect', 0.3);
-				showFeedback('🏠 Levantando Teto (Visão Interna)');
-				safehouseStep = 3;
-				safehouseTimer = setTimeout(runSafehouseStep, 2000);
-				break;
+				case 2:
+					// Transition -> Smoothly lift roof to inspect interior cutaway
+					playSafehouseAction('Roof_Lift_Inspect', 0.3);
+					showFeedback('🏠 Levantando Teto (Visão Interna)');
+					buildingStep = 3;
+					buildingTimer = setTimeout(runBuildingStep, 2000);
+					break;
 
-			case 3:
-				// Sem teto (visão interna) -> Abrir móveis, gavetas, baú e geladeira (mantém pelo menos 5s aberto)
-				playSafehouseAction('Open_Furniture', 0.2);
-				showFeedback('📦 Móveis e Compartimentos Abertos');
-				safehouseStep = 4;
-				safehouseTimer = setTimeout(runSafehouseStep, 5000);
-				break;
+				case 3:
+					// Without roof (interior cutaway) -> Open All (doors, windows, all furniture inside)
+					playSafehouseAction('Open_All', 0.25);
+					showFeedback('📦 Interior e Compartimentos Abertos');
+					buildingStep = 4;
+					buildingTimer = setTimeout(runBuildingStep, 5000);
+					break;
 
-			case 4:
-				// Sem teto -> Fechar móveis
-				playSafehouseAction('Close_All', 0.2);
-				showFeedback('📦 Fechando Móveis');
-				safehouseStep = 5;
-				safehouseTimer = setTimeout(runSafehouseStep, 1500);
-				break;
+				case 4:
+					// Without roof -> Close All
+					playSafehouseAction('Close_All', 0.25);
+					showFeedback('📦 Fechando Móveis');
+					buildingStep = 5;
+					buildingTimer = setTimeout(runBuildingStep, 1500);
+					break;
 
-			case 5:
-				// Transição -> Descer teto suavemente de volta na casa
-				playSafehouseAction('Roof_Restore', 0.3);
-				showFeedback('🏠 Descendo Teto');
-				safehouseStep = 0; // Reinicia o ciclo contínuo sem parar
-				safehouseTimer = setTimeout(runSafehouseStep, 2000);
-				break;
+				case 5:
+					// Transition -> Smoothly land roof back on house
+					playSafehouseAction('Roof_Restore', 0.3);
+					showFeedback('🏠 Descendo Teto');
+					buildingStep = 0;
+					buildingTimer = setTimeout(runBuildingStep, 2000);
+					break;
+			}
+		} else {
+			// FURNITURE SHOWROOM (furniture-showroom.glb): Open furniture -> Close all
+			switch (buildingStep) {
+				case 0:
+					const openClip = currentClips.find((c) => c.name === 'Open_Furniture' || c.name === 'Open_All') || currentClips[0];
+					playSafehouseAction(openClip.name, 0.25);
+					showFeedback('📦 Todos Móveis Abertos');
+					buildingStep = 1;
+					buildingTimer = setTimeout(runBuildingStep, 5000);
+					break;
+
+				case 1:
+					const closeClip = currentClips.find((c) => c.name === 'Close_All') || currentClips[1] || currentClips[0];
+					playSafehouseAction(closeClip.name, 0.25);
+					showFeedback('📦 Fechando Móveis');
+					buildingStep = 0;
+					buildingTimer = setTimeout(runBuildingStep, 2000);
+					break;
+			}
 		}
 	}
 
-	function setSafehouseMode(mode: 'auto' | 'open' | 'closed') {
-		clearSafehouseCycle();
-		safehouseMode = mode;
+	function setBuildingMode(mode: 'cycle' | 'open' | 'closed') {
+		clearBuildingCycle();
+		clearAnimationCycle();
+		buildingCycleMode = mode;
 
-		if (mode === 'auto') {
-			startSafehouseCycle(100);
+		if (mode === 'cycle') {
+			startBuildingCycle(100);
+			showFeedback('🔄 Ciclo Automático');
 		} else if (mode === 'open') {
-			playSafehouseAction('Roof_Lift_Inspect', 0.3);
-			setTimeout(() => {
-				if (safehouseMode === 'open') {
-					playSafehouseAction('Open_Furniture', 0.2);
-				}
-			}, 1400);
-			showFeedback('👁️ Interior Aberto');
+			isPlayingAnimation = true;
+			if (hasRoofObject) {
+				playSafehouseAction('Roof_Lift_Inspect', 0.3);
+				setTimeout(() => {
+					if (buildingCycleMode === 'open') {
+						playSafehouseAction('Open_All', 0.25);
+						showFeedback('🚪 Aberto (Fixo)');
+					}
+				}, 1200);
+			} else {
+				const openClip = currentClips.find((c) => c.name === 'Open_Furniture' || c.name === 'Open_All') || currentClips[0];
+				if (openClip) playSafehouseAction(openClip.name, 0.25);
+				showFeedback('📦 Aberto (Fixo)');
+			}
 		} else if (mode === 'closed') {
-			playSafehouseAction('Close_All', 0.2);
-			playSafehouseAction('Roof_Restore', 0.3);
-			showFeedback('🏠 Casa Fechada');
+			isPlayingAnimation = true;
+			playSafehouseAction('Close_All', 0.25);
+			if (hasRoofObject) {
+				playSafehouseAction('Roof_Restore', 0.3);
+			}
+			showFeedback('🏠 Fechado (Fixo)');
 		}
 	}
 
 	function handleAnimationSelect(e: Event) {
 		const select = e.target as HTMLSelectElement;
-		if (select && select.value) {
-			if (hasRoofObject) {
-				clearSafehouseCycle();
-				safehouseMode = 'manual';
-				playSafehouseAction(select.value);
-			} else {
-				playAnimation(select.value);
-				startAnimationCycle(ANIMATION_DURATION_MS);
-			}
+		if (!select || !select.value) return;
+
+		if (isHouseOrFurniture) {
+			setBuildingMode(select.value as 'cycle' | 'open' | 'closed');
+		} else {
+			playAnimation(select.value);
+			startAnimationCycle(ANIMATION_DURATION_MS);
 		}
 	}
 
 	function togglePlayAnimation() {
+		if (isHouseOrFurniture) {
+			if (buildingCycleMode === 'cycle' && isPlayingAnimation) {
+				clearBuildingCycle();
+				if (currentAction) currentAction.paused = true;
+				isPlayingAnimation = false;
+				showFeedback('⏸ Pausado');
+			} else {
+				if (currentAction) currentAction.paused = false;
+				setBuildingMode('cycle');
+			}
+			return;
+		}
+
 		if (!currentAction) return;
 		if (isPlayingAnimation) {
 			currentAction.paused = true;
 			isPlayingAnimation = false;
-			clearSafehouseCycle();
 			clearAnimationCycle();
 			showFeedback('⏸ Pausado');
 		} else {
 			currentAction.paused = false;
 			isPlayingAnimation = true;
-			if (hasRoofObject && safehouseMode === 'auto') {
-				safehouseTimer = setTimeout(runSafehouseStep, 800);
-			} else if (!hasRoofObject) {
-				startAnimationCycle(ANIMATION_DURATION_MS);
-			}
+			startAnimationCycle(ANIMATION_DURATION_MS);
 			showFeedback('▶ Reproduzindo');
 		}
 	}
@@ -742,11 +785,13 @@
 				startAnimationCycle(ANIMATION_DURATION_MS);
 				return;
 			}
-		} else if (hasRoofObject) {
-			if (safehouseMode === 'open') {
-				setSafehouseMode('closed');
+		} else if (isHouseOrFurniture) {
+			if (buildingCycleMode === 'cycle') {
+				setBuildingMode('open');
+			} else if (buildingCycleMode === 'open') {
+				setBuildingMode('closed');
 			} else {
-				setSafehouseMode('open');
+				setBuildingMode('cycle');
 			}
 			return;
 		}
@@ -756,13 +801,6 @@
 		playAnimation(availableAnimations[nextIdx], 0.2);
 		showFeedback(`▶ ${availableAnimations[nextIdx]}`);
 		startAnimationCycle(ANIMATION_DURATION_MS);
-	}
-
-	function toggleFurniture() {
-		if (!hasFurnitureAnimations) return;
-		furnOpen = !furnOpen;
-		playAnimation(furnOpen ? 'Open_Furniture' : 'Close_All');
-		showFeedback(furnOpen ? '📦 Móveis Abertos' : '📦 Móveis Fechados');
 	}
 
 	function showFeedback(text: string) {
@@ -958,28 +996,28 @@
 			</button>
 		</div>
 
-		<!-- SECONDARY ACTION BAR: Safehouse Controls (Ciclo / Manter Aberto / Manter Fechado) or Furniture -->
-		{#if hasRoofObject}
+		<!-- SECONDARY ACTION BAR: House & Furniture Controls (Ciclo / Manter Aberto / Manter Fechado) -->
+		{#if isHouseOrFurniture}
 			<div class="absolute top-12 sm:top-14 left-2.5 sm:left-3 z-20 flex items-center gap-1 pointer-events-auto max-w-[calc(100%-20px)] overflow-x-auto no-scrollbar">
 				<div class="flex items-center gap-0.5 sm:gap-1 p-0.5 sm:p-1 bg-black/75 backdrop-blur-md rounded-xl border border-white/10 shadow-lg">
 					<button
-						on:click={() => setSafehouseMode('auto')}
-						class="px-2 sm:px-2.5 py-1 text-xs font-medium rounded-lg transition-all duration-200 flex items-center gap-1 active:scale-95 {safehouseMode === 'auto'
+						on:click={() => setBuildingMode('cycle')}
+						class="px-2 sm:px-2.5 py-1 text-xs font-medium rounded-lg transition-all duration-200 flex items-center gap-1 active:scale-95 {buildingCycleMode === 'cycle'
 							? 'bg-amber-500 text-black font-semibold shadow-sm'
 							: 'text-gray-300 hover:text-white hover:bg-white/10'}"
-						title="Ciclo automático contínuo: abre/fecha portas com teto, levanta o teto, abre os móveis internos e desce o teto"
+						title="Ciclo automático contínuo: abre e fecha tudo"
 					>
 						<span>🔄</span>
-						<span class="hidden sm:inline">Ciclo Automático</span>
-						<span class="sm:hidden">Auto</span>
+						<span class="hidden sm:inline">Ciclo Abrir / Fechar</span>
+						<span class="sm:hidden">Ciclo</span>
 					</button>
 
 					<button
-						on:click={() => setSafehouseMode('open')}
-						class="px-2 sm:px-2.5 py-1 text-xs font-medium rounded-lg transition-all duration-200 flex items-center gap-1 active:scale-95 {safehouseMode === 'open'
+						on:click={() => setBuildingMode('open')}
+						class="px-2 sm:px-2.5 py-1 text-xs font-medium rounded-lg transition-all duration-200 flex items-center gap-1 active:scale-95 {buildingCycleMode === 'open'
 							? 'bg-amber-500 text-black font-semibold shadow-sm'
 							: 'text-gray-300 hover:text-white hover:bg-white/10'}"
-						title="Manter teto levantado e móveis abertos para inspecionar o interior"
+						title="Manter tudo aberto (sem animação)"
 					>
 						<span>🚪</span>
 						<span class="hidden sm:inline">Manter Aberto</span>
@@ -987,27 +1025,17 @@
 					</button>
 
 					<button
-						on:click={() => setSafehouseMode('closed')}
-						class="px-2 sm:px-2.5 py-1 text-xs font-medium rounded-lg transition-all duration-200 flex items-center gap-1 active:scale-95 {safehouseMode === 'closed'
+						on:click={() => setBuildingMode('closed')}
+						class="px-2 sm:px-2.5 py-1 text-xs font-medium rounded-lg transition-all duration-200 flex items-center gap-1 active:scale-95 {buildingCycleMode === 'closed'
 							? 'bg-amber-500 text-black font-semibold shadow-sm'
 							: 'text-gray-300 hover:text-white hover:bg-white/10'}"
-						title="Manter a casa e o teto fechados"
+						title="Manter tudo fechado (sem animação)"
 					>
 						<span>🏠</span>
 						<span class="hidden sm:inline">Manter Fechado</span>
 						<span class="sm:hidden">Fechado</span>
 					</button>
 				</div>
-			</div>
-		{:else if hasFurnitureAnimations}
-			<div class="absolute top-12 sm:top-14 left-2.5 sm:left-3 z-20 flex items-center gap-1 pointer-events-auto">
-				<button
-					on:click={toggleFurniture}
-					class="px-2.5 py-1 text-xs font-medium rounded-lg bg-black/75 hover:bg-black/90 backdrop-blur-md text-sky-300 border border-sky-500/30 shadow-md transition-all active:scale-95 flex items-center gap-1"
-				>
-					<span>📦</span>
-					<span>{furnOpen ? 'Fechar Móveis' : 'Abrir Móveis'}</span>
-				</button>
 			</div>
 		{/if}
 
@@ -1023,7 +1051,42 @@
 		<!-- BOTTOM TOOLBAR: Animation Controls & Viewport Tools -->
 		<div class="absolute bottom-2.5 left-2.5 right-2.5 sm:bottom-3 sm:left-3 sm:right-3 z-20 flex items-center justify-between gap-1.5 sm:gap-2 pointer-events-none">
 			<!-- Animation select & play/pause -->
-			{#if availableAnimations.length > 0}
+			{#if isHouseOrFurniture}
+				<div class="flex items-center gap-1 sm:gap-1.5 p-1 bg-black/75 backdrop-blur-md rounded-xl border border-white/10 shadow-lg pointer-events-auto min-w-0">
+					<button
+						on:click={togglePlayAnimation}
+						class="w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center rounded-lg bg-white/10 hover:bg-white/20 text-white transition-colors active:scale-95 flex-shrink-0"
+						title={buildingCycleMode === 'cycle' && isPlayingAnimation ? 'Pausar Ciclo' : 'Iniciar Ciclo'}
+						aria-label={buildingCycleMode === 'cycle' && isPlayingAnimation ? 'Pausar ciclo' : 'Iniciar ciclo'}
+					>
+						{#if buildingCycleMode === 'cycle' && isPlayingAnimation}
+							<svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+								<rect x="6" y="4" width="4" height="16" rx="1" />
+								<rect x="14" y="4" width="4" height="16" rx="1" />
+							</svg>
+						{:else}
+							<svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+								<polygon points="5 3 19 12 5 21 5 3" />
+							</svg>
+						{/if}
+					</button>
+
+					<select
+						value={buildingCycleMode}
+						on:change={handleAnimationSelect}
+						class="bg-transparent text-white text-xs font-medium py-1 px-1 sm:px-2 border-0 outline-none cursor-pointer focus:ring-0 max-w-[130px] xs:max-w-[170px] sm:max-w-[210px] truncate"
+						title="Selecione o modo de exibição ou clique no modelo"
+					>
+						<option value="cycle" class="bg-gray-900 text-white">🔄 Ciclo: Abrir & Fechar</option>
+						<option value="open" class="bg-gray-900 text-white">🚪 Manter Aberto (Fixo)</option>
+						<option value="closed" class="bg-gray-900 text-white">🏠 Manter Fechado (Fixo)</option>
+					</select>
+
+					<span class="text-[10px] text-gray-400 pr-1 hidden md:inline" title="Clique no modelo para alternar">
+						(clique no modelo)
+					</span>
+				</div>
+			{:else if availableAnimations.length > 0}
 				<div class="flex items-center gap-1 sm:gap-1.5 p-1 bg-black/75 backdrop-blur-md rounded-xl border border-white/10 shadow-lg pointer-events-auto min-w-0">
 					<button
 						on:click={togglePlayAnimation}
