@@ -79,7 +79,7 @@ export const en = {
             role: 'My Role',
             about: 'About the Project',
             tech: 'Technologies',
-            features: 'About the Project',
+            features: 'Key Features & Achievements',
             architecture: 'Software Architecture',
             gallery: 'Project Gallery',
             viewProject: 'View Project',

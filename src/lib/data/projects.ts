@@ -7,10 +7,12 @@ export const clientApps: ClientApp[] = [
         name: 'Simbium: Plataforma de Atendimento & Gestão com IA',
         image: '/assets/img/clients/simbium.jpg',
         link: 'https://simbium.com/',
-        description:
-            'Plataforma SaaS de inteligência conversacional e gestão (SGA) para o mercado fitness. Automatiza vendas e suporte 24/7 via WhatsApp e Instagram com IA humanizada, qualificação de leads, agendamento de aulas experimentais e funil CRM em tempo real.',
         role: 'Tech Lead & Arquiteto de Software',
         year: '2026',
+        myRole:
+            '<p>Atuei como Tech Lead e Arquiteto de Software, liderando a engenharia da plataforma SaaS multicanal de atendimento inteligente com IA para o setor fitness.</p><p><strong>Microsserviços & Concorrência:</strong> Arquitetei e desenvolvi os microsserviços de alta performance em Go (Fiber, gRPC) e PostgreSQL, integrando Redis para filas e pub/sub de mensageria em tempo real.</p><p><strong>Engenharia de IA Humanizada:</strong> Orquestrei pipelines de LLMs com validações determinísticas de negócio, evitando alucinações e garantindo respostas precisas para dúvidas frequentes, qualificação de leads e agendamento automático de aulas experimentais via WhatsApp e Instagram.</p>',
+        description:
+            'Plataforma SaaS de inteligência conversacional e gestão (SGA) para o mercado fitness. Automatiza vendas e suporte 24/7 via WhatsApp e Instagram com IA humanizada, qualificação de leads, agendamento de aulas experimentais e funil CRM em tempo real.',
         technologies: ['Go', 'TypeScript', 'PostgreSQL', 'Docker', 'TailwindCSS', 'Redis'],
         features: [
             'Atendimento automatizado 24/7 com IA conversacional humanizada via WhatsApp e Instagram',
@@ -41,10 +43,12 @@ export const clientApps: ClientApp[] = [
         name: 'EduCanoas: App de gestão educacional',
         image: '/assets/img/clients/educanoas-preview.png',
         link: 'https://apkpure.com/br/educanoas/br.com.abaco.rs.canoas.educanoas',
-        description:
-            'Aplicativo mobile de gestão educacional para escolas, permitindo acompanhamento de alunos, comunicação com pais, gerenciamento de notas, frequência e atividades escolares.',
         role: 'Lead Mobile Developer',
         year: '2022-2023',
+        myRole:
+            '<p>Liderei o desenvolvimento mobile do aplicativo educacional para a rede municipal de ensino, atendendo professores, responsáveis e alunos.</p><p><strong>Arquitetura Híbrida:</strong> Projetei o app em Ionic e Cordova com sincronização offline e integração com Firebase Cloud Messaging para notificações instantâneas de comunicados e notas escolares.</p>',
+        description:
+            'Aplicativo mobile de gestão educacional para escolas, permitindo acompanhamento de alunos, comunicação com pais, gerenciamento de notas, frequência e atividades escolares.',
         technologies: ['Ionic', 'Android', 'iOS', 'Cordova', 'Firebase'],
         features: [
             'Painel para professores, alunos e pais',
@@ -71,10 +75,12 @@ export const clientApps: ClientApp[] = [
         name: 'myQIMA: Certificações Internacionais & Gestão com IA',
         image: '/assets/img/clients/myqima-dashboard.png',
         link: 'https://www.qima.com.br/food/myqima-food-safety-certification-platform',
-        description:
-            'Plataforma global de certificações e segurança alimentar da QIMA. Atuação na modernização e migração dos módulos de certificações internacionais de produtos orgânicos, automatizando auditorias de conformidade, emissão de certificados e compliance regulatório com arquitetura de microsserviços e inteligência artificial.',
         role: 'Engenheiro de Software',
         year: '2024 - 2025',
+        myRole:
+            '<p>Engenheiro de Software responsável pela migração e modernização dos módulos de certificações internacionais de produtos orgânicos (USDA Organic, EU Organic, GFSI).</p><p><strong>Microfrontends & BFF:</strong> Desenvolvi microfrontends modulares em Angular integrados a BFFs em Quarkus com compilação nativa GraalVM e microsserviços em Spring Boot.</p><p><strong>IA para Auditoria Documental:</strong> Implementei pipelines em Python (FastAPI, Ollama e gRPC) para análise e auditoria automatizada de conformidade de relatórios técnicos e documentos de clientes.</p>',
+        description:
+            'Plataforma global de certificações e segurança alimentar da QIMA. Atuação na modernização e migração dos módulos de certificações internacionais de produtos orgânicos, automatizando auditorias de conformidade, emissão de certificados e compliance regulatório com arquitetura de microsserviços e inteligência artificial.',
         technologies: ['Angular', 'Spring Boot', 'Quarkus', 'FastAPI', 'Python', 'Ollama', 'gRPC'],
         features: [
             'Migração e modernização do módulo de certificações internacionais de orgânicos (USDA Organic, EU Organic, GFSI)',
@@ -98,10 +104,12 @@ export const clientApps: ClientApp[] = [
         id: '4',
         name: 'Sucesso360: Plataforma de CRM & Pós-Vendas',
         image: '/assets/img/clients/sucesso360-dashboard.png',
-        description:
-            'Plataforma corporativa de CRM voltada à gestão completa do ciclo de pós-vendas (Sucesso do Cliente) para a Oi Soluções. Construída com arquitetura modular de microfrontends em Angular e microsserviços em Quarkus, .NET e Node.js, cobrindo múltiplos domínios (Onboarding, Ongoing, Suporte, Playbooks e Expansão) com infraestrutura DevOps e automação CI/CD.',
         role: 'Líder Técnico & DevOps',
         year: '2022 - 2024',
+        myRole:
+            '<p>Líder Técnico e Engenheiro DevOps, responsável por liderar o time de engenharia e projetar a arquitetura da plataforma corporativa de pós-vendas para a Oi Soluções.</p><p><strong>Arquitetura Modular:</strong> Estruturei microfrontends em Angular desacoplados por domínio (Onboarding, Ongoing, Suporte, Playbooks e Health Score) e microsserviços em Quarkus, .NET e Node.js.</p><p><strong>DevOps & CI/CD:</strong> Construí toda a infraestrutura automatizada de pipelines CI/CD com GitHub Actions, Docker e provisionamento de infraestrutura como código com Terraform.</p>',
+        description:
+            'Plataforma corporativa de CRM voltada à gestão completa do ciclo de pós-vendas (Sucesso do Cliente) para a Oi Soluções. Construída com arquitetura modular de microfrontends em Angular e microsserviços em Quarkus, .NET e Node.js, cobrindo múltiplos domínios (Onboarding, Ongoing, Suporte, Playbooks e Expansão) com infraestrutura DevOps e automação CI/CD.',
         technologies: ['Angular', 'Quarkus', '.NET', 'Node.js', 'Docker', 'Terraform', 'CI/CD'],
         features: [
             'Arquitetura modular de microfrontends em Angular com deploys independentes por domínio',
@@ -132,8 +140,12 @@ export const myApps: MyApp[] = [
         image: '/assets/img/apps/meutempero-gameplay.webp',
         caption:
             'Simulador 3D Culinário & Gestão em Svelte 5, Three.js (WebGPU) e Tauri v2',
+        role: 'Criador Solo, Game Designer & Engenheiro 3D',
+        year: '2025 - 2026',
+        myRole:
+            '<p>Idealizei a visão criativa, mecânicas de gameplay e desenvolvi toda a engenharia de software do zero utilizando <strong>Svelte 5</strong>, <strong>Three.js (com suporte experimental a WebGPU)</strong> e empacotamento nativo com <strong>Tauri v2 (Rust)</strong>.</p><p><strong>Modelagem Histórica & Cenários 3D:</strong> Programei e modelei cenários 3D detalhados dos maiores patrimônios de Cuiabá: a Catedral Basílica Bom Jesus com vitrais e altar, o Palácio da Instrução com arcos neoclássicos, o Casario histórico colonial cuiabano e o ônibus urbano oficial (Linha 605).</p><p><strong>Física Culinária & Sistemas:</strong> Desenvolvi o motor de física de despensa com cálculo volumétrico real de ingredientes em peso (kg) e volume (L), sem estoques mágicos. Criei o minigame de corte em primeira pessoa com física vetorial de lâmina e fatiamento contínuo.</p><p><strong>Shaders & Ambiente Dinâmico:</strong> Implementei shader de curvatura esférica de mundo estilo <em>Animal Crossing</em> no Three.js, ciclo dia/noite cuiabano sincronizado e clima dinâmico com temporais de verão e poças reflexivas.</p>',
         description:
-            'Jogo 3D aconchegante que combina a intensidade de Overcooked com o ritmo acolhedor de Stardew Valley e a personalização de Café Mania. Ambientado no coração de Cuiabá (Mato Grosso), o jogador assume a histórica Cantina da Vó Adelaide: cuida da horta no quintal, colhe mangas, prepara ingredientes na despensa com limite físico de peso/volume, atende clientes no salão, despacha entregas via iFome para motoboys e viaja de ônibus urbano (Linha 605) até o Mercado do Porto.',
+            'Jogo 3D acolhedor e estratégico ambientado no coração de Cuiabá (Mato Grosso). Combina a intensidade de Overcooked com o ritmo acolhedor de Stardew Valley e a personalização de Café Mania. O jogador assume a histórica Cantina da Vó Adelaide: cuida da horta no quintal, atende clientes no salão, despacha entregas via iFome para motoboys e viaja de ônibus urbano (Linha 605) até o Mercado do Porto.',
         technologies: ['Svelte', 'Three.js', 'TypeScript', 'TailwindCSS', 'Tauri', 'Rust'],
         features: [
             'Preparo Físico & Despensa Realista: Ingredientes com peso (kg) e volume (L), sem caixotes mágicos em geladeiras e prateleiras',
@@ -163,6 +175,10 @@ export const myApps: MyApp[] = [
         image: '/assets/img/apps/bitez-gameplay.webp',
         caption:
             'Hardcore Multiplayer Zombie Survival Roguelike em Svelte, Three.js & Mapa Real OpenStreetMap',
+        role: 'Criador Solo, Arquiteto de Software & Engenheiro Gráfico / Game Dev',
+        year: '2025 - 2026',
+        myRole:
+            '<p>Como único desenvolvedor, concebi, arquitetei e programei todo o projeto do zero, unindo <strong>SvelteKit</strong> reativo com <strong>Three.js</strong> para criar um jogo de sobrevivência 3D de alta performance direto no navegador.</p><p><strong>Pipeline Gráfica & Shaders:</strong> Desenvolvi shaders customizados em GLSL implementando a técnica <em>Depth-Priority Supersampling</em> (DPSS), resolvendo o problema crítico de silhuetas subpixel em voxel/pixel art 3D para manter contornos nítidos a 60 FPS sem borrão de anti-aliasing convencional.</p><p><strong>Engenharia de Terreno & OpenStreetMap:</strong> Criei o pipeline procedural que converte dados geoespaciais reais de coordenadas do Brasil e América Latina (via OpenStreetMap e Overture Maps) em geometria 3D explorável com colisão poligonal em tempo real.</p><p><strong>Rede Híbrida & Concorrência:</strong> Arquitetei a infraestrutura multiplayer em Go (Golang) com WebSockets para gerenciamento de instâncias e persistência, aliada a conexões peer-to-peer em WebRTC para latência ultrabaixa em sincronização de projéteis e combate.</p><p><strong>Modelagem & Rigging Procedural:</strong> Modelei e animei todas as 5 classes de zumbis, sobreviventes militares táticos, 16 armas com balística e safehouses completas em arquivos .glb otimizados com footprint reduzido (5 KB a 288 KB).</p>',
         description:
             'Hardcore survival roguelike multiplayer 3D em tempo real construído com Svelte e Three.js. Inspirado em clássicos de sobrevivência como DayZ e Left 4 Dead, o jogo apresenta um mundo persistente onde seu sobrevivente permanece no mapa mesmo após o logout (o sono é a maior vulnerabilidade). Conta com integração inovadora de mapas reais via OpenStreetMap e Overture Maps, cobrindo todo o Brasil e América Latina em escala 1:1 com geração procedural em estilo retrô low-poly/PSX.',
         technologies: ['Svelte', 'Three.js', 'TypeScript', 'Go', 'WebSocket', 'WebRTC'],
@@ -195,6 +211,10 @@ export const myApps: MyApp[] = [
         image: '/assets/img/apps/tropicalia-launcher-app.webp',
         caption:
             'Launcher Cross-Platform (Desktop & Mobile) para Minecraft em Tauri v2, Rust & SvelteKit 5',
+        role: 'Arquiteto de Software & Engenheiro Fullstack (Rust / SvelteKit 5)',
+        year: '2025 - 2026',
+        myRole:
+            '<p>Projetei e programei o launcher multiplataforma completo para Windows, Linux, macOS e Android substituindo Electron por <strong>Tauri v2 e Rust</strong>, atingindo inicialização sub-segundo e uso irrisório de memória RAM.</p><p><strong>Engenharia de Concorrência em Rust:</strong> Desenvolvi o orquestrador multi-thread de download paralelo com validação criptográfica (SHA-1/SHA-256) de instâncias e mods do Minecraft, tolerante a falhas de conexão.</p><p><strong>Segurança & Autenticação:</strong> Implementei o fluxo completo de autenticação Microsoft OAuth2 com PKCE, token refresh seguro e isolamento de perfis offline.</p><p><strong>Frontend Reativo:</strong> Desenvolvi a interface moderna com SvelteKit 5 e TailwindCSS com integração direta às APIs do Modrinth e CurseForge.</p>',
         description:
             'Launcher oficial do ecossistema TropicaliaCraft desenvolvido para Windows, Linux, macOS e Android. Integra motor gráfico híbrido, autenticação Microsoft OAuth2, gerenciador inteligente de instâncias, download acelerado de mods via Modrinth/CurseForge e sincronização automática de perfis com servidor híbrido.',
         technologies: ['Tauri', 'Rust', 'Svelte', 'TypeScript', 'Android'],
@@ -223,8 +243,12 @@ export const myApps: MyApp[] = [
         isWearOS: true,
         image: '/assets/img/apps/wearos/ctr-round-cove.png',
         caption: 'Port nativo de Crash Team Racing (PS1) em C/SDL3 rodando a 60 FPS no pulso',
+        role: 'Engenheiro de Sistemas Embarcados & Porting (C / SDL3 / Wear OS)',
+        year: '2025 - 2026',
+        myRole:
+            '<p>Realizei o port nativo e compilação em <strong>C</strong> para a arquitetura ARM do Android Wear OS (smartwatches Galaxy Watch / One UI Watch), baseado no projeto open-source <a href="https://github.com/Simon358/ctr-native-android" target="_blank" rel="noopener noreferrer" class="text-emerald-600 underline font-medium hover:text-emerald-500">ctr-native-android</a>.</p><p><strong>Aceleração Gráfica & Otimização:</strong> Integrei <strong>SDL3</strong> com aceleração de hardware <strong>OpenGL ES</strong>, mantendo renderização contínua a 60 FPS com consumo energético rigorosamente controlado para evitar superaquecimento no pulso.</p><p><strong>Ergonomia em Display Circular:</strong> Redesenhei toda a interface e projetei os botões PlayStation clássicos (△, ✕, □, ○, L1/R1, L2/R2) e D-Pad em arco radial anatômico, aproveitando a curvatura física da borda de telas circulares de 432x432 px.</p>',
         description:
-            'Port nativo de alto desempenho para smartwatches Wear OS (Galaxy Watch / One UI Watch), baseado no projeto open-source <a href="https://github.com/Simon358/ctr-native-android" target="_blank" rel="noopener noreferrer" class="text-emerald-600 underline font-medium hover:text-emerald-500">ctr-native-android</a>. Desenvolvido em C com aceleração SDL3 e OpenGL ES 60 FPS, adaptado especificamente para telas circulares de 432x432 px com controles PlayStation em arco e D-pad central.',
+            'Port nativo de alto desempenho para smartwatches Wear OS (Galaxy Watch / One UI Watch). Desenvolvido em C com aceleração SDL3 e OpenGL ES 60 FPS, adaptado especificamente para telas circulares de 432x432 px com controles PlayStation em arco e D-pad central.',
         technologies: ['C', 'SDL', 'Android', 'Wear OS', 'OpenGL'],
         features: [
             'Aceleração gráfica nativa via hardware com OpenGL ES a 60 FPS fluidos',
@@ -258,8 +282,12 @@ export const myApps: MyApp[] = [
         isWearOS: true,
         image: '/assets/img/apps/wearos/smw-round-1.png',
         caption: 'Port nativo de Super Mario World adaptado para relógios Wear OS',
+        role: 'Engenheiro de Software & Sistemas Móveis (C / SDL)',
+        year: '2025',
+        myRole:
+            '<p>Compilei e adaptei o código-fonte C descompilado do jogo para execução nativa no sistema operacional Android Wear OS a partir da base <a href="https://github.com/freyta/smw-android" target="_blank" rel="noopener noreferrer" class="text-emerald-600 underline font-medium hover:text-emerald-500">smw-android</a>.</p><p><strong>Arquitetura de Controles Anti Ghost-Tap:</strong> Criei o overlay tátil translúcido de alto contraste com zonas de toque desacopladas, impedindo toques acidentais entre o D-Pad virtual e os botões de ação (A/B) durante corridas e saltos rápidos.</p><p><strong>Preservação Gráfica:</strong> Ajustei a escala e a vinheta radial circular garantindo visualização pixel-perfect do clássico sem distorções no aspecto do jogo original.</p>',
         description:
-            'Adaptação nativa para smartwatches Wear OS baseada na descompilação de Super Mario World e no projeto open-source <a href="https://github.com/freyta/smw-android" target="_blank" rel="noopener noreferrer" class="text-emerald-600 underline font-medium hover:text-emerald-500">smw-android</a>. Compilado nativamente em C e SDL com overlay de controles táteis circulares translúcidos de alto contraste, vinheta radial e gameplay com zero ghost taps.',
+            'Adaptação nativa para smartwatches Wear OS baseada na descompilação de Super Mario World. Compilado nativamente em C e SDL com overlay de controles táteis circulares translúcidos de alto contraste, vinheta radial e gameplay com zero ghost taps.',
         technologies: ['C', 'Android', 'Wear OS', 'SDL'],
         features: [
             'Renderização precisa preservando física e timing original',
@@ -288,6 +316,10 @@ export const myApps: MyApp[] = [
         isWearOS: true,
         image: '/assets/img/apps/wearos/pkmn-round-battle-charmander.png',
         caption: 'Port & Recompilação de Pokémon FireRed otimizado para display circular',
+        role: 'Desenvolvedor & Engenheiro de Porting (Lua / C / Android)',
+        year: '2025',
+        myRole:
+            '<p>Recompilei e adaptei o motor open-source gen1recomp (LÖVE2D/Lua e C) para o ecossistema Android Wear OS.</p><p><strong>Interface Circular & Aro Digital:</strong> Reprogramei a renderização das caixas de diálogo e telas de batalha Pokémon para máxima legibilidade em displays circulares, implementando suporte nativo à navegação por aro rotativo (rotary input) e gestos rápidos.</p>',
         description:
             'Port e recompilação estendida de Pokémon FireRed para relógios Wear OS baseada na engine open-source <a href="https://github.com/bryanthaboi/gen1recomp" target="_blank" rel="noopener noreferrer" class="text-emerald-600 underline font-medium hover:text-emerald-500">gen1recomp</a> (LÖVE2D/Lua). Padronizada rigorosamente com a mesma UI e paleta de alto contraste do SMW, otimizada para diálogos em telas circulares e navegação via aro digital.',
         technologies: ['Lua', 'C', 'Android', 'Wear OS'],
@@ -350,6 +382,10 @@ export const moreProjects: ProjectData[] = [
             '/assets/img/apps/tropicalia-landing-2.webp'
         ],
         color: '#F5F5F0',
+        role: 'Engenheiro Frontend & Arquiteto Web',
+        year: '2025',
+        myRole:
+            '<p>Desenvolvi a landing page oficial com arquitetura de alto desempenho em <strong>Angular Zoneless</strong> com Server-Side Generation (SSG), integrada a endpoints em Go/Fiber para dados e status dinâmicos do servidor.</p>',
         description: 'Landing Page em Angular (SSG) Zoneless + Go/Fiber',
         technologies: ['Angular', 'Go', 'TailwindCSS'],
         features: [
@@ -367,6 +403,10 @@ export const moreProjects: ProjectData[] = [
         category: 'software',
         image: '/assets/img/logos/phanteon.png',
         color: '#FFE2E2',
+        role: 'Desenvolvedor Frontend & UI/UX',
+        year: '2024',
+        myRole:
+            '<p>Criei o design e frontend reativo da landing page do Pantheon Launcher em Svelte e TailwindCSS com foco em conversão e apresentação de recursos.</p>',
         description: 'Landing Page em Svelte',
         technologies: ['Svelte', 'TailwindCSS'],
         githubUrl: 'https://github.com/gusdslara/pantheon-launcher',
@@ -378,6 +418,10 @@ export const moreProjects: ProjectData[] = [
         category: 'software',
         image: '/assets/img/logos/argusplayer.png',
         color: '#E1F0FF',
+        role: 'Engenheiro Fullstack',
+        year: '2024',
+        myRole:
+            '<p>Desenvolvi a solução de streaming de mídia local com backend em Go para indexação e transcodificação de arquivos e frontend em Angular com player multimídia responsivo.</p>',
         description: 'Streaming de mídia local',
         technologies: ['Angular', 'Go'],
         githubUrl: 'https://github.com/gusdslara/argus-player',
@@ -389,6 +433,10 @@ export const moreProjects: ProjectData[] = [
         category: 'hardware',
         image: '/assets/img/apps/server.webp',
         color: '#E0FFF4',
+        role: 'Arquiteto de Infraestrutura & SysAdmin',
+        year: '2024 - 2026',
+        myRole:
+            '<p>Projetei e mantenho a infraestrutura em nuvem e bare-metal para clusters de servidores de alta concorrência de Minecraft, com containers Docker orquestrados, automação de backups e monitoramento 24/7.</p>',
         description: 'Infraestrutura de Minecraft',
         technologies: ['Go', 'Docker', 'Azure'],
         link: 'https://tropicaliacraft.gustavolara.pro/'
@@ -399,6 +447,8 @@ export const moreProjects: ProjectData[] = [
         category: '3d',
         image: '/assets/3dmodels/asus_rog_geforce_rtx_4090_v2.0.png',
         color: '#EBE4FF',
+        role: 'Modelador 3D',
+        year: '2024',
         description: 'Modelagem da placa de vídeo ASUS ROG GeForce RTX 4090 com detalhes de hardware',
         technologies: ['Blender', 'ThreeJS'],
         modelPath: '/assets/3dmodels/asus_rog_geforce_rtx_4090_v2.0.glb'
@@ -409,6 +459,8 @@ export const moreProjects: ProjectData[] = [
         category: '3d',
         image: '/assets/3dmodels/macbook_pro_m3_16_inch_2024.png',
         color: '#E8EBF0',
+        role: 'Modelador 3D',
+        year: '2024',
         description: 'Modelo fiel do MacBook Pro M3 16 polegadas 2024 com tela e teclado detalhados',
         technologies: ['Blender', 'ThreeJS'],
         modelPath: '/assets/3dmodels/macbook_pro_m3_16_inch_2024.glb'
@@ -419,6 +471,8 @@ export const moreProjects: ProjectData[] = [
         category: '3d',
         image: '/assets/3dmodels/meta_quest_3.png',
         color: '#EBE4FF',
+        role: 'Modelador 3D',
+        year: '2024',
         description: 'Headset de realidade mista Meta Quest 3 com controladores e detalhes de engenharia',
         technologies: ['Blender', 'ThreeJS'],
         modelPath: '/assets/3dmodels/meta_quest_3.glb'
@@ -429,6 +483,10 @@ export const moreProjects: ProjectData[] = [
         category: '3d',
         image: '/assets/3dmodels/cuiaba-catedral-bom-jesus.png',
         color: '#FFF5EB',
+        role: 'Modelador 3D & Artista de Cenários',
+        year: '2025 - 2026',
+        myRole:
+            '<p>Modelei e reconstruí historicamente em 3D para Three.js a Catedral Basílica Bom Jesus de Cuiabá, reproduzindo as duas torres com cruzes e relógios, paredes laterais com cobogós e vitrais coloridos, e nave interna com bancos de madeira entalhada, mosaico e altar.</p>',
         description: 'Catedral completa: torres com relógios e cruzes, paredes com cobogós e vitrais coloridos, telhado hip roof e interior com mosaico e altar',
         technologies: ['ThreeJS', 'TypeScript'],
         modelPath: '/assets/3dmodels/cuiaba-catedral-bom-jesus.glb'
@@ -439,6 +497,10 @@ export const moreProjects: ProjectData[] = [
         category: '3d',
         image: '/assets/3dmodels/cuiaba-palacio-da-instrucao.png',
         color: '#E8F4F8',
+        role: 'Modelador 3D & Artista de Cenários',
+        year: '2025 - 2026',
+        myRole:
+            '<p>Modelei o edifício histórico do Palácio da Instrução de Cuiabá com todas as venezianas louvre brancas, arcos neoclássicos, portões trabalhados em ferro, balaustradas e bandeiras estaduais e nacionais.</p>',
         description: 'Palácio com todas as venezianas louvre brancas, arcos neoclássicos, portões trabalhados, balaustradas e bandeiras',
         technologies: ['ThreeJS', 'TypeScript'],
         modelPath: '/assets/3dmodels/cuiaba-palacio-da-instrucao.glb'
@@ -449,6 +511,10 @@ export const moreProjects: ProjectData[] = [
         category: '3d',
         image: '/assets/3dmodels/cuiaba-onibus-urbano.png',
         color: '#E8F8EE',
+        role: 'Modelador 3D & Hard Surface',
+        year: '2025 - 2026',
+        myRole:
+            '<p>Modelei o ônibus urbano oficial de Cuiabá (Marcopolo Torino - Linha 605) com a pintura real verde/amarela do município, letreiro eletrônico em LED e interior detalhado com assentos e catraca funcional.</p>',
         description: 'Ônibus urbano oficial de Cuiabá (Linha 605) com pintura verde/amarela, letreiro LED, interior com catraca e assentos',
         technologies: ['ThreeJS', 'TypeScript'],
         modelPath: '/assets/3dmodels/cuiaba-onibus-urbano.glb'
@@ -459,6 +525,10 @@ export const moreProjects: ProjectData[] = [
         category: '3d',
         image: '/assets/3dmodels/cuiaba-casario-historico-row.png',
         color: '#FEF9C3',
+        role: 'Modelador 3D & Artista de Cenários',
+        year: '2025 - 2026',
+        myRole:
+            '<p>Modelei o conjunto completo dos 3 casarões coloniais tradicionais cuiabanos geminados com platibanda decorada, beiral com telhas capa-e-canal, portas altas em madeira e cores coloniais preservadas.</p>',
         description: 'Conjunto completo dos 3 casarões tradicionais cuiabanos geminados com platibanda decorada e beiral com telhas capa-e-canal',
         technologies: ['ThreeJS', 'TypeScript'],
         modelPath: '/assets/3dmodels/cuiaba-casario-historico-row.glb'
@@ -470,6 +540,10 @@ export const moreProjects: ProjectData[] = [
         categories: ['3d', 'games'],
         image: '/assets/3dmodels/bitez/thumb-zombies.webp',
         color: '#FFE4E6',
+        role: 'Artista Técnico 3D & Engenheiro de Shaders GLSL',
+        year: '2026',
+        myRole:
+            '<p>Modelei em voxels, estruturei os esqueletos de rigging de animação e programei os shaders customizados em GLSL com a técnica <em>Depth-Priority Supersampling</em> (DPSS) para eliminar perda de silhueta subpixel. Desenvolvi o sistema interativo em Three.js onde cliques diretos no zumbi disparam ataques e reações de combate em tempo real com interpolação suave.</p>',
         description: 'Variantes de mortos-vivos (Walker, Tank, Boomer, Hunter, Crawler) com animações esqueléticas e rig procedural',
         technologies: ['ThreeJS', 'GLSL', 'TypeScript', 'Blender'],
         features: [
@@ -497,6 +571,10 @@ export const moreProjects: ProjectData[] = [
         categories: ['3d', 'games'],
         image: '/assets/3dmodels/bitez/thumb-survivors.webp',
         color: '#E0F2FE',
+        role: 'Modelador 3D & Animador de Personagens',
+        year: '2026',
+        myRole:
+            '<p>Modelei e configurei os sobreviventes táticos masculino e feminino com uniformes modulares, rigging esquelético e arsenal acoplado. Programei o conjunto completo de animações (Idle, Walk, Run, Jump, Melee Punch, Melee Axe e Reload) integrados diretamente ao visualizador 3D do portfólio.</p>',
         description: 'Sobreviventes masculinos e femininos com equipamento militar tático, rigging completo e animações de ação',
         technologies: ['ThreeJS', 'GLSL', 'TypeScript', 'Blender'],
         features: [
@@ -521,6 +599,10 @@ export const moreProjects: ProjectData[] = [
         categories: ['3d', 'games'],
         image: '/assets/3dmodels/bitez/thumb-safehouse.webp',
         color: '#FEF3C7',
+        role: 'Arquiteto 3D & Engenheiro de Interatividade Mecânica',
+        year: '2026',
+        myRole:
+            '<p>Desenvolvi a arquitetura completa da Safehouse com 3 cômodos mobiliados, 8 móveis funcionais e rack com 16 armas militares. Programei no Three.js o ciclo de animação contínuo automático que sincroniza o destravamento e elevação suave do teto, abertura de móveis internos e retorno suave da cobertura com ancoragem clampWhenFinished.</p>',
         description: 'Safehouse mobiliada completa com ciclo animado contínuo com teto e interior mobiliado, portas articuladas e showroom de móveis',
         technologies: ['ThreeJS', 'GLSL', 'TypeScript', 'Blender'],
         features: [

@@ -21,6 +21,8 @@
 		wearosImages?: string[];
 		role?: string;
 		year?: string;
+		myRole?: string;
+		about?: string;
 		architectureDiagrams?: string[];
 		additionalImages?: string[];
 		phoneImages?: string[];
@@ -444,15 +446,43 @@
 					</div>
 				{/if}
 
-				<!-- Role / Importance Section (Meu Papel) -->
-				<div class="mb-6 sm:mb-8">
-					<h4 class="text-base sm:text-lg font-bold text-gray-900 mb-2 sm:mb-3">
-						{$t('common.modal.role')}
-					</h4>
-					<div class="text-sm sm:text-base text-gray-700 leading-relaxed font-normal">
-						{@html project.description}
+				<!-- Section 1: Meu Papel & Engenharia (O que desenvolvi e Como fiz) -->
+				{#if project.myRole}
+					<div class="mb-6 sm:mb-8 p-4 sm:p-5 rounded-2xl bg-amber-500/[0.07] border border-amber-500/20 shadow-xs">
+						<div class="flex items-center gap-2 mb-2 sm:mb-3">
+							<div class="w-7 h-7 rounded-lg bg-amber-500/20 text-amber-800 flex items-center justify-center flex-shrink-0">
+								<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+								</svg>
+							</div>
+							<h4 class="text-base sm:text-lg font-bold text-gray-950 m-0">
+								{$t('common.modal.role')} & Engenharia
+							</h4>
+						</div>
+						<div class="text-sm sm:text-base text-gray-800 leading-relaxed font-normal space-y-2.5">
+							{@html project.myRole}
+						</div>
 					</div>
-				</div>
+				{/if}
+
+				<!-- Section 2: Sobre o Projeto (Sinopse e Visão Geral do Jogo / Aplicação) -->
+				{#if (project.about || project.description) && (!project.myRole || project.about || project.description !== project.myRole)}
+					<div class="mb-6 sm:mb-8">
+						<div class="flex items-center gap-2 mb-2 sm:mb-3">
+							<div class="w-7 h-7 rounded-lg bg-gray-100 text-gray-700 flex items-center justify-center flex-shrink-0">
+								<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+								</svg>
+							</div>
+							<h4 class="text-base sm:text-lg font-bold text-gray-900 m-0">
+								{$t('common.modal.about')}
+							</h4>
+						</div>
+						<div class="text-sm sm:text-base text-gray-700 leading-relaxed font-normal">
+							{@html project.about || project.description}
+						</div>
+					</div>
+				{/if}
 
 				<!-- Technologies Section -->
 				{#if project.technologies && project.technologies.length > 0}

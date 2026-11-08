@@ -76,6 +76,7 @@ export const es = {
         modal: {
             category: 'Categoría',
             project: 'Proyecto',
+            role: 'Mi Rol',
             about: 'Sobre el Proyecto',
             tech: 'Tecnologías',
             features: 'Características Principales',
