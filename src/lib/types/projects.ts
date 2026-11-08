@@ -44,6 +44,12 @@ export interface Tab {
     icon: string;
 }
 
+export interface ModelVariant {
+    id: string;
+    label: string;
+    path: string;
+}
+
 export interface ProjectData {
     id: string;
     name: string;
@@ -62,4 +68,6 @@ export interface ProjectData {
     wearosImages?: string[];
     additionalImages?: string[];
     modelPath?: string;
+    modelVariants?: ModelVariant[];
+    modelCategory?: 'zombies' | 'survivors' | 'safehouse' | 'general';
 }

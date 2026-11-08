@@ -262,6 +262,22 @@ export const techUsage: Record<string, TechUsage[]> = {
 				'This portfolio, built with SvelteKit (SSG).',
 				'Este portafolio, en SvelteKit (SSG).'
 			)
+		},
+		{
+			project: 'Meu Tempero! — Cuiabá',
+			how: l(
+				'Simulador 3D culinário e gestão em Svelte 5 + Three.js (WebGPU) com Tauri v2.',
+				'Cozy 3D cooking and management simulator built with Svelte 5 + Three.js (WebGPU) and Tauri v2.',
+				'Simulador 3D culinario y de gestión en Svelte 5 + Three.js (WebGPU) con Tauri v2.'
+			)
+		},
+		{
+			project: 'Deadly Bite (Bitez)',
+			how: l(
+				'Hardcore survival roguelike multiplayer 3D com mapa real em Svelte e Three.js.',
+				'Hardcore 3D real-time multiplayer zombie survival roguelike in Svelte and Three.js.',
+				'Hardcore survival roguelike multijugador 3D con mapa real en Svelte y Three.js.'
+			)
 		}
 	],
 	Ionic: [
@@ -733,6 +749,22 @@ export const techUsage: Record<string, TechUsage[]> = {
 		}
 	],
 	'Three.js': [
+		{
+			project: 'Meu Tempero! — Cuiabá',
+			how: l(
+				'Cenários 3D, personagens chibis procedurais, iluminação dinâmica e shader de mundo curvo.',
+				'3D environments, procedural chibi characters, dynamic lighting, and curved-world shader.',
+				'Escenarios 3D, personajes chibis procedimentales, iluminación dinámica y shader de mundo curvo.'
+			)
+		},
+		{
+			project: 'Deadly Bite (Bitez)',
+			how: l(
+				'Motor 3D com renderização de mapa real (OpenStreetMap), estúdio de customização e física de sobrevivência.',
+				'3D engine with real-world map rendering (OpenStreetMap), character studio, and survival physics.',
+				'Motor 3D con renderizado de mapas reales (OpenStreetMap), estudio de personalización y físicas.'
+			)
+		},
 		{
 			project: 'Voxel Canvas',
 			how: l('Paint 3D cúbico interativo.', 'Interactive voxel 3D paint.', 'Paint 3D cúbico interactivo.')

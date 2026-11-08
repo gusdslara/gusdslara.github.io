@@ -115,12 +115,12 @@
 			{#each visibleItems as item (item.originalIndex + '-' + item.slotIndex)}
 				<button
 					type="button"
-					class="group/watch relative flex flex-col items-center justify-center transition-all duration-300 focus:outline-none cursor-pointer flex-shrink-0"
+					class="group/watch relative flex flex-col items-center justify-center transition-all duration-300 focus:outline-none focus:ring-0 cursor-pointer flex-shrink-0 outline-none border-none bg-transparent"
 					class:scale-105={dynamicVisible > 1 && item.isCenter}
 					class:opacity-75={dynamicVisible > 1 && !item.isCenter}
 					class:hover:opacity-100={!item.isCenter}
 					on:click|stopPropagation={() => handleSlotClick(item)}
-					title="{name} - Tela #{item.originalIndex + 1}"
+					aria-label="{name} - Tela {item.originalIndex + 1}"
 				>
 					<!-- Circular Watch Print -->
 					<div
@@ -134,14 +134,6 @@
 							class="w-full h-full object-cover pointer-events-none transition-transform duration-300 group-hover/watch:scale-105"
 						/>
 					</div>
-					{#if item.isCenter || dynamicVisible <= 1}
-						<span class="mt-1 text-[10px] font-medium text-gray-500 flex items-center gap-1 opacity-0 group-hover/watch:opacity-100 transition-opacity">
-							<svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
-							</svg>
-							Clique para ampliar
-						</span>
-					{/if}
 				</button>
 			{/each}
 		</div>

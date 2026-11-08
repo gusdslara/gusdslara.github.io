@@ -142,6 +142,36 @@ export const es = {
                 'Liderazgo en DevOps: automatización de pipelines de CI/CD (GitHub Actions) y aprovisionamiento de infraestructura (Terraform y Docker)'
             ]
         },
+        '2_my': {
+            name: 'Meu Tempero! — Cuiabá',
+            caption: 'Simulador 3D Culinario y de Gestión en Svelte 5, Three.js (WebGPU) y Tauri v2',
+            description: 'Juego 3D acogedor que combina el frenesí de Overcooked con la calidez de Stardew Valley y la personalización de Café Mania. Ambientado en Cuiabá (Mato Grosso, Brasil), tomas las riendas de la histórica Cantina de la Abuela Adelaide: cuidas el huerto del patio, cosechas mangos, gestionas ingredientes en la despensa con límites reales de peso/volumen, atiendes comensales, preparas pedidos de iFome para repartidores y viajas en autobús urbano hasta el Mercado do Porto.',
+            features: [
+                'Despensa Realista y Peso Físico: Ingredientes con peso (kg) y volumen (L), sin cajas mágicas en frigoríficos y estanterías con límite',
+                'Minijuego de Corte en 1ª Persona: Cuchillo guiado por ratón/toque cortando verduras y carnes con grosor y precisión dinámica',
+                'Estaciones Culinarias Diversas: Tabla de cortar, sartén para dorar y sacudir, olla a presión, mortero de madera y horno de barro',
+                'Menú Tradicional Cuiabano: Arroz Maria Isabel en lote, guiso de pescado pintado con yuca (mujica), costillas de pacu y pasteles de arroz',
+                'Ciclo Día/Noche y Clima Determinista: Amanecer a las 5:40, calor tropical intenso, chubascos con charcos reflectantes y anochecer dinámico',
+                'Calle Viva y Autobús Urbano: Transeúntes con rutinas en la avenida Beira-Rio, vendedor de helados artesanales, perro Caramelo y autobús Marcopolo Torino',
+                'Motor Gráfico Three.js + WebGPU: Curvatura esférica de mundo al estilo Animal Crossing con fallback automático a WebGL',
+                'Interfaz Liquid Glass y Multiplataforma: Diseño traslúcido adaptable a móviles/tablets con controles táctiles y empaquetado nativo con Tauri v2 (Rust)'
+            ]
+        },
+        '6_my': {
+            name: 'Deadly Bite (Bitez)',
+            caption: 'Hardcore Multiplayer Zombie Survival Roguelike en Svelte, Three.js y Mapa Real OpenStreetMap',
+            description: 'Hardcore survival roguelike multijugador 3D en tiempo real desarrollado con Svelte y Three.js. Inspirado en referentes como DayZ y Left 4 Dead, el juego cuenta con un mundo persistente donde tu superviviente permanece en el mapa incluso al desconectarte (dormir es la mayor vulnerabilidad). Integra un motor de mapas reales mediante OpenStreetMap y Overture Maps, recreando todo Brasil y Latinoamérica a escala real 1:1 con estética retro low-poly / PSX.',
+            features: [
+                'Mundo Real a Escala 1:1 (Brasil y Latinoamérica): Aparición en cualquier coordenada real mediante OpenStreetMap con calles y edificios explorables',
+                'Mundo Persistente y Supervivencia en Tiempo Real: El personaje permanece en el lugar al desconectarse; control de hambre, sed, infección y curas',
+                'Múltiples Modos de Juego: Campaña Individual con historia, Supervivencia Zumbi MMO, Desactivación de Bomba competitiva y Roguelike Cenital',
+                'Pantalla Dividida Local (2 Jugadores): Cooperativo local en pantalla dividida en el mismo ordenador con soporte nativo para múltiples mandos',
+                'Armamento Táctico y Balística: Gran arsenal con retroceso, dispersión, ranuras de inventario físico, granadas y estaciones de fabricación',
+                'Construcción y Fortificación de Bases: Barricadas defensivas, puertas con contraseñas de acceso y fortificación de refugios contra hordas nocturnas',
+                'Personalización 3D de Superviviente: Estudio de creación de personajes en Three.js con indumentaria, sombreros, accesorios y tonos de piel',
+                'Red Híbrida de Alto Rendimiento: Servidor en Go de alta concurrencia con WebSockets y conexiones P2P WebRTC mediante PeerJS para mínima latencia'
+            ]
+        },
         '1_my': {
             name: 'Tropicalia Launcher',
             caption: 'Launcher Multiplataforma (Desktop y Mobile) para Minecraft en Tauri v2, Rust y SvelteKit 5',
@@ -211,16 +241,8 @@ export const es = {
             ]
         },
         'm1': { description: 'Landing Page Svelte' },
-        'm2': { description: 'Interfaz web para inteligencia artificial local' },
         'm3': { description: 'Transmisión de contenido multimedia local' },
-        'm4': { description: 'Modelado cúbico 3D interactivo' },
-        'm5': { description: 'Álbum interactivo de viajes en 3D' },
-        'm6': { description: 'Recorrido virtual envolvente' },
         'm10': { description: 'Infraestructura de Minecraft' },
-        '3d-1': {
-            name: 'Apple iPad Pro',
-            description: 'Detallado modelo 3D del iPad Pro con texturas PBR y acabados realistas'
-        },
         '3d-2': {
             name: 'ASUS ROG RTX 4090',
             description: 'Modelado de componentes de la tarjeta gráfica con detalles sobre su hardware'
@@ -233,40 +255,50 @@ export const es = {
             name: 'Meta Quest 3',
             description: 'Headset de realidad virtual de alta generación y de la compañía Meta.'
         },
-        'game-1': {
-            name: 'Crash Team Racing Native (Wear OS)',
-            description: 'Port nativo de CTR (PS1) para Smartwatches Wear OS a 60 FPS',
+        '3d-cuiaba-catedral': {
+            name: 'Catedral Basílica de Cuiabá',
+            description: 'Catedral completa: torres con relojes y cruces, paredes con cobogós y vidrieras coloridas, techo a cuatro aguas e interior con mosaico y altar'
+        },
+        '3d-cuiaba-palacio': {
+            name: 'Palacio de la Instrucción',
+            description: 'Palacio con todas las celosías louvre blancas, arcos neoclásicos, portones forjados, balaustradas y banderas'
+        },
+        '3d-cuiaba-onibus': {
+            name: 'Autobús Urbano de Cuiabá',
+            description: 'Autobús urbano oficial de Cuiabá (Línea 605) con librea verde/amarilla, letrero LED, interior con molinete y asientos'
+        },
+        '3d-cuiaba-casario': {
+            name: 'Casas Históricas de Cuiabá',
+            description: 'Conjunto completo de 3 casonas tradicionales de Cuiabá adosadas con platabanda decorada y alero con tejas árabes'
+        },
+        '3d-bitez-zombies': {
+            name: 'Deadly Bite: Enemigos y Zombis',
+            description: 'Variantes de muertos vivientes (Walker, Tank, Boomer, Hunter, Crawler) con rigging esquelético y animaciones procedurales',
             features: [
-                'Aceleración gráfica nativa por hardware con OpenGL ES a 60 FPS fluidos',
-                'Interfaz y HUD adaptados para pantalla circular de 432x432 (One UI Watch)',
-                'Controles clásicos de PlayStation (△, ✕, □, ○, L1/R1, L2/R2) y D-Pad en arco ergonómico',
-                'Banda sonora y efectos originales sintetizados en tiempo real mediante SDL3',
-                'Sistema de guardado y progreso preservado en el almacenamiento del reloj',
-                'Instalación directa mediante APK compatible con Android Wear OS'
+                '5 variantes con mecánicas y animaciones exclusivas (Walker, Tank colosal, Boomer tóxico, Hunter ágil y Crawler reptante)',
+                'Filtro retro pixel art con shader Depth-Priority Supersampling con preservación de siluetas',
+                'Combate interactivo: haz clic directamente en el modelo 3D para activar ataques y reacciones',
+                'Selector manual de animaciones con interpolación suave (cross-fade)'
             ]
         },
-        'game-2': {
-            name: 'Super Mario World (Wear OS)',
-            description: 'Super Mario World adaptado nativamente para pantallas circulares Wear OS',
+        '3d-bitez-survivors': {
+            name: 'Deadly Bite: Supervivientes',
+            description: 'Supervivientes masculino y femenino con equipo táctico, rigging completo y animaciones de acción',
             features: [
-                'Renderizado preciso preservando físicas y tiempos originales',
-                'Overlay táctil estandarizado: Arriba (L, SELECT, R), Izquierda (B), Derecha (A) y Abajo (START)',
-                'Corrección de Ghost Tap: D-Pad virtual y botón B desacoplados para evitar toques involuntarios al caminar',
-                'Soporte completo para el mapa del mundo (Yoshi Island) e niveles',
-                'Bajo consumo de batería y excelente rendimiento',
-                'Paquete APK instalable en relojes Wear OS'
+                'Superviviente masculino con uniforme táctico y femenina con camisa a cuadros y mochila militar',
+                'Pipeline visual de pixel art auténtico con muestreo 2× y resolución de profundidad',
+                'Conjunto completo de animaciones: Walk, Run, Jump, Melee Punch, Melee Axe y Reload',
+                'Clic interactivo en el personaje para lanzar golpes y ataques'
             ]
         },
-        'game-3': {
-            name: 'Pokémon FireRed (Wear OS)',
-            description: 'Port & Recompilación de Pokémon FireRed para Wear OS',
+        '3d-bitez-safehouse': {
+            name: 'Deadly Bite: Construcción y Safehouse',
+            description: 'Safehouse amueblada completa con techo removible para vista interior, puertas articuladas y showroom de muebles',
             features: [
-                'Interfaz estandarizada idéntica a SMW: Arriba (L, SELECT, R), Izquierda (B), Derecha (A) e Abajo (START)',
-                'Gesto direccional y botón B desacoplados sin conflictos de entrada',
-                'Tipografía e interfaz ajustadas para lectura ergonómica en el reloj',
-                'Comandos ágiles de batalla mediante gestos en pantalla',
-                'Navegación mediante la corona física / bisel digital',
-                'Audio y efectos de sonido sincronizados'
+                'Safehouse con 3 habitaciones amuebladas: Sala, Cocina, Dormitorio y Baño detallados',
+                'Inspección interior cutaway: botón para remover y ver dentro del techo estructural',
+                'Interactividad mecánica: botones para abrir puertas batientes, ventanas, cajones, baúl y nevera',
+                'Showroom interactivo de muebles y expositor de arsenal militar con 16 armas seleccionables'
             ]
         }
     },

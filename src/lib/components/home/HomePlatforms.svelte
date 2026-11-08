@@ -13,8 +13,8 @@
 >
 	<div class="max-w-7xl mx-auto">
 		<ShowcasePlatformItem
-			href="https://unrender.games"
-			title="Game Studio"
+			href="https://games.unrender.pro"
+			title="Unrender Games"
 			description={$t('home.platforms.unrenderDesc')}
 			buttonText={$t('home.platforms.unrenderBtn')}
 			imgSrc="/assets/img/illustrations/unrender.png"
@@ -27,8 +27,8 @@
 		<div class="h-8"></div>
 
 		<ShowcasePlatformItem
-			href="https://memorycard.digital/"
-			title="memorycard.digital"
+			href="https://memorycard.cloud/"
+			title="memorycard.cloud"
 			description={$t('home.platforms.memorycardDesc')}
 			buttonText={$t('home.platforms.memorycardBtn')}
 			imgSrc="/assets/img/illustrations/memorycard-digital.png"
