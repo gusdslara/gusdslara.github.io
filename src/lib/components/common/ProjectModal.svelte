@@ -25,6 +25,8 @@
 		additionalImages?: string[];
 		phoneImages?: string[];
 		modelPath?: string;
+		modelVariants?: any[];
+		modelCategory?: 'zombies' | 'survivors' | 'safehouse' | 'general';
 		videoUrl?: string;
 	};
 
@@ -330,11 +332,13 @@
 								{#if i === currentSlide}
 									<div class="w-full h-full flex items-center justify-center p-2 sm:p-4">
 										{#if slide.type === 'model'}
-											{#await import('./Model3DViewer.svelte') then { default: Model3DViewer }}
+											{#await import('./Model3DViewer.svelte') then { default: ModelViewer }}
 												<svelte:component
-													this={Model3DViewer}
+													this={ModelViewer}
 													modelPath={slide.src}
 													fallbackImage={project.image}
+													modelVariants={project.modelVariants}
+													modelCategory={project.modelCategory}
 												/>
 											{:catch}
 												<img

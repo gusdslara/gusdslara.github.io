@@ -125,6 +125,69 @@ export const clientApps: ClientApp[] = [
 
 export const myApps: MyApp[] = [
     {
+        id: 2,
+        name: 'Meu Tempero! — Cuiabá',
+        category: ['games', 'software', '3d'],
+        categories: ['games', 'software', '3d'],
+        image: '/assets/img/apps/meutempero-title.webp',
+        caption:
+            'Simulador 3D Culinário & Gestão em Svelte 5, Three.js (WebGPU) e Tauri v2',
+        description:
+            'Jogo 3D aconchegante que combina a intensidade de Overcooked com o ritmo acolhedor de Stardew Valley e a personalização de Café Mania. Ambientado no coração de Cuiabá (Mato Grosso), o jogador assume a histórica Cantina da Vó Adelaide: cuida da horta no quintal, colhe mangas, prepara ingredientes na despensa com limite físico de peso/volume, atende clientes no salão, despacha entregas via iFome para motoboys e viaja de ônibus urbano (Linha 605) até o Mercado do Porto.',
+        technologies: ['Svelte', 'Three.js', 'TypeScript', 'TailwindCSS', 'Tauri', 'Rust'],
+        features: [
+            'Preparo Físico & Despensa Realista: Ingredientes com peso (kg) e volume (L), sem caixotes mágicos em geladeiras e prateleiras',
+            'Minigame de Corte em 1ª Pessoa: Faca controlada por mouse/toque fatiando legumes e carnes com espessura dinâmica',
+            'Estações Culinárias Diversificadas: Tábua de corte, frigideira com sacudimento, panela de pressão, pilão socável e forno de barro',
+            'Cardápio Tradicional Cuiabano: Arroz Maria Isabel em lote, mujica de pintado, ventrecha de pacu, bolo de arroz e refresco de caju',
+            'Ciclo Dia/Noite & Clima Determinístico: Amanhecer às 5h40, calor cuiabano, temporais de verão com poças reflexivas e anoitecer dinâmico',
+            'Rua Beira-Rio Viva & Ônibus Urbano: Passantes com rotina própria, Seu Lourival e seu carrinho de picolé, vira-lata Caramelo e ônibus Marcopolo Torino',
+            'Motor Gráfico Three.js + WebGPU: Curvatura esférica de mundo estilo Animal Crossing com fallback automático para WebGL',
+            'Interface Liquid Glass & Multiplataforma: Design translúcido responsivo com suporte a toque/joystick e build nativo em Tauri v2 (Rust)'
+        ],
+        background: '#FFF7EA',
+        link: 'https://meutempero.gustavolara.pro/',
+        githubUrl: 'https://github.com/gusdslara/svelte-threejs-overcooked-cuiaba',
+        additionalImages: [
+            '/assets/img/apps/meutempero-title.webp',
+            '/assets/img/apps/meutempero-gameplay.webp',
+            '/assets/img/apps/meutempero-minigame.webp',
+            '/assets/img/apps/meutempero-mercado.webp'
+        ]
+    },
+    {
+        id: 6,
+        name: 'Deadly Bite (Bitez)',
+        category: ['games', 'software'],
+        categories: ['games', 'software'],
+        image: '/assets/img/apps/bitez-modes.webp',
+        caption:
+            'Hardcore Multiplayer Zombie Survival Roguelike em Svelte, Three.js & Mapa Real OpenStreetMap',
+        description:
+            'Hardcore survival roguelike multiplayer 3D em tempo real construído com Svelte e Three.js. Inspirado em clássicos de sobrevivência como DayZ e Left 4 Dead, o jogo apresenta um mundo persistente onde seu sobrevivente permanece no mapa mesmo após o logout (o sono é a maior vulnerabilidade). Conta com integração inovadora de mapas reais via OpenStreetMap e Overture Maps, cobrindo todo o Brasil e América Latina em escala 1:1 com geração procedural em estilo retrô low-poly/PSX.',
+        technologies: ['Svelte', 'Three.js', 'TypeScript', 'Go', 'WebSocket', 'WebRTC'],
+        features: [
+            'Mundo Real em Escala 1:1 (Brasil e América Latina): Spawn em qualquer coordenada real via OpenStreetMap com ruas e prédios exploráveis',
+            'Mundo Persistente & Sobrevivência Real-Time: Seu personagem permanece no local ao deslogar; ciclo contínuo de fome, sede, infecção e cura',
+            'Múltiplos Modos de Jogo: Campanha Singleplayer com história, Sobrevivência Zumbi MMO, Desarme de Bomba competitivo e Roguelike Top-Down',
+            'Modo Split-Screen Local (2 Jogadores): Suporte a tela dividida no mesmo computador com suporte nativo a múltiplos gamepads',
+            'Sistema Tático de Armas & Balística: Arsenal completo com recuo, dispersão, slots de inventário físico, granadas e estações de fabricação',
+            'Construção & Fortificação de Bases: Barricadas, portas com permissões de acesso e proteção de refúgios contra hordas noturnas',
+            'Customização 3D de Sobrevivente: Estúdio completo de personalização de personagens em Three.js (roupas, chapéus, acessórios e tons de pele)',
+            'Rede Híbrida de Alta Concorrência: Backend em Go com WebSockets e conexões P2P WebRTC via PeerJS para latência ultrabaixa'
+        ],
+        background: '#F4ECEC',
+        link: 'https://bitez.gustavolara.pro/',
+        githubUrl: 'https://github.com/gusdslara/pixelz-svelte-threejs-game',
+        additionalImages: [
+            '/assets/img/apps/bitez-title.webp',
+            '/assets/img/apps/bitez-modes.webp',
+            '/assets/img/apps/bitez-customizer.webp',
+            '/assets/img/apps/bitez-map.webp',
+            '/assets/img/apps/bitez-splitscreen.webp'
+        ]
+    },
+    {
         id: 1,
         name: 'Tropicalia Launcher',
         category: ['software', 'games'],
@@ -310,17 +373,6 @@ export const moreProjects: ProjectData[] = [
         link: 'https://pantheon.gustavolara.pro/'
     },
     {
-        id: 'm2',
-        name: 'PolyUI',
-        category: 'software',
-        image: '/assets/img/logos/polyui.png',
-        color: '#FFF0E0',
-        description: 'Interface Web para IA local',
-        technologies: ['Svelte', 'TailwindCSS'],
-        githubUrl: 'https://github.com/gusdslara/poly-ui',
-        link: 'https://polyui.gustavolara.pro/'
-    },
-    {
         id: 'm3',
         name: 'Argus Player',
         category: 'software',
@@ -332,38 +384,6 @@ export const moreProjects: ProjectData[] = [
         link: 'https://argus.gustavolara.pro/'
     },
     {
-        id: 'm4',
-        name: 'Voxel Canvas',
-        category: 'software',
-        image: '/assets/img/logos/voxelcanvas.png',
-        color: '#E2F1E7',
-        description: 'Paint 3D cúbico interativo',
-        technologies: ['ThreeJS', 'Svelte'],
-        githubUrl: 'https://github.com/gusdslara/threejs-voxel-canvas',
-        link: 'https://voxelcanvas.gustavolara.pro/'
-    },
-    {
-        id: 'm5',
-        name: 'World Trips Album',
-        category: 'software',
-        image: '/assets/img/logos/worldtrip.png',
-        color: '#FFF0E0',
-        description: 'Album interativo de viagens em 3D',
-        technologies: ['Angular', 'ThreeJS'],
-        githubUrl: 'https://github.com/gusdslara/ng-threejs-world-trips',
-        link: 'https://trips.gustavolara.pro/'
-    },
-    {
-        id: 'm6',
-        name: 'WebXR Tour Virtual',
-        category: 'software',
-        image: '/assets/img/logos/virtualtour.png',
-        color: '#E1F0FF',
-        description: 'Passeio virtual imersivo',
-        technologies: ['ThreeJS', 'WebXR', 'Svelte'],
-        githubUrl: 'https://github.com/gusdslara/svelte-threejs-tour-virtual'
-    },
-    {
         id: 'm10',
         name: 'Tropicalia Server',
         category: 'hardware',
@@ -372,16 +392,6 @@ export const moreProjects: ProjectData[] = [
         description: 'Infraestrutura de Minecraft',
         technologies: ['Go', 'Docker', 'Azure'],
         link: 'https://tropicaliacraft.online/'
-    },
-    {
-        id: '3d-1',
-        name: 'Apple iPad Pro',
-        category: '3d',
-        image: '/assets/3dmodels/apple_ipad_pro.png',
-        color: '#E8EBF0',
-        description: 'Modelo 3D detalhado do Apple iPad Pro com texturas PBR e acabamento realista',
-        technologies: ['Blender', 'ThreeJS'],
-        modelPath: '/assets/3dmodels/apple_ipad_pro.glb'
     },
     {
         id: '3d-2',
@@ -414,85 +424,119 @@ export const moreProjects: ProjectData[] = [
         modelPath: '/assets/3dmodels/meta_quest_3.glb'
     },
     {
-        id: 'game-1',
-        name: 'Crash Team Racing Native (Wear OS)',
-        category: ['games', 'software'],
-        categories: ['games', 'software'],
-        image: '/assets/img/apps/wearos/ctr-round-cove.png',
-        color: '#FFF2EB',
-        description: 'Port nativo de CTR (PS1) para Smartwatches Wear OS a 60 FPS',
-        technologies: ['C', 'SDL', 'Android', 'Wear OS'],
-        githubUrl: 'https://github.com/gusdslara/ctr-wearos',
-        apkUrl: '/assets/downloads/ctr-wearos.apk',
-        apkSize: '11.4 MB',
-        isWearOS: true,
-        wearosImages: [
-            '/assets/img/apps/wearos/ctr-round-controls.png',
-            '/assets/img/apps/wearos/ctr-round-cove.png',
-            '/assets/img/apps/wearos/ctr-round-boost.png',
-            '/assets/img/apps/wearos/ctr-round-trophy.png'
-        ],
-        features: [
-            'Aceleração gráfica nativa via hardware com OpenGL ES a 60 FPS fluidos',
-            'Interface e HUD adaptados para display circular de 432x432 (One UI Watch)',
-            'Controles clássicos de PlayStation (△, ✕, □, ○, L1/R1, L2/R2) e D-Pad em arco ergonômico',
-            'Áudio e trilha sonora original sintetizada em tempo real via SDL3',
-            'Sistema de Save State e progresso preservado no armazenamento do smartwatch',
-            'Instalação direta via APK compatível com Android Wear OS'
-        ]
+        id: '3d-cuiaba-catedral',
+        name: 'Catedral Basílica de Cuiabá',
+        category: '3d',
+        image: '/assets/3dmodels/cuiaba-catedral-bom-jesus.png',
+        color: '#FFF5EB',
+        description: 'Catedral completa: torres com relógios e cruzes, paredes com cobogós e vitrais coloridos, telhado hip roof e interior com mosaico e altar',
+        technologies: ['ThreeJS', 'TypeScript'],
+        modelPath: '/assets/3dmodels/cuiaba-catedral-bom-jesus.glb'
     },
     {
-        id: 'game-2',
-        name: 'Super Mario World (Wear OS)',
-        category: ['games', 'software'],
-        categories: ['games', 'software'],
-        image: '/assets/img/apps/wearos/smw-round-1.png',
+        id: '3d-cuiaba-palacio',
+        name: 'Palácio da Instrução',
+        category: '3d',
+        image: '/assets/3dmodels/cuiaba-palacio-da-instrucao.png',
+        color: '#E8F4F8',
+        description: 'Palácio com todas as venezianas louvre brancas, arcos neoclássicos, portões trabalhados, balaustradas e bandeiras',
+        technologies: ['ThreeJS', 'TypeScript'],
+        modelPath: '/assets/3dmodels/cuiaba-palacio-da-instrucao.glb'
+    },
+    {
+        id: '3d-cuiaba-onibus',
+        name: 'Ônibus Urbano de Cuiabá',
+        category: '3d',
+        image: '/assets/3dmodels/cuiaba-onibus-urbano.png',
         color: '#E8F8EE',
-        description: 'Super Mario World adaptado nativamente para telas circulares Wear OS',
-        technologies: ['C', 'Android', 'Wear OS', 'SDL'],
-        githubUrl: 'https://github.com/gusdslara/smw-wearos',
-        apkUrl: '/assets/downloads/smw-wearos.apk',
-        apkSize: '26.8 MB',
-        isWearOS: true,
-        wearosImages: [
-            '/assets/img/apps/wearos/smw-round-controls.png',
-            '/assets/img/apps/wearos/smw-round-1.png',
-            '/assets/img/apps/wearos/smw-round-map-1.png',
-            '/assets/img/apps/wearos/smw-round-3.png'
-        ],
-        features: [
-            'Renderização precisa preservando física e timing original',
-            'Overlay tátil padronizado: Topo (L, SELECT, R), Esquerda (B), Direita (A) e Base (START)',
-            'Correção de Ghost Tap: D-Pad virtual e área do botão B desacoplados para evitar toques involuntários ao andar',
-            'Mapeamento completo do mapa mundi (Yoshi Island) e fases',
-            'Baixo consumo de bateria e alta performance',
-            'Pacote APK instalável diretamente em smartwatches Wear OS'
-        ]
+        description: 'Ônibus urbano oficial de Cuiabá (Linha 605) com pintura verde/amarela, letreiro LED, interior com catraca e assentos',
+        technologies: ['ThreeJS', 'TypeScript'],
+        modelPath: '/assets/3dmodels/cuiaba-onibus-urbano.glb'
     },
     {
-        id: 'game-3',
-        name: 'Pokémon FireRed (Wear OS)',
-        category: ['games', 'software'],
-        categories: ['games', 'software'],
-        image: '/assets/img/apps/wearos/pkmn-round-battle-charmander.png',
-        color: '#FFF0F0',
-        description: 'Port & Recompilação de Pokémon FireRed para Wear OS',
-        technologies: ['Lua', 'C', 'Android', 'Wear OS'],
-        githubUrl: 'https://github.com/gusdslara/gen1recomp-wearos',
-        isWearOS: true,
-        wearosImages: [
-            '/assets/img/apps/wearos/pkmn-round-controls.png',
-            '/assets/img/apps/wearos/pkmn-round-pokecenter.png',
-            '/assets/img/apps/wearos/pkmn-round-battle-charmander.png',
-            '/assets/img/apps/wearos/pkmn-round-oak-dialog.png'
-        ],
+        id: '3d-cuiaba-casario',
+        name: 'Casario Histórico Cuiabano',
+        category: '3d',
+        image: '/assets/3dmodels/cuiaba-casario-historico-row.png',
+        color: '#FEF9C3',
+        description: 'Conjunto completo dos 3 casarões tradicionais cuiabanos geminados com platibanda decorada e beiral com telhas capa-e-canal',
+        technologies: ['ThreeJS', 'TypeScript'],
+        modelPath: '/assets/3dmodels/cuiaba-casario-historico-row.glb'
+    },
+    {
+        id: '3d-bitez-zombies',
+        name: 'Deadly Bite: Inimigos & Zumbis',
+        category: '3d',
+        categories: ['3d', 'games'],
+        image: '/assets/3dmodels/bitez/thumb-zombies.webp',
+        color: '#FFE4E6',
+        description: 'Variantes de mortos-vivos (Walker, Tank, Boomer, Hunter, Crawler) com animações esqueléticas e rig procedural',
+        technologies: ['ThreeJS', 'GLSL', 'TypeScript', 'Blender'],
         features: [
-            'Padronização de UI idêntica ao SMW: Topo (L, SELECT, R), Esquerda (B), Direita (A) e Base (START)',
-            'Gesto direcional e botão B desacoplados sem conflitos ao andar',
-            'Renderização e texto ajustados para leitura ergonômica em smartwatch',
-            'Navegação rápida em batalhas Pokémon por gestos na tela',
-            'Suporte a rotação de menus pela coroa física / aro digital',
-            'Sistema de áudio e efeitos sonoros sincronizados'
-        ]
+            '5 variantes com mecânicas e animações exclusivas (Walker, Tank colossal, Boomer tóxico, Hunter ágil e Crawler rastejante)',
+            'Filtro retrô com Depth-Priority Supersampling shader com priorização de silhueta',
+            'Combate interativo: clique direto no modelo 3D para disparar ataques e reações',
+            'Seletor manual de animações com interpolação suave (cross-fade)'
+        ],
+        modelPath: '/assets/3dmodels/bitez/zombie-walker.glb',
+        modelCategory: 'zombies',
+        modelVariants: [
+            { id: 'walker', label: 'Walker (Clássico)', path: '/assets/3dmodels/bitez/zombie-walker.glb' },
+            { id: 'tank', label: 'Tank (Bruto)', path: '/assets/3dmodels/bitez/zombie-tank.glb' },
+            { id: 'boomer', label: 'Boomer (Tóxico)', path: '/assets/3dmodels/bitez/zombie-boomer.glb' },
+            { id: 'hunter', label: 'Hunter (Caçador)', path: '/assets/3dmodels/bitez/zombie-hunter.glb' },
+            { id: 'crawler', label: 'Crawler (Rastejante)', path: '/assets/3dmodels/bitez/zombie-crawler.glb' }
+        ],
+        link: 'https://bitez.gustavolara.pro/',
+        githubUrl: 'https://github.com/gusdslara/pixelz-svelte-threejs-game'
+    },
+    {
+        id: '3d-bitez-survivors',
+        name: 'Deadly Bite: Sobreviventes',
+        category: '3d',
+        categories: ['3d', 'games'],
+        image: '/assets/3dmodels/bitez/thumb-survivors.webp',
+        color: '#E0F2FE',
+        description: 'Sobreviventes masculinos e femininos com equipamento militar tático, rigging completo e animações de ação',
+        technologies: ['ThreeJS', 'GLSL', 'TypeScript', 'Blender'],
+        features: [
+            'Sobrevivente Masculino com farda tática e Feminina com camisa xadrez e mochila militar',
+            'Pipeline visual Pixel Art com amostragem 2× e controle de profundidade',
+            'Conjunto completo de animações: Walk, Run, Jump, Melee Punch, Melee Axe e Reload',
+            'Clique interativo para desferir socos e golpes de machado'
+        ],
+        modelPath: '/assets/3dmodels/bitez/character-survivor-male.glb',
+        modelCategory: 'survivors',
+        modelVariants: [
+            { id: 'male', label: 'Sobrevivente Masculino', path: '/assets/3dmodels/bitez/character-survivor-male.glb' },
+            { id: 'female', label: 'Sobrevivente Feminina', path: '/assets/3dmodels/bitez/character-survivor-female.glb' }
+        ],
+        link: 'https://bitez.gustavolara.pro/',
+        githubUrl: 'https://github.com/gusdslara/pixelz-svelte-threejs-game'
+    },
+    {
+        id: '3d-bitez-safehouse',
+        name: 'Deadly Bite: Construção & Safehouse',
+        category: '3d',
+        categories: ['3d', 'games'],
+        image: '/assets/3dmodels/bitez/thumb-safehouse.webp',
+        color: '#FEF3C7',
+        description: 'Safehouse mobiliada completa com teto removível para visão do interior, portas articuladas e showroom de móveis',
+        technologies: ['ThreeJS', 'GLSL', 'TypeScript', 'Blender'],
+        features: [
+            'Safehouse com 3 cômodos mobiliados: Sala, Cozinha, Quarto e Banheiro detalhados',
+            'Visão interna / cutaway com remoção do teto estrutural (Roof_Ceiling_Structure)',
+            'Interatividade mecânica: botões para abrir portas com dobradiças e móveis funcionais',
+            'Showroom com os 8 móveis funcionais e expositor do arsenal com 16 armas militares'
+        ],
+        modelPath: '/assets/3dmodels/bitez/building-safehouse-interior.glb',
+        modelCategory: 'safehouse',
+        modelVariants: [
+            { id: 'safehouse', label: '🏠 Safehouse Completa', path: '/assets/3dmodels/bitez/building-safehouse-interior.glb' },
+            { id: 'showroom', label: '🪑 Showroom de Móveis', path: '/assets/3dmodels/bitez/furniture-showroom.glb' },
+            { id: 'arsenal', label: '🔫 Rack de Armas', path: '/assets/3dmodels/bitez/guns-arsenal-rack.glb' }
+        ],
+        link: 'https://bitez.gustavolara.pro/',
+        githubUrl: 'https://github.com/gusdslara/pixelz-svelte-threejs-game'
     }
 ];
