@@ -115,9 +115,10 @@
 				</div>
 			</div>
 		{:else if app.additionalImages && app.additionalImages.length >= 2}
-			<div class="flex-shrink-0 relative w-36 sm:w-44 md:w-48 h-32 sm:h-36 flex items-center justify-center pointer-events-none">
+			<!-- Phone screenshots display with full verticality (aspect-[9/19.5] object-contain/cover) -->
+			<div class="flex-shrink-0 relative w-36 sm:w-44 md:w-52 h-44 sm:h-52 md:h-56 flex items-center justify-center pointer-events-none">
 				<div
-					class="absolute w-[52%] aspect-[9/18] rounded-xl overflow-hidden border border-white/80 shadow-md bg-white transition-transform duration-500 group-hover:scale-105 translate-x-5 sm:translate-x-6 translate-y-1.5 rotate-[8deg] group-hover:translate-y-2 group-hover:rotate-[11deg] z-10"
+					class="absolute h-[88%] aspect-[9/19.5] rounded-[1.1rem] overflow-hidden border border-white/80 shadow-md bg-white transition-transform duration-500 group-hover:scale-105 translate-x-5 sm:translate-x-6 translate-y-1.5 rotate-[8deg] group-hover:translate-y-2 group-hover:rotate-[11deg] z-10"
 				>
 					<img
 						src={app.additionalImages[1]}
@@ -128,7 +129,7 @@
 					/>
 				</div>
 				<div
-					class="absolute w-[55%] aspect-[9/18] rounded-xl overflow-hidden border border-white/90 shadow-xl bg-white transition-transform duration-500 group-hover:scale-105 -translate-x-4 sm:-translate-x-5 -translate-y-1 rotate-[-6deg] group-hover:-translate-y-1.5 group-hover:rotate-[-8deg] z-20"
+					class="absolute h-[92%] aspect-[9/19.5] rounded-[1.1rem] overflow-hidden border border-white/90 shadow-xl bg-white transition-transform duration-500 group-hover:scale-105 -translate-x-4 sm:-translate-x-5 -translate-y-1 rotate-[-6deg] group-hover:-translate-y-1.5 group-hover:rotate-[-8deg] z-20"
 				>
 					<img
 						src={app.additionalImages[0]}

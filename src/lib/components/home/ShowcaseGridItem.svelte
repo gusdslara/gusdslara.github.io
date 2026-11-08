@@ -26,7 +26,7 @@
 	>
 		<button
 			use:motion
-			class="group relative p-3 md:p-4 rounded-xl flex items-center justify-center transition-all duration-300 overflow-hidden min-h-[190px] sm:min-h-[205px] md:min-h-[220px] h-full"
+			class="group relative p-3 md:p-4 rounded-xl flex items-center justify-center transition-all duration-300 overflow-hidden min-h-[220px] sm:min-h-[235px] md:min-h-[250px] h-full"
 			style="background: {logo.color};"
 			on:click={() => openProjectModal(logo)}
 			tabindex="0"
@@ -63,9 +63,9 @@
 				<!-- Center Preview Area (reserved height so it never overlaps badges or texts) -->
 				<div class="flex-1 w-full flex items-center justify-center pt-6 pb-1 relative z-10">
 					{#if logo.additionalImages && logo.additionalImages.length >= 2}
-						<div class="relative w-full h-16 sm:h-20 flex items-center justify-center pointer-events-none">
+						<div class="relative w-full h-24 sm:h-28 flex items-center justify-center pointer-events-none">
 							<div
-								class="absolute w-[56%] max-w-[130px] aspect-[16/10] rounded-lg overflow-hidden border border-white/80 shadow-md bg-white transition-transform duration-500 group-hover:scale-105 translate-x-3.5 sm:translate-x-4 translate-y-1 rotate-[6deg] group-hover:translate-y-1.5 group-hover:rotate-[8deg] z-10"
+								class="absolute w-[60%] max-w-[150px] aspect-[16/10] rounded-lg overflow-hidden border border-white/80 shadow-md bg-white transition-transform duration-500 group-hover:scale-105 translate-x-4 sm:translate-x-5 translate-y-1.5 rotate-[6deg] group-hover:translate-y-2 group-hover:rotate-[8deg] z-10"
 							>
 								<img
 									src={logo.additionalImages[1]}
@@ -76,7 +76,7 @@
 								/>
 							</div>
 							<div
-								class="absolute w-[58%] max-w-[135px] aspect-[16/10] rounded-lg overflow-hidden border border-white/90 shadow-xl bg-white transition-transform duration-500 group-hover:scale-105 -translate-x-3.5 sm:-translate-x-4 -translate-y-1 rotate-[-6deg] group-hover:-translate-y-1.5 group-hover:rotate-[-8deg] z-20"
+								class="absolute w-[62%] max-w-[155px] aspect-[16/10] rounded-lg overflow-hidden border border-white/90 shadow-xl bg-white transition-transform duration-500 group-hover:scale-105 -translate-x-4 sm:-translate-x-5 -translate-y-1 rotate-[-6deg] group-hover:-translate-y-1.5 group-hover:rotate-[-8deg] z-20"
 							>
 								<img
 									src={logo.additionalImages[0]}
