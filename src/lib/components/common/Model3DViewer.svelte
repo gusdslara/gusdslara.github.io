@@ -376,7 +376,6 @@
 		availableAnimations = [];
 		currentAnimationName = '';
 		currentAction = null;
-		furnOpen = false;
 
 		const currentPathAtStart = targetPath;
 		const loader = new GLTFLoader();
@@ -752,7 +751,6 @@
 
 	function triggerClickReaction() {
 		if (!mixer || availableAnimations.length === 0) {
-			if (hasRoofObject) toggleRoof();
 			return;
 		}
 
