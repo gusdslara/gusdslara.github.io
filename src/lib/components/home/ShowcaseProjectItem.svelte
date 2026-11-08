@@ -4,6 +4,7 @@
 	import { getToolIcon } from '$lib/config/toolIcons';
 	import { tabs } from '$lib/data/projects';
 	import { t } from '$lib/i18n';
+	import { stripHtml } from '$lib/utils/string';
 
 	export let app: any;
 	export let openProjectModal: (app: any) => void;
@@ -29,7 +30,7 @@
 		tabindex="0"
 	>
 		{#if app.githubUrl}
-			<div class="absolute top-0 right-0 z-10 w-[150px] h-[150px] overflow-hidden pointer-events-none">
+			<div class="absolute top-0 right-0 z-30 w-[150px] h-[150px] overflow-hidden pointer-events-none">
 				<span
 					class="block absolute w-[200px] py-2 bg-green-500 text-white text-center text-xs font-medium rotate-45 top-[30px] -right-[50px] shadow-lg uppercase tracking-wider"
 				>
@@ -98,7 +99,7 @@
 						alt="{app.name} controles"
 						loading="lazy"
 						decoding="async"
-						class="w-full h-full object-cover"
+						class="w-full h-full object-contain"
 					/>
 				</div>
 				<div
@@ -110,44 +111,35 @@
 						alt="{app.name} gameplay"
 						loading="lazy"
 						decoding="async"
-						class="w-full h-full object-cover"
+						class="w-full h-full object-contain"
 					/>
 				</div>
 			</div>
 		{:else if app.additionalImages && app.additionalImages.length >= 2}
-			<!-- Phone screenshots display with full verticality (aspect-[9/19.5] object-contain/cover) -->
 			<div class="flex-shrink-0 relative w-36 sm:w-44 md:w-52 h-44 sm:h-52 md:h-56 flex items-center justify-center pointer-events-none">
-				<div
-					class="absolute h-[88%] aspect-[9/19.5] rounded-[1.1rem] overflow-hidden border border-white/80 shadow-md bg-white transition-transform duration-500 group-hover:scale-105 translate-x-5 sm:translate-x-6 translate-y-1.5 rotate-[8deg] group-hover:translate-y-2 group-hover:rotate-[11deg] z-10"
-				>
-					<img
-						src={app.additionalImages[1]}
-						alt="{app.name} 2"
-						loading="lazy"
-						decoding="async"
-						class="w-full h-full object-cover"
-					/>
-				</div>
-				<div
-					class="absolute h-[92%] aspect-[9/19.5] rounded-[1.1rem] overflow-hidden border border-white/90 shadow-xl bg-white transition-transform duration-500 group-hover:scale-105 -translate-x-4 sm:-translate-x-5 -translate-y-1 rotate-[-6deg] group-hover:-translate-y-1.5 group-hover:rotate-[-8deg] z-20"
-				>
-					<img
-						src={app.additionalImages[0]}
-						alt="{app.name} 1"
-						loading="lazy"
-						decoding="async"
-						class="w-full h-full object-cover"
-					/>
-				</div>
+				<img
+					src={app.additionalImages[1]}
+					alt="{app.name} 2"
+					loading="lazy"
+					decoding="async"
+					class="absolute max-h-[88%] max-w-[65%] w-auto h-auto object-contain rounded-[1.1rem] drop-shadow-md transition-transform duration-500 group-hover:scale-105 translate-x-5 sm:translate-x-6 translate-y-1.5 rotate-[8deg] group-hover:translate-y-2 group-hover:rotate-[11deg] z-10"
+				/>
+				<img
+					src={app.additionalImages[0]}
+					alt="{app.name} 1"
+					loading="lazy"
+					decoding="async"
+					class="absolute max-h-[92%] max-w-[68%] w-auto h-auto object-contain rounded-[1.1rem] drop-shadow-xl transition-transform duration-500 group-hover:scale-105 -translate-x-4 sm:-translate-x-5 -translate-y-1 rotate-[-6deg] group-hover:-translate-y-1.5 group-hover:rotate-[-8deg] z-20"
+				/>
 			</div>
 		{:else}
-			<div class="flex-shrink-0">
+			<div class="flex-shrink-0 flex items-center justify-center">
 				<img
 					src={app.image}
 					alt={app.name}
 					loading="lazy"
 					decoding="async"
-					class="max-w-[140px] md:max-w-[180px] h-auto rounded-xl drop-shadow-2xl transition-transform duration-500 group-hover:scale-105 group-hover:rotate-2"
+					class="w-auto h-auto max-w-[140px] md:max-w-[180px] max-h-44 sm:max-h-52 object-contain rounded-xl drop-shadow-2xl transition-transform duration-500 group-hover:scale-105 group-hover:rotate-2"
 				/>
 			</div>
 		{/if}
@@ -161,7 +153,7 @@
 			</h5>
 			{#if app.description}
 				<p class="text-white/80 text-xs sm:text-sm text-center leading-relaxed line-clamp-3 sm:line-clamp-4 m-0 max-w-full">
-					{app.description}
+					{stripHtml(app.description)}
 				</p>
 			{/if}
 			<div class="flex gap-2 sm:gap-3 flex-wrap justify-center mt-1 pointer-events-auto shrink-0">

@@ -30,7 +30,7 @@
 		class="block relative rounded-xl overflow-hidden {gradientClass} no-underline text-black border-none shadow-md"
 	>
 		{#if isOpenSource}
-			<div class="absolute top-0 right-0 z-10 w-[150px] h-[150px] overflow-hidden">
+			<div class="absolute top-0 right-0 z-30 w-[150px] h-[150px] overflow-hidden pointer-events-none">
 				<span
 					class="block absolute w-[200px] py-2 bg-green-500 text-white text-center text-sm rotate-45 top-[30px] -right-[50px] shadow-lg"
 				>

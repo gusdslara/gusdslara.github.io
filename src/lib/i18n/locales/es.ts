@@ -159,7 +159,7 @@ export const es = {
         '3_my': {
             name: 'Crash Team Racing Native (Wear OS)',
             caption: 'Port nativo de Crash Team Racing (PS1) en C/SDL3 a 60 FPS en el smartwatch',
-            description: 'Port nativo de alto rendimiento para smartwatches Wear OS (Galaxy Watch / One UI Watch), basado en proyectos open-source de ingeniería inversa y ports para Android (como <a href="https://github.com/Simon358/ctr-native-android" target="_blank" rel="noopener noreferrer" class="text-emerald-600 underline font-medium hover:text-emerald-500">ctr-native-android</a> y <a href="https://github.com/CTR-ModSDK/CTR-ModSDK" target="_blank" rel="noopener noreferrer" class="text-emerald-600 underline font-medium hover:text-emerald-500">CTR-ModSDK</a>). Desarrollado en C con aceleración SDL3 y OpenGL ES a 60 FPS, adaptado para pantallas circulares de 432x432 px con controles PlayStation en arco y D-pad central.',
+            description: 'Port nativo de alto rendimiento para smartwatches Wear OS (Galaxy Watch / One UI Watch), basado en el proyecto open-source <a href="https://github.com/Simon358/ctr-native-android" target="_blank" rel="noopener noreferrer" class="text-emerald-600 underline font-medium hover:text-emerald-500">ctr-native-android</a>. Desarrollado en C con aceleración SDL3 y OpenGL ES a 60 FPS, adaptado para pantallas circulares de 432x432 px con controles PlayStation en arco y D-pad central.',
             features: [
                 'Aceleración gráfica nativa por hardware con OpenGL ES a 60 FPS fluidos',
                 'Interfaz y HUD adaptados para pantalla circular de 432x432 (One UI Watch)',

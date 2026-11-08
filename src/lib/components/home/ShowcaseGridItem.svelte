@@ -4,6 +4,7 @@
 	import { getToolIcon } from '$lib/config/toolIcons';
 	import { tabs } from '$lib/data/projects';
 	import { t } from '$lib/i18n';
+	import { stripHtml } from '$lib/utils/string';
 
 	export let logo: any;
 	export let openProjectModal: (project: any) => void;
@@ -26,14 +27,14 @@
 	>
 		<button
 			use:motion
-			class="group relative p-3 md:p-4 rounded-xl flex items-center justify-center transition-all duration-300 overflow-hidden min-h-[220px] sm:min-h-[235px] md:min-h-[250px] h-full"
+			class="group relative p-3 md:p-3.5 rounded-xl flex items-center justify-center transition-all duration-300 overflow-hidden h-48 sm:h-52 w-full"
 			style="background: {logo.color};"
 			on:click={() => openProjectModal(logo)}
 			tabindex="0"
 		>
 			<div
 				use:hoverMotion
-				class="absolute inset-0 w-full h-full flex flex-col items-center justify-between p-3.5 sm:p-4"
+				class="absolute inset-0 w-full h-full flex flex-col items-center justify-between p-3 sm:p-3.5"
 			>
 				{#if categoryTabs.length > 0}
 					<div class="absolute top-2.5 left-2.5 z-20 flex flex-wrap gap-1 max-w-[70%]">
@@ -51,7 +52,7 @@
 				{/if}
 
 				{#if logo.githubUrl}
-					<div class="absolute top-0 right-0 z-20 w-[90px] h-[90px] overflow-hidden pointer-events-none">
+					<div class="absolute top-0 right-0 z-40 w-[90px] h-[90px] overflow-hidden pointer-events-none">
 						<span
 							class="block absolute w-[130px] py-1 bg-green-500 text-white text-center text-[9px] font-semibold rotate-45 top-[18px] -right-[36px] shadow-md uppercase tracking-wider"
 						>
@@ -61,40 +62,32 @@
 				{/if}
 
 				<!-- Center Preview Area (reserved height so it never overlaps badges or texts) -->
-				<div class="flex-1 w-full flex items-center justify-center pt-6 pb-1 relative z-10">
+				<div class="flex-1 w-full flex items-center justify-center pt-5 pb-0.5 relative z-10 min-h-0">
 					{#if logo.additionalImages && logo.additionalImages.length >= 2}
 						<div class="relative w-full h-24 sm:h-28 flex items-center justify-center pointer-events-none">
-							<div
-								class="absolute w-[60%] max-w-[150px] aspect-[16/10] rounded-lg overflow-hidden border border-white/80 shadow-md bg-white transition-transform duration-500 group-hover:scale-105 translate-x-4 sm:translate-x-5 translate-y-1.5 rotate-[6deg] group-hover:translate-y-2 group-hover:rotate-[8deg] z-10"
-							>
-								<img
-									src={logo.additionalImages[1]}
-									alt="{logo.name} 2"
-									loading="lazy"
-									decoding="async"
-									class="w-full h-full object-cover"
-								/>
-							</div>
-							<div
-								class="absolute w-[62%] max-w-[155px] aspect-[16/10] rounded-lg overflow-hidden border border-white/90 shadow-xl bg-white transition-transform duration-500 group-hover:scale-105 -translate-x-4 sm:-translate-x-5 -translate-y-1 rotate-[-6deg] group-hover:-translate-y-1.5 group-hover:rotate-[-8deg] z-20"
-							>
-								<img
-									src={logo.additionalImages[0]}
-									alt="{logo.name} 1"
-									loading="lazy"
-									decoding="async"
-									class="w-full h-full object-cover"
-								/>
-							</div>
+							<img
+								src={logo.additionalImages[1]}
+								alt="{logo.name} 2"
+								loading="lazy"
+								decoding="async"
+								class="absolute max-h-[92%] max-w-[54%] w-auto h-auto object-contain rounded-xl drop-shadow-md transition-transform duration-500 group-hover:scale-105 translate-x-3.5 sm:translate-x-4 translate-y-0.5 rotate-[8deg] group-hover:translate-y-1 group-hover:rotate-[11deg] z-10"
+							/>
+							<img
+								src={logo.additionalImages[0]}
+								alt="{logo.name} 1"
+								loading="lazy"
+								decoding="async"
+								class="absolute max-h-[96%] max-w-[56%] w-auto h-auto object-contain rounded-xl drop-shadow-xl transition-transform duration-500 group-hover:scale-105 -translate-x-3.5 sm:-translate-x-4 -translate-y-0.5 rotate-[-6deg] group-hover:-translate-y-1 group-hover:rotate-[-8deg] z-20"
+							/>
 						</div>
 					{:else if logo.isWearOS}
-						<div class="w-14 h-14 sm:w-16 sm:h-16 rounded-full overflow-hidden border-2 border-white/80 shadow-md bg-neutral-900 transition-transform duration-300 group-hover:scale-105">
+						<div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden border-2 border-white/80 shadow-md bg-neutral-900 transition-transform duration-300 group-hover:scale-105">
 							<img
 								src={logo.image}
 								alt={logo.name}
 								loading="lazy"
 								decoding="async"
-								class="w-full h-full object-cover"
+								class="w-full h-full object-contain"
 							/>
 						</div>
 					{:else}
@@ -103,19 +96,19 @@
 							alt={logo.name}
 							loading="lazy"
 							decoding="async"
-							class="max-w-full max-h-12 sm:max-h-14 object-contain transition-transform duration-300 group-hover:scale-95 drop-shadow-sm"
+							class="w-auto h-auto max-w-[75%] max-h-16 sm:max-h-20 object-contain transition-transform duration-300 group-hover:scale-95 drop-shadow-sm"
 						/>
 					{/if}
 				</div>
 
 				<!-- Bottom Name & Tech Badges Area (always visible, never cut off) -->
-				<div class="w-full flex flex-col items-center justify-center shrink-0 z-10 pt-1">
+				<div class="w-full flex flex-col items-center justify-center shrink-0 z-10 pt-0.5">
 					<span class="text-black font-semibold text-xs text-center px-1 leading-snug line-clamp-1 w-full" title={logo.name}>
 						{logo.name}
 					</span>
 
 					{#if logo.technologies}
-						<div class="flex flex-wrap gap-1.5 justify-center mt-2 z-10">
+						<div class="flex flex-wrap gap-1.5 justify-center mt-1.5 z-10">
 							{#each logo.technologies.slice(0, 4) as tech}
 								{#if getToolIcon(tech)}
 									<div
@@ -152,7 +145,7 @@
 					</h5>
 					{#if logo.description}
 						<p class="text-white/80 text-[10px] sm:text-xs text-center line-clamp-2 sm:line-clamp-3 leading-tight m-0 max-w-full">
-							{logo.description}
+							{stripHtml(logo.description)}
 						</p>
 					{/if}
 					<div class="flex flex-wrap gap-1.5 justify-center mt-0.5 pointer-events-auto shrink-0">

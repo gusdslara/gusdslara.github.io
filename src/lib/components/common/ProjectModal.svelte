@@ -317,33 +317,6 @@
 							maxVisible={5}
 							onImageClick={(src) => openImageZoom(src, project.name, watchImgs)}
 						/>
-
-						{#if project.additionalImages && project.additionalImages.length > 0}
-							<div class="mt-2 p-3 sm:p-4 rounded-2xl bg-gray-50 border border-gray-200/70">
-								<h5 class="text-xs font-bold uppercase tracking-wider text-gray-600 mb-2.5 flex items-center gap-1.5">
-									<svg class="w-3.5 h-3.5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-									</svg>
-									Telas & Menus do Jogo
-								</h5>
-								<div class="flex items-center gap-2.5 overflow-x-auto py-1 px-1 no-scrollbar">
-									{#each project.additionalImages as addImg, idx}
-										<button
-											type="button"
-											class="relative flex-shrink-0 w-28 h-18 sm:w-36 sm:h-24 rounded-xl overflow-hidden border-2 border-gray-200 bg-gray-100 shadow-sm transition-all hover:scale-105 hover:border-[#dd206b] cursor-pointer focus:outline-none"
-											on:click={() => openImageZoom(addImg, `${project.name} menu ${idx + 1}`, project.additionalImages)}
-										>
-											<img
-												src={addImg}
-												alt="{project.name} menu {idx + 1}"
-												class="w-full h-full object-contain"
-												loading="lazy"
-											/>
-										</button>
-									{/each}
-								</div>
-							</div>
-						{/if}
 					</div>
 				{:else if slides.length > 0}
 					<div class="mb-6 sm:mb-8 flex flex-col gap-3">

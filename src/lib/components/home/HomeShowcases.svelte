@@ -340,7 +340,7 @@
 			<AnimatedSection
 				customVariant={staggerContainer}
 				delay={0.2}
-				className="grid grid-cols-2 sm:grid-cols-3 gap-3 md:gap-4"
+				className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 md:gap-4"
 			>
 				{#each filteredMoreProjects as logo, i (logo.id)}
 					<ShowcaseGridItem {logo} openProjectModal={() => openProjectModal(logo)} />

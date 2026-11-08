@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { t } from '$lib/i18n';
+	import { stripHtml } from '$lib/utils/string';
 	export let name: string;
 	export let description: string;
 	export let stackImages: string[] = [];
@@ -145,7 +146,7 @@
 			</h5>
 			{#if description}
 				<p class="text-white/80 text-xs sm:text-sm text-center leading-relaxed line-clamp-3 sm:line-clamp-4 m-0 max-w-full">
-					{description}
+					{stripHtml(description)}
 				</p>
 			{/if}
 			<div class="flex gap-2 sm:gap-3 flex-wrap justify-center mt-1 pointer-events-auto shrink-0">
