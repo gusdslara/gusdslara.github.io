@@ -161,7 +161,7 @@ export const myApps: MyApp[] = [
         image: '/assets/img/apps/wearos/ctr-round-cove.png',
         caption: 'Port nativo de Crash Team Racing (PS1) em C/SDL3 rodando a 60 FPS no pulso',
         description:
-            'Port nativo de alto desempenho para smartwatches Wear OS (Galaxy Watch / One UI Watch), baseado no projeto open-source de engenharia reversa e port mobile de CTR (como <a href="https://github.com/Simon358/ctr-native-android" target="_blank" rel="noopener noreferrer" class="text-emerald-600 underline font-medium hover:text-emerald-500">ctr-native-android</a> e <a href="https://github.com/CTR-ModSDK/CTR-ModSDK" target="_blank" rel="noopener noreferrer" class="text-emerald-600 underline font-medium hover:text-emerald-500">CTR-ModSDK</a>). Desenvolvido em C com aceleração SDL3 e OpenGL ES 60 FPS, adaptado especificamente para telas circulares de 432x432 px com controles PlayStation em arco e D-pad central.',
+            'Port nativo de alto desempenho para smartwatches Wear OS (Galaxy Watch / One UI Watch), baseado no projeto open-source <a href="https://github.com/Simon358/ctr-native-android" target="_blank" rel="noopener noreferrer" class="text-emerald-600 underline font-medium hover:text-emerald-500">ctr-native-android</a>. Desenvolvido em C com aceleração SDL3 e OpenGL ES 60 FPS, adaptado especificamente para telas circulares de 432x432 px com controles PlayStation em arco e D-pad central.',
         technologies: ['C', 'SDL', 'Android', 'Wear OS', 'OpenGL'],
         features: [
             'Aceleração gráfica nativa via hardware com OpenGL ES a 60 FPS fluidos',
