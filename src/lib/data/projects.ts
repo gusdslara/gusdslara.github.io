@@ -129,7 +129,7 @@ export const myApps: MyApp[] = [
         name: 'Meu Tempero! — Cuiabá',
         category: ['games', 'software', '3d'],
         categories: ['games', 'software', '3d'],
-        image: '/assets/img/apps/meutempero-title.webp',
+        image: '/assets/img/apps/meutempero-gameplay.webp',
         caption:
             'Simulador 3D Culinário & Gestão em Svelte 5, Three.js (WebGPU) e Tauri v2',
         description:
@@ -149,8 +149,8 @@ export const myApps: MyApp[] = [
         link: 'https://meutempero.gustavolara.pro/',
         githubUrl: 'https://github.com/gusdslara/svelte-threejs-overcooked-cuiaba',
         additionalImages: [
-            '/assets/img/apps/meutempero-title.webp',
-            '/assets/img/apps/meutempero-gameplay.webp',
+            '/assets/img/apps/meutempero-kitchen.webp',
+            '/assets/img/apps/meutempero-catedral.webp',
             '/assets/img/apps/meutempero-minigame.webp',
             '/assets/img/apps/meutempero-mercado.webp'
         ]
@@ -160,7 +160,7 @@ export const myApps: MyApp[] = [
         name: 'Deadly Bite (Bitez)',
         category: ['games', 'software'],
         categories: ['games', 'software'],
-        image: '/assets/img/apps/bitez-modes.webp',
+        image: '/assets/img/apps/bitez-gameplay.webp',
         caption:
             'Hardcore Multiplayer Zombie Survival Roguelike em Svelte, Three.js & Mapa Real OpenStreetMap',
         description:
@@ -180,11 +180,11 @@ export const myApps: MyApp[] = [
         link: 'https://bitez.gustavolara.pro/',
         githubUrl: 'https://github.com/gusdslara/pixelz-svelte-threejs-game',
         additionalImages: [
-            '/assets/img/apps/bitez-title.webp',
-            '/assets/img/apps/bitez-modes.webp',
-            '/assets/img/apps/bitez-customizer.webp',
-            '/assets/img/apps/bitez-map.webp',
-            '/assets/img/apps/bitez-splitscreen.webp'
+            '/assets/img/apps/bitez-gameplay.webp',
+            '/assets/img/apps/bitez-house-inside.webp',
+            '/assets/img/apps/bitez-tank.webp',
+            '/assets/img/apps/bitez-arsenal.webp',
+            '/assets/img/apps/bitez-customizer.webp'
         ]
     },
     {
@@ -521,12 +521,12 @@ export const moreProjects: ProjectData[] = [
         categories: ['3d', 'games'],
         image: '/assets/3dmodels/bitez/thumb-safehouse.webp',
         color: '#FEF3C7',
-        description: 'Safehouse mobiliada completa com teto removível para visão do interior, portas articuladas e showroom de móveis',
+        description: 'Safehouse mobiliada completa com ciclo animado contínuo com teto e interior mobiliado, portas articuladas e showroom de móveis',
         technologies: ['ThreeJS', 'GLSL', 'TypeScript', 'Blender'],
         features: [
             'Safehouse com 3 cômodos mobiliados: Sala, Cozinha, Quarto e Banheiro detalhados',
-            'Visão interna / cutaway com remoção do teto estrutural (Roof_Ceiling_Structure)',
-            'Interatividade mecânica: botões para abrir portas com dobradiças e móveis funcionais',
+            'Ciclo contínuo automático: abre e fecha portas com o teto, eleva o teto e abre todo o interior mobiliado',
+            'Opções de controle manual: Ciclo Automático, Manter Aberto (visão interna) ou Manter Fechado',
             'Showroom com os 8 móveis funcionais e expositor do arsenal com 16 armas militares'
         ],
         modelPath: '/assets/3dmodels/bitez/building-safehouse-interior.glb',
