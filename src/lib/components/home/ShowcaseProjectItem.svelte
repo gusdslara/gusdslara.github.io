@@ -84,7 +84,7 @@
 			{/if}
 		</div>
 
-		<!-- Right Side Image: 2 Rounded Watch Prints for Wear OS or Standard App Mockup -->
+		<!-- Right Side Image: 2 Rounded Watch Prints for Wear OS or 2 Mobile Prints or Standard App Mockup -->
 		{#if app.isWearOS && app.wearosImages && app.wearosImages.length >= 2}
 			{@const gameImg = app.image || app.wearosImages[1]}
 			{@const controlsImg = app.wearosImages[0]}
@@ -108,6 +108,31 @@
 					<img
 						src={gameImg}
 						alt="{app.name} gameplay"
+						loading="lazy"
+						decoding="async"
+						class="w-full h-full object-cover"
+					/>
+				</div>
+			</div>
+		{:else if app.additionalImages && app.additionalImages.length >= 2}
+			<div class="flex-shrink-0 relative w-36 sm:w-44 md:w-48 h-32 sm:h-36 flex items-center justify-center pointer-events-none">
+				<div
+					class="absolute w-[52%] aspect-[9/18] rounded-xl overflow-hidden border border-white/80 shadow-md bg-white transition-transform duration-500 group-hover:scale-105 translate-x-5 sm:translate-x-6 translate-y-1.5 rotate-[8deg] group-hover:translate-y-2 group-hover:rotate-[11deg] z-10"
+				>
+					<img
+						src={app.additionalImages[1]}
+						alt="{app.name} 2"
+						loading="lazy"
+						decoding="async"
+						class="w-full h-full object-cover"
+					/>
+				</div>
+				<div
+					class="absolute w-[55%] aspect-[9/18] rounded-xl overflow-hidden border border-white/90 shadow-xl bg-white transition-transform duration-500 group-hover:scale-105 -translate-x-4 sm:-translate-x-5 -translate-y-1 rotate-[-6deg] group-hover:-translate-y-1.5 group-hover:rotate-[-8deg] z-20"
+				>
+					<img
+						src={app.additionalImages[0]}
+						alt="{app.name} 1"
 						loading="lazy"
 						decoding="async"
 						class="w-full h-full object-cover"

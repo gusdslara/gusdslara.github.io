@@ -129,7 +129,7 @@ export const myApps: MyApp[] = [
         name: 'Tropicalia Launcher',
         category: ['software', 'games'],
         categories: ['software', 'games'],
-        image: '/assets/img/logos/tropicalialauncher.png',
+        image: '/assets/img/apps/tropicalia-launcher-app.webp',
         caption:
             'Launcher Cross-Platform (Desktop & Mobile) para Minecraft em Tauri v2, Rust & SvelteKit 5',
         description:
