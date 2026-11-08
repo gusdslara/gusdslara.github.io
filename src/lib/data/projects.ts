@@ -126,44 +126,31 @@ export const clientApps: ClientApp[] = [
 export const myApps: MyApp[] = [
     {
         id: 1,
-        name: 'ng-tropicaliacraft-landingpage',
-        category: 'software',
-        image: '/assets/img/apps/tropicalia.webp',
+        name: 'Tropicalia Launcher',
+        category: ['software', 'games'],
+        categories: ['software', 'games'],
+        image: '/assets/img/logos/tropicalialauncher.png',
         caption:
-            'Landing Page para o TropicaliaCraft em Angular (SSG) com hidratação zoneless + Serviços em Go/Fiber',
+            'Launcher Cross-Platform (Desktop & Mobile) para Minecraft em Tauri v2, Rust & SvelteKit 5',
         description:
-            'Landing page de alta performance construída com Angular moderno utilizando hidratação zoneless e Server-Side Generation (SSG). Inclui integração com serviços backend em Go usando Fiber para gerenciar os dados dinâmicos do servidor de Minecraft.',
-        technologies: ['Angular', 'Go', 'TailwindCSS'],
+            'Launcher oficial do ecossistema TropicaliaCraft desenvolvido para Windows, Linux, macOS e Android. Integra motor gráfico híbrido, autenticação Microsoft OAuth2, gerenciador inteligente de instâncias, download acelerado de mods via Modrinth/CurseForge e sincronização automática de perfis com servidor híbrido.',
+        technologies: ['Tauri', 'Rust', 'Svelte', 'TypeScript', 'Android'],
         features: [
-            'Hidratação Zoneless para máxima performance',
-            'Server-Side Generation (SSG)',
-            'Integração com API RESTful em Go',
-            'Design responsivo e acessível'
+            'Arquitetura nativa ultra leve com Tauri v2 e Rust',
+            'Frontend moderno e reativo com SvelteKit 5 e TailwindCSS',
+            'Suporte multiplataforma completo (Windows, Linux, macOS e Android)',
+            'Gerenciador de instâncias e versões de Minecraft (Vanilla, Fabric, Forge, NeoForge, Quilt)',
+            'Integração nativa com APIs do Modrinth e CurseForge para mods e shaders',
+            'Suporte a contas Microsoft OAuth2 e autenticação offline',
+            'Sincronização automática e conexão com servidores TropicaliaCraft'
         ],
-        background: '#F5F5F0',
+        background: '#FFF2EB',
         link: 'https://tropicaliacraft.online/',
-        githubUrl: 'https://github.com/gusdslara/ng-tropicaliacraft-landing-page',
-        additionalImages: []
-    },
-    {
-        id: 2,
-        name: 'svelte-threejs-tech-store',
-        category: 'software',
-        image: '/assets/img/apps/techstore.webp',
-        caption: 'Landing Page em SvelteKit e TailwindCSS + Animações com GSAP e Three.js',
-        description:
-            'Loja virtual tecnológica e interativa desenvolvida com SvelteKit. Combina a fluidez do TailwindCSS com animações complexas controladas pelo GSAP e visualizações 3D imersivas renderizadas via Three.js.',
-        technologies: ['Svelte', 'TailwindCSS', 'ThreeJS', 'Vite'],
-        features: [
-            'Visualização de produtos em 3D interativo',
-            'Animações suaves baseadas em scroll (GSAP ScrollTrigger)',
-            'Arquitetura SvelteKit com transições rápidas',
-            'Layout moderno e responsivo'
-        ],
-        background: '#FFF0E0',
-        link: 'https://techstore.gustavolara.pro/',
-        githubUrl: 'https://github.com/gusdslara/svelte-threejs-tech-store',
-        additionalImages: []
+        githubUrl: 'https://github.com/gusdslara/tropicaliacraft-launcher',
+        additionalImages: [
+            '/assets/img/apps/tropicalia-launcher-app.webp',
+            '/assets/img/apps/tropicalia-launcher-app-2.webp'
+        ]
     },
     {
         id: 3,
@@ -290,6 +277,28 @@ export const tabs: Tab[] = [
 
 export const moreProjects: ProjectData[] = [
     {
+        id: 'm0',
+        name: 'TropicaliaCraft Landing Page',
+        category: 'software',
+        categories: ['software'],
+        image: '/assets/img/apps/tropicalia-landing-1.webp',
+        additionalImages: [
+            '/assets/img/apps/tropicalia-landing-1.webp',
+            '/assets/img/apps/tropicalia-landing-2.webp'
+        ],
+        color: '#F5F5F0',
+        description: 'Landing Page em Angular (SSG) Zoneless + Go/Fiber',
+        technologies: ['Angular', 'Go', 'TailwindCSS'],
+        features: [
+            'Hidratação Zoneless para máxima performance',
+            'Server-Side Generation (SSG)',
+            'Integração com API RESTful em Go',
+            'Design responsivo e acessível'
+        ],
+        githubUrl: 'https://github.com/gusdslara/ng-tropicaliacraft-landing-page',
+        link: 'https://tropicaliacraft.online/'
+    },
+    {
         id: 'm1',
         name: 'Pantheon Launcher',
         category: 'software',
@@ -385,36 +394,6 @@ export const moreProjects: ProjectData[] = [
         modelPath: '/assets/3dmodels/asus_rog_geforce_rtx_4090_v2.0.glb'
     },
     {
-        id: '3d-3',
-        name: 'Bird Orange',
-        category: '3d',
-        image: '/assets/3dmodels/bird_orange.png',
-        color: '#FFF0E0',
-        description: 'Modelo estilizado de pássaro laranja com texturização artística',
-        technologies: ['Blender', 'ThreeJS'],
-        modelPath: '/assets/3dmodels/bird_orange.glb'
-    },
-    {
-        id: '3d-4',
-        name: 'Destiny 2 Character Bust',
-        category: '3d',
-        image: '/assets/3dmodels/destiny_2_character_bust.png',
-        color: '#EBE4FF',
-        description: 'Busto de personagem inspirado no universo Destiny 2 com detalhes de armadura',
-        technologies: ['Blender', 'ThreeJS'],
-        modelPath: '/assets/3dmodels/destiny_2_character_bust.glb'
-    },
-    {
-        id: '3d-5',
-        name: 'iPhone 17 Pro Max',
-        category: '3d',
-        image: '/assets/3dmodels/iphone_17_pro_max.png',
-        color: '#E8EBF0',
-        description: 'Conceito 3D do iPhone 17 Pro Max com materiais metálicos e vidro realistas',
-        technologies: ['Blender', 'ThreeJS'],
-        modelPath: '/assets/3dmodels/iphone_17_pro_max.glb'
-    },
-    {
         id: '3d-6',
         name: 'MacBook Pro M3 16"',
         category: '3d',
@@ -425,16 +404,6 @@ export const moreProjects: ProjectData[] = [
         modelPath: '/assets/3dmodels/macbook_pro_m3_16_inch_2024.glb'
     },
     {
-        id: '3d-7',
-        name: 'Medieval Fantasy Book',
-        category: '3d',
-        image: '/assets/3dmodels/medieval_fantasy_book.png',
-        color: '#F5F5F0',
-        description: 'Livro de fantasia medieval com texturização detalhada de couro e páginas envelhecidas',
-        technologies: ['Blender', 'ThreeJS'],
-        modelPath: '/assets/3dmodels/medieval_fantasy_book.glb'
-    },
-    {
         id: '3d-8',
         name: 'Meta Quest 3',
         category: '3d',
@@ -443,26 +412,6 @@ export const moreProjects: ProjectData[] = [
         description: 'Headset de realidade mista Meta Quest 3 com controladores e detalhes de engenharia',
         technologies: ['Blender', 'ThreeJS'],
         modelPath: '/assets/3dmodels/meta_quest_3.glb'
-    },
-    {
-        id: '3d-9',
-        name: 'Samsung Galaxy S25 Ultra',
-        category: '3d',
-        image: '/assets/3dmodels/s_amsung_galaxy_s25_ultra_galaxy.png',
-        color: '#E8EBF0',
-        description: 'Modelo 3D do Samsung Galaxy S25 Ultra com câmeras e acabamentos premium',
-        technologies: ['Blender', 'ThreeJS'],
-        modelPath: '/assets/3dmodels/s_amsung_galaxy_s25_ultra_galaxy.glb'
-    },
-    {
-        id: '3d-10',
-        name: 'Steam Deck',
-        category: '3d',
-        image: '/assets/3dmodels/steam_deck_console.png',
-        color: '#E8EBF0',
-        description: 'Console portátil Steam Deck com botões, thumbsticks e tela detalhados',
-        technologies: ['Blender', 'ThreeJS'],
-        modelPath: '/assets/3dmodels/steam_deck_console.glb'
     },
     {
         id: 'game-1',

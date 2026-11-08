@@ -30,14 +30,6 @@ export const techUsage: Record<string, TechUsage[]> = {
 				'Hybrid education management app with Ionic and Cordova.',
 				'App híbrida de gestión educativa con Ionic y Cordova.'
 			)
-		},
-		{
-			project: 'Tech Store',
-			how: l(
-				'Animações de scroll com GSAP e cenas 3D com Three.js.',
-				'Scroll animations with GSAP and 3D scenes with Three.js.',
-				'Animaciones de scroll con GSAP y escenas 3D con Three.js.'
-			)
 		}
 	],
 	TypeScript: [
@@ -289,14 +281,6 @@ export const techUsage: Record<string, TechUsage[]> = {
 				'Interface da PWA de automação de cultivo.',
 				'UI of the grow-automation PWA.',
 				'Interfaz de la PWA de automatización de cultivo.'
-			)
-		},
-		{
-			project: 'Tech Store',
-			how: l(
-				'Layout da loja 3D em SvelteKit.',
-				'Layout of the SvelteKit 3D store.',
-				'Layout de la tienda 3D en SvelteKit.'
 			)
 		},
 		{

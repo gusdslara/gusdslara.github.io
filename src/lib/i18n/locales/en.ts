@@ -144,25 +144,17 @@ export const en = {
             ]
         },
         '1_my': {
-            name: 'ng-tropicaliacraft-landingpage',
-            caption: 'Landing Page for TropicaliaCraft in Angular (SSG) with zoneless hydration + Go/Fiber Services',
-            description: 'High performance landing page built with modern Angular using zoneless hydration and Server-Side Generation (SSG). Includes backend integration in Go using Fiber to manage Minecraft server dynamic data.',
+            name: 'Tropicalia Launcher',
+            caption: 'Cross-Platform (Desktop & Mobile) Minecraft Launcher in Tauri v2, Rust & SvelteKit 5',
+            description: 'Official launcher for the TropicaliaCraft ecosystem built for Windows, Linux, macOS, and Android. Features a hybrid graphics engine, Microsoft OAuth2 authentication, intelligent instance manager, accelerated mod downloads via Modrinth/CurseForge, and automated profile sync with hybrid servers.',
             features: [
-                'Zoneless hydration for maximum performance',
-                'Server-Side Generation (SSG)',
-                'RESTful API integration in Go',
-                'Responsive and accessible design'
-            ]
-        },
-        '2_my': {
-            name: 'svelte-threejs-tech-store',
-            caption: 'Landing Page in SvelteKit and TailwindCSS + GSAP and Three.js Animations',
-            description: 'Technological and interactive virtual store developed with SvelteKit. Combines TailwindCSS fluidity with complex animations driven by GSAP and immersive 3D visualizations rendered via Three.js.',
-            features: [
-                'Interactive 3D product visualization',
-                'Smooth scroll-based animations (GSAP ScrollTrigger)',
-                'SvelteKit architecture with fast transitions',
-                'Modern and responsive layout'
+                'Ultra-lightweight native architecture with Tauri v2 and Rust',
+                'Modern reactive UI powered by SvelteKit 5 and TailwindCSS',
+                'Complete cross-platform support (Windows, Linux, macOS, and Android)',
+                'Instance & version manager for Minecraft (Vanilla, Fabric, Forge, NeoForge, Quilt)',
+                'Direct Modrinth & CurseForge API integration for mods and shaders',
+                'Microsoft OAuth2 accounts and offline mode support',
+                'Automatic server synchronization and direct one-click connection'
             ]
         },
         '3_my': {
@@ -209,6 +201,16 @@ export const en = {
         'hardware': 'Hardware',
         '3d': '3D Modeling',
         'games': 'Games',
+        'm0': {
+            name: 'TropicaliaCraft Landing Page',
+            description: 'Angular (SSG) Zoneless Landing Page + Go/Fiber',
+            features: [
+                'Zoneless hydration for maximum performance',
+                'Server-Side Generation (SSG)',
+                'RESTful API integration in Go',
+                'Responsive and accessible design'
+            ]
+        },
         'm1': { description: 'Svelte Landing Page' },
         'm2': { description: 'Web Interface for local AI' },
         'm3': { description: 'Local media streaming' },
@@ -224,37 +226,13 @@ export const en = {
             name: 'ASUS ROG RTX 4090',
             description: 'Modeling of the ASUS ROG GeForce RTX 4090 graphics card with hardware details'
         },
-        '3d-3': {
-            name: 'Bird Orange',
-            description: 'Stylized orange bird model with artistic texturing'
-        },
-        '3d-4': {
-            name: 'Destiny 2 Character Bust',
-            description: 'Character bust inspired by the Destiny 2 universe with armor details'
-        },
-        '3d-5': {
-            name: 'iPhone 17 Pro Max',
-            description: '3D concept of the iPhone 17 Pro Max with realistic metal and glass materials'
-        },
         '3d-6': {
             name: 'MacBook Pro M3 16"',
             description: 'Faithful model of the 2024 MacBook Pro M3 16-inch with detailed screen and keyboard'
         },
-        '3d-7': {
-            name: 'Medieval Fantasy Book',
-            description: 'Medieval fantasy book with detailed leather texturing and aged pages'
-        },
         '3d-8': {
             name: 'Meta Quest 3',
             description: 'Meta Quest 3 mixed reality headset with controllers and engineering details'
-        },
-        '3d-9': {
-            name: 'Samsung Galaxy S25 Ultra',
-            description: '3D model of the Samsung Galaxy S25 Ultra with cameras and premium finishes'
-        },
-        '3d-10': {
-            name: 'Steam Deck',
-            description: 'Steam Deck portable console with detailed buttons, thumbsticks, and screen'
         },
         'game-1': {
             name: 'Crash Team Racing Native (Wear OS)',
