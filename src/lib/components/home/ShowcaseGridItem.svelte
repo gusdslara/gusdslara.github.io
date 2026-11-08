@@ -61,7 +61,32 @@
 				{/if}
 
 				<div class="flex flex-col items-center justify-center w-full mt-2 md:mt-0 z-10">
-					{#if logo.isWearOS}
+					{#if logo.additionalImages && logo.additionalImages.length >= 2}
+						<div class="relative w-full h-14 md:h-16 flex items-center justify-center pointer-events-none">
+							<div
+								class="absolute w-[62%] max-w-[130px] aspect-[16/10] rounded-md overflow-hidden border border-white/80 shadow-md bg-white transition-transform duration-500 group-hover:scale-105 translate-x-3.5 sm:translate-x-4 translate-y-1.5 rotate-[6deg] group-hover:translate-y-2 group-hover:rotate-[8deg] z-10"
+							>
+								<img
+									src={logo.additionalImages[1]}
+									alt="{logo.name} 2"
+									loading="lazy"
+									decoding="async"
+									class="w-full h-full object-cover"
+								/>
+							</div>
+							<div
+								class="absolute w-[64%] max-w-[135px] aspect-[16/10] rounded-md overflow-hidden border border-white/90 shadow-lg bg-white transition-transform duration-500 group-hover:scale-105 -translate-x-3.5 sm:-translate-x-4 -translate-y-1 rotate-[-6deg] group-hover:-translate-y-1.5 group-hover:rotate-[-8deg] z-20"
+							>
+								<img
+									src={logo.additionalImages[0]}
+									alt="{logo.name} 1"
+									loading="lazy"
+									decoding="async"
+									class="w-full h-full object-cover"
+								/>
+							</div>
+						</div>
+					{:else if logo.isWearOS}
 						<div class="w-14 h-14 md:w-16 md:h-16 rounded-full overflow-hidden border-2 border-white/80 shadow-md bg-neutral-900 transition-transform duration-300 group-hover:scale-105">
 							<img
 								src={logo.image}

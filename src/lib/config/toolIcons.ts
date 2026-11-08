@@ -45,7 +45,9 @@ export const toolIcons: Record<string, string> = {
   'Wear OS': '/assets/img/tools/android.png',
   WearOS: '/assets/img/tools/android.png',
   SDL: '/assets/img/tools/c++.png',
-  OpenGL: '/assets/img/tools/android.png'
+  OpenGL: '/assets/img/tools/android.png',
+  Tauri: '/assets/img/tools/tauri.png',
+  Rust: '/assets/img/tools/rust.png'
 };
 
 export function getToolIcon(tool: string): string | undefined {
