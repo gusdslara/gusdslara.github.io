@@ -79,7 +79,7 @@ export const pt = {
             role: 'Meu Papel',
             about: 'Sobre o Projeto',
             tech: 'Tecnologias',
-            features: 'Sobre o Projeto',
+            features: 'Destaques & Recursos Implementados',
             architecture: 'Arquitetura de Software',
             gallery: 'Galeria do Projeto',
             viewProject: 'Ver Projeto',

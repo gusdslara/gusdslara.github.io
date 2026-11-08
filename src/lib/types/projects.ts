@@ -6,6 +6,8 @@ export interface ClientApp {
     description: string;
     role: string;
     year: string;
+    myRole?: string;
+    about?: string;
     technologies: string[];
     features: string[];
     stackImages: string[];
@@ -26,6 +28,10 @@ export interface MyApp {
     image: string;
     caption: string;
     description: string;
+    role?: string;
+    year?: string;
+    myRole?: string;
+    about?: string;
     technologies: string[];
     features: string[];
     background: string;
@@ -58,6 +64,10 @@ export interface ProjectData {
     image: string;
     color: string;
     description: string;
+    role?: string;
+    year?: string;
+    myRole?: string;
+    about?: string;
     technologies: string[];
     features?: string[];
     githubUrl?: string;
