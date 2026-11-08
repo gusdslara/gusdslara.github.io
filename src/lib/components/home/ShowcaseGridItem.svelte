@@ -61,13 +61,25 @@
 				{/if}
 
 				<div class="flex flex-col items-center justify-center w-full mt-2 md:mt-0 z-10">
-					<img
-						src={logo.image}
-						alt={logo.name}
-						loading="lazy"
-						decoding="async"
-						class="max-w-full h-10 md:h-12 object-contain transition-transform duration-300 group-hover:scale-90"
-					/>
+					{#if logo.isWearOS}
+						<div class="w-14 h-14 md:w-16 md:h-16 rounded-full overflow-hidden border-2 border-white/80 shadow-md bg-neutral-900 transition-transform duration-300 group-hover:scale-105">
+							<img
+								src={logo.image}
+								alt={logo.name}
+								loading="lazy"
+								decoding="async"
+								class="w-full h-full object-cover"
+							/>
+						</div>
+					{:else}
+						<img
+							src={logo.image}
+							alt={logo.name}
+							loading="lazy"
+							decoding="async"
+							class="max-w-full h-10 md:h-12 object-contain transition-transform duration-300 group-hover:scale-90"
+						/>
+					{/if}
 					<span class="text-black font-semibold text-xs mt-3 text-center px-2">{logo.name}</span>
 
 					{#if logo.technologies}

@@ -4,6 +4,7 @@
 	import { toolIcons, getToolIcon } from '$lib/config/toolIcons';
 	import CustomSelect from './CustomSelect.svelte';
 	import WearOSCarousel from './WearOSCarousel.svelte';
+	import ImageModal from './ImageModal.svelte';
 
 	export let isOpen = false;
 	export let project: {
@@ -42,6 +43,19 @@
 
 	$: if (isOpen && !closing) {
 		visible = true;
+	}
+
+	// Image modal state for zoom / full view
+	let isImageModalOpen = false;
+	let zoomImageSrc = '';
+	let zoomImageAlt = '';
+	let zoomImages: string[] = [];
+
+	function openImageZoom(src: string, alt: string, imagesList: string[] = []) {
+		zoomImageSrc = src;
+		zoomImageAlt = alt;
+		zoomImages = imagesList.length > 0 ? imagesList : [src];
+		isImageModalOpen = true;
 	}
 
 	// Reset carousel slide when project changes
@@ -295,11 +309,13 @@
 
 				<!-- CAROUSEL / MEDIA SECTION -->
 				{#if project.isWearOS || (project.wearosImages && project.wearosImages.length > 0)}
+					{@const watchImgs = project.wearosImages && project.wearosImages.length > 0 ? project.wearosImages : [project.image]}
 					<div class="mb-6 sm:mb-8 flex flex-col gap-3">
 						<WearOSCarousel
-							images={project.wearosImages && project.wearosImages.length > 0 ? project.wearosImages : [project.image]}
+							images={watchImgs}
 							name={project.name}
 							maxVisible={5}
+							onImageClick={(src) => openImageZoom(src, project.name, watchImgs)}
 						/>
 
 						{#if project.additionalImages && project.additionalImages.length > 0}
@@ -312,14 +328,18 @@
 								</h5>
 								<div class="flex items-center gap-2.5 overflow-x-auto py-1 px-1 no-scrollbar">
 									{#each project.additionalImages as addImg, idx}
-										<div class="relative flex-shrink-0 w-28 h-18 sm:w-36 sm:h-24 rounded-xl overflow-hidden border-2 border-gray-200 bg-gray-100 shadow-sm transition-all hover:scale-105 hover:border-[#dd206b]">
+										<button
+											type="button"
+											class="relative flex-shrink-0 w-28 h-18 sm:w-36 sm:h-24 rounded-xl overflow-hidden border-2 border-gray-200 bg-gray-100 shadow-sm transition-all hover:scale-105 hover:border-[#dd206b] cursor-pointer focus:outline-none"
+											on:click={() => openImageZoom(addImg, `${project.name} menu ${idx + 1}`, project.additionalImages)}
+										>
 											<img
 												src={addImg}
 												alt="{project.name} menu {idx + 1}"
 												class="w-full h-full object-contain"
 												loading="lazy"
 											/>
-										</div>
+										</button>
 									{/each}
 								</div>
 							</div>
@@ -452,9 +472,9 @@
 					<h4 class="text-base sm:text-lg font-bold text-gray-900 mb-2 sm:mb-3">
 						{$t('common.modal.role')}
 					</h4>
-					<p class="text-sm sm:text-base text-gray-700 leading-relaxed font-normal">
-						{project.description}
-					</p>
+					<div class="text-sm sm:text-base text-gray-700 leading-relaxed font-normal">
+						{@html project.description}
+					</div>
 				</div>
 
 				<!-- Technologies Section -->
@@ -484,7 +504,7 @@
 				{/if}
 
 				<!-- About Project / Topics Section (Sobre o Projeto) -->
-				{#if project.features && project.features.length > 0}
+				{#if project.features && Array.isArray(project.features) && project.features.length > 0}
 					<div class="mb-6 sm:mb-8">
 						<h4 class="text-base sm:text-lg font-bold text-gray-900 mb-2 sm:mb-3">
 							{$t('common.modal.features')}
@@ -624,6 +644,13 @@
 		{/if}
 	</div>
 {/if}
+
+<ImageModal
+	bind:isOpen={isImageModalOpen}
+	imageSrc={zoomImageSrc}
+	altText={zoomImageAlt}
+	images={zoomImages}
+/>
 
 <style>
 	.no-scrollbar::-webkit-scrollbar {

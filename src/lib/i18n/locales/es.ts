@@ -167,7 +167,7 @@ export const es = {
         '3_my': {
             name: 'Crash Team Racing Native (Wear OS)',
             caption: 'Port nativo de Crash Team Racing (PS1) en C/SDL3 a 60 FPS en el smartwatch',
-            description: 'Port nativo de alto rendimiento basado en la descompilación de Crash Team Racing (PS1, 1999) utilizando C, SDL3 y OpenGL ES optimizado para smartwatches Wear OS y pantallas circulares de 432x432 (Galaxy Watch / One UI Watch). Incluye aceleración gráfica por hardware, audio estéreo, controles clásicos de PlayStation y soporte APK.',
+            description: 'Port nativo de alto rendimiento para smartwatches Wear OS (Galaxy Watch / One UI Watch), basado en proyectos open-source de ingeniería inversa y ports para Android (como <a href="https://github.com/Simon358/ctr-native-android" target="_blank" rel="noopener noreferrer" class="text-emerald-600 underline font-medium hover:text-emerald-500">ctr-native-android</a> y <a href="https://github.com/CTR-ModSDK/CTR-ModSDK" target="_blank" rel="noopener noreferrer" class="text-emerald-600 underline font-medium hover:text-emerald-500">CTR-ModSDK</a>). Desarrollado en C con aceleración SDL3 y OpenGL ES a 60 FPS, adaptado para pantallas circulares de 432x432 px con controles PlayStation en arco y D-pad central.',
             features: [
                 'Aceleración gráfica nativa por hardware con OpenGL ES a 60 FPS fluidos',
                 'Interfaz y HUD adaptados para pantalla circular de 432x432 (One UI Watch)',
@@ -180,7 +180,7 @@ export const es = {
         '4_my': {
             name: 'Super Mario World (Wear OS)',
             caption: 'Port nativo de Super Mario World adaptado a pantallas circulares Wear OS',
-            description: 'Adaptación nativa del clásico Super Mario World compilado nativamente para la arquitectura Wear OS. Ofrece controles táctiles circulares transparentes, renderizado circular nítido y respuesta inmediata.',
+            description: 'Adaptación nativa para smartwatches Wear OS basada en la descompilación de Super Mario World y en el proyecto open-source <a href="https://github.com/freyta/smw-android" target="_blank" rel="noopener noreferrer" class="text-emerald-600 underline font-medium hover:text-emerald-500">smw-android</a>. Compilado nativamente en C y SDL con overlay de controles táctiles circulares traslúcidos de alto contraste, viñeta radial y sin ghost taps.',
             features: [
                 'Renderizado preciso preservando físicas y tiempos originales',
                 'Overlay táctil estandarizado: Arriba (L, SELECT, R), Izquierda (B), Derecha (A) y Abajo (START)',
@@ -193,10 +193,10 @@ export const es = {
         '5_my': {
             name: 'Pokémon FireRed (Wear OS)',
             caption: 'Port & Recompilación de Pokémon FireRed optimizado para smartwatch circular',
-            description: 'Ejecución optimizada de Pokémon FireRed adaptada a smartwatches Wear OS. Navegación fluida en diálogos y batallas en pantallas redondas, soporte para bisel giratorio / corona física y guardados persistentes.',
+            description: 'Port y recompilación de Pokémon FireRed para relojes Wear OS impulsado por el motor open-source <a href="https://github.com/bryanthaboi/gen1recomp" target="_blank" rel="noopener noreferrer" class="text-emerald-600 underline font-medium hover:text-emerald-500">gen1recomp</a> (LÖVE2D/Lua). Estandarizado con la misma interfaz y paleta de alto contraste que SMW, optimizado para diálogos redondos y control con corona digital.',
             features: [
-                'Interfaz estandarizada idéntica a SMW: Arriba (L, SELECT, R), Izquierda (B), Derecha (A) y Abajo (START)',
-                'Gesto direccional y botón B desacoplados sin conflictos de entrada',
+                'Interfaz estandarizada idéntica a SMW: Arriba (L, SELECT, R), Izquierda (B), Derecha (A) e Abajo (START)',
+                'Gesto direcional y botón B desacoplados sin conflictos de entrada',
                 'Tipografía e interfaz ajustadas para lectura ergonómica en el reloj',
                 'Comandos ágiles de batalla mediante gestos en pantalla',
                 'Navegación mediante la corona física / bisel digital',
@@ -255,8 +255,42 @@ export const es = {
             name: 'Steam Deck',
             description: 'La portatil por computadora. Fiel réplica de la computadora portátil en todos los botones'
         },
-        'game-1': { description: 'Juego endless runner cibernético' },
-        'game-2': { description: 'Exploración espacial en un juego estilo plataformas' }
+        'game-1': {
+            name: 'Crash Team Racing Native (Wear OS)',
+            description: 'Port nativo de CTR (PS1) para Smartwatches Wear OS a 60 FPS',
+            features: [
+                'Aceleración gráfica nativa por hardware con OpenGL ES a 60 FPS fluidos',
+                'Interfaz y HUD adaptados para pantalla circular de 432x432 (One UI Watch)',
+                'Controles clásicos de PlayStation (△, ✕, □, ○, L1/R1, L2/R2) y D-Pad en arco ergonómico',
+                'Banda sonora y efectos originales sintetizados en tiempo real mediante SDL3',
+                'Sistema de guardado y progreso preservado en el almacenamiento del reloj',
+                'Instalación directa mediante APK compatible con Android Wear OS'
+            ]
+        },
+        'game-2': {
+            name: 'Super Mario World (Wear OS)',
+            description: 'Super Mario World adaptado nativamente para pantallas circulares Wear OS',
+            features: [
+                'Renderizado preciso preservando físicas y tiempos originales',
+                'Overlay táctil estandarizado: Arriba (L, SELECT, R), Izquierda (B), Derecha (A) y Abajo (START)',
+                'Corrección de Ghost Tap: D-Pad virtual y botón B desacoplados para evitar toques involuntarios al caminar',
+                'Soporte completo para el mapa del mundo (Yoshi Island) e niveles',
+                'Bajo consumo de batería y excelente rendimiento',
+                'Paquete APK instalable en relojes Wear OS'
+            ]
+        },
+        'game-3': {
+            name: 'Pokémon FireRed (Wear OS)',
+            description: 'Port & Recompilación de Pokémon FireRed para Wear OS',
+            features: [
+                'Interfaz estandarizada idéntica a SMW: Arriba (L, SELECT, R), Izquierda (B), Derecha (A) e Abajo (START)',
+                'Gesto direccional y botón B desacoplados sin conflictos de entrada',
+                'Tipografía e interfaz ajustadas para lectura ergonómica en el reloj',
+                'Comandos ágiles de batalla mediante gestos en pantalla',
+                'Navegación mediante la corona física / bisel digital',
+                'Audio y efectos de sonido sincronizados'
+            ]
+        }
     },
     jobs: {
         '1': {

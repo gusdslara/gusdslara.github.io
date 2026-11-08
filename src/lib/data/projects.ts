@@ -171,10 +171,10 @@ export const myApps: MyApp[] = [
         category: ['games', 'software'],
         categories: ['games', 'software'],
         isWearOS: true,
-        image: '/assets/img/apps/wearos/ctr-round-controls.png',
+        image: '/assets/img/apps/wearos/ctr-round-cove.png',
         caption: 'Port nativo de Crash Team Racing (PS1) em C/SDL3 rodando a 60 FPS no pulso',
         description:
-            'Port nativo de alto desempenho baseado na descompilação de Crash Team Racing (PS1, 1999) utilizando C, SDL3 e OpenGL ES otimizado especialmente para smartwatches Wear OS e telas circulares de 432x432 (Galaxy Watch / One UI Watch). Inclui aceleração gráfica por hardware, áudio estéreo, mapeamento de toques PlayStation ergonômicos e suporte completo a APK.',
+            'Port nativo de alto desempenho para smartwatches Wear OS (Galaxy Watch / One UI Watch), baseado no projeto open-source de engenharia reversa e port mobile de CTR (como <a href="https://github.com/Simon358/ctr-native-android" target="_blank" rel="noopener noreferrer" class="text-emerald-600 underline font-medium hover:text-emerald-500">ctr-native-android</a> e <a href="https://github.com/CTR-ModSDK/CTR-ModSDK" target="_blank" rel="noopener noreferrer" class="text-emerald-600 underline font-medium hover:text-emerald-500">CTR-ModSDK</a>). Desenvolvido em C com aceleração SDL3 e OpenGL ES 60 FPS, adaptado especificamente para telas circulares de 432x432 px com controles PlayStation em arco e D-pad central.',
         technologies: ['C', 'SDL', 'Android', 'Wear OS', 'OpenGL'],
         features: [
             'Aceleração gráfica nativa via hardware com OpenGL ES a 60 FPS fluidos',
@@ -206,10 +206,10 @@ export const myApps: MyApp[] = [
         category: ['games', 'software'],
         categories: ['games', 'software'],
         isWearOS: true,
-        image: '/assets/img/apps/wearos/smw-round-controls.png',
+        image: '/assets/img/apps/wearos/smw-round-1.png',
         caption: 'Port nativo de Super Mario World adaptado para relógios Wear OS',
         description:
-            'Adaptação nativa do clássico Super Mario World compilado nativamente para a arquitetura Wear OS. Apresenta controles de toque circulares transparentes integrados, renderização circular perfeita e taxa de atualização instantânea.',
+            'Adaptação nativa para smartwatches Wear OS baseada na descompilação de Super Mario World e no projeto open-source <a href="https://github.com/freyta/smw-android" target="_blank" rel="noopener noreferrer" class="text-emerald-600 underline font-medium hover:text-emerald-500">smw-android</a>. Compilado nativamente em C e SDL com overlay de controles táteis circulares translúcidos de alto contraste, vinheta radial e gameplay com zero ghost taps.',
         technologies: ['C', 'Android', 'Wear OS', 'SDL'],
         features: [
             'Renderização precisa preservando física e timing original',
@@ -236,10 +236,10 @@ export const myApps: MyApp[] = [
         category: ['games', 'software'],
         categories: ['games', 'software'],
         isWearOS: true,
-        image: '/assets/img/apps/wearos/pkmn-round-controls.png',
+        image: '/assets/img/apps/wearos/pkmn-round-battle-charmander.png',
         caption: 'Port & Recompilação de Pokémon FireRed otimizado para display circular',
         description:
-            'Execução estendida de Pokémon FireRed adaptada para relógios Wear OS. Navegação otimizada para diálogos e menus de batalha em telas circulares, suporte a rotação por aro/coroa do smartwatch e saves persistentes.',
+            'Port e recompilação estendida de Pokémon FireRed para relógios Wear OS baseada na engine open-source <a href="https://github.com/bryanthaboi/gen1recomp" target="_blank" rel="noopener noreferrer" class="text-emerald-600 underline font-medium hover:text-emerald-500">gen1recomp</a> (LÖVE2D/Lua). Padronizada rigorosamente com a mesma UI e paleta de alto contraste do SMW, otimizada para diálogos em telas circulares e navegação via aro digital.',
         technologies: ['Lua', 'C', 'Android', 'Wear OS'],
         features: [
             'Padronização de UI idêntica ao SMW: Topo (L, SELECT, R), Esquerda (B), Direita (A) e Base (START)',
@@ -469,7 +469,7 @@ export const moreProjects: ProjectData[] = [
         name: 'Crash Team Racing Native (Wear OS)',
         category: ['games', 'software'],
         categories: ['games', 'software'],
-        image: '/assets/img/apps/wearos/ctr-round-controls.png',
+        image: '/assets/img/apps/wearos/ctr-round-cove.png',
         color: '#FFF2EB',
         description: 'Port nativo de CTR (PS1) para Smartwatches Wear OS a 60 FPS',
         technologies: ['C', 'SDL', 'Android', 'Wear OS'],
@@ -482,6 +482,14 @@ export const moreProjects: ProjectData[] = [
             '/assets/img/apps/wearos/ctr-round-cove.png',
             '/assets/img/apps/wearos/ctr-round-boost.png',
             '/assets/img/apps/wearos/ctr-round-trophy.png'
+        ],
+        features: [
+            'Aceleração gráfica nativa via hardware com OpenGL ES a 60 FPS fluidos',
+            'Interface e HUD adaptados para display circular de 432x432 (One UI Watch)',
+            'Controles clássicos de PlayStation (△, ✕, □, ○, L1/R1, L2/R2) e D-Pad em arco ergonômico',
+            'Áudio e trilha sonora original sintetizada em tempo real via SDL3',
+            'Sistema de Save State e progresso preservado no armazenamento do smartwatch',
+            'Instalação direta via APK compatível com Android Wear OS'
         ]
     },
     {
@@ -489,7 +497,7 @@ export const moreProjects: ProjectData[] = [
         name: 'Super Mario World (Wear OS)',
         category: ['games', 'software'],
         categories: ['games', 'software'],
-        image: '/assets/img/apps/wearos/smw-round-controls.png',
+        image: '/assets/img/apps/wearos/smw-round-1.png',
         color: '#E8F8EE',
         description: 'Super Mario World adaptado nativamente para telas circulares Wear OS',
         technologies: ['C', 'Android', 'Wear OS', 'SDL'],
@@ -502,6 +510,14 @@ export const moreProjects: ProjectData[] = [
             '/assets/img/apps/wearos/smw-round-1.png',
             '/assets/img/apps/wearos/smw-round-map-1.png',
             '/assets/img/apps/wearos/smw-round-3.png'
+        ],
+        features: [
+            'Renderização precisa preservando física e timing original',
+            'Overlay tátil padronizado: Topo (L, SELECT, R), Esquerda (B), Direita (A) e Base (START)',
+            'Correção de Ghost Tap: D-Pad virtual e área do botão B desacoplados para evitar toques involuntários ao andar',
+            'Mapeamento completo do mapa mundi (Yoshi Island) e fases',
+            'Baixo consumo de bateria e alta performance',
+            'Pacote APK instalável diretamente em smartwatches Wear OS'
         ]
     },
     {
@@ -509,7 +525,7 @@ export const moreProjects: ProjectData[] = [
         name: 'Pokémon FireRed (Wear OS)',
         category: ['games', 'software'],
         categories: ['games', 'software'],
-        image: '/assets/img/apps/wearos/pkmn-round-controls.png',
+        image: '/assets/img/apps/wearos/pkmn-round-battle-charmander.png',
         color: '#FFF0F0',
         description: 'Port & Recompilação de Pokémon FireRed para Wear OS',
         technologies: ['Lua', 'C', 'Android', 'Wear OS'],
@@ -520,6 +536,14 @@ export const moreProjects: ProjectData[] = [
             '/assets/img/apps/wearos/pkmn-round-pokecenter.png',
             '/assets/img/apps/wearos/pkmn-round-battle-charmander.png',
             '/assets/img/apps/wearos/pkmn-round-oak-dialog.png'
+        ],
+        features: [
+            'Padronização de UI idêntica ao SMW: Topo (L, SELECT, R), Esquerda (B), Direita (A) e Base (START)',
+            'Gesto direcional e botão B desacoplados sem conflitos ao andar',
+            'Renderização e texto ajustados para leitura ergonômica em smartwatch',
+            'Navegação rápida em batalhas Pokémon por gestos na tela',
+            'Suporte a rotação de menus pela coroa física / aro digital',
+            'Sistema de áudio e efeitos sonoros sincronizados'
         ]
     }
 ];

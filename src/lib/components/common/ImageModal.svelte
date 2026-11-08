@@ -14,6 +14,8 @@
 		currentIndex = foundIndex !== -1 ? foundIndex : 0;
 	}
 
+	$: currentSrc = images.length > 0 ? images[currentIndex] : imageSrc;
+
 	function closeModal() {
 		isOpen = false;
 	}
@@ -54,13 +56,13 @@
 {#if isOpen}
 	
 	<div
-		class="fixed inset-0 bg-black/80 backdrop-blur-md z-[60] flex items-center justify-center p-4"
+		class="fixed inset-0 bg-black/85 backdrop-blur-md z-[100] flex items-center justify-center p-4"
 		on:click={handleBackdropClick}
 		role="presentation"
 		transition:fade={{ duration: 200 }}
 	>
 		<div
-			class="relative max-w-5xl w-full max-h-[90vh] flex items-center justify-center"
+			class="relative max-w-5xl w-full max-h-[92vh] flex flex-col items-center justify-center"
 			transition:scale={{ duration: 300, easing: quintOut, start: 0.9 }}
 			role="dialog"
 			aria-modal="true"
@@ -68,7 +70,7 @@
 		>
 			<button
 				on:click={closeModal}
-				class="absolute -top-12 right-0 text-white/80 hover:text-white transition-colors z-50"
+				class="absolute -top-12 right-0 text-white/80 hover:text-white transition-colors z-50 p-1"
 				aria-label="Close modal"
 			>
 				<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -84,12 +86,12 @@
 			
 			{#if images.length > 1}
 				<button
-					class="absolute left-0 md:-left-16 top-1/2 -translate-y-1/2 p-2 text-white/70 hover:text-white transition-colors z-50 bg-black/20 md:bg-transparent rounded-full"
+					class="absolute left-0 md:-left-16 top-1/2 -translate-y-1/2 p-2.5 text-white/70 hover:text-white transition-colors z-50 bg-black/40 hover:bg-black/60 md:bg-black/30 rounded-full"
 					on:click={prevImage}
 					aria-label="Previous image"
 				>
 					<svg
-						class="w-8 h-8 md:w-10 md:h-10"
+						class="w-7 h-7 md:w-9 md:h-9"
 						fill="none"
 						stroke="currentColor"
 						viewBox="0 0 24 24"
@@ -97,28 +99,36 @@
 						<path
 							stroke-linecap="round"
 							stroke-linejoin="round"
-							stroke-width="2"
+							stroke-width="2.5"
 							d="M15 19l-7-7 7-7"
 						/>
 					</svg>
 				</button>
 			{/if}
 
-			<img
-				src={images.length > 0 ? images[currentIndex] : imageSrc}
-				alt={altText}
-				class="max-w-full max-h-[85vh] rounded-lg shadow-2xl object-contain"
-			/>
+			<div class="relative flex items-center justify-center max-w-full max-h-[85vh]">
+				<img
+					src={currentSrc}
+					alt={altText}
+					class="max-w-[85vw] md:max-w-[70vw] max-h-[78vh] w-auto h-auto rounded-2xl shadow-2xl object-contain {currentSrc && currentSrc.includes('wearos') ? 'rounded-full bg-neutral-900 border-4 border-white/20' : ''}"
+				/>
+			</div>
+
+			{#if images.length > 1}
+				<div class="mt-3 px-3 py-1 bg-black/60 backdrop-blur-sm text-white/90 text-xs font-semibold rounded-full">
+					{currentIndex + 1} / {images.length}
+				</div>
+			{/if}
 
 			
 			{#if images.length > 1}
 				<button
-					class="absolute right-0 md:-right-16 top-1/2 -translate-y-1/2 p-2 text-white/70 hover:text-white transition-colors z-50 bg-black/20 md:bg-transparent rounded-full"
+					class="absolute right-0 md:-right-16 top-1/2 -translate-y-1/2 p-2.5 text-white/70 hover:text-white transition-colors z-50 bg-black/40 hover:bg-black/60 md:bg-black/30 rounded-full"
 					on:click={nextImage}
 					aria-label="Next image"
 				>
 					<svg
-						class="w-8 h-8 md:w-10 md:h-10"
+						class="w-7 h-7 md:w-9 md:h-9"
 						fill="none"
 						stroke="currentColor"
 						viewBox="0 0 24 24"
@@ -126,7 +136,7 @@
 						<path
 							stroke-linecap="round"
 							stroke-linejoin="round"
-							stroke-width="2"
+							stroke-width="2.5"
 							d="M9 5l7 7-7 7"
 						/>
 					</svg>
