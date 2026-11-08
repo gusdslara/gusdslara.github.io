@@ -277,38 +277,21 @@
 						</h3>
 					</div>
 
-					{#if project.role || project.year}
+					{#if project.year}
 						<div class="flex flex-wrap items-center gap-2 text-xs sm:text-sm text-gray-600">
-							{#if project.role}
-								<span
-									class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gray-100 text-gray-800 font-medium border border-gray-200/60"
-								>
-									<svg class="w-3.5 h-3.5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-										<path
-											stroke-linecap="round"
-											stroke-linejoin="round"
-											stroke-width="2"
-											d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-										/>
-									</svg>
-									{project.role}
-								</span>
-							{/if}
-							{#if project.year}
-								<span
-									class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gray-100 text-gray-700 font-medium border border-gray-200/60"
-								>
-									<svg class="w-3.5 h-3.5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-										<path
-											stroke-linecap="round"
-											stroke-linejoin="round"
-											stroke-width="2"
-											d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-										/>
-									</svg>
-									{project.year}
-								</span>
-							{/if}
+							<span
+								class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gray-100 text-gray-700 font-medium border border-gray-200/60"
+							>
+								<svg class="w-3.5 h-3.5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="2"
+										d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+									/>
+								</svg>
+								{project.year}
+							</span>
 						</div>
 					{/if}
 				</div>
@@ -450,40 +433,14 @@
 					</div>
 				{/if}
 
-				<!-- Section 1: Meu Papel & Engenharia (O que desenvolvi e Como fiz) -->
-				{#if project.myRole}
-					<div class="mb-6 sm:mb-8 p-4 sm:p-5 rounded-2xl bg-amber-500/[0.07] border border-amber-500/20 shadow-xs">
-						<div class="flex items-center gap-2 mb-2 sm:mb-3">
-							<div class="w-7 h-7 rounded-lg bg-amber-500/20 text-amber-800 flex items-center justify-center flex-shrink-0">
-								<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-								</svg>
-							</div>
-							<h4 class="text-base sm:text-lg font-bold text-gray-950 m-0">
-								{$t('common.modal.role')} & Engenharia
-							</h4>
-						</div>
-						<div class="text-sm sm:text-base text-gray-800 leading-relaxed font-normal space-y-2.5">
-							{@html project.myRole}
-						</div>
-					</div>
-				{/if}
-
-				<!-- Section 2: Sobre o Projeto (Sinopse e Visão Geral do Jogo / Aplicação) -->
-				{#if (project.about || project.description) && (!project.myRole || project.about || project.description !== project.myRole)}
+				<!-- Section 1: Meu Papel -->
+				{#if project.myRole || project.description}
 					<div class="mb-6 sm:mb-8">
-						<div class="flex items-center gap-2 mb-2 sm:mb-3">
-							<div class="w-7 h-7 rounded-lg bg-gray-100 text-gray-700 flex items-center justify-center flex-shrink-0">
-								<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-								</svg>
-							</div>
-							<h4 class="text-base sm:text-lg font-bold text-gray-900 m-0">
-								{$t('common.modal.about')}
-							</h4>
-						</div>
-						<div class="text-sm sm:text-base text-gray-700 leading-relaxed font-normal">
-							{@html project.about || project.description}
+						<h4 class="text-base sm:text-lg font-bold text-gray-900 mb-2 sm:mb-3">
+							{$t('common.modal.role')}
+						</h4>
+						<div class="text-sm sm:text-base text-gray-700 leading-relaxed font-normal space-y-2.5">
+							{@html project.myRole || project.description}
 						</div>
 					</div>
 				{/if}
@@ -514,11 +471,11 @@
 					</div>
 				{/if}
 
-				<!-- About Project / Topics Section (Sobre o Projeto) -->
+				<!-- Section 2: Sobre o Projeto (Tópicos do Projeto) -->
 				{#if project.features && Array.isArray(project.features) && project.features.length > 0}
 					<div class="mb-6 sm:mb-8">
 						<h4 class="text-base sm:text-lg font-bold text-gray-900 mb-2 sm:mb-3">
-							{$t('common.modal.features')}
+							{$t('common.modal.about')}
 						</h4>
 						<div class="grid grid-cols-1 md:grid-cols-2 gap-3">
 							{#each project.features as feature}
