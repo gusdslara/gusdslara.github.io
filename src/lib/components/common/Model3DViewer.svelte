@@ -59,6 +59,10 @@
 	let safehouseMode: 'auto' | 'open' | 'closed' | 'manual' = 'auto';
 	let safehouseStep = 0;
 
+	// Animation Auto-cycle state (at least 5s of each animation)
+	let animationCycleTimer: ReturnType<typeof setTimeout> | null = null;
+	const ANIMATION_DURATION_MS = 5000;
+
 	// Click feedback toast
 	let feedbackToast = '';
 	let feedbackTimer: ReturnType<typeof setTimeout> | null = null;
@@ -87,6 +91,7 @@
 
 	onDestroy(() => {
 		clearSafehouseCycle();
+		clearAnimationCycle();
 		if (frameId) cancelAnimationFrame(frameId);
 		window.removeEventListener('resize', onWindowResize);
 
@@ -143,9 +148,11 @@
 
 		renderer = new THREE.WebGLRenderer({
 			antialias: false,
+			alpha: true,
 			powerPreference: 'high-performance',
 			preserveDrawingBuffer: true
 		});
+		renderer.setClearColor(0x000000, 0);
 		renderer.shadowMap.enabled = true;
 		renderer.toneMapping = THREE.ACESFilmicToneMapping;
 		renderer.toneMappingExposure = 1.15;
@@ -165,27 +172,27 @@
 		controls.minDistance = 0.5;
 		controls.maxDistance = 100;
 
-		// Balanced lighting for both realistic and voxel/pixel models
-		const ambientLight = new THREE.AmbientLight(0xffffff, 0.9);
+		// Balanced bright lighting for maximum visibility on transparent backgrounds
+		const ambientLight = new THREE.AmbientLight(0xffffff, 1.15);
 		scene.add(ambientLight);
 
-		const dirLight = new THREE.DirectionalLight(0xfff8ee, 1.25);
+		const dirLight = new THREE.DirectionalLight(0xfff8ee, 1.35);
 		dirLight.position.set(8, 14, 10);
 		dirLight.castShadow = true;
 		scene.add(dirLight);
 
-		const fillLight = new THREE.DirectionalLight(0x88aacc, 0.5);
+		const fillLight = new THREE.DirectionalLight(0x99bbdd, 0.7);
 		fillLight.position.set(-8, 5, -8);
 		scene.add(fillLight);
 
-		const rimLight = new THREE.DirectionalLight(0xffffff, 0.35);
+		const rimLight = new THREE.DirectionalLight(0xffffff, 0.45);
 		rimLight.position.set(0, -6, 6);
 		scene.add(rimLight);
 	}
 
 	function updateSceneBackground() {
 		if (!scene) return;
-		scene.background = new THREE.Color(isPixelArt ? 0x141418 : 0xf3f4f6);
+		scene.background = null;
 	}
 
 	function initPixelPipeline() {
@@ -208,6 +215,7 @@
 			},
 			depthTest: false,
 			depthWrite: false,
+			transparent: true,
 			vertexShader: `
 				void main() {
 					gl_Position = vec4(position.xy, 0.0, 1.0);
@@ -248,7 +256,7 @@
 						if (zRef - zMin < max(0.3, zMin * 0.03)) best = o;
 					}
 
-					gl_FragColor = vec4(texelFetch(tColor, best, 0).rgb, 1.0);
+					gl_FragColor = texelFetch(tColor, best, 0);
 				}
 			`
 		});
@@ -320,6 +328,7 @@
 		if (loading && lastLoadedPath === targetPath) return;
 
 		clearSafehouseCycle();
+		clearAnimationCycle();
 
 		if (mixer) {
 			mixer.stopAllAction();
@@ -396,6 +405,9 @@
 						const priorityClips = ['Idle', 'Zombie_Idle', 'Hunter_Crouch_Idle', 'Tank_Idle', 'Boomer_Idle', 'Open_Furniture', 'Inspect_Turntable'];
 						const chosen = currentClips.find((a) => priorityClips.includes(a.name)) || currentClips[0];
 						playAnimation(chosen.name, 0);
+
+						// Start automatic cycling through all animations (at least 5s of each animation)
+						startAnimationCycle(ANIMATION_DURATION_MS);
 					}
 				}
 
@@ -457,6 +469,28 @@
 		isPlayingAnimation = true;
 	}
 
+	function clearAnimationCycle() {
+		if (animationCycleTimer) {
+			clearTimeout(animationCycleTimer);
+			animationCycleTimer = null;
+		}
+	}
+
+	function startAnimationCycle(delay = ANIMATION_DURATION_MS) {
+		clearAnimationCycle();
+		if (!isPlayingAnimation || availableAnimations.length <= 1 || hasRoofObject) return;
+		animationCycleTimer = setTimeout(advanceToNextAnimation, delay);
+	}
+
+	function advanceToNextAnimation() {
+		if (!isPlayingAnimation || availableAnimations.length <= 1 || hasRoofObject) return;
+		const currentIdx = availableAnimations.indexOf(currentAnimationName);
+		const nextIdx = (currentIdx + 1) % availableAnimations.length;
+		const nextName = availableAnimations[nextIdx];
+		playAnimation(nextName, 0.35);
+		startAnimationCycle(ANIMATION_DURATION_MS);
+	}
+
 	function clearSafehouseCycle() {
 		if (safehouseTimer) {
 			clearTimeout(safehouseTimer);
@@ -508,11 +542,11 @@
 
 		switch (safehouseStep) {
 			case 0:
-				// Com teto na casa -> Abrir portas
+				// Com teto na casa -> Abrir portas (mantém pelo menos 5s aberto)
 				playSafehouseAction('Open_Doors', 0.2);
 				showFeedback('🚪 Portas Abertas (Com Teto)');
 				safehouseStep = 1;
-				safehouseTimer = setTimeout(runSafehouseStep, 2200);
+				safehouseTimer = setTimeout(runSafehouseStep, 5000);
 				break;
 
 			case 1:
@@ -528,15 +562,15 @@
 				playSafehouseAction('Roof_Lift_Inspect', 0.3);
 				showFeedback('🏠 Levantando Teto (Visão Interna)');
 				safehouseStep = 3;
-				safehouseTimer = setTimeout(runSafehouseStep, 1900);
+				safehouseTimer = setTimeout(runSafehouseStep, 2000);
 				break;
 
 			case 3:
-				// Sem teto (visão interna) -> Abrir móveis, gavetas, baú e geladeira
+				// Sem teto (visão interna) -> Abrir móveis, gavetas, baú e geladeira (mantém pelo menos 5s aberto)
 				playSafehouseAction('Open_Furniture', 0.2);
 				showFeedback('📦 Móveis e Compartimentos Abertos');
 				safehouseStep = 4;
-				safehouseTimer = setTimeout(runSafehouseStep, 2600);
+				safehouseTimer = setTimeout(runSafehouseStep, 5000);
 				break;
 
 			case 4:
@@ -552,7 +586,7 @@
 				playSafehouseAction('Roof_Restore', 0.3);
 				showFeedback('🏠 Descendo Teto');
 				safehouseStep = 0; // Reinicia o ciclo contínuo sem parar
-				safehouseTimer = setTimeout(runSafehouseStep, 2100);
+				safehouseTimer = setTimeout(runSafehouseStep, 2000);
 				break;
 		}
 	}
@@ -587,6 +621,7 @@
 				playSafehouseAction(select.value);
 			} else {
 				playAnimation(select.value);
+				startAnimationCycle(ANIMATION_DURATION_MS);
 			}
 		}
 	}
@@ -597,12 +632,15 @@
 			currentAction.paused = true;
 			isPlayingAnimation = false;
 			clearSafehouseCycle();
+			clearAnimationCycle();
 			showFeedback('⏸ Pausado');
 		} else {
 			currentAction.paused = false;
 			isPlayingAnimation = true;
 			if (hasRoofObject && safehouseMode === 'auto') {
 				safehouseTimer = setTimeout(runSafehouseStep, 800);
+			} else if (!hasRoofObject) {
+				startAnimationCycle(ANIMATION_DURATION_MS);
 			}
 			showFeedback('▶ Reproduzindo');
 		}
@@ -672,6 +710,7 @@
 			if (actionClip) {
 				playAnimation(actionClip, 0.15);
 				showFeedback('🧟 Ataque Disparado!');
+				startAnimationCycle(ANIMATION_DURATION_MS);
 				return;
 			}
 		} else if (isSurvivor) {
@@ -682,6 +721,7 @@
 			if (actionClip) {
 				playAnimation(actionClip, 0.15);
 				showFeedback('🥊 Golpe Disparado!');
+				startAnimationCycle(ANIMATION_DURATION_MS);
 				return;
 			}
 		} else if (hasRoofObject) {
@@ -697,6 +737,7 @@
 		const nextIdx = (availableAnimations.indexOf(currentAnimationName) + 1) % availableAnimations.length;
 		playAnimation(availableAnimations[nextIdx], 0.2);
 		showFeedback(`▶ ${availableAnimations[nextIdx]}`);
+		startAnimationCycle(ANIMATION_DURATION_MS);
 	}
 
 	function toggleFurniture() {
@@ -728,11 +769,14 @@
 				resolveMat.uniforms.cOrtho.value = 0;
 
 				renderer.setRenderTarget(renderTarget);
+				renderer.clear();
 				renderer.render(scene, camera);
 				renderer.setRenderTarget(null);
+				renderer.clear();
 				renderer.render(quadScene, quadCam);
 			} else {
 				renderer.setRenderTarget(null);
+				renderer.clear();
 				renderer.render(scene, camera);
 			}
 		}
@@ -797,7 +841,7 @@
 </script>
 
 <div
-	class="relative w-full h-[320px] sm:h-[400px] md:h-[480px] rounded-2xl overflow-hidden select-none transition-colors duration-300 {isPixelArt ? 'bg-[#141418]' : 'bg-gray-50'}"
+	class="relative w-full h-[320px] sm:h-[400px] md:h-[480px] rounded-2xl overflow-hidden select-none bg-transparent"
 	bind:this={container}
 	role="region"
 	aria-label="3D Model Viewer"
@@ -805,22 +849,22 @@
 	<!-- Loading Spinner -->
 	{#if loading}
 		<div
-			class="absolute inset-0 flex flex-col items-center justify-center z-30 transition-colors {isPixelArt ? 'bg-[#141418]/90' : 'bg-gray-50/90'}"
+			class="absolute inset-0 flex flex-col items-center justify-center z-30 bg-white/70 backdrop-blur-md transition-colors"
 		>
 			<div
 				class="w-12 h-12 border-4 border-amber-500/20 border-t-amber-500 rounded-full animate-spin mb-4"
 			></div>
-			<p class="font-medium text-sm animate-pulse {isPixelArt ? 'text-amber-400' : 'text-gray-600'}">
+			<p class="font-medium text-sm animate-pulse text-gray-800">
 				{$t('common.model3d.loading')}
 			</p>
 			{#if loadProgress > 0}
-				<div class="w-48 h-2 bg-gray-700/40 rounded-full mt-3 overflow-hidden">
+				<div class="w-48 h-2 bg-gray-300 rounded-full mt-3 overflow-hidden">
 					<div
 						class="h-full bg-amber-500 rounded-full transition-all duration-300"
 						style="width: {loadProgress}%"
 					></div>
 				</div>
-				<p class="text-xs mt-1 text-gray-400 font-mono">{loadProgress}%</p>
+				<p class="text-xs mt-1 text-gray-500 font-mono">{loadProgress}%</p>
 			{/if}
 		</div>
 	{/if}
@@ -828,7 +872,7 @@
 	<!-- Error State -->
 	{#if error}
 		<div
-			class="absolute inset-0 flex flex-col items-center justify-center p-6 text-center z-30 {isPixelArt ? 'bg-[#141418]' : 'bg-gray-50'}"
+			class="absolute inset-0 flex flex-col items-center justify-center p-6 text-center z-30 bg-white/80 backdrop-blur-md"
 		>
 			<svg
 				class="w-12 h-12 text-gray-400 mb-4"
@@ -843,13 +887,13 @@
 					d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
 				/>
 			</svg>
-			<p class="font-medium mb-2 {isPixelArt ? 'text-white' : 'text-gray-700'}">
+			<p class="font-medium mb-2 text-gray-800">
 				{$t('common.model3d.error')}
 			</p>
 			{#if fallbackImage}
 				<img src={fallbackImage} alt="Fallback" class="max-h-32 opacity-60 grayscale mt-4 rounded-lg shadow-sm" />
 			{:else}
-				<p class="text-gray-400 text-sm">{$t('common.model3d.checkPath')}</p>
+				<p class="text-gray-500 text-sm">{$t('common.model3d.checkPath')}</p>
 			{/if}
 		</div>
 	{/if}
@@ -857,19 +901,24 @@
 	<!-- TOP TOOLBAR: Variant Selector & Pixel Art Toggle -->
 	{#if !loading && !error}
 		<div class="absolute top-3 left-3 right-3 z-20 flex flex-wrap items-center justify-between gap-2 pointer-events-none">
-			<!-- Variants bar (interactive) -->
+			<!-- Variants select (interactive) -->
 			{#if modelVariants && modelVariants.length > 1}
-				<div class="flex items-center gap-1.5 p-1 bg-black/60 backdrop-blur-md rounded-xl border border-white/10 shadow-lg pointer-events-auto max-w-[calc(100%-140px)] overflow-x-auto no-scrollbar">
-					{#each modelVariants as v}
-						<button
-							on:click={() => switchVariant(v.path)}
-							class="px-2.5 py-1 text-xs font-medium rounded-lg whitespace-nowrap transition-all duration-200 {activeModelPath === v.path
-								? 'bg-amber-500 text-black font-semibold shadow-sm scale-102'
-								: 'text-gray-300 hover:text-white hover:bg-white/10'}"
-						>
-							{v.label}
-						</button>
-					{/each}
+				<div class="flex items-center gap-1.5 p-1 bg-black/70 backdrop-blur-md rounded-xl border border-white/10 shadow-lg pointer-events-auto">
+					<div class="w-7 h-7 flex items-center justify-center rounded-lg bg-white/10 text-amber-400">
+						<span class="text-xs">
+							{#if modelCategory === 'zombies'}🧟{:else if modelCategory === 'survivors'}🏃{:else if modelCategory === 'safehouse'}🏠{:else}📦{/if}
+						</span>
+					</div>
+					<select
+						value={activeModelPath}
+						on:change={(e) => switchVariant(e.currentTarget.value)}
+						class="bg-transparent text-white text-xs font-semibold py-1 px-2 border-0 outline-none cursor-pointer focus:ring-0 max-w-[170px] sm:max-w-[240px] truncate"
+						title="Selecione o modelo 3D"
+					>
+						{#each modelVariants as v}
+							<option value={v.path} class="bg-gray-900 text-white font-normal">{v.label}</option>
+						{/each}
+					</select>
 				</div>
 			{:else}
 				<div class="bg-black/50 backdrop-blur-md rounded-lg px-2.5 py-1 text-[11px] text-gray-300 font-medium shadow-sm border border-white/10 pointer-events-auto">
