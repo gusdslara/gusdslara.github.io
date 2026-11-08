@@ -63,6 +63,9 @@
 	let animationCycleTimer: ReturnType<typeof setTimeout> | null = null;
 	const ANIMATION_DURATION_MS = 5000;
 
+	// Responsive resize observer
+	let resizeObserver: ResizeObserver | null = null;
+
 	// Click feedback toast
 	let feedbackToast = '';
 	let feedbackTimer: ReturnType<typeof setTimeout> | null = null;
@@ -87,9 +90,19 @@
 		animate();
 
 		window.addEventListener('resize', onWindowResize);
+		if (container && typeof ResizeObserver !== 'undefined') {
+			resizeObserver = new ResizeObserver(() => {
+				updateResolution();
+			});
+			resizeObserver.observe(container);
+		}
 	});
 
 	onDestroy(() => {
+		if (resizeObserver) {
+			resizeObserver.disconnect();
+			resizeObserver = null;
+		}
 		clearSafehouseCycle();
 		clearAnimationCycle();
 		if (frameId) cancelAnimationFrame(frameId);
@@ -171,6 +184,11 @@
 		isAutoRotating = false;
 		controls.minDistance = 0.5;
 		controls.maxDistance = 100;
+		// Smooth touch handling for mobile
+		controls.touches = {
+			ONE: THREE.TOUCH.ROTATE,
+			TWO: THREE.TOUCH.DOLLY_PAN
+		};
 
 		// Balanced bright lighting for maximum visibility on transparent backgrounds
 		const ambientLight = new THREE.AmbientLight(0xffffff, 1.15);
@@ -841,7 +859,7 @@
 </script>
 
 <div
-	class="relative w-full h-[320px] sm:h-[400px] md:h-[480px] rounded-2xl overflow-hidden select-none bg-transparent"
+	class="relative w-full h-[350px] sm:h-[420px] md:h-[480px] rounded-2xl overflow-hidden select-none bg-transparent"
 	bind:this={container}
 	role="region"
 	aria-label="3D Model Viewer"
@@ -900,11 +918,11 @@
 
 	<!-- TOP TOOLBAR: Variant Selector & Pixel Art Toggle -->
 	{#if !loading && !error}
-		<div class="absolute top-3 left-3 right-3 z-20 flex flex-wrap items-center justify-between gap-2 pointer-events-none">
+		<div class="absolute top-2.5 left-2.5 right-2.5 sm:top-3 sm:left-3 sm:right-3 z-20 flex items-center justify-between gap-1.5 sm:gap-2 pointer-events-none">
 			<!-- Variants select (interactive) -->
 			{#if modelVariants && modelVariants.length > 1}
-				<div class="flex items-center gap-1.5 p-1 bg-black/70 backdrop-blur-md rounded-xl border border-white/10 shadow-lg pointer-events-auto">
-					<div class="w-7 h-7 flex items-center justify-center rounded-lg bg-white/10 text-amber-400">
+				<div class="flex items-center gap-1 sm:gap-1.5 p-1 bg-black/75 backdrop-blur-md rounded-xl border border-white/10 shadow-lg pointer-events-auto min-w-0 max-w-[calc(100%-115px)] sm:max-w-none">
+					<div class="w-7 h-7 flex items-center justify-center rounded-lg bg-white/10 text-amber-400 flex-shrink-0">
 						<span class="text-xs">
 							{#if modelCategory === 'zombies'}🧟{:else if modelCategory === 'survivors'}🏃{:else if modelCategory === 'safehouse'}🏠{:else}📦{/if}
 						</span>
@@ -912,7 +930,7 @@
 					<select
 						value={activeModelPath}
 						on:change={(e) => switchVariant(e.currentTarget.value)}
-						class="bg-transparent text-white text-xs font-semibold py-1 px-2 border-0 outline-none cursor-pointer focus:ring-0 max-w-[170px] sm:max-w-[240px] truncate"
+						class="bg-transparent text-white text-xs font-semibold py-1 px-1 sm:px-2 border-0 outline-none cursor-pointer focus:ring-0 max-w-[115px] xs:max-w-[155px] sm:max-w-[220px] truncate"
 						title="Selecione o modelo 3D"
 					>
 						{#each modelVariants as v}
@@ -921,7 +939,7 @@
 					</select>
 				</div>
 			{:else}
-				<div class="bg-black/50 backdrop-blur-md rounded-lg px-2.5 py-1 text-[11px] text-gray-300 font-medium shadow-sm border border-white/10 pointer-events-auto">
+				<div class="bg-black/60 backdrop-blur-md rounded-lg px-2 sm:px-2.5 py-1 text-[11px] text-gray-300 font-medium shadow-sm border border-white/10 pointer-events-auto">
 					{$t('common.model3d.instructions')}
 				</div>
 			{/if}
@@ -929,59 +947,63 @@
 			<!-- Pixel Art Toggle Button -->
 			<button
 				on:click={togglePixelArt}
-				class="pointer-events-auto flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold tracking-wide backdrop-blur-md border shadow-md transition-all active:scale-95 {isPixelArt
+				class="pointer-events-auto flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-semibold tracking-wide backdrop-blur-md border shadow-md transition-all active:scale-95 flex-shrink-0 {isPixelArt
 					? 'bg-amber-500 text-black border-amber-400 ring-2 ring-amber-500/30 shadow-amber-500/20'
-					: 'bg-black/60 text-gray-300 border-white/10 hover:text-white hover:bg-black/80'}"
+					: 'bg-black/75 text-gray-300 border-white/10 hover:text-white hover:bg-black/85'}"
 				title="Alternar filtro de render procedural pixel art (Depth Supersampling)"
 			>
 				<span class="text-sm">{isPixelArt ? '👾' : '✨'}</span>
-				<span>{isPixelArt ? 'Pixel Art: ON' : 'Pixel Art: OFF'}</span>
+				<span class="hidden xs:inline sm:inline">{isPixelArt ? 'Pixel Art: ON' : 'Pixel Art: OFF'}</span>
+				<span class="inline xs:hidden sm:hidden">{isPixelArt ? 'Pixel' : 'Suave'}</span>
 			</button>
 		</div>
 
 		<!-- SECONDARY ACTION BAR: Safehouse Controls (Ciclo / Manter Aberto / Manter Fechado) or Furniture -->
 		{#if hasRoofObject}
-			<div class="absolute top-14 left-3 z-20 flex flex-wrap items-center gap-1.5 pointer-events-auto">
-				<div class="flex items-center gap-1 p-1 bg-black/70 backdrop-blur-md rounded-xl border border-white/10 shadow-lg">
+			<div class="absolute top-12 sm:top-14 left-2.5 sm:left-3 z-20 flex items-center gap-1 pointer-events-auto max-w-[calc(100%-20px)] overflow-x-auto no-scrollbar">
+				<div class="flex items-center gap-0.5 sm:gap-1 p-0.5 sm:p-1 bg-black/75 backdrop-blur-md rounded-xl border border-white/10 shadow-lg">
 					<button
 						on:click={() => setSafehouseMode('auto')}
-						class="px-2.5 py-1 text-xs font-medium rounded-lg transition-all duration-200 flex items-center gap-1.5 {safehouseMode === 'auto'
+						class="px-2 sm:px-2.5 py-1 text-xs font-medium rounded-lg transition-all duration-200 flex items-center gap-1 active:scale-95 {safehouseMode === 'auto'
 							? 'bg-amber-500 text-black font-semibold shadow-sm'
 							: 'text-gray-300 hover:text-white hover:bg-white/10'}"
 						title="Ciclo automático contínuo: abre/fecha portas com teto, levanta o teto, abre os móveis internos e desce o teto"
 					>
 						<span>🔄</span>
-						<span>Ciclo Automático</span>
+						<span class="hidden sm:inline">Ciclo Automático</span>
+						<span class="sm:hidden">Auto</span>
 					</button>
 
 					<button
 						on:click={() => setSafehouseMode('open')}
-						class="px-2.5 py-1 text-xs font-medium rounded-lg transition-all duration-200 flex items-center gap-1.5 {safehouseMode === 'open'
+						class="px-2 sm:px-2.5 py-1 text-xs font-medium rounded-lg transition-all duration-200 flex items-center gap-1 active:scale-95 {safehouseMode === 'open'
 							? 'bg-amber-500 text-black font-semibold shadow-sm'
 							: 'text-gray-300 hover:text-white hover:bg-white/10'}"
 						title="Manter teto levantado e móveis abertos para inspecionar o interior"
 					>
 						<span>🚪</span>
-						<span>Manter Aberto</span>
+						<span class="hidden sm:inline">Manter Aberto</span>
+						<span class="sm:hidden">Aberto</span>
 					</button>
 
 					<button
 						on:click={() => setSafehouseMode('closed')}
-						class="px-2.5 py-1 text-xs font-medium rounded-lg transition-all duration-200 flex items-center gap-1.5 {safehouseMode === 'closed'
+						class="px-2 sm:px-2.5 py-1 text-xs font-medium rounded-lg transition-all duration-200 flex items-center gap-1 active:scale-95 {safehouseMode === 'closed'
 							? 'bg-amber-500 text-black font-semibold shadow-sm'
 							: 'text-gray-300 hover:text-white hover:bg-white/10'}"
 						title="Manter a casa e o teto fechados"
 					>
 						<span>🏠</span>
-						<span>Manter Fechado</span>
+						<span class="hidden sm:inline">Manter Fechado</span>
+						<span class="sm:hidden">Fechado</span>
 					</button>
 				</div>
 			</div>
 		{:else if hasFurnitureAnimations}
-			<div class="absolute top-14 left-3 z-20 flex flex-wrap items-center gap-1.5 pointer-events-auto">
+			<div class="absolute top-12 sm:top-14 left-2.5 sm:left-3 z-20 flex items-center gap-1 pointer-events-auto">
 				<button
 					on:click={toggleFurniture}
-					class="px-2.5 py-1 text-xs font-medium rounded-lg bg-black/60 hover:bg-black/80 backdrop-blur-md text-sky-300 border border-sky-500/30 shadow-md transition-all active:scale-95 flex items-center gap-1"
+					class="px-2.5 py-1 text-xs font-medium rounded-lg bg-black/75 hover:bg-black/90 backdrop-blur-md text-sky-300 border border-sky-500/30 shadow-md transition-all active:scale-95 flex items-center gap-1"
 				>
 					<span>📦</span>
 					<span>{furnOpen ? 'Fechar Móveis' : 'Abrir Móveis'}</span>
@@ -999,14 +1021,15 @@
 		{/if}
 
 		<!-- BOTTOM TOOLBAR: Animation Controls & Viewport Tools -->
-		<div class="absolute bottom-3 left-3 right-3 z-20 flex flex-wrap items-center justify-between gap-2 pointer-events-none">
+		<div class="absolute bottom-2.5 left-2.5 right-2.5 sm:bottom-3 sm:left-3 sm:right-3 z-20 flex items-center justify-between gap-1.5 sm:gap-2 pointer-events-none">
 			<!-- Animation select & play/pause -->
 			{#if availableAnimations.length > 0}
-				<div class="flex items-center gap-1.5 p-1 bg-black/60 backdrop-blur-md rounded-xl border border-white/10 shadow-lg pointer-events-auto">
+				<div class="flex items-center gap-1 sm:gap-1.5 p-1 bg-black/75 backdrop-blur-md rounded-xl border border-white/10 shadow-lg pointer-events-auto min-w-0">
 					<button
 						on:click={togglePlayAnimation}
-						class="w-7 h-7 flex items-center justify-center rounded-lg bg-white/10 hover:bg-white/20 text-white transition-colors"
+						class="w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center rounded-lg bg-white/10 hover:bg-white/20 text-white transition-colors active:scale-95 flex-shrink-0"
 						title={isPlayingAnimation ? 'Pausar Animação' : 'Continuar Animação'}
+						aria-label={isPlayingAnimation ? 'Pausar animação' : 'Continuar animação'}
 					>
 						{#if isPlayingAnimation}
 							<svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
@@ -1023,7 +1046,7 @@
 					<select
 						value={currentAnimationName}
 						on:change={handleAnimationSelect}
-						class="bg-transparent text-white text-xs font-medium py-1 px-2 border-0 outline-none cursor-pointer focus:ring-0 max-w-[130px] sm:max-w-[180px] truncate"
+						class="bg-transparent text-white text-xs font-medium py-1 px-1 sm:px-2 border-0 outline-none cursor-pointer focus:ring-0 max-w-[105px] xs:max-w-[140px] sm:max-w-[180px] truncate"
 						title="Selecione a animação ou clique no modelo"
 					>
 						{#each availableAnimations as anim}
@@ -1031,7 +1054,7 @@
 						{/each}
 					</select>
 
-					<span class="text-[10px] text-gray-400 pr-1 hidden sm:inline" title="Clique no modelo para interagir">
+					<span class="text-[10px] text-gray-400 pr-1 hidden md:inline" title="Clique no modelo para interagir">
 						(clique no modelo)
 					</span>
 				</div>
@@ -1040,11 +1063,13 @@
 			{/if}
 
 			<!-- Standard Camera Actions (Zoom, Auto-Rotate, Reset, Screenshot) -->
-			<div class="flex items-center gap-1.5 pointer-events-auto">
+			<div class="flex items-center gap-1 sm:gap-1.5 pointer-events-auto flex-shrink-0">
+				<!-- Zoom buttons visible on sm+ screens (desktop/tablet) -->
 				<button
 					on:click={zoomIn}
-					class="w-8 h-8 bg-black/60 hover:bg-black/80 backdrop-blur-md text-white rounded-lg flex items-center justify-center shadow-md border border-white/10 transition-colors"
+					class="hidden sm:flex w-8 h-8 bg-black/75 hover:bg-black/90 backdrop-blur-md text-white rounded-lg items-center justify-center shadow-md border border-white/10 transition-colors active:scale-95"
 					title="Zoom In"
+					aria-label="Aproximar zoom"
 				>
 					<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v12m6-6H6" />
@@ -1053,20 +1078,23 @@
 
 				<button
 					on:click={zoomOut}
-					class="w-8 h-8 bg-black/60 hover:bg-black/80 backdrop-blur-md text-white rounded-lg flex items-center justify-center shadow-md border border-white/10 transition-colors"
+					class="hidden sm:flex w-8 h-8 bg-black/75 hover:bg-black/90 backdrop-blur-md text-white rounded-lg items-center justify-center shadow-md border border-white/10 transition-colors active:scale-95"
 					title="Zoom Out"
+					aria-label="Afastar zoom"
 				>
 					<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 12H6" />
 					</svg>
 				</button>
 
+				<!-- Auto-rotate: visible on all screens -->
 				<button
 					on:click={toggleAutoRotate}
-					class="w-8 h-8 bg-black/60 hover:bg-black/80 backdrop-blur-md text-white rounded-lg flex items-center justify-center shadow-md border border-white/10 transition-colors {isAutoRotating ? 'text-amber-400 border-amber-500/40' : ''}"
+					class="w-7 h-7 sm:w-8 sm:h-8 bg-black/75 hover:bg-black/90 backdrop-blur-md text-white rounded-lg flex items-center justify-center shadow-md border border-white/10 transition-colors active:scale-95 {isAutoRotating ? 'text-amber-400 border-amber-500/40 ring-1 ring-amber-500/30' : ''}"
 					title={isAutoRotating ? 'Parar rotação automática' : 'Iniciar rotação automática'}
+					aria-label="Rotação automática"
 				>
-					<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 						{#if isAutoRotating}
 							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 9v6m4-6v6" />
 						{:else}
@@ -1075,12 +1103,14 @@
 					</svg>
 				</button>
 
+				<!-- Reset camera: essential on all screens -->
 				<button
 					on:click={resetCamera}
-					class="w-8 h-8 bg-black/60 hover:bg-black/80 backdrop-blur-md text-white rounded-lg flex items-center justify-center shadow-md border border-white/10 transition-colors"
+					class="w-7 h-7 sm:w-8 sm:h-8 bg-black/75 hover:bg-black/90 backdrop-blur-md text-white rounded-lg flex items-center justify-center shadow-md border border-white/10 transition-colors active:scale-95"
 					title="Resetar Câmera"
+					aria-label="Resetar câmera"
 				>
-					<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 						<path
 							stroke-linecap="round"
 							stroke-linejoin="round"
@@ -1090,12 +1120,14 @@
 					</svg>
 				</button>
 
+				<!-- Screenshot button -->
 				<button
 					on:click={takeScreenshot}
-					class="w-8 h-8 bg-amber-500 hover:bg-amber-400 text-black font-bold rounded-lg flex items-center justify-center shadow-md transition-colors"
+					class="w-7 h-7 sm:w-8 sm:h-8 bg-amber-500 hover:bg-amber-400 text-black font-bold rounded-lg flex items-center justify-center shadow-md transition-colors active:scale-95 flex-shrink-0"
 					title="Tirar Screenshot do Modelo"
+					aria-label="Tirar screenshot"
 				>
-					<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 						<path
 							stroke-linecap="round"
 							stroke-linejoin="round"
@@ -1121,6 +1153,7 @@
 		width: 100% !important;
 		height: 100% !important;
 		outline: none;
+		touch-action: none;
 	}
 
 	:global(canvas.pixelated) {

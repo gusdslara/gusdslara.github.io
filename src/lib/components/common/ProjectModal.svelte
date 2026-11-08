@@ -152,10 +152,12 @@
 	}
 
 	function handleTouchStart(e: TouchEvent) {
+		if (slides[currentSlide]?.type === 'model') return;
 		touchStartX = e.changedTouches[0].screenX;
 	}
 
 	function handleTouchEnd(e: TouchEvent) {
+		if (slides[currentSlide]?.type === 'model') return;
 		touchEndX = e.changedTouches[0].screenX;
 		const diff = touchStartX - touchEndX;
 		if (Math.abs(diff) > 45) {
@@ -332,7 +334,7 @@
 						>
 							{#each slides as slide, i}
 								{#if i === currentSlide}
-									<div class="w-full h-full flex items-center justify-center p-2 sm:p-4">
+									<div class="w-full h-full flex items-center justify-center {slide.type === 'model' ? 'p-0.5 sm:p-2' : 'p-2 sm:p-4'}">
 										{#if slide.type === 'model'}
 											{#await import('./Model3DViewer.svelte') then { default: ModelViewer }}
 												<svelte:component
@@ -370,8 +372,8 @@
 								{/if}
 							{/each}
 
-							<!-- Top Right Badge (Counter) -->
-							{#if slides.length > 1}
+							<!-- Top Right Badge (Counter) - Hidden on 3D Model slide to avoid collision with Pixel Art toggle -->
+							{#if slides.length > 1 && slides[currentSlide]?.type !== 'model'}
 								<div
 									class="absolute top-3 right-3 px-3 py-1 bg-black/60 backdrop-blur-md text-white text-xs font-semibold rounded-full shadow-sm z-10"
 								>
@@ -379,10 +381,10 @@
 								</div>
 							{/if}
 
-							<!-- Navigation Arrows (Left/Right) -->
+							<!-- Navigation Arrows (Left/Right) - On 3D slides, hidden on mobile so user can orbit model smoothly -->
 							{#if slides.length > 1}
 								<button
-									class="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-white/85 hover:bg-white text-gray-800 shadow-lg backdrop-blur-md flex items-center justify-center transition-all opacity-85 hover:opacity-100 hover:scale-105 active:scale-95 border border-white/60 z-10"
+									class="absolute left-2.5 sm:left-3 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-white/85 hover:bg-white text-gray-800 shadow-lg backdrop-blur-md flex items-center justify-center transition-all opacity-85 hover:opacity-100 hover:scale-105 active:scale-95 border border-white/60 z-10 {slides[currentSlide]?.type === 'model' ? 'hidden md:flex' : ''}"
 									aria-label="Slide anterior"
 									on:click|stopPropagation={prevSlide}
 								>
@@ -392,7 +394,7 @@
 								</button>
 
 								<button
-									class="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-white/85 hover:bg-white text-gray-800 shadow-lg backdrop-blur-md flex items-center justify-center transition-all opacity-85 hover:opacity-100 hover:scale-105 active:scale-95 border border-white/60 z-10"
+									class="absolute right-2.5 sm:right-3 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-white/85 hover:bg-white text-gray-800 shadow-lg backdrop-blur-md flex items-center justify-center transition-all opacity-85 hover:opacity-100 hover:scale-105 active:scale-95 border border-white/60 z-10 {slides[currentSlide]?.type === 'model' ? 'hidden md:flex' : ''}"
 									aria-label="Próximo slide"
 									on:click|stopPropagation={nextSlide}
 								>
@@ -401,16 +403,18 @@
 									</svg>
 								</button>
 
-								<!-- Bottom Dots Indicator -->
-								<div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-1.5 z-10 bg-black/40 backdrop-blur-sm px-3 py-1.5 rounded-full">
-									{#each slides as _, idx}
-										<button
-											class="w-2 h-2 rounded-full transition-all {idx === currentSlide ? 'w-5 bg-white' : 'bg-white/50 hover:bg-white/80'}"
-											aria-label="Ir para o slide {idx + 1}"
-											on:click|stopPropagation={() => goToSlide(idx)}
-										/>
-									{/each}
-								</div>
+								<!-- Bottom Dots Indicator - Hidden on 3D slides to avoid overlapping the bottom animation bar -->
+								{#if slides[currentSlide]?.type !== 'model'}
+									<div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-1.5 z-10 bg-black/40 backdrop-blur-sm px-3 py-1.5 rounded-full">
+										{#each slides as _, idx}
+											<button
+												class="w-2 h-2 rounded-full transition-all {idx === currentSlide ? 'w-5 bg-white' : 'bg-white/50 hover:bg-white/80'}"
+												aria-label="Ir para o slide {idx + 1}"
+												on:click|stopPropagation={() => goToSlide(idx)}
+											/>
+										{/each}
+									</div>
+								{/if}
 							{/if}
 						</div>
 
