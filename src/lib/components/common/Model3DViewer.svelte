@@ -275,7 +275,13 @@
 						if (zRef - zMin < max(0.3, zMin * 0.03)) best = o;
 					}
 
-					gl_FragColor = texelFetch(tColor, best, 0);
+					vec4 col = texelFetch(tColor, best, 0);
+					float finalDepth = texelFetch(tDepth, best, 0).r;
+					if (finalDepth >= 0.9999 || col.a < 0.01) {
+						gl_FragColor = vec4(0.0, 0.0, 0.0, 0.0);
+					} else {
+						gl_FragColor = col;
+					}
 				}
 			`
 		});
@@ -994,49 +1000,6 @@
 			</button>
 		</div>
 
-		<!-- SECONDARY ACTION BAR: House & Furniture Controls (Ciclo / Manter Aberto / Manter Fechado) -->
-		{#if isHouseOrFurniture}
-			<div class="absolute top-12 sm:top-14 left-2.5 sm:left-3 z-20 flex items-center gap-1 pointer-events-auto max-w-[calc(100%-20px)] overflow-x-auto no-scrollbar">
-				<div class="flex items-center gap-0.5 sm:gap-1 p-0.5 sm:p-1 bg-black/75 backdrop-blur-md rounded-xl border border-white/10 shadow-lg">
-					<button
-						on:click={() => setBuildingMode('cycle')}
-						class="px-2 sm:px-2.5 py-1 text-xs font-medium rounded-lg transition-all duration-200 flex items-center gap-1 active:scale-95 {buildingCycleMode === 'cycle'
-							? 'bg-amber-500 text-black font-semibold shadow-sm'
-							: 'text-gray-300 hover:text-white hover:bg-white/10'}"
-						title="Ciclo automático contínuo: abre e fecha tudo"
-					>
-						<span>🔄</span>
-						<span class="hidden sm:inline">Ciclo Abrir / Fechar</span>
-						<span class="sm:hidden">Ciclo</span>
-					</button>
-
-					<button
-						on:click={() => setBuildingMode('open')}
-						class="px-2 sm:px-2.5 py-1 text-xs font-medium rounded-lg transition-all duration-200 flex items-center gap-1 active:scale-95 {buildingCycleMode === 'open'
-							? 'bg-amber-500 text-black font-semibold shadow-sm'
-							: 'text-gray-300 hover:text-white hover:bg-white/10'}"
-						title="Manter tudo aberto (sem animação)"
-					>
-						<span>🚪</span>
-						<span class="hidden sm:inline">Manter Aberto</span>
-						<span class="sm:hidden">Aberto</span>
-					</button>
-
-					<button
-						on:click={() => setBuildingMode('closed')}
-						class="px-2 sm:px-2.5 py-1 text-xs font-medium rounded-lg transition-all duration-200 flex items-center gap-1 active:scale-95 {buildingCycleMode === 'closed'
-							? 'bg-amber-500 text-black font-semibold shadow-sm'
-							: 'text-gray-300 hover:text-white hover:bg-white/10'}"
-						title="Manter tudo fechado (sem animação)"
-					>
-						<span>🏠</span>
-						<span class="hidden sm:inline">Manter Fechado</span>
-						<span class="sm:hidden">Fechado</span>
-					</button>
-				</div>
-			</div>
-		{/if}
-
 		<!-- FLOATING INTERACTIVE TOAST FEEDBACK -->
 		{#if feedbackToast}
 			<div
@@ -1222,14 +1185,6 @@
 		image-rendering: -moz-crisp-edges;
 		image-rendering: pixelated;
 		image-rendering: crisp-edges;
-	}
-
-	.no-scrollbar::-webkit-scrollbar {
-		display: none;
-	}
-	.no-scrollbar {
-		-ms-overflow-style: none;
-		scrollbar-width: none;
 	}
 
 	@keyframes fadeIn {
