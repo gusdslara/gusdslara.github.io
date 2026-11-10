@@ -41,8 +41,8 @@
 	let currentAnimationName: string = '';
 	let currentAction: THREE.AnimationAction | null = null;
 
-	// Pixel Art Shader & Post-Processing
-	let isPixelArt = false;
+	// Pixel Art Shader & Post-Processing (Always ON)
+	let isPixelArt = true;
 	const pixelTargetHeight = 270;
 	const supersample = 2;
 	let renderTarget: THREE.WebGLRenderTarget | null = null;
@@ -70,21 +70,42 @@
 	// Click feedback toast
 	let feedbackToast = '';
 	let feedbackTimer: ReturnType<typeof setTimeout> | null = null;
-	let pointerDownPos = { x: 0, y: 0 };
+
+	// Helper to translate animation name to readable i18n label
+	function getAnimationLabel(name: string): string {
+		const key = `common.model3d.animations.${name}`;
+		const translated = $t(key);
+		if (translated && translated !== key) {
+			return translated;
+		}
+		// Humanize PascalCase / snake_case fallback if not found
+		return name.replace(/_/g, ' ');
+	}
+
+	// Helper to translate variant id/label
+	function getVariantLabel(v: ModelVariant): string {
+		if (v.id) {
+			const key = `common.model3d.variants.${v.id}`;
+			const translated = $t(key);
+			if (translated && translated !== key) {
+				return translated;
+			}
+		}
+		return v.label || v.id;
+	}
 
 	// Reactive check if path prop changes from outside
 	$: if (modelPath && modelPath !== previousModelPath) {
 		previousModelPath = modelPath;
 		activeModelPath = modelPath;
-		// Determine default pixel art mode based on path
-		isPixelArt = modelPath.includes('/bitez/');
+		isPixelArt = true;
 		if (scene) {
 			loadModel(activeModelPath);
 		}
 	}
 
 	onMount(() => {
-		isPixelArt = activeModelPath.includes('/bitez/');
+		isPixelArt = true;
 		initScene();
 		initPixelPipeline();
 		loadModel(activeModelPath);
@@ -128,10 +149,6 @@
 		}
 
 		if (renderer) {
-			if (renderer.domElement) {
-				renderer.domElement.removeEventListener('pointerdown', handlePointerDown);
-				renderer.domElement.removeEventListener('pointerup', handlePointerUp);
-			}
 			renderer.dispose();
 			renderer.forceContextLoss();
 		}
@@ -170,8 +187,6 @@
 		renderer.shadowMap.enabled = true;
 		renderer.toneMapping = THREE.ACESFilmicToneMapping;
 		renderer.toneMappingExposure = 1.15;
-		renderer.domElement.addEventListener('pointerdown', handlePointerDown);
-		renderer.domElement.addEventListener('pointerup', handlePointerUp);
 		container.appendChild(renderer.domElement);
 
 		controls = new OrbitControls(camera, renderer.domElement);
@@ -718,95 +733,6 @@
 		loadModel(activeModelPath);
 	}
 
-	// Raycast Click-to-Animate
-	function handlePointerDown(e: MouseEvent | TouchEvent) {
-		const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX;
-		const clientY = 'touches' in e ? e.touches[0].clientY : e.clientY;
-		pointerDownPos = { x: clientX, y: clientY };
-	}
-
-	function handlePointerUp(e: MouseEvent | TouchEvent) {
-		const clientX = 'changedTouches' in e ? e.changedTouches[0].clientX : e.clientX;
-		const clientY = 'changedTouches' in e ? e.changedTouches[0].clientY : e.clientY;
-		const dx = clientX - pointerDownPos.x;
-		const dy = clientY - pointerDownPos.y;
-
-		// Threshold to differentiate tap from orbit/pan drag
-		if (Math.hypot(dx, dy) < 8) {
-			handleCanvasClick(clientX, clientY);
-		}
-	}
-
-	function handleCanvasClick(clientX: number, clientY: number) {
-		if (!renderer || !camera || !currentModel || !scene) return;
-
-		const rect = renderer.domElement.getBoundingClientRect();
-		const mouse = new THREE.Vector2(
-			((clientX - rect.left) / rect.width) * 2 - 1,
-			-((clientY - rect.top) / rect.height) * 2 + 1
-		);
-
-		const raycaster = new THREE.Raycaster();
-		raycaster.setFromCamera(mouse, camera);
-		const intersects = raycaster.intersectObject(currentModel, true);
-
-		if (intersects.length > 0) {
-			triggerClickReaction();
-		}
-	}
-
-	function triggerClickReaction() {
-		if (!mixer || availableAnimations.length === 0) {
-			return;
-		}
-
-		// Action priority depending on model type
-		const isZombie = modelCategory === 'zombies' || activeModelPath.includes('zombie');
-		const isSurvivor = modelCategory === 'survivors' || activeModelPath.includes('survivor');
-
-		if (isZombie) {
-			const attackClips = [
-				'Zombie_Attack', 'Zombie_Attack_Left', 'Zombie_Bite', 'Zombie_Slap',
-				'Tank_Ground_Smash', 'Tank_Haymaker', 'Tank_Charge',
-				'Boomer_Vomit_Attack', 'Hunter_Pounce', 'Hunter_Claw_Combo',
-				'Crawler_Lunge', 'Crawler_Claw_Right'
-			];
-			const actionClip = availableAnimations.find((name) => attackClips.includes(name));
-			if (actionClip) {
-				playAnimation(actionClip, 0.15);
-				showFeedback('🧟 Ataque Disparado!');
-				startAnimationCycle(ANIMATION_DURATION_MS);
-				return;
-			}
-		} else if (isSurvivor) {
-			const survivorClips = ['Melee_Punch', 'Melee_Axe', 'Jump', 'Reload_Handgun'];
-			const actionClip = availableAnimations.find(
-				(name) => survivorClips.includes(name) && name !== currentAnimationName
-			) || availableAnimations.find((name) => survivorClips.includes(name));
-			if (actionClip) {
-				playAnimation(actionClip, 0.15);
-				showFeedback('🥊 Golpe Disparado!');
-				startAnimationCycle(ANIMATION_DURATION_MS);
-				return;
-			}
-		} else if (isHouseOrFurniture) {
-			if (buildingCycleMode === 'cycle') {
-				setBuildingMode('open');
-			} else if (buildingCycleMode === 'open') {
-				setBuildingMode('closed');
-			} else {
-				setBuildingMode('cycle');
-			}
-			return;
-		}
-
-		// Fallback: cycle to next animation
-		const nextIdx = (availableAnimations.indexOf(currentAnimationName) + 1) % availableAnimations.length;
-		playAnimation(availableAnimations[nextIdx], 0.2);
-		showFeedback(`▶ ${availableAnimations[nextIdx]}`);
-		startAnimationCycle(ANIMATION_DURATION_MS);
-	}
-
 	function showFeedback(text: string) {
 		feedbackToast = text;
 		if (feedbackTimer) clearTimeout(feedbackTimer);
@@ -958,25 +884,28 @@
 		</div>
 	{/if}
 
-	<!-- TOP TOOLBAR: Variant Selector & Pixel Art Toggle -->
+	<!-- TOP TOOLBAR: Variant Selector & Instructions -->
 	{#if !loading && !error}
 		<div class="absolute top-2.5 left-2.5 right-2.5 sm:top-3 sm:left-3 sm:right-3 z-20 flex items-center justify-between gap-1.5 sm:gap-2 pointer-events-none">
 			<!-- Variants select (interactive) -->
 			{#if modelVariants && modelVariants.length > 1}
-				<div class="flex items-center gap-1 sm:gap-1.5 p-1 bg-black/75 backdrop-blur-md rounded-xl border border-white/10 shadow-lg pointer-events-auto min-w-0 max-w-[calc(100%-115px)] sm:max-w-none">
+				<div class="flex items-center gap-1 sm:gap-1.5 p-1 bg-black/75 backdrop-blur-md rounded-xl border border-white/10 shadow-lg pointer-events-auto min-w-0 max-w-full">
 					<div class="w-7 h-7 flex items-center justify-center rounded-lg bg-white/10 text-amber-400 flex-shrink-0">
 						<span class="text-xs">
 							{#if modelCategory === 'zombies'}🧟{:else if modelCategory === 'survivors'}🏃{:else if modelCategory === 'safehouse'}🏠{:else}📦{/if}
 						</span>
 					</div>
+					<span class="text-[10px] uppercase tracking-wider text-amber-400/90 font-bold pl-1 hidden sm:inline">
+						{$t('common.model3d.variantLabel')}:
+					</span>
 					<select
 						value={activeModelPath}
 						on:change={(e) => switchVariant(e.currentTarget.value)}
-						class="bg-transparent text-white text-xs font-semibold py-1 px-1 sm:px-2 border-0 outline-none cursor-pointer focus:ring-0 max-w-[115px] xs:max-w-[155px] sm:max-w-[220px] truncate"
-						title="Selecione o modelo 3D"
+						class="bg-transparent text-white text-xs font-semibold py-1 px-1 sm:px-2 border-0 outline-none cursor-pointer focus:ring-0 max-w-[140px] xs:max-w-[180px] sm:max-w-[240px] truncate"
+						title={$t('common.model3d.variantLabel')}
 					>
 						{#each modelVariants as v}
-							<option value={v.path} class="bg-gray-900 text-white font-normal">{v.label}</option>
+							<option value={v.path} class="bg-gray-900 text-white font-normal">{getVariantLabel(v)}</option>
 						{/each}
 					</select>
 				</div>
@@ -985,19 +914,6 @@
 					{$t('common.model3d.instructions')}
 				</div>
 			{/if}
-
-			<!-- Pixel Art Toggle Button -->
-			<button
-				on:click={togglePixelArt}
-				class="pointer-events-auto flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-semibold tracking-wide backdrop-blur-md border shadow-md transition-all active:scale-95 flex-shrink-0 {isPixelArt
-					? 'bg-amber-500 text-black border-amber-400 ring-2 ring-amber-500/30 shadow-amber-500/20'
-					: 'bg-black/75 text-gray-300 border-white/10 hover:text-white hover:bg-black/85'}"
-				title="Alternar filtro de render procedural pixel art (Depth Supersampling)"
-			>
-				<span class="text-sm">{isPixelArt ? '👾' : '✨'}</span>
-				<span class="hidden xs:inline sm:inline">{isPixelArt ? 'Pixel Art: ON' : 'Pixel Art: OFF'}</span>
-				<span class="inline xs:hidden sm:hidden">{isPixelArt ? 'Pixel' : 'Suave'}</span>
-			</button>
 		</div>
 
 		<!-- FLOATING INTERACTIVE TOAST FEEDBACK -->
@@ -1032,20 +948,20 @@
 						{/if}
 					</button>
 
+					<span class="text-[10px] uppercase tracking-wider text-amber-400/90 font-bold pl-1 hidden sm:inline">
+						{$t('common.model3d.modeLabel')}:
+					</span>
+
 					<select
 						value={buildingCycleMode}
 						on:change={handleAnimationSelect}
-						class="bg-transparent text-white text-xs font-medium py-1 px-1 sm:px-2 border-0 outline-none cursor-pointer focus:ring-0 max-w-[130px] xs:max-w-[170px] sm:max-w-[210px] truncate"
-						title="Selecione o modo de exibição ou clique no modelo"
+						class="bg-transparent text-white text-xs font-medium py-1 px-1 sm:px-2 border-0 outline-none cursor-pointer focus:ring-0 max-w-[140px] xs:max-w-[180px] sm:max-w-[220px] truncate"
+						title={$t('common.model3d.modeLabel')}
 					>
-						<option value="cycle" class="bg-gray-900 text-white">🔄 Ciclo: Abrir & Fechar</option>
-						<option value="open" class="bg-gray-900 text-white">🚪 Manter Aberto (Fixo)</option>
-						<option value="closed" class="bg-gray-900 text-white">🏠 Manter Fechado (Fixo)</option>
+						<option value="cycle" class="bg-gray-900 text-white">🔄 {$t('common.model3d.buildingModes.cycle')}</option>
+						<option value="open" class="bg-gray-900 text-white">🚪 {$t('common.model3d.buildingModes.open')}</option>
+						<option value="closed" class="bg-gray-900 text-white">🏠 {$t('common.model3d.buildingModes.closed')}</option>
 					</select>
-
-					<span class="text-[10px] text-gray-400 pr-1 hidden md:inline" title="Clique no modelo para alternar">
-						(clique no modelo)
-					</span>
 				</div>
 			{:else if availableAnimations.length > 0}
 				<div class="flex items-center gap-1 sm:gap-1.5 p-1 bg-black/75 backdrop-blur-md rounded-xl border border-white/10 shadow-lg pointer-events-auto min-w-0">
@@ -1067,20 +983,20 @@
 						{/if}
 					</button>
 
+					<span class="text-[10px] uppercase tracking-wider text-amber-400/90 font-bold pl-1 hidden sm:inline">
+						{$t('common.model3d.animationLabel')}:
+					</span>
+
 					<select
 						value={currentAnimationName}
 						on:change={handleAnimationSelect}
-						class="bg-transparent text-white text-xs font-medium py-1 px-1 sm:px-2 border-0 outline-none cursor-pointer focus:ring-0 max-w-[105px] xs:max-w-[140px] sm:max-w-[180px] truncate"
-						title="Selecione a animação ou clique no modelo"
+						class="bg-transparent text-white text-xs font-medium py-1 px-1 sm:px-2 border-0 outline-none cursor-pointer focus:ring-0 max-w-[120px] xs:max-w-[160px] sm:max-w-[200px] truncate"
+						title={$t('common.model3d.animationLabel')}
 					>
 						{#each availableAnimations as anim}
-							<option value={anim} class="bg-gray-900 text-white">{anim}</option>
+							<option value={anim} class="bg-gray-900 text-white">{getAnimationLabel(anim)}</option>
 						{/each}
 					</select>
-
-					<span class="text-[10px] text-gray-400 pr-1 hidden md:inline" title="Clique no modelo para interagir">
-						(clique no modelo)
-					</span>
 				</div>
 			{:else}
 				<div></div>

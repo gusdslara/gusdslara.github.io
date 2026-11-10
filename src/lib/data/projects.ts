@@ -135,8 +135,8 @@ export const myApps: MyApp[] = [
     {
         id: 2,
         name: 'Meu Tempero! — Cuiabá',
-        category: ['games', 'software', '3d'],
-        categories: ['games', 'software', '3d'],
+        category: ['games', 'software'],
+        categories: ['games', 'software'],
         image: '/assets/img/apps/meutempero-gameplay.webp',
         caption:
             'Simulador 3D Culinário & Gestão em Svelte 5, Three.js (WebGPU) e Tauri v2',
@@ -169,7 +169,7 @@ export const myApps: MyApp[] = [
     },
     {
         id: 6,
-        name: 'Deadly Bite (Bitez)',
+        name: 'Deadly BiteZ (Bitez)',
         category: ['games', 'software'],
         categories: ['games', 'software'],
         image: '/assets/img/apps/bitez-gameplay.webp',
@@ -372,6 +372,30 @@ export const tabs: Tab[] = [
 
 export const moreProjects: ProjectData[] = [
     {
+        id: 'memorycard',
+        name: 'memorycard.cloud',
+        category: 'software',
+        categories: ['software', 'games'],
+        image: '/assets/img/illustrations/memorycard-digital.png',
+        color: '#E8F8EE',
+        role: 'Criador Solo & Arquiteto Fullstack',
+        year: '2025 - 2026',
+        myRole:
+            '<p>Idealizei e desenvolvi a plataforma open-source de ponta a ponta para sincronização automática de salvamentos de jogos na nuvem e catálogo curado de Recomps & Decomps nativos.</p><p><strong>Aplicação Multiplataforma:</strong> Desenvolvi o cliente desktop/mobile com <strong>Tauri v2 (Rust)</strong> e <strong>Svelte 5 / SvelteKit</strong>, monitorando diretórios de saves em tempo real com compactação determinística, validação de hash SHA-256 e resolução automática de conflitos.</p><p><strong>Backend & Infraestrutura Cloud:</strong> Construí a API RESTful em <strong>Go (Fiber)</strong> containerizada com <strong>Docker</strong> e hospedada na nuvem, gerenciando autenticação JWT, versionamento de backups e espelhamento automatizado de releases.</p>',
+        description:
+            'Backup automático em nuvem para salvamentos de jogos em todas as plataformas, lojas e emuladores. Solução open source para nunca mais perder seu progresso nos jogos.',
+        technologies: ['Go', 'Docker', 'Azure', 'Svelte', 'Tauri', 'Rust'],
+        features: [
+            'Sincronização e backup automático em nuvem para saves de jogos, lojas e emuladores',
+            'Monitoramento em tempo real de diretórios locais com validação SHA-256 e resolução de conflitos',
+            'Hub integrado de Recomps & Decomps nativos com instalação em 1 clique por plataforma',
+            'Backend em Go (Fiber) containerizado em Docker com autenticação JWT e armazenamento em nuvem',
+            'Cliente multiplataforma leve construído com Svelte 5, SvelteKit e Tauri v2 (Rust)'
+        ],
+        githubUrl: 'https://github.com/gustavodslara/svelte-memorycarddigital-landingpage',
+        link: 'https://memorycard.cloud/'
+    },
+    {
         id: 'm0',
         name: 'TropicaliaCraft Landing Page',
         category: 'software',
@@ -398,21 +422,6 @@ export const moreProjects: ProjectData[] = [
         link: 'https://tropicaliacraft.gustavolara.pro/'
     },
     {
-        id: 'm1',
-        name: 'Pantheon Launcher',
-        category: 'software',
-        image: '/assets/img/logos/phanteon.png',
-        color: '#FFE2E2',
-        role: 'Desenvolvedor Frontend & UI/UX',
-        year: '2024',
-        myRole:
-            '<p>Criei o design e frontend reativo da landing page do Pantheon Launcher em Svelte e TailwindCSS com foco em conversão e apresentação de recursos.</p>',
-        description: 'Landing Page em Svelte',
-        technologies: ['Svelte', 'TailwindCSS'],
-        githubUrl: 'https://github.com/gusdslara/pantheon-launcher',
-        link: 'https://pantheon.gustavolara.pro/'
-    },
-    {
         id: 'm3',
         name: 'Argus Player',
         category: 'software',
@@ -431,39 +440,28 @@ export const moreProjects: ProjectData[] = [
         id: 'm10',
         name: 'Tropicalia Server',
         category: 'hardware',
+        categories: ['hardware', 'software'],
         image: '/assets/img/apps/server.webp',
+        modalImage: '/assets/img/apps/tropicalia-server-architecture.svg',
         color: '#E0FFF4',
-        role: 'Arquiteto de Infraestrutura & SysAdmin',
+        role: 'Arquiteto de Infraestrutura & Engenheiro DevOps',
         year: '2024 - 2026',
         myRole:
-            '<p>Projetei e mantenho a infraestrutura em nuvem e bare-metal para clusters de servidores de alta concorrência de Minecraft, com containers Docker orquestrados, automação de backups e monitoramento 24/7.</p>',
-        description: 'Infraestrutura de Minecraft',
-        technologies: ['Go', 'Docker', 'Azure'],
+            '<p>Desenvolvimento e orquestração de infraestrutura corporativa de alta performance hospedada na <strong>AWS (EC2 & EBS)</strong> para a rede de servidores <strong>TropicaliaCraft</strong>.</p><p><strong>Cross-Play Nativo & Bridge:</strong> Suporte transparente entre Minecraft Java Edition e Bedrock Edition (consoles, mobile e PC) via GeyserMC e Floodgate com porta UDP dedicada (19132) e tradução em tempo real de pacotes e autenticação Xbox Live.</p><p><strong>Autenticação Unificada (SSO):</strong> Integração direta entre Landing Page web (Angular) e servidores in-game via microserviço daemon em Go/Bun, criptografia de senhas em <strong>Argon2id</strong>, emissão de tokens JWT <code>tpp1.*</code>, persistência transacional ACID com <strong>SQLite</strong> (<code>tropicalia.db</code>) e sincronização bidirecional de skins com SkinsRestorer.</p><p><strong>DevOps, JVM & Segurança Linux:</strong> Pipeline automatizado de provisionamento multi-JDK (Eclipse Temurin 21 e 25 via <code>ensure-java</code>), isolamento de processos em Linux com Systemd (<code>NoNewPrivileges</code>, <code>ProtectSystem</code> e comunicação FIFO Unix Sockets), terminação SSL/TLS automática com Caddy v2 e sintonia de Garbage Collection (Aikar\'s Flags G1GC/ZGC) para 20 TPS contínuos.</p>',
+        description: 'Infraestrutura AWS (EC2 & EBS), Cross-play GeyserMC e SSO SQLite',
+        technologies: ['AWS', 'Docker', 'Go', 'TypeScript', 'Node.js'],
+        features: [
+            'Nuvem AWS (EC2 & EBS): Servidores dedicados com volumes persistentes EBS e Security Groups estritos',
+            'Cross-Play Java + Bedrock: Conexão unificada via GeyserMC e Floodgate (porta UDP 19132)',
+            'Autenticação SSO Web ↔ Game: Criptografia Argon2id, tokens JWT tpp1.* e banco transacional SQLite',
+            'Sincronização de Skins: Upload PNG na web com envio imediato via SkinsRestorer in-game',
+            'Auto-Java (ensure-java): Detecção e instalação automática de Eclipse Temurin JDK 21 e 25',
+            'Segurança Systemd & IPC: Sandboxing estrito (NoNewPrivileges) e console via FIFO Unix Sockets',
+            'Reverse Proxy Caddy v2: Terminação SSL automática e streaming de eventos SSE',
+            'Tuning de Baixa Latência: Aikar\'s Flags com G1GC/ZGC assegurando 20 TPS estáveis'
+        ],
+        githubUrl: 'https://github.com/gusdslara/ng-tropicaliacraft-landing-page',
         link: 'https://tropicaliacraft.gustavolara.pro/'
-    },
-    {
-        id: '3d-2',
-        name: 'ASUS ROG RTX 4090',
-        category: '3d',
-        image: '/assets/3dmodels/asus_rog_geforce_rtx_4090_v2.0.png',
-        color: '#EBE4FF',
-        role: 'Modelador 3D',
-        year: '2024',
-        description: 'Modelagem da placa de vídeo ASUS ROG GeForce RTX 4090 com detalhes de hardware',
-        technologies: ['Blender', 'ThreeJS'],
-        modelPath: '/assets/3dmodels/asus_rog_geforce_rtx_4090_v2.0.glb'
-    },
-    {
-        id: '3d-6',
-        name: 'MacBook Pro M3 16"',
-        category: '3d',
-        image: '/assets/3dmodels/macbook_pro_m3_16_inch_2024.png',
-        color: '#E8EBF0',
-        role: 'Modelador 3D',
-        year: '2024',
-        description: 'Modelo fiel do MacBook Pro M3 16 polegadas 2024 com tela e teclado detalhados',
-        technologies: ['Blender', 'ThreeJS'],
-        modelPath: '/assets/3dmodels/macbook_pro_m3_16_inch_2024.glb'
     },
     {
         id: '3d-8',
@@ -481,6 +479,7 @@ export const moreProjects: ProjectData[] = [
         id: '3d-cuiaba-catedral',
         name: 'Catedral Basílica de Cuiabá',
         category: '3d',
+        categories: ['3d', 'games'],
         image: '/assets/3dmodels/cuiaba-catedral-bom-jesus.png',
         color: '#FFF5EB',
         role: 'Modelador 3D & Artista de Cenários',
@@ -495,6 +494,7 @@ export const moreProjects: ProjectData[] = [
         id: '3d-cuiaba-palacio',
         name: 'Palácio da Instrução',
         category: '3d',
+        categories: ['3d', 'games'],
         image: '/assets/3dmodels/cuiaba-palacio-da-instrucao.png',
         color: '#E8F4F8',
         role: 'Modelador 3D & Artista de Cenários',
@@ -509,6 +509,7 @@ export const moreProjects: ProjectData[] = [
         id: '3d-cuiaba-onibus',
         name: 'Ônibus Urbano de Cuiabá',
         category: '3d',
+        categories: ['3d', 'games'],
         image: '/assets/3dmodels/cuiaba-onibus-urbano.png',
         color: '#E8F8EE',
         role: 'Modelador 3D & Hard Surface',
@@ -523,6 +524,7 @@ export const moreProjects: ProjectData[] = [
         id: '3d-cuiaba-casario',
         name: 'Casario Histórico Cuiabano',
         category: '3d',
+        categories: ['3d', 'games'],
         image: '/assets/3dmodels/cuiaba-casario-historico-row.png',
         color: '#FEF9C3',
         role: 'Modelador 3D & Artista de Cenários',
@@ -535,7 +537,7 @@ export const moreProjects: ProjectData[] = [
     },
     {
         id: '3d-bitez-zombies',
-        name: 'Deadly Bite: Inimigos & Zumbis',
+        name: 'Deadly BiteZ: Inimigos',
         category: '3d',
         categories: ['3d', 'games'],
         image: '/assets/3dmodels/bitez/thumb-zombies.webp',
@@ -543,30 +545,29 @@ export const moreProjects: ProjectData[] = [
         role: 'Artista Técnico 3D & Engenheiro de Shaders GLSL',
         year: '2026',
         myRole:
-            '<p>Modelei em voxels, estruturei os esqueletos de rigging de animação e programei os shaders customizados em GLSL com a técnica <em>Depth-Priority Supersampling</em> (DPSS) para eliminar perda de silhueta subpixel. Desenvolvi o sistema interativo em Three.js onde cliques diretos no zumbi disparam ataques e reações de combate em tempo real com interpolação suave.</p>',
+            '<p>Modelei em voxels, estruturei os esqueletos de rigging de animação e programei os shaders customizados em GLSL com a técnica <em>Depth-Priority Supersampling</em> (DPSS) para eliminar perda de silhueta subpixel. Desenvolvi o visualizador interativo em Three.js com seletor de animações e variantes com interpolação suave.</p>',
         description: 'Variantes de mortos-vivos (Walker, Tank, Boomer, Hunter, Crawler) com animações esqueléticas e rig procedural',
         technologies: ['ThreeJS', 'GLSL', 'TypeScript', 'Blender'],
         features: [
             '5 variantes com mecânicas e animações exclusivas (Walker, Tank colossal, Boomer tóxico, Hunter ágil e Crawler rastejante)',
             'Filtro retrô com Depth-Priority Supersampling shader com priorização de silhueta',
-            'Combate interativo: clique direto no modelo 3D para disparar ataques e reações',
             'Seletor manual de animações com interpolação suave (cross-fade)'
         ],
         modelPath: '/assets/3dmodels/bitez/zombie-walker.glb',
         modelCategory: 'zombies',
         modelVariants: [
-            { id: 'walker', label: 'Walker (Clássico)', path: '/assets/3dmodels/bitez/zombie-walker.glb' },
-            { id: 'tank', label: 'Tank (Bruto)', path: '/assets/3dmodels/bitez/zombie-tank.glb' },
-            { id: 'boomer', label: 'Boomer (Tóxico)', path: '/assets/3dmodels/bitez/zombie-boomer.glb' },
-            { id: 'hunter', label: 'Hunter (Caçador)', path: '/assets/3dmodels/bitez/zombie-hunter.glb' },
-            { id: 'crawler', label: 'Crawler (Rastejante)', path: '/assets/3dmodels/bitez/zombie-crawler.glb' }
+            { id: 'walker', label: 'Walker', path: '/assets/3dmodels/bitez/zombie-walker.glb' },
+            { id: 'tank', label: 'Tank', path: '/assets/3dmodels/bitez/zombie-tank.glb' },
+            { id: 'boomer', label: 'Boomer', path: '/assets/3dmodels/bitez/zombie-boomer.glb' },
+            { id: 'hunter', label: 'Hunter', path: '/assets/3dmodels/bitez/zombie-hunter.glb' },
+            { id: 'crawler', label: 'Crawler', path: '/assets/3dmodels/bitez/zombie-crawler.glb' }
         ],
         link: 'https://bitez.gustavolara.pro/',
         githubUrl: 'https://github.com/gusdslara/pixelz-svelte-threejs-game'
     },
     {
         id: '3d-bitez-survivors',
-        name: 'Deadly Bite: Sobreviventes',
+        name: 'Deadly BiteZ: Sobrevivente',
         category: '3d',
         categories: ['3d', 'games'],
         image: '/assets/3dmodels/bitez/thumb-survivors.webp',
@@ -580,21 +581,20 @@ export const moreProjects: ProjectData[] = [
         features: [
             'Sobrevivente Masculino com farda tática e Feminina com camisa xadrez e mochila militar',
             'Pipeline visual Pixel Art com amostragem 2× e controle de profundidade',
-            'Conjunto completo de animações: Walk, Run, Jump, Melee Punch, Melee Axe e Reload',
-            'Clique interativo para desferir socos e golpes de machado'
+            'Conjunto completo de animações: Walk, Run, Jump, Melee Punch, Melee Axe e Reload'
         ],
         modelPath: '/assets/3dmodels/bitez/character-survivor-male.glb',
         modelCategory: 'survivors',
         modelVariants: [
-            { id: 'male', label: 'Sobrevivente Masculino', path: '/assets/3dmodels/bitez/character-survivor-male.glb' },
-            { id: 'female', label: 'Sobrevivente Feminina', path: '/assets/3dmodels/bitez/character-survivor-female.glb' }
+            { id: 'male', label: 'Masculino', path: '/assets/3dmodels/bitez/character-survivor-male.glb' },
+            { id: 'female', label: 'Feminino', path: '/assets/3dmodels/bitez/character-survivor-female.glb' }
         ],
         link: 'https://bitez.gustavolara.pro/',
         githubUrl: 'https://github.com/gusdslara/pixelz-svelte-threejs-game'
     },
     {
         id: '3d-bitez-safehouse',
-        name: 'Deadly Bite: Construção & Safehouse',
+        name: 'Deadly BiteZ: Construções',
         category: '3d',
         categories: ['3d', 'games'],
         image: '/assets/3dmodels/bitez/thumb-safehouse.webp',
@@ -614,9 +614,9 @@ export const moreProjects: ProjectData[] = [
         modelPath: '/assets/3dmodels/bitez/building-safehouse-interior.glb',
         modelCategory: 'safehouse',
         modelVariants: [
-            { id: 'safehouse', label: '🏠 Safehouse Completa', path: '/assets/3dmodels/bitez/building-safehouse-interior.glb' },
-            { id: 'showroom', label: '🪑 Showroom de Móveis', path: '/assets/3dmodels/bitez/furniture-showroom.glb' },
-            { id: 'arsenal', label: '🔫 Rack de Armas', path: '/assets/3dmodels/bitez/guns-arsenal-rack.glb' }
+            { id: 'safehouse', label: 'Safehouse Completa', path: '/assets/3dmodels/bitez/building-safehouse-interior.glb' },
+            { id: 'showroom', label: 'Showroom de Móveis', path: '/assets/3dmodels/bitez/furniture-showroom.glb' },
+            { id: 'arsenal', label: 'Rack de Armas', path: '/assets/3dmodels/bitez/guns-arsenal-rack.glb' }
         ],
         link: 'https://bitez.gustavolara.pro/',
         githubUrl: 'https://github.com/gusdslara/pixelz-svelte-threejs-game'
