@@ -9,6 +9,14 @@
 	let touchStartX = 0;
 	let touchEndX = 0;
 
+	// Preload all wearos images immediately when carousel mounts/images change
+	$: if (typeof window !== 'undefined' && images && images.length > 0) {
+		for (const src of images) {
+			const img = new Image();
+			img.src = src;
+		}
+	}
+
 	// Responsive visible count: 1 on mobile (<440px), 3 on tablet (<720px), 5 on desktop (>=720px)
 	$: dynamicVisible = calculateVisible(containerWidth, maxVisible, images.length);
 
@@ -111,7 +119,7 @@
 		{/if}
 
 		<!-- Watch Prints Row -->
-		<div class="flex-1 flex items-center justify-center gap-2.5 sm:gap-4 md:gap-5 overflow-hidden py-1">
+		<div class="flex-1 flex items-center justify-center gap-2.5 sm:gap-4 md:gap-5 overflow-hidden py-2 sm:py-3">
 			{#each visibleItems as item (item.originalIndex + '-' + item.slotIndex)}
 				<button
 					type="button"
@@ -129,7 +137,7 @@
 						<img
 							src={item.src}
 							alt="{name} - Tela {item.originalIndex + 1}"
-							loading="lazy"
+							loading="eager"
 							decoding="async"
 							class="w-full h-full object-cover pointer-events-none transition-transform duration-300 group-hover/watch:scale-105"
 						/>

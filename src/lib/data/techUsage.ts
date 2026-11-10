@@ -272,7 +272,7 @@ export const techUsage: Record<string, TechUsage[]> = {
 			)
 		},
 		{
-			project: 'Deadly Bite (Bitez)',
+			project: 'Deadly BiteZ (Bitez)',
 			how: l(
 				'Hardcore survival roguelike multiplayer 3D com mapa real em Svelte e Three.js.',
 				'Hardcore 3D real-time multiplayer zombie survival roguelike in Svelte and Three.js.',
@@ -592,6 +592,14 @@ export const techUsage: Record<string, TechUsage[]> = {
 	],
 	AWS: [
 		{
+			project: 'Tropicalia Server',
+			how: l(
+				'Hospedagem em instâncias EC2 e volumes persistentes EBS.',
+				'Hosting on EC2 instances and persistent EBS volumes.',
+				'Hosting en instancias EC2 y volúmenes persistentes EBS.'
+			)
+		},
+		{
 			job: 5,
 			how: l(
 				'Deploy dos microserviços em EC2.',
@@ -602,11 +610,11 @@ export const techUsage: Record<string, TechUsage[]> = {
 	],
 	Azure: [
 		{
-			project: 'Tropicalia Server',
+			project: 'memorycard.cloud',
 			how: l(
-				'Hospedagem do servidor de Minecraft.',
-				'Hosting for the Minecraft server.',
-				'Hosting del servidor de Minecraft.'
+				'Infraestrutura em nuvem e armazenamento de backups de saves.',
+				'Cloud infrastructure and game save backup storage.',
+				'Infraestructura en la nube y almacenamiento de respaldos de partidas.'
 			)
 		}
 	],
@@ -758,7 +766,7 @@ export const techUsage: Record<string, TechUsage[]> = {
 			)
 		},
 		{
-			project: 'Deadly Bite (Bitez)',
+			project: 'Deadly BiteZ (Bitez)',
 			how: l(
 				'Motor 3D com renderização de mapa real (OpenStreetMap), estúdio de customização e física de sobrevivência.',
 				'3D engine with real-world map rendering (OpenStreetMap), character studio, and survival physics.',

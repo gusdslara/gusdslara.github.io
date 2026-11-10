@@ -62,6 +62,7 @@ export interface ProjectData {
     category?: string | string[];
     categories?: string[];
     image: string;
+    modalImage?: string;
     color: string;
     description: string;
     role?: string;

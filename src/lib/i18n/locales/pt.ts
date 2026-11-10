@@ -57,9 +57,7 @@ export const pt = {
         },
         platforms: {
             unrenderDesc: 'Estúdio de jogos especializado em jogos VR e experiências imersivas de realidade virtual. Criando entretenimento de realidade virtual de próxima geração.',
-            unrenderBtn: 'NOSSOS PROJETOS',
-            memorycardDesc: 'Backup automático em nuvem para salvamentos de jogos em todas as plataformas, lojas e emuladores. Solução open source para nunca mais perder seu progresso nos jogos.',
-            memorycardBtn: 'TESTE AGORA'
+            unrenderBtn: 'NOSSOS PROJETOS'
         },
         contact: {
             title: 'Procurando o Arquiteto de Software?',
@@ -90,7 +88,73 @@ export const pt = {
             loading: 'Carregando modelo 3D...',
             error: 'Não foi possível carregar o modelo',
             checkPath: 'Verifique se o caminho do arquivo está correto.',
-            instructions: '🖱️ Arrastar: Rotacionar · Scroll: Zoom · Shift+Arrastar: Pan'
+            instructions: '🖱️ Arrastar: Rotacionar · Scroll: Zoom · Shift+Arrastar: Pan',
+            variantLabel: 'Modelo',
+            animationLabel: 'Animação',
+            modeLabel: 'Modo',
+            variants: {
+                walker: 'Walker',
+                tank: 'Tank',
+                boomer: 'Boomer',
+                hunter: 'Hunter',
+                crawler: 'Crawler',
+                male: 'Masculino',
+                female: 'Feminino',
+                safehouse: 'Safehouse Completa',
+                showroom: 'Showroom de Móveis',
+                arsenal: 'Rack de Armas'
+            },
+            animations: {
+                Idle: 'Parado',
+                Zombie_Idle: 'Parado',
+                Hunter_Crouch_Idle: 'Agachado',
+                Tank_Idle: 'Parado',
+                Boomer_Idle: 'Parado',
+                Walk: 'Andando',
+                Zombie_Walk: 'Andando',
+                Tank_Walk: 'Andando',
+                Run: 'Correndo',
+                Zombie_Sprint: 'Correndo',
+                Hunter_Stalker_Run: 'Corrida Furtiva',
+                Tank_Charge: 'Investida',
+                Boomer_Waddle: 'Caminhada Pesada',
+                Jump: 'Pulo',
+                Land: 'Aterrissagem',
+                Melee_Punch: 'Soco',
+                Melee_Axe: 'Golpe de Machado',
+                Zombie_Attack: 'Ataque',
+                Zombie_Attack_Left: 'Ataque Esquerdo',
+                Zombie_Slap: 'Bofetada',
+                Zombie_Bite: 'Mordida',
+                Zombie_Feast: 'Devorar',
+                Tank_Ground_Smash: 'Esmagamento no Chão',
+                Tank_Haymaker: 'Soco Cruzado',
+                Boomer_Vomit_Attack: 'Vômito Tóxico',
+                Hunter_Pounce: 'Bote Aéreo',
+                Hunter_Claw_Combo: 'Combo de Garras',
+                Crawler_Lunge: 'Bote Rastejante',
+                Crawler_Claw_Right: 'Garra Direita',
+                Crawler_Claw_Left: 'Garra Esquerda',
+                Crawler_Bite: 'Mordida Rastejante',
+                Reload_Handgun: 'Recarregar Pistola',
+                Reload_Rifle: 'Recarregar Rifle',
+                Drink: 'Beber',
+                Eat: 'Comer',
+                Fire_Recoil: 'Disparo & Recuo',
+                Inspect_Turntable: 'Inspecionar',
+                Open_All: 'Abrir Tudo',
+                Close_All: 'Fechar Tudo',
+                Open_Doors: 'Abrir Portas',
+                Open_Windows: 'Abrir Janelas',
+                Open_Furniture: 'Abrir Móveis',
+                Roof_Lift_Inspect: 'Elevar Teto',
+                Roof_Restore: 'Fechar Teto'
+            },
+            buildingModes: {
+                cycle: 'Ciclo: Abrir & Fechar',
+                open: 'Manter Aberto',
+                closed: 'Manter Fechado'
+            }
         }
     },
     projects: {
@@ -159,7 +223,7 @@ export const pt = {
             ]
         },
         '6_my': {
-            name: 'Deadly Bite (Bitez)',
+            name: 'Deadly BiteZ (Bitez)',
             caption: 'Hardcore Multiplayer Zombie Survival Roguelike em Svelte, Three.js & Mapa Real OpenStreetMap',
             description: 'Hardcore survival roguelike multiplayer 3D em tempo real construído com Svelte e Three.js. Inspirado em clássicos de sobrevivência como DayZ e Left 4 Dead, o jogo apresenta um mundo persistente onde seu sobrevivente permanece no mapa mesmo após o logout (o sono é a maior vulnerabilidade). Conta com integração inovadora de mapas reais via OpenStreetMap e Overture Maps, cobrindo todo o Brasil e América Latina em escala 1:1 com geração procedural em estilo retrô low-poly/PSX.',
             features: [
@@ -231,6 +295,17 @@ export const pt = {
         'hardware': 'Hardware',
         '3d': 'Modelagem 3D',
         'games': 'Games',
+        'memorycard': {
+            name: 'memorycard.cloud',
+            description: 'Backup automático em nuvem para salvamentos de jogos em todas as plataformas, lojas e emuladores. Solução open source para nunca mais perder seu progresso nos jogos.',
+            features: [
+                'Sincronização e backup automático em nuvem para saves de jogos, lojas e emuladores',
+                'Monitoramento em tempo real de diretórios locais com validação SHA-256 e resolução de conflitos',
+                'Hub integrado de Recomps & Decomps nativos com instalação em 1 clique por plataforma',
+                'Backend em Go (Fiber) containerizado em Docker com autenticação JWT e armazenamento em nuvem',
+                'Cliente multiplataforma leve construído com Svelte 5, SvelteKit e Tauri v2 (Rust)'
+            ]
+        },
         'm0': {
             name: 'TropicaliaCraft Landing Page',
             description: 'Landing Page em Angular (SSG) Zoneless + Go/Fiber',
@@ -241,16 +316,19 @@ export const pt = {
                 'Design responsivo e acessível'
             ]
         },
-        'm1': { description: 'Landing Page em Svelte' },
         'm3': { description: 'Streaming de mídia local' },
-        'm10': { description: 'Infraestrutura de Minecraft' },
-        '3d-2': {
-            name: 'ASUS ROG RTX 4090',
-            description: 'Modelagem da placa de vídeo ASUS ROG GeForce RTX 4090 com detalhes de hardware'
-        },
-        '3d-6': {
-            name: 'MacBook Pro M3 16"',
-            description: 'Modelo fiel do MacBook Pro M3 16 polegadas 2024 com tela e teclado detalhados'
+        'm10': {
+            description: 'Infraestrutura AWS (EC2 & EBS), Cross-play GeyserMC e SSO SQLite',
+            features: [
+                'Nuvem AWS (EC2 & EBS): Servidores dedicados com volumes persistentes EBS e Security Groups estritos',
+                'Cross-Play Java + Bedrock: Conexão unificada via GeyserMC e Floodgate (porta UDP 19132)',
+                'Autenticação SSO Web ↔ Game: Criptografia Argon2id, tokens JWT tpp1.* e banco transacional SQLite',
+                'Sincronização de Skins: Upload PNG na web com envio imediato via SkinsRestorer in-game',
+                'Auto-Java (ensure-java): Detecção e instalação automática de Eclipse Temurin JDK 21 e 25',
+                'Segurança Systemd & IPC: Sandboxing estrito (NoNewPrivileges) e console via FIFO Unix Sockets',
+                'Reverse Proxy Caddy v2: Terminação SSL automática e streaming de eventos SSE',
+                'Tuning de Baixa Latência: Aikar\'s Flags com G1GC/ZGC assegurando 20 TPS estáveis'
+            ]
         },
         '3d-8': {
             name: 'Meta Quest 3',
@@ -273,27 +351,25 @@ export const pt = {
             description: 'Conjunto completo dos 3 casarões tradicionais cuiabanos geminados com platibanda decorada e beiral com telhas capa-e-canal'
         },
         '3d-bitez-zombies': {
-            name: 'Deadly Bite: Inimigos & Zumbis',
+            name: 'Deadly BiteZ: Inimigos',
             description: 'Variantes de mortos-vivos (Walker, Tank, Boomer, Hunter, Crawler) com animações esqueléticas e rig procedural',
             features: [
                 '5 variantes com mecânicas e animações exclusivas (Walker, Tank colossal, Boomer tóxico, Hunter ágil e Crawler rastejante)',
                 'Filtro retrô com Depth-Priority Supersampling shader com priorização de silhueta',
-                'Combate interativo: clique direto no modelo 3D para disparar ataques e reações',
                 'Seletor manual de animações com interpolação suave (cross-fade)'
             ]
         },
         '3d-bitez-survivors': {
-            name: 'Deadly Bite: Sobreviventes',
+            name: 'Deadly BiteZ: Sobrevivente',
             description: 'Sobreviventes masculinos e femininos com equipamento militar tático, rigging completo e animações de ação',
             features: [
                 'Sobrevivente Masculino com farda tática e Feminina com camisa xadrez e mochila militar',
                 'Pipeline visual Pixel Art com amostragem 2× e controle de profundidade',
-                'Conjunto completo de animações: Walk, Run, Jump, Melee Punch, Melee Axe e Reload',
-                'Clique interativo para desferir socos e golpes de machado'
+                'Conjunto completo de animações: Walk, Run, Jump, Melee Punch, Melee Axe e Reload'
             ]
         },
         '3d-bitez-safehouse': {
-            name: 'Deadly Bite: Construção & Safehouse',
+            name: 'Deadly BiteZ: Construções',
             description: 'Safehouse mobiliada completa com teto removível para visão do interior, portas articuladas e showroom de móveis',
             features: [
                 'Safehouse com 3 cômodos mobiliados: Sala, Cozinha, Quarto e Banheiro detalhados',

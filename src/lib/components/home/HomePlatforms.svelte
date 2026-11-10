@@ -23,19 +23,5 @@
 			isOpenSource={false}
 			technologies={['Unity', 'ThreeJS', 'Blender', 'PixiJS']}
 		/>
-
-		<div class="h-8"></div>
-
-		<ShowcasePlatformItem
-			href="https://memorycard.cloud/"
-			title="memorycard.cloud"
-			description={$t('home.platforms.memorycardDesc')}
-			buttonText={$t('home.platforms.memorycardBtn')}
-			imgSrc="/assets/img/illustrations/memorycard-digital.png"
-			imgAlt="Cloud Game Saves Illustration"
-			gradientClass="bg-gradient-to-br from-green-50 to-emerald-50"
-			isOpenSource={true}
-			technologies={['Go', 'Docker', 'Azure', 'Svelte']}
-		/>
 	</div>
 </AnimatedSection>

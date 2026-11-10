@@ -10,6 +10,7 @@
 	export let project: {
 		name: string;
 		image: string;
+		modalImage?: string;
 		description: string;
 		technologies?: string[];
 		features?: string[];
@@ -116,8 +117,8 @@
 			});
 		};
 
-		// 3. Primary image
-		addImg(p.image, 'Visão Geral');
+		// 3. Primary modal/overview image (prefer modalImage if set, otherwise fallback to card image)
+		addImg(p.modalImage || p.image, 'Visão Geral');
 
 		// 4. Additional images gallery
 		if (p.additionalImages && Array.isArray(p.additionalImages)) {
@@ -135,6 +136,24 @@
 		}
 
 		return list;
+	}
+
+	// Preload modal images as soon as modal opens or project changes
+	$: if (typeof window !== 'undefined' && isOpen && project) {
+		const imgsToPreload: string[] = [];
+		if (project.image) imgsToPreload.push(project.image);
+		if (project.modalImage) imgsToPreload.push(project.modalImage);
+		if (project.wearosImages) imgsToPreload.push(...project.wearosImages);
+		if (project.additionalImages) imgsToPreload.push(...project.additionalImages);
+		if (project.phoneImages) imgsToPreload.push(...project.phoneImages);
+		if (project.architectureDiagrams) imgsToPreload.push(...project.architectureDiagrams);
+
+		for (const src of imgsToPreload) {
+			if (src && typeof src === 'string') {
+				const img = new Image();
+				img.src = src;
+			}
+		}
 	}
 
 	function nextSlide() {
@@ -271,16 +290,14 @@
 			<div class="px-4 sm:px-6 md:px-8 py-5 sm:py-6">
 				<!-- Project Header (Normal flow, non-sticky) -->
 				<div class="mb-5 sm:mb-6">
-					<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-2">
+					<div class="flex flex-wrap items-center gap-3">
 						<h3 class="text-xl sm:text-2xl md:text-3xl font-bold text-gray-950 tracking-tight leading-snug">
 							{project.name}
 						</h3>
-					</div>
 
-					{#if project.year}
-						<div class="flex flex-wrap items-center gap-2 text-xs sm:text-sm text-gray-600">
+						{#if project.year}
 							<span
-								class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gray-100 text-gray-700 font-medium border border-gray-200/60"
+								class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gray-100 text-gray-700 text-xs sm:text-sm font-medium border border-gray-200/60"
 							>
 								<svg class="w-3.5 h-3.5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 									<path
@@ -292,8 +309,8 @@
 								</svg>
 								{project.year}
 							</span>
-						</div>
-					{/if}
+						{/if}
+					</div>
 				</div>
 
 				<!-- CAROUSEL / MEDIA SECTION -->
@@ -346,7 +363,8 @@
 											<img
 												src={slide.src}
 												alt={slide.alt}
-												loading="lazy"
+												loading="eager"
+												decoding="async"
 												class="w-auto h-auto max-w-full max-h-[440px] object-contain drop-shadow-md rounded-xl transition-all duration-300"
 												on:error={handleImageError}
 											/>
