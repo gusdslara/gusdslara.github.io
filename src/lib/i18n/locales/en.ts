@@ -290,19 +290,6 @@ export const en = {
                 'Synchronized native audio and sound effects'
             ]
         },
-        '7_my': {
-            name: 'Metal Gear Solid (Wear OS)',
-            caption: 'Native recompilation of Metal Gear Solid 1 (PS1) with tactical stealth controls and wrist gyro aiming',
-            description: 'Native port and recompilation of Metal Gear Solid 1 for Wear OS smartwatches based on <a href="https://github.com/coccofresco/mgsone-recomp" target="_blank" rel="noopener noreferrer" class="text-emerald-600 underline font-medium hover:text-emerald-500">mgsone-recomp</a>. Features authentic 4:3 circular rendering, precision touch overlay with dynamic stealth analog stick, first-person wrist gyroscope aiming, and CODEC radio communications.',
-            features: [
-                'Dynamic Stealth Stick: soft tilt for silent walking on grates and full tilt for escape sprinting',
-                '1st Person Gyro Aiming: natural wrist tilt precision view when entering FPP (△)',
-                'Minimalist PlayStation touch overlay tailored for 432x432 px circular displays',
-                'Quick-access inventory (L) and weapon (R) touch shortcuts along upper bezel arc',
-                'Dedicated CODEC button on top bezel for instant radio communication',
-                'Direct APK package ready for installation on Wear OS smartwatches'
-            ]
-        },
         'all': 'All',
         'software': 'Software',
         'hardware': 'Hardware',

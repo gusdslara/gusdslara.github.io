@@ -339,40 +339,6 @@ export const myApps: MyApp[] = [
             '/assets/img/apps/wearos/pkmn-round-battle-charmander.png',
             '/assets/img/apps/wearos/pkmn-round-oak-dialog.png'
         ]
-    },
-    {
-        id: 7,
-        name: 'Metal Gear Solid (Wear OS)',
-        category: ['games', 'software'],
-        categories: ['games', 'software'],
-        isWearOS: true,
-        image: '/assets/img/apps/wearos/mgs-round-circular.png',
-        caption: 'Recompilação nativa de Metal Gear Solid 1 (PS1) com controles táteis furtivos e mira por giroscópio no pulso',
-        role: 'Engenheiro de Porting & Sistemas Embarcados (C / C++ / NDK / Wear OS)',
-        year: '2025 - 2026',
-        myRole:
-            '<p>Portei e compilei nativamente o código de recompilação estática de <strong>Metal Gear Solid 1 (SLUS-005.94)</strong> em <strong>C / C++</strong> com Android NDK para smartwatches Wear OS (Samsung Galaxy Watch e Google Pixel Watch), integrando aceleração de hardware e otimizando o consumo energético.</p><p><strong>Dynamic Stealth Stick & Giroscópio:</strong> Implementei um analógico virtual flutuante com sensibilidade dinâmica (inclinação suave para caminhada furtiva silenciosa em grades metálicas e inclinação total para corrida de escape). Adicionei suporte a mira em 1ª pessoa via giroscópio do pulso (FPP com △).</p><p><strong>Interface Tátil Circular & CODEC:</strong> Projetei os botões clássicos de PlayStation (□ atirar/imobilizar, ○ socos/ações, ✕ agachar/rastejar, △ visão 1ª pessoa) ao longo do arco da tela circular, atalhos rápidos de inventário (L) e armas (R) na borda superior, e acesso instantâneo ao rádio CODEC no topo.</p>',
-        description:
-            'Port e recompilação nativa de Metal Gear Solid 1 para smartwatches Wear OS. Roda com renderização 4:3 circular autêntica, overlay tátil de alta precisão com analógico furtivo dinâmico, mira em primeira pessoa com giroscópio do relógio e sintonia de rádio CODEC.',
-        technologies: ['C', 'C++', 'Android', 'Wear OS'],
-        features: [
-            'Dynamic Stealth Stick com toque dinâmico: passos suaves sem barulho e corrida',
-            'Mira em 1ª pessoa com giroscópio do relógio ao acionar FPP (△)',
-            'Overlay tátil PlayStation minimalista de alta precisão adaptado para telas circulares de 432x432 px',
-            'Atalhos táteis de acesso rápido ao inventário (L) e armamento (R) na curvatura superior',
-            'Botão dedicado CODEC no topo para comunicações táticas via rádio',
-            'Pacote APK instalável diretamente em smartwatches Wear OS'
-        ],
-        background: '#EEF3EA',
-        githubUrl: 'https://github.com/gusdslara/mgsone-recomp-wearos',
-        apkUrl: '/assets/downloads/mgs-wearos.apk',
-        apkSize: '37.1 MB',
-        wearosImages: [
-            '/assets/img/apps/wearos/mgs-round-controls.png',
-            '/assets/img/apps/wearos/mgs-round-circular.png',
-            '/assets/img/apps/wearos/mgs-round-stealth.png',
-            '/assets/img/apps/wearos/mgs-round-raw.png'
-        ]
     }
 ];
 
