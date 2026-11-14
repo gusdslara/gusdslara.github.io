@@ -9,7 +9,9 @@
 	import ScrollText from '$lib/components/utils/ScrollText.svelte';
 	import ShowcaseGridItem from './ShowcaseGridItem.svelte';
 	import ShowcaseProjectItem from './ShowcaseProjectItem.svelte';
-	import { t } from '$lib/i18n';
+	import { t, locale } from '$lib/i18n';
+	import { projectRoles } from '$lib/data/projectRoles';
+	import { navigateToSection, navigationEvent, projectSlug } from '$lib/utils/navigation';
 
 	let isModalOpen = false;
 	let selectedProject: any = null;
@@ -159,8 +161,10 @@
 
 	$: translatedClientApps = clientApps.map(app => ({
 		...app,
+		slug: projectSlug(app.name),
 		name: $t(`projects.${app.id}.name`, { default: app.name }),
 		description: $t(`projects.${app.id}.description`, { default: app.description }),
+		myRole: projectRoles[$locale]?.[app.id] || app.myRole,
 		features: $t(`projects.${app.id}.features`, { default: app.features })
 	}));
 
@@ -168,9 +172,11 @@
 		const trFeatures = $t(`projects.${app.id}_my.features`, { default: null });
 		return {
 			...app,
+			slug: projectSlug(app.name),
 			name: $t(`projects.${app.id}_my.name`, { default: app.name }),
 			caption: $t(`projects.${app.id}_my.caption`, { default: app.caption }),
 			description: $t(`projects.${app.id}_my.description`, { default: app.description }),
+			myRole: projectRoles[$locale]?.[`${app.id}_my`] || app.myRole,
 			features: Array.isArray(trFeatures) ? trFeatures : app.features
 		};
 	});
@@ -179,8 +185,10 @@
 		const trFeatures = $t(`projects.${app.id}.features`, { default: null });
 		return {
 			...app,
+			slug: projectSlug(app.name),
 			name: $t(`projects.${app.id}.name`, { default: app.name }),
 			description: $t(`projects.${app.id}.description`, { default: app.description }),
+		myRole: projectRoles[$locale]?.[app.id] || app.myRole,
 			features: Array.isArray(trFeatures) ? trFeatures : (app as any).features
 		};
 	});
@@ -222,11 +230,11 @@
 	let currentCategoryId = '';
 	let currentProjectIndex = -1;
 
-	function openProjectModal(project: any) {
+	function openProjectModal(project: any, updateUrl = true) {
 		selectedProject = project;
 		// Find the category and index for the initial project
 		for (const cat of projectCategories) {
-			const index = cat.projects.findIndex((p: any) => p.id === project.id);
+			const index = cat.projects.findIndex((p: any) => p.slug === project.slug);
 			if (index !== -1) {
 				currentCategoryId = cat.id;
 				currentProjectIndex = index;
@@ -234,7 +242,32 @@
 			}
 		}
 		isModalOpen = true;
+		if (updateUrl) navigateToSection('showcases', project.slug);
 	}
+
+	function closeProjectModal() {
+		isModalOpen = false;
+		if (new URL(window.location.href).searchParams.has('project')) navigateToSection('showcases');
+	}
+
+	onMount(() => {
+		const followUrl = () => {
+			const slug = new URL(window.location.href).searchParams.get('project');
+			const project = [...translatedClientApps, ...translatedMyApps, ...translatedMoreProjects]
+				.find((project) => project.slug === slug);
+			if (project) openProjectModal(project, false);
+			else isModalOpen = false;
+		};
+		followUrl();
+		window.addEventListener('popstate', followUrl);
+		window.addEventListener('hashchange', followUrl);
+		window.addEventListener(navigationEvent, followUrl);
+		return () => {
+			window.removeEventListener('popstate', followUrl);
+			window.removeEventListener('hashchange', followUrl);
+			window.removeEventListener(navigationEvent, followUrl);
+		};
+	});
 
 	function handleProjectChange(newCategoryId: string, newIndex: number) {
 		const category = projectCategories.find((c) => c.id === newCategoryId);
@@ -242,6 +275,7 @@
 			selectedProject = category.projects[newIndex];
 			currentCategoryId = newCategoryId;
 			currentProjectIndex = newIndex;
+			navigateToSection('showcases', selectedProject.slug);
 		}
 	}
 </script>
@@ -386,6 +420,7 @@
 		{currentCategoryId}
 		{currentProjectIndex}
 		onProjectChange={handleProjectChange}
+		onClose={closeProjectModal}
 	/>
 {/if}
 

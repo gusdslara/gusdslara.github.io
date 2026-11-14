@@ -1,0 +1,20 @@
+{
+  "type": "UI simulations based on local project source",
+  "videos": [
+    {
+      "url": "https://www.youtube.com/watch?v=t0Q2otsqC4I",
+      "thumbnail": "https://i.ytimg.com/vi/t0Q2otsqC4I/hqdefault.jpg",
+      "channel": "WB Kids"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=_t8hJ9j-zXA",
+      "thumbnail": "https://i.ytimg.com/vi/_t8hJ9j-zXA/hqdefault.jpg",
+      "channel": "WB Kids"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=w3Wluvzoggg",
+      "thumbnail": "https://i.ytimg.com/vi/w3Wluvzoggg/hqdefault.jpg",
+      "channel": "WB Kids"
+    }
+  ]
+}

@@ -145,14 +145,6 @@ export const techUsage: Record<string, TechUsage[]> = {
 				'Microservicios del agente de IA para WhatsApp.'
 			)
 		},
-		{
-			project: 'Argus Player',
-			how: l(
-				'Servidor de streaming de mídia local.',
-				'Local media streaming server.',
-				'Servidor de streaming de medios local.'
-			)
-		}
 	],
 	Rust: [
 		{

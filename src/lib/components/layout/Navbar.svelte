@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount, onDestroy } from 'svelte';
+	import { navigateToSection } from '$lib/utils/navigation';
 
 	import { t, locale } from '$lib/i18n';
 	import type { Language } from '$lib/i18n/dictionaries';
@@ -39,9 +40,10 @@
 		return navEl ? navEl.getBoundingClientRect().height : 72;
 	}
 
-	function scrollToSection(sectionId: string) {
+	function scrollToSection(sectionId: string, updateUrl = true) {
 		const element = document.getElementById(sectionId);
 		if (!element) return;
+		if (updateUrl) navigateToSection(sectionId);
 
 		const wasMobileMenuOpen = mobileMenuOpen;
 
@@ -79,6 +81,20 @@
 			requestAnimationFrame(performScroll);
 		}
 	}
+
+	onMount(() => {
+		const followUrl = () => {
+			const section = window.location.hash.slice(1);
+			if (navItems.some((item) => item.id === section)) scrollToSection(section, false);
+		};
+		tick().then(followUrl);
+		window.addEventListener('hashchange', followUrl);
+		window.addEventListener('popstate', followUrl);
+		return () => {
+			window.removeEventListener('hashchange', followUrl);
+			window.removeEventListener('popstate', followUrl);
+		};
+	});
 
 	function updateActiveSection() {
 		if (typeof document === 'undefined' || typeof window === 'undefined' || !navItems) return;
@@ -184,8 +200,9 @@
 
 		<div class="hidden lg:flex items-center gap-2">
 			{#each navItems as item}
-				<button
-					on:click={() => scrollToSection(item.id)}
+				<a
+					href={`#${item.id}`}
+					on:click={(event) => { if (!event.ctrlKey && !event.metaKey && !event.shiftKey && !event.altKey) { event.preventDefault(); scrollToSection(item.id); } }}
 					class="px-4 py-2 rounded-lg text-base font-medium transition-all duration-300 relative group {activeSection ===
 					item.id
 						? 'text-[#dd206b]'
@@ -204,7 +221,7 @@
 							? 'hidden'
 							: ''}"
 					></span>
-				</button>
+				</a>
 			{/each}
 			
 			<div class="relative ml-2 lg:ml-4 flex items-center">
@@ -277,8 +294,9 @@
 
 	<nav class="flex flex-col flex-1 px-4 py-6 gap-1 overflow-y-auto">
 		{#each navItems as item, i}
-			<button
-				on:click={() => scrollToSection(item.id)}
+			<a
+				href={`#${item.id}`}
+				on:click={(event) => { if (!event.ctrlKey && !event.metaKey && !event.shiftKey && !event.altKey) { event.preventDefault(); scrollToSection(item.id); } }}
 				class="drawer-item text-left px-5 py-3.5 rounded-xl text-base font-medium transition-all duration-200 flex items-center gap-3 group {activeSection ===
 				item.id
 					? 'bg-[#dd206b] text-white shadow-md shadow-[#dd206b]/30'
@@ -292,7 +310,7 @@
 						: 'bg-[#dd206b]/40 group-hover:bg-[#dd206b]'}"
 				></span>
 				{item.label}
-			</button>
+			</a>
 		{/each}
 	</nav>
 

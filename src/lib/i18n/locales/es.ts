@@ -329,7 +329,8 @@ export const es = {
                 'Diseño responsivo y accesible'
             ]
         },
-        'm3': { description: 'Transmisión de contenido multimedia local' },
+        "m3": {"description": "Canales de dibujos, videos locales y YouTube en el celular y la TV, con control parental.", "features": ["Canales y playlists de YouTube y archivos locales", "Configura la TV desde el celular por QR en la red local", "Control parental con PIN y bloqueo de la TV", "Guía de programación, historial y reanudación"]},
+        "homestream": {"description": "Servidor personal de videos, música y fotos para tu red doméstica.", "features": ["Biblioteca local de videos, música y fotos con colecciones", "Perfiles y permisos por género y colección", "Reproducción directa y conversión compatible con FFmpeg", "Emparejamiento por PIN y QR; clientes TV en desarrollo"]},
         'm10': {
             description: 'Infraestructura AWS (EC2 & EBS), Cross-play GeyserMC y SSO SQLite',
             features: [
