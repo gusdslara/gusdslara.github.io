@@ -463,10 +463,14 @@ export const moreProjects: ProjectData[] = [
         id: 'm3',
         name: 'Meutube',
         category: 'software',
-        image: '/assets/img/apps/meutube-desktop.png',
-        modalImage: '/assets/img/apps/meutube-tv-phone.png',
-        phoneImages: ['/assets/img/apps/meutube-mobile.png'],
-        additionalImages: ['/assets/img/apps/meutube-guide.png', '/assets/img/apps/meutube-parental.png'],
+        // Capturas reais do APK debug (C:\dev\tv\KidsTV) rodando em emulador Android, 1080x2340.
+        image: '/assets/img/apps/meutube-mobile-home.webp',
+        additionalImages: [
+            '/assets/img/apps/meutube-mobile-home.webp',
+            '/assets/img/apps/meutube-mobile-channels.webp',
+            '/assets/img/apps/meutube-mobile-playlists.webp',
+            '/assets/img/apps/meutube-mobile-parents.webp'
+        ],
         color: '#E1F0FF',
         role: 'Desenvolvedor Android',
         year: '2026',
@@ -482,7 +486,12 @@ export const moreProjects: ProjectData[] = [
         image: '/assets/img/apps/homestream-desktop.png',
         modalImage: '/assets/img/apps/homestream-library.png',
         phoneImages: ['/assets/img/apps/homestream-mobile.png'],
-        additionalImages: ['/assets/img/apps/homestream-real-desktop.png', '/assets/img/apps/homestream-real-mobile.png'],
+        additionalImages: [
+            '/assets/img/apps/homestream-real-desktop.png',
+            '/assets/img/apps/homestream-real-photos.png',
+            '/assets/img/apps/homestream-real-mobile.png',
+            '/assets/img/apps/homestream-real-mobile-music.png'
+        ],
         color: '#EDF2E8',
         role: 'Desenvolvedor Fullstack',
         year: '2026',
