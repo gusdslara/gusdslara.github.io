@@ -5,7 +5,6 @@
 	import CustomSelect from './CustomSelect.svelte';
 	import WearOSCarousel from './WearOSCarousel.svelte';
 	import ImageModal from './ImageModal.svelte';
-	import MeutubeDemo from './MeutubeDemo.svelte';
 
 	export let isOpen = false;
 	export let project: {
@@ -474,9 +473,6 @@
 					</div>
 				{/if}
 
-                {#if project.name === 'Meutube'}
-                    <MeutubeDemo />
-                {/if}
 				<!-- Section 2: Sobre o Projeto (Tópicos do Projeto) -->
 				{#if project.features && Array.isArray(project.features) && project.features.length > 0}
 					<div class="mb-6 sm:mb-8">

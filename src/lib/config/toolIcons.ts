@@ -1,4 +1,11 @@
 export const toolIcons: Record<string, string> = {
+  Kotlin: '/assets/img/tools/kotlin-logo.png',
+  'Jetpack Compose': '/assets/img/tools/jetpackcompose.svg',
+  SQLite: '/assets/img/tools/sqlite.svg',
+  FFmpeg: '/assets/img/tools/ffmpeg.svg',
+  Room: '/assets/img/tools/pic_architecture_components.png',
+  Media3: '/assets/img/tools/android.svg',
+  GLSL: '/assets/img/tools/opengl.svg',
   Angular: '/assets/img/tools/angular.png',
   TypeScript: '/assets/img/tools/typescript.png',
   'Node.js': '/assets/img/tools/nodejs.png',
@@ -44,8 +51,8 @@ export const toolIcons: Record<string, string> = {
   Lua: '/assets/img/tools/lua.svg',
   'Wear OS': '/assets/img/tools/android.png',
   WearOS: '/assets/img/tools/android.png',
-  SDL: '/assets/img/tools/c++.png',
-  OpenGL: '/assets/img/tools/android.png',
+  SDL: '/assets/img/tools/sdl.svg',
+  OpenGL: '/assets/img/tools/opengl.svg',
   Tauri: '/assets/img/tools/tauri.png',
   Rust: '/assets/img/tools/rust.png'
 };

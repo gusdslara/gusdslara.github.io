@@ -63,7 +63,12 @@
 
 				<!-- Center Preview Area (reserved height so it never overlaps badges or texts) -->
 				<div class="flex-1 w-full flex items-center justify-center pt-5 pb-0.5 relative z-10 min-h-0">
-					{#if logo.additionalImages && logo.additionalImages.length >= 2}
+					{#if logo.phoneImages?.length && logo.image}
+                        <div class="relative w-full h-28 sm:h-32 pointer-events-none">
+                            <img src={logo.image} alt="{logo.name} — Desktop" loading="lazy" decoding="async" class="absolute right-0 top-1/2 -translate-y-1/2 w-[85%] max-h-full object-contain drop-shadow-lg rotate-[6deg] z-20 transition-transform duration-500 group-hover:rotate-[8deg]" />
+                            <img src={logo.phoneImages[0]} alt="{logo.name} — Mobile" loading="lazy" decoding="async" class="absolute left-0 top-1/2 -translate-y-1/2 h-[92%] w-auto max-w-[44%] object-contain drop-shadow-xl -rotate-[6deg] z-10 transition-transform duration-500 group-hover:-rotate-[8deg]" />
+                        </div>
+                    {:else if logo.additionalImages && logo.additionalImages.length >= 2}
 						<div class="relative w-full h-24 sm:h-28 flex items-center justify-center pointer-events-none">
 							<img
 								src={logo.additionalImages[1]}
