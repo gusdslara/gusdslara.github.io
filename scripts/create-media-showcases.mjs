@@ -46,26 +46,13 @@ function parental() {
 }
 const background = (light=false) => `<defs><radialGradient id="bg"><stop stop-color="${light?'#e3eadb':'#1d374d'}"/><stop offset="1" stop-color="${light?'#f4f2eb':'#0a121e'}"/></radialGradient></defs><rect width="1600" height="1000" fill="url(#bg)"/><ellipse cx="790" cy="847" rx="690" ry="30" fill="${light?'#b7bbae':'#000'}" opacity=".22"/>`;
 async function save(name, content, light=false) {
- const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000">${background(light)}${content}</svg>`;
- await sharp(Buffer.from(svg)).webp({quality:90}).toFile(fileURLToPath(new URL(name+'.webp',out)));
+ const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000">${content}</svg>`;
+ await sharp(Buffer.from(svg)).trim().png().toFile(fileURLToPath(new URL(name+'.png',out)));
 }
 await save('meutube-tv-phone',tv(player())+phone(remote()));
 await save('meutube-guide',tv(guide())+phone(logo(25,71)+txt(25,134,'Playlists / Canais',23,'#fff',700)+['Clássicos','Anos 2000','Favoritos'].map((n,i)=>rect(23,163+i*132,272,115,'#131a26',14,'#2b394f')+txt(40,196+i*132,`00${i+1}  ${n}`,19,'#fff',600)+txt(40,226+i*132,i===1?'Scooby-Doo':'Tom & Jerry',16,'#94a3b8')+txt(40,254+i*132,'▶ Sintonizar canal',15,'#38bdf8')).join('')));
 await save('meutube-parental',tv(parental())+phone(logo(25,71)+txt(25,143,'Configurações dos Pais',21,'#fff',700)+rect(23,173,272,155,'#131a26',14,'#2b394f')+txt(40,210,'Trava da TV',20,'#fff',600)+txt(40,246,'●   ●   ●   ●',25,'#38bdf8')+btn(40,268,236,'Destravar (PIN)')+txt(25,377,'Playlists / Canais',20,'#fff',600)+btn(24,400,270,'+ Novo Canal / Playlist')));
 
-const green='#355d49', ink='#25332c', muted='#889087';
-function homeScreen(pair=false) {
- let s=rect(0,0,1110,650,'#f8f9f6',0)+rect(0,0,225,650,'#f0f2eb',0)+rect(22,25,30,30,green,10)+play(33,30)+txt(61,48,'homestream.',23,ink,700)+txt(25,89,'● SUA CASA ESTÁ ONLINE',10,green,600);
- ['Início','Filmes e vídeos','Músicas','Fotos','Coleções'].forEach((n,i)=>s+=rect(15,132+i*48,195,40,i===0?'#e1e7db':'#f0f2eb',9)+txt(34,158+i*48,n,16,i===0?green:ink,i===0?600:400));
- s+=txt(28,442,'DO SEU JEITO',11,muted,600)+txt(30,479,'● Desenhos clássicos',14,green)+txt(30,514,'● Anos 2000',14,green)+txt(28,597,'Armazenamento local',13,muted)+rect(28,611,165,4,'#dfe3d7',2)+rect(28,611,57,4,green,2)+txt(254,43,'Minha casa  ›  Visão geral',13,muted)+txt(928,43,'● 100% local',13,green)+txt(260,101,'SEU PEQUENO UNIVERSO',11,muted,600)+txt(260,148,'Tudo o que é seu, aqui.',34,ink,600)+txt(260,180,'Um lugar para tudo o que vale guardar.',16,muted)+rect(879,108,201,42,green,10)+txt(895,135,'+ Adicionar arquivos',15,'#fff',600)+txt(260,242,'Continuar assistindo',21,ink,600);
- for(let i=0;i<3;i++) s+=image(i,260+i*277,263,253,143)+txt(260+i*277,434,i===1?'Scooby-Doo · Anos 2000':'Tom & Jerry · Clássicos',15,ink,600)+rect(260+i*277,402,253,4,'#d8ded2',0)+rect(260+i*277,402,90,4,green,0);
- s+=txt(260,501,'Suas coleções',21,ink,600)+rect(260,523,393,85,'#e6ebdf',12)+txt(280,561,'Desenhos clássicos',21,ink,600)+txt(280,586,'Vídeos · Biblioteca pessoal',13,muted)+rect(675,523,393,85,'#e9e5da',12)+txt(695,561,'Anos 2000',21,ink,600)+txt(695,586,'Vídeos · Biblioteca pessoal',13,muted);
- if(pair) s+=rect(0,0,1110,650,'#17251e99',0)+rect(334,97,510,455,'#fff',22)+txt(372,152,'Parear tela',28,ink,600)+txt(372,188,'Autorizar um novo dispositivo',16,muted)+txt(372,260,'Código de pareamento',14,ink)+rect(372,280,433,62,'#f3f5ee',10,'#dce1d4')+txt(402,322,'4  8  2  6  1  9',30,ink,600)+rect(372,371,433,51,green,10)+txt(521,404,'Autorizar',18,'#fff',600)+txt(372,471,'A tela usará as permissões do seu perfil.',14,muted);
- return s;
-}
-const monitor = content => `<g transform="translate(58 120)">`+rect(0,0,1138,682,'#252a28',20,'#7a8277')+`<g transform="translate(14 14)">${content}</g>`+rect(500,680,138,58,'#3e4540',4)+rect(405,728,328,13,'#252a28',6)+`</g>`;
-const homePhone=phone(txt(24,91,'▶ homestream.',24,ink,700)+txt(25,143,'Minha biblioteca',23,ink,600)+txt(25,174,'● 100% local',13,green)+image(0,24,199,270,152)+txt(25,381,'Tom & Jerry',21,ink,600)+txt(25,409,'Desenhos clássicos',15,muted)+rect(24,438,270,48,green,12)+txt(103,469,'▶ Assistir',18,'#fff',600)+txt(25,536,'Suas coleções',20,ink,600)+txt(25,575,'Desenhos clássicos   ›',16,green),true);
-await save('homestream-library',monitor(homeScreen())+homePhone,true);
-await save('homestream-pairing',monitor(homeScreen(true))+phone(txt(24,91,'▶ homestream.',24,ink,700)+txt(25,166,'Parear esta tela',25,ink,600)+txt(25,206,'Código de pareamento',16,muted)+rect(24,240,270,90,'#e6ebdf',14)+txt(44,296,'482 619',43,green,600)+txt(25,375,'Aguardando autorização…',17,ink)+txt(25,413,'O código expira em 5 minutos.',14,muted)+rect(24,469,270,48,green,12)+txt(93,500,'Novo código',17,'#fff',600),true),true);
-await writeFile(new URL('media-showcase-sources.json',out), JSON.stringify({type:'UI simulations based on local project source',videos:ids.map(id=>({url:`https://www.youtube.com/watch?v=${id}`,thumbnail:`https://i.ytimg.com/vi/${id}/hqdefault.jpg`,channel:'WB Kids'}))},null,2));
-console.log('Created five device-framed UI showcase images.');
+
+await save('meutube-desktop', tv(player()));
+await save('meutube-mobile', phone(remote()));
