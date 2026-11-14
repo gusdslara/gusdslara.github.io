@@ -115,6 +115,23 @@
 					/>
 				</div>
 			</div>
+		{:else if app.phoneImages?.length && app.image}
+			<div class="flex-shrink-0 relative w-44 sm:w-52 md:w-56 h-44 sm:h-52 md:h-56 pointer-events-none">
+				<img
+					src={app.image}
+					alt="{app.name} — Desktop"
+					loading="lazy"
+					decoding="async"
+					class="absolute right-0 top-1/2 -translate-y-1/2 w-[85%] h-auto object-contain rounded-lg shadow-lg rotate-[6deg] z-20 transition-transform duration-500 group-hover:rotate-[8deg]"
+				/>
+				<img
+					src={app.phoneImages[0]}
+					alt="{app.name} — Mobile"
+					loading="lazy"
+					decoding="async"
+					class="absolute left-0 top-1/2 -translate-y-1/2 h-[92%] w-auto max-w-[44%] object-contain rounded-xl shadow-xl -rotate-[6deg] z-10 transition-transform duration-500 group-hover:-rotate-[8deg]"
+				/>
+			</div>
 		{:else if app.additionalImages && app.additionalImages.length >= 2}
 			<div class="flex-shrink-0 relative w-36 sm:w-44 md:w-52 h-44 sm:h-52 md:h-56 flex items-center justify-center pointer-events-none">
 				<img

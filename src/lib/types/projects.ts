@@ -42,6 +42,7 @@ export interface MyApp {
     isWearOS?: boolean;
     wearosImages?: string[];
     additionalImages?: string[];
+    phoneImages?: string[];
 }
 
 export interface Tab {

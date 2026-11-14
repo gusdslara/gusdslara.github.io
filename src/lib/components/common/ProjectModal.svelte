@@ -5,6 +5,7 @@
 	import CustomSelect from './CustomSelect.svelte';
 	import WearOSCarousel from './WearOSCarousel.svelte';
 	import ImageModal from './ImageModal.svelte';
+	import MeutubeDemo from './MeutubeDemo.svelte';
 
 	export let isOpen = false;
 	export let project: {
@@ -37,6 +38,7 @@
 	export let currentCategoryId = '';
 	export let currentProjectIndex = -1;
 	export let onProjectChange: (catId: string, index: number) => void = () => {};
+	export let onClose: () => void = () => {};
 
 	let closing = false;
 	let visible = false;
@@ -49,6 +51,7 @@
 	$: if (isOpen && !closing) {
 		visible = true;
 	}
+	$: if (!isOpen && !closing) visible = false;
 
 	// Image modal state for zoom / full view
 	let isImageModalOpen = false;
@@ -199,6 +202,7 @@
 			isOpen = false;
 			closing = false;
 			visible = false;
+			onClose();
 		}, 350);
 	}
 
@@ -288,35 +292,45 @@
 
 			<!-- MODAL BODY -->
 			<div class="px-4 sm:px-6 md:px-8 py-5 sm:py-6">
-				<!-- Project Header (Normal flow, non-sticky) -->
-				<div class="mb-5 sm:mb-6">
-					<div class="flex flex-wrap items-center gap-3">
-						<h3 class="text-xl sm:text-2xl md:text-3xl font-bold text-gray-950 tracking-tight leading-snug">
-							{project.name}
-						</h3>
-
-						{#if project.year}
-							<span
-								class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gray-100 text-gray-700 text-xs sm:text-sm font-medium border border-gray-200/60"
-							>
-								<svg class="w-3.5 h-3.5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-									<path
-										stroke-linecap="round"
-										stroke-linejoin="round"
-										stroke-width="2"
-										d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-									/>
-								</svg>
-								{project.year}
-							</span>
-						{/if}
+				<!-- Title, right-aligned technology badges, then compact date -->
+                <div class="mb-3 sm:mb-4">
+                    <div class="flex items-start justify-between gap-2 sm:gap-3">
+                        <div class="min-w-0 flex-1">
+                            <h3 class="break-words text-xl sm:text-2xl md:text-3xl font-bold text-gray-950 tracking-tight leading-snug">{project.name}</h3>
+                            {#if project.year}
+                                <p class="mt-1 mb-0 text-xs sm:text-sm text-gray-500">{project.year}</p>
+                            {/if}
+                        </div>
+				<!-- Technologies Section -->
+				{#if project.technologies && project.technologies.length > 0}
+					<div class="ml-auto max-w-[55%]" aria-label={$t('common.modal.tech')}>
+						<div class="flex flex-wrap justify-end gap-1.5 items-center">
+							{#each project.technologies as tech}
+								{#if getToolIcon(tech)}
+									<div
+										class="inline-flex items-center gap-2 px-2 py-1 bg-gray-50 border border-gray-200/80 rounded-xl shadow-xs text-xs font-medium text-gray-800 transition-colors hover:bg-gray-100"
+										title={tech}
+									>
+										<img src={getToolIcon(tech)} alt={tech} class="w-3.5 h-3.5 object-contain" />
+										<span>{tech}</span>
+									</div>
+								{:else}
+									<span class="px-2 py-1 bg-blue-50 text-blue-700 rounded-xl text-xs font-medium border border-blue-100">
+										{tech}
+									</span>
+								{/if}
+							{/each}
+						</div>
 					</div>
-				</div>
+				{/if}
+
+                    </div>
+                </div>
 
 				<!-- CAROUSEL / MEDIA SECTION -->
 				{#if project.isWearOS || (project.wearosImages && project.wearosImages.length > 0)}
 					{@const watchImgs = project.wearosImages && project.wearosImages.length > 0 ? project.wearosImages : [project.image]}
-					<div class="mb-6 sm:mb-8 flex flex-col gap-3">
+					<div class="mb-4 sm:mb-5 flex flex-col gap-3">
 						<WearOSCarousel
 							images={watchImgs}
 							name={project.name}
@@ -325,10 +339,10 @@
 						/>
 					</div>
 				{:else if slides.length > 0}
-					<div class="mb-6 sm:mb-8 flex flex-col gap-3">
+					<div class="mb-4 sm:mb-5 flex flex-col gap-3">
 						<!-- Main Viewport -->
 						<div
-							class="relative w-full rounded-2xl overflow-hidden bg-gradient-to-b from-gray-50 to-gray-100/80 border border-gray-200/70 shadow-sm flex items-center justify-center min-h-[260px] sm:min-h-[340px] md:min-h-[400px] max-h-[500px] select-none group"
+							class="relative w-full rounded-2xl overflow-hidden bg-gradient-to-b from-gray-50 to-gray-100/80 border border-gray-200/70 shadow-sm flex items-center justify-center {slides[currentSlide]?.type === 'model' ? 'min-h-[260px] sm:min-h-[340px] md:min-h-[400px]' : ''} max-h-[500px] select-none group"
 							on:touchstart={handleTouchStart}
 							on:touchend={handleTouchEnd}
 						>
@@ -454,41 +468,15 @@
 				<!-- Section 1: Meu Papel -->
 				{#if project.myRole || project.description}
 					<div class="mb-6 sm:mb-8">
-						<h4 class="text-base sm:text-lg font-bold text-gray-900 mb-2 sm:mb-3">
-							{$t('common.modal.role')}
-						</h4>
 						<div class="text-sm sm:text-base text-gray-700 leading-relaxed font-normal space-y-2.5">
 							{@html project.myRole || project.description}
 						</div>
 					</div>
 				{/if}
 
-				<!-- Technologies Section -->
-				{#if project.technologies && project.technologies.length > 0}
-					<div class="mb-6 sm:mb-8">
-						<h4 class="text-base sm:text-lg font-bold text-gray-900 mb-2 sm:mb-3">
-							{$t('common.modal.tech')}
-						</h4>
-						<div class="flex flex-wrap gap-2 sm:gap-2.5 items-center">
-							{#each project.technologies as tech}
-								{#if getToolIcon(tech)}
-									<div
-										class="inline-flex items-center gap-2 px-3 py-1.5 bg-gray-50 border border-gray-200/80 rounded-xl shadow-xs text-xs sm:text-sm font-medium text-gray-800 transition-colors hover:bg-gray-100"
-										title={tech}
-									>
-										<img src={getToolIcon(tech)} alt={tech} class="w-4 h-4 sm:w-5 sm:h-5 object-contain" />
-										<span>{tech}</span>
-									</div>
-								{:else}
-									<span class="px-3 py-1.5 bg-blue-50 text-blue-700 rounded-xl text-xs sm:text-sm font-medium border border-blue-100">
-										{tech}
-									</span>
-								{/if}
-							{/each}
-						</div>
-					</div>
-				{/if}
-
+                {#if project.name === 'Meutube'}
+                    <MeutubeDemo />
+                {/if}
 				<!-- Section 2: Sobre o Projeto (Tópicos do Projeto) -->
 				{#if project.features && Array.isArray(project.features) && project.features.length > 0}
 					<div class="mb-6 sm:mb-8">

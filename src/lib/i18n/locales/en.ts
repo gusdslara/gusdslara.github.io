@@ -329,7 +329,8 @@ export const en = {
                 'Responsive and accessible design'
             ]
         },
-        'm3': { description: 'Local media streaming' },
+        "m3": {"description": "Cartoon channels, local videos and YouTube on phones and TVs, with parental controls.", "features": ["YouTube and local-video channels and playlists", "Configure the TV from a phone via QR code on the local network", "Parental PIN controls and TV lock", "Program guide, watch history and playback resume"]},
+        "homestream": {"description": "A personal video, music and photo server for your home network.", "features": ["Local video, music and photo library with collections", "Profiles and access permissions by genre and collection", "Direct playback and FFmpeg compatibility conversion", "PIN and QR pairing; TV clients in development"]},
         'm10': {
             description: 'AWS infrastructure (EC2 & EBS), GeyserMC cross-play, and SQLite SSO',
             features: [

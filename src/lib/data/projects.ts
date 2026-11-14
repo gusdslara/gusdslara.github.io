@@ -208,7 +208,7 @@ export const myApps: MyApp[] = [
         name: 'Tropicalia Launcher',
         category: ['software', 'games'],
         categories: ['software', 'games'],
-        image: '/assets/img/apps/tropicalia-launcher-app.webp',
+        image: '/assets/img/apps/tropicalia-launcher-desktop-home.webp',
         caption:
             'Launcher Cross-Platform (Desktop & Mobile) para Minecraft em Tauri v2, Rust & SvelteKit 5',
         role: 'Arquiteto de Software & Engenheiro Fullstack (Rust / SvelteKit 5)',
@@ -231,8 +231,12 @@ export const myApps: MyApp[] = [
         link: 'https://tropicaliacraft.gustavolara.pro/downloads',
         githubUrl: 'https://github.com/gusdslara/tropicaliacraft-launcher',
         additionalImages: [
-            '/assets/img/apps/tropicalia-launcher-app.webp',
-            '/assets/img/apps/tropicalia-launcher-app-2.webp'
+            '/assets/img/apps/tropicalia-launcher-desktop-home.webp',
+            '/assets/img/apps/tropicalia-launcher-desktop-mods.webp'
+        ],
+        phoneImages: [
+            '/assets/img/apps/tropicalia-launcher-mobile-home.webp',
+            '/assets/img/apps/tropicalia-launcher-mobile-mods.webp'
         ]
     },
     {
@@ -457,18 +461,31 @@ export const moreProjects: ProjectData[] = [
     },
     {
         id: 'm3',
-        name: 'Argus Player',
+        name: 'Meutube',
         category: 'software',
-        image: '/assets/img/logos/argusplayer.png',
+        image: '/assets/img/apps/meutube-tv-phone.webp',
+        additionalImages: ['/assets/img/apps/meutube-guide.webp', '/assets/img/apps/meutube-parental.webp'],
         color: '#E1F0FF',
-        role: 'Engenheiro Fullstack',
-        year: '2024',
-        myRole:
-            '<p>Desenvolvi a solução de streaming de mídia local com backend em Go para indexação e transcodificação de arquivos e frontend em Angular com player multimídia responsivo.</p>',
-        description: 'Streaming de mídia local',
-        technologies: ['Angular', 'Go'],
-        githubUrl: 'https://github.com/gusdslara/argus-player',
-        link: 'https://argus.gustavolara.pro/'
+        role: 'Desenvolvedor Android',
+        year: '2026',
+        myRole: '<p>Desenvolvi o aplicativo Android em <strong>Kotlin e Jetpack Compose</strong>, com interfaces próprias para celular e Android TV. Implementei canais e playlists de vídeos do YouTube e arquivos locais, persistência com Room e reprodução local com Media3.</p><p>Criei o portal web na rede local para configurar a TV pelo celular via QR Code, a comunicação entre dispositivos e os controles parentais com PIN. Adaptei a navegação ao controle remoto e implementei o guia de programação e a retomada de vídeos.</p>',
+        description: 'Canais de desenhos, vídeos locais e YouTube no celular e na TV, com controle dos pais.',
+        technologies: ['Kotlin', 'Jetpack Compose', 'Android', 'Room', 'Media3'],
+        features: ['Canais e playlists com vídeos do YouTube e arquivos locais', 'Configuração da TV pelo celular com QR Code na rede local', 'Controle parental com PIN e trava da TV', 'Guia de programação, histórico e retomada de vídeos']
+    },
+    {
+        id: 'homestream',
+        name: 'HomeStream',
+        category: 'software',
+        image: '/assets/img/apps/homestream-library.webp',
+        additionalImages: ['/assets/img/apps/homestream-pairing.webp'],
+        color: '#EDF2E8',
+        role: 'Desenvolvedor Fullstack',
+        year: '2026',
+        myRole: '<p>Projetei e desenvolvi o servidor de mídia local em <strong>Rust/Axum e SQLite</strong>, a interface responsiva em <strong>Svelte 5</strong> e o aplicativo desktop com <strong>Tauri 2</strong>. Implementei upload, coleções, pesquisa, perfis e permissões aplicadas pelo servidor.</p><p>Desenvolvi reprodução direta com HTTP Range, conversão compatível via FFmpeg, retomada de vídeos e pareamento de telas por PIN e QR Code. Criei clientes iniciais para Android TV e Roku e preparei a distribuição com Docker; a validação em TVs físicas continua pendente.</p>',
+        description: 'Servidor pessoal de vídeos, músicas e fotos para assistir em casa, na rede local.',
+        technologies: ['Rust', 'Svelte', 'TypeScript', 'Tauri', 'SQLite', 'Docker', 'FFmpeg'],
+        features: ['Biblioteca local de vídeos, músicas e fotos com coleções', 'Perfis e permissões de acesso por gênero e coleção', 'Reprodução direta e conversão compatível via FFmpeg', 'Pareamento por PIN e QR Code; clientes TV em desenvolvimento']
     },
     {
         id: 'm10',
