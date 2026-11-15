@@ -229,6 +229,7 @@ export const myApps: MyApp[] = [
         ],
         background: '#FFF2EB',
         link: 'https://tropicaliacraft.gustavolara.pro/downloads',
+        apkUrl: '/assets/downloads/tropicaliacraft-launcher.apk',
         githubUrl: 'https://github.com/gusdslara/tropicaliacraft-launcher',
         additionalImages: [
             '/assets/img/apps/tropicalia-launcher-desktop-home.webp',
