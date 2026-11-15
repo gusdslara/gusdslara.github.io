@@ -9,3 +9,7 @@ node_modules
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 
+
+# Large APK (>100MB GitHub limit) - deployed directly to VPS
+static/assets/downloads/tropicaliacraft-launcher.apk
+docs/assets/downloads/tropicaliacraft-launcher.apk
