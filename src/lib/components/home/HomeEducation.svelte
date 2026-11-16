@@ -37,7 +37,7 @@
 			degree: $t('education.1.degree'),
 			field: $t('education.1.field'),
 			startDate: '2018',
-			endDate: '2021',
+			endDate: '2023',
 			color: '#027DFD',
 			description: $t('education.1.description'),
 			status: 'completed'

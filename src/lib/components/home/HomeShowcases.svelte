@@ -213,6 +213,42 @@
 			? translatedMoreProjects
 			: translatedMoreProjects.filter((p) => hasCategory(p, selectedTab));
 
+	/** Small projects promoted into the main grid, in this order (others keep their data order). */
+	const FEATURED_SMALL = ['m3', 'memorycard', 'homestream', 'm0', 'm10'];
+	/** Row rhythm on the 4-column grid: B = big card (2 cols), s = small square (1 col). */
+	const ROW_PATTERN = ['BB', 'Bss', 'BB', 'ssB'];
+
+	type MixedItem = { kind: 'big' | 'small'; key: string; item: any };
+
+	function mixProjects(bigs: any[], smalls: any[]) {
+		const rank = (p: any) => {
+			const i = FEATURED_SMALL.indexOf(p.id);
+			return i === -1 ? FEATURED_SMALL.length : i;
+		};
+		const bigQueue = [...bigs];
+		const smallQueue = [...smalls].sort((a, b) => rank(a) - rank(b));
+		const mixed: MixedItem[] = [];
+		const big = () => {
+			const item = bigQueue.shift();
+			mixed.push({ kind: 'big', key: `big-${item.id}`, item });
+		};
+		const small = () => {
+			const item = smallQueue.shift();
+			mixed.push({ kind: 'small', key: `small-${item.id}`, item });
+		};
+
+		for (let row = 0; bigQueue.length > 0; row++) {
+			let pattern = ROW_PATTERN[row % ROW_PATTERN.length];
+			// Not enough cards for this rhythm: fall back to one big card + squares.
+			if (pattern === 'BB' && bigQueue.length < 2) pattern = 'Bss';
+			if (pattern !== 'BB' && smallQueue.length < 2) pattern = 'B';
+			for (const slot of pattern) (slot === 'B' ? big : small)();
+		}
+		return { mixed, rest: smallQueue };
+	}
+
+	$: ({ mixed: mixedProjects, rest: restMoreProjects } = mixProjects(filteredMyApps, filteredMoreProjects));
+
 	// Unified categories for modal navigation
 	$: projectCategories = [
 		{ id: 'clients', label: $t('home.showcases.clients'), projects: translatedClientApps, icon: 'M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z' },
@@ -358,28 +394,45 @@
 
 	<div class="max-w-7xl mx-auto">
 		{#key selectedTab}
-			{#if filteredMyApps.length > 0}
+			{#if mixedProjects.length > 0}
 				<div class="mb-4 md:mb-6">
 					<AnimatedSection
 						customVariant={staggerContainer}
-						className="grid grid-cols-1 md:grid-cols-2 gap-4"
+						className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4"
 					>
-						{#each filteredMyApps as app, i (app.id)}
-							<ShowcaseProjectItem {app} openProjectModal={() => openProjectModal(app)} />
+						{#each mixedProjects as entry (entry.key)}
+							{#if entry.kind === 'big'}
+								<div class="col-span-2 h-full">
+									<ShowcaseProjectItem
+										app={entry.item}
+										openProjectModal={() => openProjectModal(entry.item)}
+									/>
+								</div>
+							{:else}
+								<div class="col-span-1 h-full">
+									<ShowcaseGridItem
+										logo={entry.item}
+										fill
+										openProjectModal={() => openProjectModal(entry.item)}
+									/>
+								</div>
+							{/if}
 						{/each}
 					</AnimatedSection>
 				</div>
 			{/if}
 
-			<AnimatedSection
-				customVariant={staggerContainer}
-				delay={0.2}
-				className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 md:gap-4"
-			>
-				{#each filteredMoreProjects as logo, i (logo.id)}
-					<ShowcaseGridItem {logo} openProjectModal={() => openProjectModal(logo)} />
-				{/each}
-			</AnimatedSection>
+			{#if restMoreProjects.length > 0}
+				<AnimatedSection
+					customVariant={staggerContainer}
+					delay={0.2}
+					className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 md:gap-4"
+				>
+					{#each restMoreProjects as logo (logo.id)}
+						<ShowcaseGridItem {logo} openProjectModal={() => openProjectModal(logo)} />
+					{/each}
+				</AnimatedSection>
+			{/if}
 		{/key}
 	</div>
 </div>
