@@ -303,6 +303,32 @@ export const es = {
                 'Paquete APK directo listo para instalar en smartwatches Wear OS'
             ]
         },
+        '8_my': {
+            name: 'Final Fantasy Tactics Advance (Wear OS)',
+            caption: 'Port nativo de Final Fantasy Tactics Advance (GBA) con diseño circular sin distorsión y cursor por la corona',
+            description: 'Port nativo de Final Fantasy Tactics Advance para smartwatches Wear OS, con el núcleo libmgba en un shell SDL3 propio. Diseño circular sin distorsión con botones en las zonas libres del cristal, gestos de toque y arrastre pensados para la cuadrícula táctica, cursor por la corona y transferencia de la ROM por código QR.',
+            features: [
+                'Cuadro 3:2 completo en el cristal redondo, sin recortes ni distorsión, con 3 niveles de zoom',
+                'Botones en los casquetes libres (L/M/R, B/>>/A, SELECT/START) sin tapar la imagen',
+                'D-pad por arrastre con ancla que sigue el pulgar, toque = A y dos dedos = B',
+                'Modo diagonal para mapas isométricos de batalla y velocidad 3× para combates largos',
+                'Cursor de menús por la corona / bisel giratorio',
+                'Reanudación automática y transferencia de la ROM por QR vía Wi-Fi'
+            ]
+        },
+        '9_my': {
+            name: 'Super Monkey Ball Jr. (Wear OS)',
+            caption: 'Port nativo de Super Monkey Ball Jr. (GBA) controlado inclinando la muñeca',
+            description: 'Port nativo de Super Monkey Ball Jr. para smartwatches Wear OS, con el núcleo libmgba en un shell SDL3 propio. Control por inclinación de la muñeca con giroscopio, lente redonda que llena todo el disco durante las fases y HUD redibujado de forma nativa para la pantalla circular.',
+            features: [
+                'Control por inclinación de la muñeca con calibración automática en cada fase',
+                'Stick de dedo sumado al giroscopio para correcciones finas',
+                'Lente redonda: la fase 3D ocupa todo el disco sin deformar el centro',
+                'HUD nativo redibujado para la pantalla circular a partir de los sprites de la OAM',
+                'Menús planos sin distorsión, con botones grandes en las zonas libres',
+                'La corona ajusta la fuerza de la lente; ROM enviada por QR vía Wi-Fi'
+            ]
+        },
         'all': 'Todos',
         'software': 'Software',
         'hardware': 'Hardware',

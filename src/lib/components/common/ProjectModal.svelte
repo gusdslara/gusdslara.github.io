@@ -19,6 +19,7 @@
 		apkUrl?: string;
 		apkSize?: string;
 		isWearOS?: boolean;
+		icon?: string;
 		wearosImages?: string[];
 		role?: string;
 		year?: string;
@@ -294,11 +295,22 @@
 				<!-- Title, right-aligned technology badges, then compact date -->
                 <div class="mb-3 sm:mb-4">
                     <div class="flex items-start justify-between gap-2 sm:gap-3">
-                        <div class="min-w-0 flex-1">
-                            <h3 class="break-words text-xl sm:text-2xl md:text-3xl font-bold text-gray-950 tracking-tight leading-snug">{project.name}</h3>
-                            {#if project.year}
-                                <p class="mt-1 mb-0 text-xs sm:text-sm text-gray-500">{project.year}</p>
+                        <div class="min-w-0 flex-1 flex items-center gap-3 sm:gap-4">
+                            {#if project.icon}
+                                <img
+                                    src={project.icon}
+                                    alt=""
+                                    width="72"
+                                    height="72"
+                                    class="w-14 h-14 sm:w-[72px] sm:h-[72px] flex-shrink-0 object-contain drop-shadow-md"
+                                />
                             {/if}
+                            <div class="min-w-0">
+                                <h3 class="break-words text-xl sm:text-2xl md:text-3xl font-bold text-gray-950 tracking-tight leading-snug">{project.name}</h3>
+                                {#if project.year}
+                                    <p class="mt-1 mb-0 text-xs sm:text-sm text-gray-500">{project.year}</p>
+                                {/if}
+                            </div>
                         </div>
 				<!-- Technologies Section -->
 				{#if project.technologies && project.technologies.length > 0}

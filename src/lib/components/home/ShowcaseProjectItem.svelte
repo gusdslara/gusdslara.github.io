@@ -59,9 +59,22 @@
 			<p class="text-sm text-black/60 mb-2 m-0 uppercase tracking-wider font-medium">
 				{app.caption}
 			</p>
-			<h5 class="text-xl md:text-2xl font-bold m-0 group-hover:text-black/80 transition-colors">
-				{app.name}
-			</h5>
+			<div class="flex items-center gap-3">
+				{#if app.icon}
+					<img
+						src={app.icon}
+						alt=""
+						loading="lazy"
+						decoding="async"
+						width="56"
+						height="56"
+						class="w-12 h-12 md:w-14 md:h-14 flex-shrink-0 object-contain drop-shadow-md transition-transform duration-500 group-hover:rotate-[-8deg] group-hover:scale-105"
+					/>
+				{/if}
+				<h5 class="text-xl md:text-2xl font-bold m-0 group-hover:text-black/80 transition-colors">
+					{app.name}
+				</h5>
+			</div>
 
 			{#if app.technologies}
 				<div class="flex flex-wrap gap-1.5 mt-4">
