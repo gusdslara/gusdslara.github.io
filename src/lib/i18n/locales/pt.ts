@@ -82,7 +82,8 @@ export const pt = {
             gallery: 'Galeria do Projeto',
             viewProject: 'Ver Projeto',
             viewCode: 'Ver Código',
-            downloadApk: 'Baixar APK (Wear OS)'
+            downloadApk: 'Baixar APK (Wear OS)',
+            romNote: 'O APK não inclui ROM/ISO. Ao abrir, o relógio mostra um QR Code: escaneie com o celular e envie a sua própria cópia pelo Wi-Fi.'
         },
         model3d: {
             loading: 'Carregando modelo 3D...',

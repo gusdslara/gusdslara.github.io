@@ -37,6 +37,8 @@ export interface MyApp {
     background: string;
     link?: string;
     githubUrl?: string;
+    /** Shows the "Open Source" ribbon even without a public repository link. */
+    openSource?: boolean;
     apkUrl?: string;
     apkSize?: string;
     isWearOS?: boolean;
@@ -76,6 +78,8 @@ export interface ProjectData {
     technologies: string[];
     features?: string[];
     githubUrl?: string;
+    /** Shows the "Open Source" ribbon even without a public repository link. */
+    openSource?: boolean;
     link?: string;
     apkUrl?: string;
     apkSize?: string;

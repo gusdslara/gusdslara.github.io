@@ -53,7 +53,7 @@
 					</div>
 				{/if}
 
-				{#if logo.githubUrl}
+				{#if logo.openSource ?? logo.githubUrl}
 					<div class="absolute top-0 right-0 z-40 w-[90px] h-[90px] overflow-hidden pointer-events-none">
 						<span
 							class="block absolute w-[130px] py-1 bg-green-500 text-white text-center text-[9px] font-semibold rotate-45 top-[18px] -right-[36px] shadow-md uppercase tracking-wider"
