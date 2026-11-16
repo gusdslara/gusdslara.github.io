@@ -246,6 +246,7 @@ export const myApps: MyApp[] = [
         category: ['games', 'software'],
         categories: ['games', 'software'],
         isWearOS: true,
+        icon: '/assets/img/apps/wearos/icons/ctr.webp',
         image: '/assets/img/apps/wearos/ctr-round-cove.png',
         caption: 'Port nativo de Crash Team Racing (PS1) em C/SDL3 rodando a 60 FPS no pulso',
         role: 'Engenheiro de Sistemas Embarcados & Porting (C / SDL3 / Wear OS)',
@@ -271,7 +272,16 @@ export const myApps: MyApp[] = [
             '/assets/img/apps/wearos/ctr-round-controls.png',
             '/assets/img/apps/wearos/ctr-round-cove.png',
             '/assets/img/apps/wearos/ctr-round-boost.png',
-            '/assets/img/apps/wearos/ctr-round-trophy.png'
+            '/assets/img/apps/wearos/ctr-round-trophy.png',
+            '/assets/img/apps/wearos/ctr-wear-01-main-menu.webp',
+            '/assets/img/apps/wearos/ctr-wear-03-intro-3d.webp',
+            '/assets/img/apps/wearos/ctr-wear-04-intro-oxide.webp',
+            '/assets/img/apps/wearos/ctr-wear-06-character-select.webp',
+            '/assets/img/apps/wearos/ctr-wear-07-track-select.webp',
+            '/assets/img/apps/wearos/ctr-wear-08-race-intro.webp',
+            '/assets/img/apps/wearos/ctr-wear-10-racing-accelerate.webp',
+            '/assets/img/apps/wearos/ctr-wear-11-racing.webp',
+            '/assets/img/apps/wearos/ctr-wear-12-racing.webp'
         ],
         additionalImages: [
             '/assets/img/apps/wearos/ctr-menu-title.png',
@@ -285,6 +295,7 @@ export const myApps: MyApp[] = [
         category: ['games', 'software'],
         categories: ['games', 'software'],
         isWearOS: true,
+        icon: '/assets/img/apps/wearos/icons/smw.webp',
         image: '/assets/img/apps/wearos/smw-round-1.png',
         caption: 'Port nativo de Super Mario World adaptado para relógios Wear OS',
         role: 'Engenheiro de Software & Sistemas Móveis (C / SDL)',
@@ -310,7 +321,17 @@ export const myApps: MyApp[] = [
             '/assets/img/apps/wearos/smw-round-controls.png',
             '/assets/img/apps/wearos/smw-round-1.png',
             '/assets/img/apps/wearos/smw-round-map-1.png',
-            '/assets/img/apps/wearos/smw-round-3.png'
+            '/assets/img/apps/wearos/smw-round-3.png',
+            '/assets/img/apps/wearos/smw-wear-01-title.webp',
+            '/assets/img/apps/wearos/smw-wear-02-menu.webp',
+            '/assets/img/apps/wearos/smw-wear-03-yoshis-house.webp',
+            '/assets/img/apps/wearos/smw-wear-04-walk-touch.webp',
+            '/assets/img/apps/wearos/smw-wear-05-walking.webp',
+            '/assets/img/apps/wearos/smw-wear-06-world-map.webp',
+            '/assets/img/apps/wearos/smw-wear-07-level-start.webp',
+            '/assets/img/apps/wearos/smw-wear-08-running.webp',
+            '/assets/img/apps/wearos/smw-wear-09-running.webp',
+            '/assets/img/apps/wearos/smw-wear-10-jump.webp'
         ]
     },
     {
@@ -319,6 +340,7 @@ export const myApps: MyApp[] = [
         category: ['games', 'software'],
         categories: ['games', 'software'],
         isWearOS: true,
+        icon: '/assets/img/apps/wearos/icons/firered.webp',
         image: '/assets/img/apps/wearos/pkmn-round-battle-charmander.png',
         caption: 'Port & Recompilação de Pokémon FireRed otimizado para display circular',
         role: 'Desenvolvedor & Engenheiro de Porting (Lua / C / Android)',
@@ -351,6 +373,7 @@ export const myApps: MyApp[] = [
         category: ['games', 'software'],
         categories: ['games', 'software'],
         isWearOS: true,
+        icon: '/assets/img/apps/wearos/icons/mgs.webp',
         image: '/assets/img/apps/wearos/mgs-round-circular.png',
         caption: 'Recompilação nativa de Metal Gear Solid 1 (PS1) com controles táteis furtivos e mira por giroscópio no pulso',
         role: 'Engenheiro de Porting & Sistemas Embarcados (C / C++ / NDK / Wear OS)',
@@ -377,6 +400,79 @@ export const myApps: MyApp[] = [
             '/assets/img/apps/wearos/mgs-round-circular.png',
             '/assets/img/apps/wearos/mgs-round-stealth.png',
             '/assets/img/apps/wearos/mgs-round-raw.png'
+        ]
+    },
+    {
+        id: 8,
+        name: 'Final Fantasy Tactics Advance (Wear OS)',
+        category: ['games', 'software'],
+        categories: ['games', 'software'],
+        isWearOS: true,
+        icon: '/assets/img/apps/wearos/icons/ffta.webp',
+        image: '/assets/img/apps/wearos/ffta-wear-07-battle-move.webp',
+        caption: 'Port nativo de Final Fantasy Tactics Advance (GBA) com layout circular sem distorção e cursor pela coroa',
+        role: 'Engenheiro de Porting & Sistemas Embarcados (C / SDL3 / Wear OS)',
+        year: '2026',
+        myRole:
+            '<p>Construí um shell nativo em <strong>C</strong> com <strong>SDL3</strong> embarcando o núcleo <strong>libmgba</strong> para rodar Final Fantasy Tactics Advance em smartwatches Wear OS, além de Android e desktop.</p><p><strong>Layout Circular sem Distorção:</strong> O quadro 240×160 é desenhado como o maior retângulo 3:2 que cabe no vidro redondo, sem cortes nem esticamentos, e os botões ocupam as calotas livres ao redor, com a borda interna acompanhando a imagem para nunca cobrir um pixel do jogo.</p><p><strong>Controles para Tática no Pulso:</strong> Implementei D-pad por arraste com âncora que segue o polegar e histerese anti-tremor, toque rápido como A, toque com dois dedos como B, modo diagonal para os mapas isométricos, velocidade 3× e cursor pela coroa/aro rotativo. Também criei o auto-resume do estado e a transferência da ROM por QR Code via Wi-Fi.</p>',
+        description:
+            'Port nativo de Final Fantasy Tactics Advance para smartwatches Wear OS com núcleo libmgba em um shell SDL3 próprio. Layout circular sem distorção com botões nas áreas livres do vidro, gestos de toque e arraste pensados para o grid tático, cursor pela coroa e transferência da ROM por QR Code.',
+        technologies: ['C', 'SDL', 'Android', 'Wear OS'],
+        features: [
+            'Quadro 3:2 inteiro no vidro redondo, sem cortes nem distorção, com 3 presets de zoom',
+            'Botões nas calotas livres (L/M/R, B/>>/A, SELECT/START) sem cobrir a imagem do jogo',
+            'D-pad por arraste com âncora que segue o polegar, toque = A e dois dedos = B',
+            'Modo diagonal para mapas isométricos de batalha e velocidade 3× para lutas longas',
+            'Cursor de menus pela coroa / aro rotativo do relógio',
+            'Auto-resume do estado e transferência da ROM por QR Code via Wi-Fi'
+        ],
+        background: '#FBF4E4',
+        wearosImages: [
+            '/assets/img/apps/wearos/ffta-wear-05-story.webp',
+            '/assets/img/apps/wearos/ffta-wear-07-battle-move.webp',
+            '/assets/img/apps/wearos/ffta-wear-01-resume.webp',
+            '/assets/img/apps/wearos/ffta-wear-04-name-entry.webp',
+            '/assets/img/apps/wearos/ffta-wear-06-tutorial.webp'
+        ]
+    },
+    {
+        id: 9,
+        name: 'Super Monkey Ball Jr. (Wear OS)',
+        category: ['games', 'software'],
+        categories: ['games', 'software'],
+        isWearOS: true,
+        icon: '/assets/img/apps/wearos/icons/smbjr.webp',
+        image: '/assets/img/apps/wearos/smbjr-wear-12-rolling.webp',
+        caption: 'Port nativo de Super Monkey Ball Jr. (GBA) controlado pela inclinação do pulso',
+        role: 'Engenheiro de Porting & Sistemas Embarcados (C / SDL3 / Wear OS)',
+        year: '2026',
+        myRole:
+            '<p>Desenvolvi o port de Super Monkey Ball Jr. para smartwatches Wear OS, Android, desktop e web (WebAssembly), com o núcleo <strong>libmgba</strong> em um shell <strong>SDL3</strong> próprio escrito em <strong>C</strong>.</p><p><strong>Giroscópio do Pulso:</strong> O macaco rola pela inclinação do pulso, com calibração automática da pose neutra a cada fase, stick de dedo somado à inclinação para correções finas e conversão analógico → D-pad por PWM (sigma-delta), como um analógico de verdade.</p><p><strong>Lente Redonda & HUD Nativo:</strong> Durante a fase, a cena 3D preenche o disco inteiro com zoom sem distorção no centro e compressão só na borda. Os sprites do HUD são lidos da OAM a cada quadro e redesenhados para a tela redonda: bomba e pavio curvados no topo, placar e bananas próximos à borda e mensagens como GOAL! passando pela mesma lente.</p>',
+        description:
+            'Port nativo de Super Monkey Ball Jr. para smartwatches Wear OS com núcleo libmgba em um shell SDL3 próprio. Controle pela inclinação do pulso via giroscópio, lente redonda que preenche o disco durante as fases e HUD redesenhado nativamente para o display circular.',
+        technologies: ['C', 'SDL', 'Android', 'Wear OS'],
+        features: [
+            'Controle por inclinação do pulso com calibração automática a cada fase',
+            'Stick de dedo somado ao giroscópio para correções finas',
+            'Lente redonda: a fase 3D ocupa o disco inteiro sem distorcer o centro',
+            'HUD nativo redesenhado para a tela circular a partir dos sprites da OAM',
+            'Menus planos sem distorção, com botões grandes nas áreas livres',
+            'Coroa ajusta a força da lente; ROM enviada por QR Code via Wi-Fi'
+        ],
+        background: '#EEF8E6',
+        wearosImages: [
+            '/assets/img/apps/wearos/smbjr-wear-02-title.webp',
+            '/assets/img/apps/wearos/smbjr-wear-12-rolling.webp',
+            '/assets/img/apps/wearos/smbjr-wear-01-intro.webp',
+            '/assets/img/apps/wearos/smbjr-wear-04-menu.webp',
+            '/assets/img/apps/wearos/smbjr-wear-05-menu.webp',
+            '/assets/img/apps/wearos/smbjr-wear-06-difficulty.webp',
+            '/assets/img/apps/wearos/smbjr-wear-07-character.webp',
+            '/assets/img/apps/wearos/smbjr-wear-08-stage-intro.webp',
+            '/assets/img/apps/wearos/smbjr-wear-09-flyover.webp',
+            '/assets/img/apps/wearos/smbjr-wear-10-ready-go.webp',
+            '/assets/img/apps/wearos/smbjr-wear-11-rolling-stick.webp',
+            '/assets/img/apps/wearos/smbjr-wear-13-rolling.webp'
         ]
     }
 ];

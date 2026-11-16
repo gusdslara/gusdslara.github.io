@@ -40,6 +40,8 @@ export interface MyApp {
     apkUrl?: string;
     apkSize?: string;
     isWearOS?: boolean;
+    /** App icon (round watch-style icon for the Wear OS ports). */
+    icon?: string;
     wearosImages?: string[];
     additionalImages?: string[];
     phoneImages?: string[];

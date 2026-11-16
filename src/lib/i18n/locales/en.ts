@@ -303,6 +303,32 @@ export const en = {
                 'Direct APK package ready for installation on Wear OS smartwatches'
             ]
         },
+        '8_my': {
+            name: 'Final Fantasy Tactics Advance (Wear OS)',
+            caption: 'Native port of Final Fantasy Tactics Advance (GBA) with an undistorted round layout and crown cursor',
+            description: 'Native port of Final Fantasy Tactics Advance for Wear OS smartwatches, embedding the libmgba core in a custom SDL3 shell. Undistorted round layout with buttons in the free space of the glass, tap & drag gestures designed for the tactical grid, crown cursor and ROM transfer via QR code.',
+            features: [
+                'Whole 3:2 frame on the round glass, no cropping or distortion, with 3 zoom presets',
+                'Buttons in the free caps (L/M/R, B/>>/A, SELECT/START) never covering the game picture',
+                'Drag D-pad with an anchor that follows the thumb, tap = A and two-finger tap = B',
+                'Diagonal mode for isometric battle maps and 3× speed for long fights',
+                'Menu cursor on the rotary crown / bezel',
+                'Auto resume and ROM transfer via QR code over Wi-Fi'
+            ]
+        },
+        '9_my': {
+            name: 'Super Monkey Ball Jr. (Wear OS)',
+            caption: 'Native port of Super Monkey Ball Jr. (GBA) controlled by tilting your wrist',
+            description: 'Native port of Super Monkey Ball Jr. for Wear OS smartwatches, embedding the libmgba core in a custom SDL3 shell. Wrist gyro tilt controls, a round lens that fills the whole disc during stages and a HUD natively redrawn for the circular display.',
+            features: [
+                'Wrist tilt controls with automatic calibration at every stage',
+                'Finger stick added on top of the gyro for fine corrections',
+                'Round lens: the 3D stage fills the whole disc without bending the center',
+                'Native HUD redrawn for the round screen from the OAM sprites',
+                'Flat, undistorted menus with full-size buttons in the free space',
+                'Crown adjusts the lens strength; ROM sent via QR code over Wi-Fi'
+            ]
+        },
         'all': 'All',
         'software': 'Software',
         'hardware': 'Hardware',
