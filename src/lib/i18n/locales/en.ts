@@ -82,7 +82,8 @@ export const en = {
             gallery: 'Project Gallery',
             viewProject: 'View Project',
             viewCode: 'View Code',
-            downloadApk: 'Download APK (Wear OS)'
+            downloadApk: 'Download APK (Wear OS)',
+            romNote: 'The APK does not include any ROM/ISO. On first launch the watch shows a QR code: scan it with your phone and send your own copy over Wi-Fi.'
         },
         model3d: {
             loading: 'Loading 3D model...',

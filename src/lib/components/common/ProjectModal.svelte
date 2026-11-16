@@ -514,6 +514,14 @@
 					</div>
 				{/if}
 
+				{#if project.isWearOS && project.apkUrl}
+					<p class="mt-6 mb-0 flex items-start gap-2 text-xs sm:text-sm text-gray-600 bg-gray-50 border border-gray-200/80 rounded-xl px-3 py-2.5">
+						<!-- lucide: qr-code -->
+						<svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-emerald-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="5" height="5" x="3" y="3" rx="1" /><rect width="5" height="5" x="16" y="3" rx="1" /><rect width="5" height="5" x="3" y="16" rx="1" /><path d="M21 16h-3a2 2 0 0 0-2 2v3" /><path d="M21 21v.01" /><path d="M12 7v3a2 2 0 0 1-2 2H7" /><path d="M3 12h.01" /><path d="M12 3h.01" /><path d="M12 16v.01" /><path d="M16 12h1" /><path d="M21 12v.01" /><path d="M12 21v-1" /></svg>
+						<span>{$t('common.modal.romNote')}</span>
+					</p>
+				{/if}
+
 				<!-- Action Buttons (Bottom) -->
 				<div class="flex flex-wrap gap-3 pt-5 border-t border-gray-100 mt-6">
 					{#if project.apkUrl}

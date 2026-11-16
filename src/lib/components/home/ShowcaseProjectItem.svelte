@@ -29,7 +29,7 @@
 		role="button"
 		tabindex="0"
 	>
-		{#if app.githubUrl}
+		{#if app.openSource ?? app.githubUrl}
 			<div class="absolute top-0 right-0 z-30 w-[150px] h-[150px] overflow-hidden pointer-events-none">
 				<span
 					class="block absolute w-[200px] py-2 bg-green-500 text-white text-center text-xs font-medium rotate-45 top-[30px] -right-[50px] shadow-lg uppercase tracking-wider"
@@ -59,19 +59,23 @@
 			<p class="text-sm text-black/60 mb-2 m-0 uppercase tracking-wider font-medium">
 				{app.caption}
 			</p>
-			<div class="flex items-center gap-3">
+			<div class="flex items-center gap-2.5">
 				{#if app.icon}
 					<img
 						src={app.icon}
 						alt=""
 						loading="lazy"
 						decoding="async"
-						width="56"
-						height="56"
-						class="w-12 h-12 md:w-14 md:h-14 flex-shrink-0 object-contain drop-shadow-md transition-transform duration-500 group-hover:rotate-[-8deg] group-hover:scale-105"
+						width="40"
+						height="40"
+						class="w-9 h-9 md:w-10 md:h-10 flex-shrink-0 object-contain drop-shadow-md transition-transform duration-500 group-hover:rotate-[-8deg] group-hover:scale-105"
 					/>
 				{/if}
-				<h5 class="text-xl md:text-2xl font-bold m-0 group-hover:text-black/80 transition-colors">
+				<h5
+					class="font-bold m-0 leading-tight group-hover:text-black/80 transition-colors {app.icon
+						? 'text-lg md:text-xl'
+						: 'text-xl md:text-2xl'}"
+				>
 					{app.name}
 				</h5>
 			</div>

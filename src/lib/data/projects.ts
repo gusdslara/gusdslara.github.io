@@ -135,8 +135,8 @@ export const myApps: MyApp[] = [
     {
         id: 2,
         name: 'Meu Tempero! — Cuiabá',
-        category: ['games', 'software'],
-        categories: ['games', 'software'],
+        category: 'games',
+        categories: ['games'],
         image: '/assets/img/apps/meutempero-gameplay.webp',
         caption:
             'Simulador 3D Culinário & Gestão em Svelte 5, Three.js (WebGPU) e Tauri v2',
@@ -159,7 +159,6 @@ export const myApps: MyApp[] = [
         ],
         background: '#FFF7EA',
         link: 'https://meutempero.gustavolara.pro/',
-        githubUrl: 'https://github.com/gusdslara/svelte-threejs-overcooked-cuiaba',
         additionalImages: [
             '/assets/img/apps/meutempero-kitchen.webp',
             '/assets/img/apps/meutempero-catedral.webp',
@@ -170,8 +169,8 @@ export const myApps: MyApp[] = [
     {
         id: 6,
         name: 'Deadly BiteZ (Bitez)',
-        category: ['games', 'software'],
-        categories: ['games', 'software'],
+        category: 'games',
+        categories: ['games'],
         image: '/assets/img/apps/bitez-gameplay.webp',
         caption:
             'Hardcore Multiplayer Zombie Survival Roguelike em Svelte, Three.js & Mapa Real OpenStreetMap',
@@ -194,7 +193,6 @@ export const myApps: MyApp[] = [
         ],
         background: '#F4ECEC',
         link: 'https://bitez.gustavolara.pro/',
-        githubUrl: 'https://github.com/gusdslara/pixelz-svelte-threejs-game',
         additionalImages: [
             '/assets/img/apps/bitez-gameplay.webp',
             '/assets/img/apps/bitez-house-inside.webp',
@@ -243,8 +241,8 @@ export const myApps: MyApp[] = [
     {
         id: 3,
         name: 'Crash Team Racing Native (Wear OS)',
-        category: ['games', 'software'],
-        categories: ['games', 'software'],
+        category: 'games',
+        categories: ['games'],
         isWearOS: true,
         icon: '/assets/img/apps/wearos/icons/ctr.webp',
         image: '/assets/img/apps/wearos/ctr-round-cove.png',
@@ -267,7 +265,7 @@ export const myApps: MyApp[] = [
         background: '#FFF2EB',
         githubUrl: 'https://github.com/gusdslara/ctr-wearos',
         apkUrl: '/assets/downloads/ctr-wearos.apk',
-        apkSize: '11.4 MB',
+        apkSize: '13.4 MB',
         wearosImages: [
             '/assets/img/apps/wearos/ctr-round-controls.png',
             '/assets/img/apps/wearos/ctr-round-cove.png',
@@ -292,8 +290,8 @@ export const myApps: MyApp[] = [
     {
         id: 4,
         name: 'Super Mario World (Wear OS)',
-        category: ['games', 'software'],
-        categories: ['games', 'software'],
+        category: 'games',
+        categories: ['games'],
         isWearOS: true,
         icon: '/assets/img/apps/wearos/icons/smw.webp',
         image: '/assets/img/apps/wearos/smw-round-1.png',
@@ -316,7 +314,7 @@ export const myApps: MyApp[] = [
         background: '#E8F8EE',
         githubUrl: 'https://github.com/gusdslara/smw-wearos',
         apkUrl: '/assets/downloads/smw-wearos.apk',
-        apkSize: '26.8 MB',
+        apkSize: '25.8 MB',
         wearosImages: [
             '/assets/img/apps/wearos/smw-round-controls.png',
             '/assets/img/apps/wearos/smw-round-1.png',
@@ -337,8 +335,8 @@ export const myApps: MyApp[] = [
     {
         id: 5,
         name: 'Pokémon FireRed (Wear OS)',
-        category: ['games', 'software'],
-        categories: ['games', 'software'],
+        category: 'games',
+        categories: ['games'],
         isWearOS: true,
         icon: '/assets/img/apps/wearos/icons/firered.webp',
         image: '/assets/img/apps/wearos/pkmn-round-battle-charmander.png',
@@ -360,6 +358,8 @@ export const myApps: MyApp[] = [
         ],
         background: '#FFF0F0',
         githubUrl: 'https://github.com/gusdslara/gen1recomp-wearos',
+        apkUrl: '/assets/downloads/firered-wearos.apk',
+        apkSize: '84.1 MB',
         wearosImages: [
             '/assets/img/apps/wearos/pkmn-round-controls.png',
             '/assets/img/apps/wearos/pkmn-round-pokecenter.png',
@@ -370,8 +370,8 @@ export const myApps: MyApp[] = [
     {
         id: 7,
         name: 'Metal Gear Solid (Wear OS)',
-        category: ['games', 'software'],
-        categories: ['games', 'software'],
+        category: 'games',
+        categories: ['games'],
         isWearOS: true,
         icon: '/assets/img/apps/wearos/icons/mgs.webp',
         image: '/assets/img/apps/wearos/mgs-round-circular.png',
@@ -394,7 +394,7 @@ export const myApps: MyApp[] = [
         background: '#EEF3EA',
         githubUrl: 'https://github.com/gusdslara/mgsone-recomp-wearos',
         apkUrl: '/assets/downloads/mgs-wearos.apk',
-        apkSize: '37.1 MB',
+        apkSize: '38.9 MB',
         wearosImages: [
             '/assets/img/apps/wearos/mgs-round-controls.png',
             '/assets/img/apps/wearos/mgs-round-circular.png',
@@ -405,8 +405,9 @@ export const myApps: MyApp[] = [
     {
         id: 8,
         name: 'Final Fantasy Tactics Advance (Wear OS)',
-        category: ['games', 'software'],
-        categories: ['games', 'software'],
+        openSource: true,
+        category: 'games',
+        categories: ['games'],
         isWearOS: true,
         icon: '/assets/img/apps/wearos/icons/ffta.webp',
         image: '/assets/img/apps/wearos/ffta-wear-07-battle-move.webp',
@@ -427,6 +428,8 @@ export const myApps: MyApp[] = [
             'Auto-resume do estado e transferência da ROM por QR Code via Wi-Fi'
         ],
         background: '#FBF4E4',
+        apkUrl: '/assets/downloads/ffta-wearos.apk',
+        apkSize: '10.7 MB',
         wearosImages: [
             '/assets/img/apps/wearos/ffta-wear-05-story.webp',
             '/assets/img/apps/wearos/ffta-wear-07-battle-move.webp',
@@ -438,8 +441,9 @@ export const myApps: MyApp[] = [
     {
         id: 9,
         name: 'Super Monkey Ball Jr. (Wear OS)',
-        category: ['games', 'software'],
-        categories: ['games', 'software'],
+        openSource: true,
+        category: 'games',
+        categories: ['games'],
         isWearOS: true,
         icon: '/assets/img/apps/wearos/icons/smbjr.webp',
         image: '/assets/img/apps/wearos/smbjr-wear-12-rolling.webp',
@@ -460,6 +464,8 @@ export const myApps: MyApp[] = [
             'Coroa ajusta a força da lente; ROM enviada por QR Code via Wi-Fi'
         ],
         background: '#EEF8E6',
+        apkUrl: '/assets/downloads/smbjr-wearos.apk',
+        apkSize: '4.9 MB',
         wearosImages: [
             '/assets/img/apps/wearos/smbjr-wear-02-title.webp',
             '/assets/img/apps/wearos/smbjr-wear-12-rolling.webp',
@@ -510,7 +516,7 @@ export const moreProjects: ProjectData[] = [
         id: 'memorycard',
         name: 'memorycard.cloud',
         category: 'software',
-        categories: ['software', 'games'],
+        categories: ['software'],
         image: '/assets/img/illustrations/memorycard-digital.png',
         color: '#E8F8EE',
         role: 'Criador Solo & Arquiteto Fullstack',
@@ -553,12 +559,12 @@ export const moreProjects: ProjectData[] = [
             'Integração com API RESTful em Go',
             'Design responsivo e acessível'
         ],
-        githubUrl: 'https://github.com/gusdslara/ng-tropicaliacraft-landing-page',
         link: 'https://tropicaliacraft.gustavolara.pro/'
     },
     {
         id: 'm3',
         name: 'Meutube',
+        openSource: true,
         category: 'software',
         // Capturas reais do APK debug (C:\dev\tv\KidsTV) rodando em emulador Android, 1080x2340.
         image: '/assets/img/apps/meutube-mobile-home.webp',
@@ -579,6 +585,7 @@ export const moreProjects: ProjectData[] = [
     {
         id: 'homestream',
         name: 'HomeStream',
+        openSource: true,
         category: 'software',
         image: '/assets/img/apps/homestream-desktop.png',
         modalImage: '/assets/img/apps/homestream-library.png',
@@ -621,12 +628,12 @@ export const moreProjects: ProjectData[] = [
             'Reverse Proxy Caddy v2: Terminação SSL automática e streaming de eventos SSE',
             'Tuning de Baixa Latência: Aikar\'s Flags com G1GC/ZGC assegurando 20 TPS estáveis'
         ],
-        githubUrl: 'https://github.com/gusdslara/ng-tropicaliacraft-landing-page',
         link: 'https://tropicaliacraft.gustavolara.pro/'
     },
     {
         id: '3d-8',
         name: 'Meta Quest 3',
+        openSource: true,
         category: '3d',
         image: '/assets/3dmodels/meta_quest_3.png',
         color: '#EBE4FF',
@@ -724,7 +731,6 @@ export const moreProjects: ProjectData[] = [
             { id: 'crawler', label: 'Crawler', path: '/assets/3dmodels/bitez/zombie-crawler.glb' }
         ],
         link: 'https://bitez.gustavolara.pro/',
-        githubUrl: 'https://github.com/gusdslara/pixelz-svelte-threejs-game'
     },
     {
         id: '3d-bitez-survivors',
@@ -751,7 +757,6 @@ export const moreProjects: ProjectData[] = [
             { id: 'female', label: 'Feminino', path: '/assets/3dmodels/bitez/character-survivor-female.glb' }
         ],
         link: 'https://bitez.gustavolara.pro/',
-        githubUrl: 'https://github.com/gusdslara/pixelz-svelte-threejs-game'
     },
     {
         id: '3d-bitez-safehouse',
@@ -780,6 +785,5 @@ export const moreProjects: ProjectData[] = [
             { id: 'arsenal', label: 'Rack de Armas', path: '/assets/3dmodels/bitez/guns-arsenal-rack.glb' }
         ],
         link: 'https://bitez.gustavolara.pro/',
-        githubUrl: 'https://github.com/gusdslara/pixelz-svelte-threejs-game'
     }
 ];
