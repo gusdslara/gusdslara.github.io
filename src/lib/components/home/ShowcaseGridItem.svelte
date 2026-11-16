@@ -8,6 +8,8 @@
 
 	export let logo: any;
 	export let openProjectModal: (project: any) => void;
+	/** Stretch to the grid row height (used when mixed with the big cards on desktop). */
+	export let fill = false;
 
 	$: rawCategories = logo.categories
 		? logo.categories
@@ -27,7 +29,7 @@
 	>
 		<button
 			use:motion
-			class="group relative p-3 md:p-3.5 rounded-xl flex items-center justify-center transition-all duration-300 overflow-hidden h-48 sm:h-52 w-full"
+			class="group relative p-3 md:p-3.5 rounded-xl flex items-center justify-center transition-all duration-300 overflow-hidden h-48 sm:h-52 w-full {fill ? 'lg:h-full lg:min-h-52' : ''}"
 			style="background: {logo.color};"
 			on:click={() => openProjectModal(logo)}
 			tabindex="0"
