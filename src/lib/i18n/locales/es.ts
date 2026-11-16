@@ -14,7 +14,7 @@ export const es = {
             title1: 'Arquitecto',
             title2: 'de Software',
             title3: '& Líder Técnico',
-            desc1: 'Arquitecto de Software y Tech Lead con amplia experiencia en modernización de sistemas legacy, arquitecturas distribuidas e interoperabilidad con código nativo. Perfil políglota con alta adaptabilidad a nuevos lenguajes y ecosistemas.',
+            desc1: 'Con amplia experiencia en modernización de sistemas legacy, arquitecturas distribuidas e interoperabilidad con código nativo. Perfil políglota con alta adaptabilidad a nuevos lenguajes y ecosistemas.',
             desc2: 'Liderando equipos técnicos y proyectos de punta a punta, conectando decisiones de arquitectura e IA aplicada a los objetivos de negocio, con foco en rendimiento, escalabilidad y entregas continuas.'
         },
         about: {
@@ -487,81 +487,107 @@ export const es = {
     },
     expertise: {
         '1': {
-            title: 'Sistemas Distribuidos y Backend',
+            title: 'Arquitectura & Sistemas Distribuidos',
             skills: [
-                'Microservicios, BFF y API Gateway',
-                'Arquitectura Hexagonal, Clean Arch y DDD',
-                'Event-Driven Architecture (Kafka, RabbitMQ)',
-                'Patrón Saga, Outbox y Circuit Breaker',
-                'CQRS, Event Sourcing e Idempotencia',
-                'Fiber, gRPC, Protobuf, GORM y ent',
-                'Quarkus (GraalVM), Spring WebFlux y Micronaut',
-                'NestJS, Express, Prisma y .NET Core'
+                'Microservicios, Microfrontends, BFF y API Gateway',
+                'Arquitectura Hexagonal, Clean Architecture y DDD (Bounded Contexts)',
+                'Event-Driven Architecture, Pub/Sub y Event Storming',
+                'Patrones Saga, Outbox, Circuit Breaker y Bulkhead',
+                'CQRS, Event Sourcing, Idempotencia y Consistencia Eventual',
+                'Programación Reactiva, Backpressure y Alta Concurrencia',
+                'Monolito Modular, Multi-tenancy y Arquitectura de SaaS',
+                'ADRs, C4 Model y Documentación de Arquitectura'
             ]
         },
         '2': {
-            title: 'IA Aplicada e Ingeniería de Datos',
+            title: 'Ingeniería de Software & Procesos',
             skills: [
-                'Agentes Autónomos (RAG, Tool Use, LangGraph)',
-                'Orquestación con LangChain, LlamaIndex y MCP',
-                'Inferencia Local y Privada (Ollama, vLLM)',
-                'Búsqueda Vectorial y Semántica (pgvector, ChromaDB)',
-                'LLM Guardrails y Validación Determinista',
-                'Visión por Computadora y OCR (YOLOv8, OpenCV, Tess4J)',
-                'Pipelines de ETL y Batch (Spring Batch, Pandas)',
-                'APIs de IA y ML (FastAPI, PyTorch, TensorFlow)'
+                'Spec-Driven Development (SDD) y APIs Contract-First (OpenAPI, AsyncAPI)',
+                'TDD, BDD y Pirámide de Pruebas (Unidad, Contrato, Integración, E2E)',
+                'SOLID, Design Patterns (GoF) y Clean Code',
+                'Modernización de Legado: Strangler Fig y Anti-Corruption Layer',
+                'Desarrollo Asistido por IA y Agentic Coding',
+                'Trunk-Based Development, Conventional Commits y Code Review',
+                'Scrum, Kanban, Refinamiento Técnico y Mentoría de Equipos',
+                'RFCs, Docs-as-Code y Traducción del Negocio a Backlog'
             ]
         },
         '3': {
-            title: 'Frontend Moderno y Mobile',
+            title: 'IA Aplicada & Datos',
             skills: [
-                'Angular (Signals, NgRx, Zoneless) y Microfrontends',
-                'SvelteKit (Runes, SSR/SSG) y Tailwind CSS',
-                'Animaciones y 3D Web (GSAP, SvelteMotion, Three.js)',
-                'Móvil Multiplataforma (Flutter, MobX, BLoC, Ionic)',
-                'Móvil Nativo (Jetpack Compose, SwiftUI)',
-                'Arquitectura PWA y Sincronización Offline-First',
-                'Aplicaciones de Escritorio y Embebidas (Tauri, Qt)',
-                'Visualización de Datos (D3.js, Highcharts, Chart.js)'
+                'Agentes Autónomos, Tool Use y Orquestación Multiagente',
+                'RAG, Embeddings, Chunking y Búsqueda Híbrida (Vectorial + Full-Text)',
+                'Guardrails, Validación Determinista y Mitigación de Alucinaciones',
+                'Inferencia Local, Privacidad de Datos y LGPD/GDPR',
+                'Prompt Engineering, Structured Outputs y Evaluación de LLMs (Evals)',
+                'Visión por Computadora: Detección de Objetos y OCR',
+                'ETL/ELT, Procesamiento por Lotes y Data Pipelines',
+                'Modelado en Grafos y Análisis de Vínculos'
             ]
         },
         '4': {
-            title: 'IoT, Embebidos y Real-Time',
+            title: 'Pagos, Fiscal & Integraciones',
             skills: [
-                'Firmwares y RTOS (ESP-IDF, PlatformIO, Zephyr)',
-                'Control de Hardware (GPIO, I2C, SPI, UART, PWM)',
-                'Automatización, Sensores MQTT y Actuadores (Tuya, Relés)',
-                'Interfaces Embebidas (LVGL, Qt, Linux Yocto)',
-                'Single Board Computers (Orange Pi, Raspberry Pi)',
-                'Interoperabilidad Nativa (JNI, JNA, FFI, DLL/SO)',
-                'Periféricos, Lectores Biométricos e Impresoras Térmicas',
-                'Video Real-Time (LiveKit, WebRTC) y Colaboración (Yjs/CRDT)'
+                'ISO 8583, jPOS y Autorización de Transacciones Financieras',
+                'Middleware de Cajeros Automáticos (ATM) y Autoservicio',
+                'EMV, PCI DSS y Seguridad de Datos de Pago',
+                'Facturación Electrónica (NF-e/NFC-e, SEFAZ) y Firma XML-DSig (ICP-Brasil)',
+                'OAuth 2.0, OpenID Connect, JWT y Webhooks Firmados (HMAC)',
+                'Pistas de Auditoría, Compliance y Control Externo Gubernamental',
+                'Plataformas Omnicanal y APIs de Mensajería (WhatsApp Business)',
+                'Interoperabilidad con Legado: SOAP, JNI/JNA, FFI y DLL/SO'
             ]
         },
         '5': {
-            title: 'Cloud, DevOps y Observabilidad',
+            title: 'Frontend & Mobile',
             skills: [
-                'Infraestructura como Código (Terraform) y Multi-Cloud',
-                'Contenedores y Service Mesh (Docker, K8s, Linkerd, Cilium)',
-                'CI/CD y Automatización (GitHub Actions, Jenkins, Fastlane)',
-                'Observabilidad y Tracing (OpenTelemetry, Jaeger, SigNoz)',
-                'Métricas y Series Temporales (Prometheus, Grafana, InfluxDB)',
-                'Centralización de Logs y APM (ELK Stack)',
-                'Caché Distribuido, Tuning de BD y Mensajería',
-                'DevSecOps, Calidad y Proxies (SonarQube, Trivy, Caddy)'
+                'Arquitectura de Microfrontends y Module Federation',
+                'Offline-First, Sincronización y Resolución de Conflictos',
+                'PWA, Service Workers y Web Push',
+                'SSR, SSG, Islands e Hidratación Parcial',
+                'Gestión de Estado: Redux Pattern, Signals y Stores Reactivos',
+                'Design Systems, Design Tokens y Accesibilidad (WCAG)',
+                'Core Web Vitals, Code Splitting y Lazy Loading',
+                'Arquitectura Mobile: MVVM, MVI y Publicación en las Tiendas'
             ]
         },
         '6': {
-            title: 'Games, XR y Modelado 3D',
+            title: 'IoT, Embebidos & Tiempo Real',
             skills: [
-                'Desarrollo de Videojuegos 2D/3D (Unity, Three.js, PixiJS)',
-                'Experiencias Inmersivas VR, AR y MR (WebXR, Meta Quest)',
-                'Modelado 3D Hard-Surface y Orgánico (Blender)',
-                'Retopología, UV Mapping y Texturizado PBR',
-                'Rigging, Skinning y Animación de Personajes',
-                'Shaders, Iluminación y Optimización de Assets (glTF/Draco)',
-                'Game Design (GDD), Level Design y Mecánicas de Juego',
-                'Infraestructura de Servidores Multijugador y Cloud Saves'
+                'Firmware Bare-Metal y RTOS (FreeRTOS, Zephyr)',
+                'Buses de Hardware: GPIO, I2C, SPI, UART y PWM',
+                'Edge Computing y Hubs Locales Offline',
+                'Linux Embebido (Yocto) e Interfaces de Terminales',
+                'Periféricos de PDV: TEF, Impresoras Térmicas y Biometría',
+                'Telemetría, Series Temporales y Automatización de Sensores/Actuadores',
+                'Comunicación en Tiempo Real: WebSocket, WebRTC y SSE',
+                'Colaboración en Tiempo Real con CRDTs'
+            ]
+        },
+        '7': {
+            title: 'Cloud, DevOps & SRE',
+            skills: [
+                'Infraestructura como Código, GitOps y Entornos Efímeros',
+                'CI/CD, Blue-Green, Canary y Feature Flags',
+                'Observabilidad: Logs, Métricas y Tracing Distribuido (OpenTelemetry)',
+                'SLOs, SLIs, Error Budgets y Postmortems',
+                'Escalabilidad Horizontal, Caché Distribuida y Tuning de Base de Datos',
+                'DevSecOps, OWASP Top 10 y Gestión de Secretos',
+                'Service Mesh, Zero Trust y mTLS',
+                'FinOps: Compilación Nativa, Cold Start y Optimización de Costos'
+            ]
+        },
+        '8': {
+            title: 'Games, XR & 3D',
+            skills: [
+                'Game Loop, ECS y Arquitectura de Motores',
+                'Netcode Autoritativo, Client-Side Prediction y Lag Compensation',
+                'Generación Procedural y Mapas del Mundo Real (Datos Geoespaciales)',
+                'Renderizado PBR, Shaders e Iluminación Dinámica',
+                'Optimización: LOD, Instancing, Culling y Compresión glTF',
+                'XR Inmersivo (WebXR, OpenXR): VR, AR y Realidad Mixta',
+                'Modelado, Retopología, Rigging y Animación de Personajes',
+                'Game Design (GDD), Level Design y Ports Nativos para Wearables'
             ]
         }
     },
@@ -569,7 +595,12 @@ export const es = {
         '1': {
             degree: 'Grado Superior',
             field: 'Sistemas para Internet',
-            description: ['Licenciatura / Grado Superior en el Instituto Federal de Mato Grosso (IFMT) con sólida formación en desarrollo de software, arquitectura de sistemas web, bases de datos e ingeniería de sistemas distribuidos.']
+            description: [
+                'Carrera Superior de Tecnología en Sistemas para Internet en el IFMT, Campus Cuiabá (plan de estudios 2018), con una base sólida en lógica de programación, algoritmos, estructuras de datos y orientación a objetos en Java, además de modelado, normalización y administración de bases de datos relacionales con SQL.',
+                'En desarrollo web, recorrí el ecosistema Java EE: Servlets, JSP y JSF, persistencia con JPA/Hibernate, patrón MVC y despliegue en servidores de aplicaciones, junto con HTML, CSS, JavaScript, diseño responsivo y desarrollo para dispositivos móviles.',
+                'En computación distribuida, estudié los fundamentos clásicos: comunicación vía sockets, RMI, componentes EJB y Web Services SOAP/WSDL, además de redes de computadoras (TCP/IP), sistemas operativos y seguridad de la información, la base que luego apliqué en microservicios y sistemas de alta concurrencia.',
+                'En ingeniería y gestión: ingeniería de requisitos y modelado UML, arquitectura de software y patrones de diseño, calidad y pruebas, gestión de proyectos, gestión y gobernanza de TI (ITIL y COBIT), interacción humano-computadora y emprendimiento, cerrando con el Trabajo de Conclusión de Carrera.'
+            ]
         }
     }
 };
