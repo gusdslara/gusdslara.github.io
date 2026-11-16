@@ -74,32 +74,11 @@
 		scrollTriggers = [];
 	});
 
-	$: expertise = [
-		{
-			title: $t('expertise.1.title'),
-			skills: $t('expertise.1.skills') as any as string[]
-		},
-		{
-			title: $t('expertise.2.title'),
-			skills: $t('expertise.2.skills') as any as string[]
-		},
-		{
-			title: $t('expertise.3.title'),
-			skills: $t('expertise.3.skills') as any as string[]
-		},
-		{
-			title: $t('expertise.4.title'),
-			skills: $t('expertise.4.skills') as any as string[]
-		},
-		{
-			title: $t('expertise.5.title'),
-			skills: $t('expertise.5.skills') as any as string[]
-		},
-		{
-			title: $t('expertise.6.title'),
-			skills: $t('expertise.6.skills') as any as string[]
-		}
-	];
+	const EXPERTISE_COUNT = 8;
+	$: expertise = Array.from({ length: EXPERTISE_COUNT }, (_, i) => ({
+		title: $t(`expertise.${i + 1}.title`),
+		skills: $t(`expertise.${i + 1}.skills`) as any as string[]
+	}));
 
 	const techStack = {
 		languages: [
