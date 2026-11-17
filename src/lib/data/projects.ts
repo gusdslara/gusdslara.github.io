@@ -200,7 +200,7 @@ export const myApps: MyApp[] = [
         name: 'Deadly BiteZ (Bitez)',
         category: 'games',
         categories: ['games'],
-        image: '/assets/img/apps/bitez-gameplay.webp',
+        image: '/assets/img/apps/bitez-survival-street-tps.webp',
         caption:
             'Hardcore Multiplayer Zombie Survival Roguelike em Svelte, Three.js & Mapa Real OpenStreetMap',
         role: 'Criador Solo, Arquiteto de Software & Engenheiro Gráfico / Game Dev',
@@ -223,11 +223,27 @@ export const myApps: MyApp[] = [
         background: '#F4ECEC',
         link: 'https://bitez.gustavolara.pro/',
         additionalImages: [
-            '/assets/img/apps/bitez-gameplay.webp',
-            '/assets/img/apps/bitez-house-inside.webp',
-            '/assets/img/apps/bitez-tank.webp',
-            '/assets/img/apps/bitez-arsenal.webp',
-            '/assets/img/apps/bitez-customizer.webp'
+            '/assets/img/apps/bitez-menu.webp',
+            '/assets/img/apps/bitez-character-creation.webp',
+            '/assets/img/apps/bitez-login.webp',
+            '/assets/img/apps/bitez-create-room.webp',
+            '/assets/img/apps/bitez-survival-spawn-latam.webp',
+            '/assets/img/apps/bitez-survival-spawn-streets.webp',
+            '/assets/img/apps/bitez-survival-horde.webp',
+            '/assets/img/apps/bitez-survival-building-cutaway.webp',
+            '/assets/img/apps/bitez-survival-rain-rooftop.webp',
+            '/assets/img/apps/bitez-campaign-cutscene.webp',
+            '/assets/img/apps/bitez-campaign-neon-rain.webp',
+            '/assets/img/apps/bitez-campaign-xray-killcam.webp',
+            '/assets/img/apps/bitez-campaign-bullet-time.webp',
+            '/assets/img/apps/bitez-roguelike-boss-horde.webp',
+            '/assets/img/apps/bitez-roguelike-level-up.webp',
+            '/assets/img/apps/bitez-coop-horde-arena.webp',
+            '/assets/img/apps/bitez-coop-squad-closeup.webp',
+            '/assets/img/apps/bitez-deathmatch-loadout.webp',
+            '/assets/img/apps/bitez-deathmatch-firefight.webp',
+            '/assets/img/apps/bitez-bomb-defuse-round-start.webp',
+            '/assets/img/apps/bitez-bomb-defuse-topdown.webp'
         ]
     },
     {
