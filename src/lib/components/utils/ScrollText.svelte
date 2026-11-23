@@ -48,18 +48,12 @@
 	class="scroll-text-container {className}"
 	style="perspective: 1000px; display: inline; font-family: inherit; font-weight: inherit; color: inherit;"
 >
-	{#each words as word}
-		<span class="word inline-block whitespace-nowrap">
-			{#each word.split('') as char}
-				<span
+	<span class="sr-only">{text}</span>
+	{#each words as word}<span class="word inline-block whitespace-nowrap" aria-hidden="true">{#each word.split('') as char}<span
 					class="char inline-block"
-					style="transform-style: preserve-3d; will-change: transform, opacity;"
-				>
-					{char}
-				</span>
-			{/each}
-		</span>
-	{/each}
+					style="transform-style: preserve-3d; will-change: transform, opacity;">{char}</span
+				>{/each}</span
+		>{/each}
 </span>
 
 <style>

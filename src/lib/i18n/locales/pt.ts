@@ -527,19 +527,32 @@ export const pt = {
             ]
         },
         '2': {
-            title: 'Engenharia de Software & Processos',
+            title: 'Engenharia de Software & Qualidade',
             skills: [
-                'Spec-Driven Development (SDD) & APIs Contract-First (OpenAPI, AsyncAPI)',
-                'TDD, BDD & Pirâmide de Testes (Unidade, Contrato, Integração, E2E)',
+                'TDD (Red-Green-Refactor), BDD & Pirâmide de Testes',
+                'Testes de Contrato, Integração, E2E & Testes de Mutação',
                 'SOLID, Design Patterns (GoF) & Clean Code',
+                'Refatoração Contínua & Gestão de Dívida Técnica',
                 'Modernização de Legado: Strangler Fig & Anti-Corruption Layer',
-                'Desenvolvimento Assistido por IA & Agentic Coding',
+                'APIs Contract-First (OpenAPI, AsyncAPI) & Versionamento',
                 'Trunk-Based Development, Conventional Commits & Code Review',
-                'Scrum, Kanban, Refinamento Técnico & Mentoria de Times',
-                'RFCs, Docs-as-Code & Tradução de Negócio em Backlog'
+                'Quality Gates, Análise Estática & Cobertura de Testes'
             ]
         },
         '3': {
+            title: 'Spec-Driven & Desenvolvimento com IA',
+            skills: [
+                'Spec-Driven Development (SDD): Especificação como Fonte da Verdade',
+                'Fluxo Spec → Plano → Tarefas → Implementação',
+                'Agentic Coding: Agentes de Código, Subagentes & Execução Paralela',
+                'Context Engineering: Regras de Projeto, Memória & Skills',
+                'MCP (Model Context Protocol) & Ferramentas Customizadas para Agentes',
+                'TDD com IA: Testes como Guardrail & Critérios de Aceite Executáveis',
+                'Revisão Humana, Code Review Assistido & Governança de Código Gerado',
+                'Automação de Fluxos: Hooks, Comandos & Agentes em CI/CD'
+            ]
+        },
+        '4': {
             title: 'IA Aplicada & Dados',
             skills: [
                 'Agentes Autônomos, Tool Use & Orquestração Multiagente',
@@ -552,7 +565,20 @@ export const pt = {
                 'Modelagem em Grafos & Análise de Vínculos'
             ]
         },
-        '4': {
+        '5': {
+            title: 'Liderança & Gestão de Projetos',
+            skills: [
+                'Liderança Técnica (Tech Lead), Mentoria & Desenvolvimento de Pessoas',
+                'Gestão de Projetos: Escopo, Prazo, Custo & Riscos',
+                'Scrum, Kanban & Métricas de Fluxo (Lead Time, Throughput)',
+                'Discovery, Roadmap, Priorização & OKRs',
+                'Gestão de Stakeholders & Tradução de Negócio em Backlog',
+                'Estimativas, Planejamento de Releases & Entrega Incremental (MVP)',
+                'Onboarding, 1:1s, Feedback & Cultura de Engenharia',
+                'RFCs, Docs-as-Code & Decisões Orientadas a Trade-offs'
+            ]
+        },
+        '6': {
             title: 'Pagamentos, Fiscal & Integrações',
             skills: [
                 'ISO 8583, jPOS & Autorização de Transações Financeiras',
@@ -565,7 +591,7 @@ export const pt = {
                 'Interoperabilidade com Legado: SOAP, JNI/JNA, FFI & DLL/SO'
             ]
         },
-        '5': {
+        '7': {
             title: 'Frontend & Mobile',
             skills: [
                 'Arquitetura de Microfrontends & Module Federation',
@@ -578,7 +604,7 @@ export const pt = {
                 'Arquitetura Mobile: MVVM, MVI & Publicação nas Lojas'
             ]
         },
-        '6': {
+        '8': {
             title: 'IoT, Embarcados & Tempo Real',
             skills: [
                 'Firmware Bare-Metal & RTOS (FreeRTOS, Zephyr)',
@@ -591,7 +617,7 @@ export const pt = {
                 'Colaboração em Tempo Real com CRDTs'
             ]
         },
-        '7': {
+        '9': {
             title: 'Cloud, DevOps & SRE',
             skills: [
                 'Infraestrutura como Código, GitOps & Ambientes Efêmeros',
@@ -604,7 +630,7 @@ export const pt = {
                 'FinOps: Compilação Nativa, Cold Start & Otimização de Custos'
             ]
         },
-        '8': {
+        '10': {
             title: 'Games, XR & 3D',
             skills: [
                 'Game Loop, ECS & Arquitetura de Engines',
@@ -624,9 +650,9 @@ export const pt = {
             field: 'Sistemas para Internet',
             description: [
                 'Curso Superior de Tecnologia em Sistemas para Internet no IFMT, Campus Cuiabá (matriz de 2018), com base sólida em lógica de programação, algoritmos, estruturas de dados e orientação a objetos em Java, além de modelagem, normalização e administração de bancos de dados relacionais com SQL.',
-                'No desenvolvimento web, passei pelo ecossistema Java EE: Servlets, JSP e JSF, persistência com JPA/Hibernate, padrão MVC e implantação em servidores de aplicação, junto com HTML, CSS, JavaScript, design responsivo e desenvolvimento para dispositivos móveis.',
-                'Em computação distribuída, estudei os fundamentos clássicos: comunicação via sockets, RMI, componentes EJB e Web Services SOAP/WSDL, além de redes de computadores (TCP/IP), sistemas operacionais e segurança da informação, a base que depois apliquei em microsserviços e sistemas de alta concorrência.',
-                'Na parte de engenharia e gestão: engenharia de requisitos e modelagem UML, arquitetura de software e padrões de projeto, qualidade e testes, gerência de projetos, gestão e governança de TI (ITIL e COBIT), interação humano-computador e empreendedorismo, encerrando com o Trabalho de Conclusão de Curso.'
+                '- **Web (Java EE e Spring Boot):** Servlets, JSP e JSF, APIs RESTful com Spring Boot, persistência com JPA/Hibernate, padrão MVC e implantação em servidores de aplicação, junto com HTML, CSS, JavaScript, design responsivo e desenvolvimento para dispositivos móveis.',
+                '- **Computação distribuída:** Comunicação via sockets, RMI, componentes EJB e Web Services SOAP/WSDL, além de redes de computadores (TCP/IP), sistemas operacionais e segurança da informação, a base que depois apliquei em microsserviços e sistemas de alta concorrência.',
+                '- **Engenharia e gestão:** Engenharia de requisitos e modelagem UML, arquitetura de software e padrões de projeto, qualidade e testes, gerência de projetos, gestão e governança de TI (ITIL e COBIT), interação humano-computador e empreendedorismo, encerrando com o Trabalho de Conclusão de Curso.'
             ]
         }
     }

@@ -87,6 +87,20 @@ npm run build
 ```
 The static assets will be generated in the `/docs` directory, ready for deployment.
 
+### Serving locally with devctl
+
+`devctl` (in `~/dev/tools/devctl`) manages the local servers of all projects (dev, static/SSG, SSR), so no test server is left orphaned:
+
+```bash
+devctl up .        # build (SSG) and serve in the background
+devctl             # list running servers: name, mode, URL, PID, origin
+devctl stop .      # stop this project's server
+devctl prune       # stop orphaned servers (asks first; -y skips the prompt)
+devctl logs -f     # follow a devctl server's log
+```
+
+Note: the `tropicaliacraft-launcher.apk` file is gitignored (larger than GitHub's limit) and only exists on the VPS, so `devctl up` fails during prerendering on a machine without it.
+
 ---
 
 ## 🛠️ GitHub Pages Deployment

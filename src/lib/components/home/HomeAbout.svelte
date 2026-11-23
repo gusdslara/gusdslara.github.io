@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { formatDescription } from '$lib/utils/richText';
 	import { onMount, onDestroy } from 'svelte';
 	import { tick } from 'svelte';
 	import { fade } from 'svelte/transition';
@@ -74,7 +75,7 @@
 		scrollTriggers = [];
 	});
 
-	const EXPERTISE_COUNT = 8;
+	const EXPERTISE_COUNT = 10;
 	$: expertise = Array.from({ length: EXPERTISE_COUNT }, (_, i) => ({
 		title: $t(`expertise.${i + 1}.title`),
 		skills: $t(`expertise.${i + 1}.skills`) as any as string[]
@@ -896,13 +897,7 @@
 											<div
 												class="mt-3 pt-3 border-t border-black/10 text-xs md:text-sm text-black/70 journey-description"
 											>
-												{#if Array.isArray(exp.description)}
-													{#each exp.description as paragraph}
-														<p class="mb-3 last:mb-0">{paragraph}</p>
-													{/each}
-												{:else}
-													<p>{exp.description}</p>
-												{/if}
+												{@html formatDescription(exp.description)}
 											</div>
 										</div>
 									</Motion>
@@ -931,13 +926,34 @@
 		opacity: 0.3;
 	}
 
-	.journey-description p {
+	.journey-description :global(p) {
 		text-align: justify;
 		text-indent: 2em;
 		line-height: 1.6;
+		margin-bottom: 0.75rem;
 	}
 
-	.journey-description p:first-child {
-		margin-top: 0;
+	.journey-description :global(ul) {
+		list-style: disc;
+		padding-left: 2.25em;
+		margin-bottom: 0.75rem;
+		line-height: 1.6;
+	}
+
+	.journey-description :global(li) {
+		margin-bottom: 0.35rem;
+	}
+
+	.journey-description :global(li::marker) {
+		color: currentColor;
+	}
+
+	.journey-description :global(> :last-child) {
+		margin-bottom: 0;
+	}
+
+	.journey-description :global(strong) {
+		font-weight: 600;
+		color: rgb(0 0 0 / 0.85);
 	}
 </style>

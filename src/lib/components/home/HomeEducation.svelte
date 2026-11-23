@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { formatDescription } from '$lib/utils/richText';
 	import { onMount } from 'svelte';
 	import { Motion } from 'svelte-motion';
 	import AnimatedSection from '$lib/components/utils/AnimatedSection.svelte';
@@ -168,13 +169,7 @@
 									<div
 										class="mt-3 pt-3 border-t border-black/10 text-xs md:text-sm text-black/70 education-description"
 									>
-										{#if Array.isArray(edu.description)}
-											{#each edu.description as paragraph}
-												<p class="mb-3 last:mb-0">{paragraph}</p>
-											{/each}
-										{:else}
-											<p>{edu.description}</p>
-										{/if}
+										{@html formatDescription(edu.description)}
 									</div>
 								</div>
 							</Motion>
@@ -187,18 +182,39 @@
 </div>
 
 <style>
-	.ring-4 {
-		box-shadow: 0 0 0 4px currentColor;
-		opacity: 0.3;
-	}
-
-	.education-description p {
+	.education-description :global(p) {
 		text-align: justify;
 		text-indent: 2em;
 		line-height: 1.6;
+		margin-bottom: 0.75rem;
 	}
 
-	.education-description p:first-child {
-		margin-top: 0;
+	.education-description :global(ul) {
+		list-style: disc;
+		padding-left: 2.25em;
+		margin-bottom: 0.75rem;
+		line-height: 1.6;
+	}
+
+	.education-description :global(li) {
+		margin-bottom: 0.35rem;
+	}
+
+	.education-description :global(li::marker) {
+		color: currentColor;
+	}
+
+	.education-description :global(> :last-child) {
+		margin-bottom: 0;
+	}
+
+	.education-description :global(strong) {
+		font-weight: 600;
+		color: rgb(0 0 0 / 0.85);
+	}
+
+	.ring-4 {
+		box-shadow: 0 0 0 4px currentColor;
+		opacity: 0.3;
 	}
 </style>

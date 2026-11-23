@@ -527,19 +527,32 @@ export const en = {
             ]
         },
         '2': {
-            title: 'Software Engineering & Process',
+            title: 'Software Engineering & Quality',
             skills: [
-                'Spec-Driven Development (SDD) & Contract-First APIs (OpenAPI, AsyncAPI)',
-                'TDD, BDD & Test Pyramid (Unit, Contract, Integration, E2E)',
+                'TDD (Red-Green-Refactor), BDD & Test Pyramid',
+                'Contract, Integration, E2E & Mutation Testing',
                 'SOLID, Design Patterns (GoF) & Clean Code',
+                'Continuous Refactoring & Technical Debt Management',
                 'Legacy Modernization: Strangler Fig & Anti-Corruption Layer',
-                'AI-Assisted Development & Agentic Coding',
+                'Contract-First APIs (OpenAPI, AsyncAPI) & Versioning',
                 'Trunk-Based Development, Conventional Commits & Code Review',
-                'Scrum, Kanban, Technical Refinement & Team Mentoring',
-                'RFCs, Docs-as-Code & Turning Business Needs into Backlog'
+                'Quality Gates, Static Analysis & Test Coverage'
             ]
         },
         '3': {
+            title: 'Spec-Driven & AI-Driven Development',
+            skills: [
+                'Spec-Driven Development (SDD): Specification as the Source of Truth',
+                'Spec → Plan → Tasks → Implementation Workflow',
+                'Agentic Coding: Coding Agents, Subagents & Parallel Execution',
+                'Context Engineering: Project Rules, Memory & Skills',
+                'MCP (Model Context Protocol) & Custom Tools for Agents',
+                'TDD with AI: Tests as Guardrails & Executable Acceptance Criteria',
+                'Human Review, AI-Assisted Code Review & Governance of Generated Code',
+                'Workflow Automation: Hooks, Commands & Agents in CI/CD'
+            ]
+        },
+        '4': {
             title: 'Applied AI & Data',
             skills: [
                 'Autonomous Agents, Tool Use & Multi-Agent Orchestration',
@@ -552,7 +565,20 @@ export const en = {
                 'Graph Modeling & Link Analysis'
             ]
         },
-        '4': {
+        '5': {
+            title: 'Leadership & Project Management',
+            skills: [
+                'Technical Leadership (Tech Lead), Mentoring & People Development',
+                'Project Management: Scope, Schedule, Cost & Risk',
+                'Scrum, Kanban & Flow Metrics (Lead Time, Throughput)',
+                'Discovery, Roadmap, Prioritization & OKRs',
+                'Stakeholder Management & Translating Business into Backlog',
+                'Estimation, Release Planning & Incremental Delivery (MVP)',
+                'Onboarding, 1:1s, Feedback & Engineering Culture',
+                'RFCs, Docs-as-Code & Trade-off-Driven Decisions'
+            ]
+        },
+        '6': {
             title: 'Payments, Tax & Integrations',
             skills: [
                 'ISO 8583, jPOS & Financial Transaction Authorization',
@@ -565,7 +591,7 @@ export const en = {
                 'Legacy Interoperability: SOAP, JNI/JNA, FFI & DLL/SO'
             ]
         },
-        '5': {
+        '7': {
             title: 'Frontend & Mobile',
             skills: [
                 'Microfrontend Architecture & Module Federation',
@@ -578,7 +604,7 @@ export const en = {
                 'Mobile Architecture: MVVM, MVI & Store Publishing'
             ]
         },
-        '6': {
+        '8': {
             title: 'IoT, Embedded & Real-Time',
             skills: [
                 'Bare-Metal Firmware & RTOS (FreeRTOS, Zephyr)',
@@ -591,7 +617,7 @@ export const en = {
                 'Real-Time Collaboration with CRDTs'
             ]
         },
-        '7': {
+        '9': {
             title: 'Cloud, DevOps & SRE',
             skills: [
                 'Infrastructure as Code, GitOps & Ephemeral Environments',
@@ -604,7 +630,7 @@ export const en = {
                 'FinOps: Native Compilation, Cold Start & Cost Optimization'
             ]
         },
-        '8': {
+        '10': {
             title: 'Games, XR & 3D',
             skills: [
                 'Game Loop, ECS & Engine Architecture',
@@ -624,9 +650,9 @@ export const en = {
             field: 'Internet Systems',
             description: [
                 'Technology degree in Internet Systems at IFMT, Cuiabá Campus (2018 curriculum), with a solid foundation in programming logic, algorithms, data structures and object-oriented programming in Java, plus relational database modeling, normalization and administration with SQL.',
-                'In web development, I went through the Java EE ecosystem: Servlets, JSP and JSF, persistence with JPA/Hibernate, the MVC pattern and deployment to application servers, along with HTML, CSS, JavaScript, responsive design and mobile development.',
-                'In distributed computing, I studied the classic foundations: socket communication, RMI, EJB components and SOAP/WSDL Web Services, plus computer networks (TCP/IP), operating systems and information security, the groundwork I later applied to microservices and high-concurrency systems.',
-                'On the engineering and management side: requirements engineering and UML modeling, software architecture and design patterns, quality and testing, project management, IT management and governance (ITIL and COBIT), human-computer interaction and entrepreneurship, wrapping up with a capstone project.'
+                '- **Web (Java EE and Spring Boot):** Servlets, JSP and JSF, RESTful APIs with Spring Boot, persistence with JPA/Hibernate, the MVC pattern and deployment to application servers, along with HTML, CSS, JavaScript, responsive design and mobile development.',
+                '- **Distributed computing:** Socket communication, RMI, EJB components and SOAP/WSDL Web Services, plus computer networks (TCP/IP), operating systems and information security, the groundwork I later applied to microservices and high-concurrency systems.',
+                '- **Engineering and management:** Requirements engineering and UML modeling, software architecture and design patterns, quality and testing, project management, IT management and governance (ITIL and COBIT), human-computer interaction and entrepreneurship, wrapping up with a capstone project.'
             ]
         }
     }

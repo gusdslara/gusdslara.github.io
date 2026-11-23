@@ -13,37 +13,39 @@
 			<Motion initial="hidden" animate="visible" variants={staggerContainer} let:motion>
 				<div use:motion>
 					<Motion variants={fadeUpVariant} let:motion>
-						<h4 use:motion class="text-xl md:text-2xl font-normal text-black mb-4 md:mb-6">
-							{$t('home.top.greeting')}
-						</h4>
+						<h1 use:motion class="text-xl md:text-2xl font-normal text-black mb-4 md:mb-6">
+							{$t('home.top.greeting')}<span class="sr-only">
+							— {$t('home.top.title1')} {$t('home.top.title2')} {$t('home.top.title3')}</span
+						>
+						</h1>
 					</Motion>
 
 					<Motion variants={fadeUpVariant} let:motion>
-						<h2
+						<p
 							use:motion
 							class="text-4xl md:text-6xl lg:text-7xl font-extralight font-display leading-tight text-black mb-1"
 							style="font-family: 'Outfit', sans-serif;"
 						>
 							{$t('home.top.title1')}
-						</h2>
+						</p>
 					</Motion>
 					<Motion variants={fadeUpVariant} let:motion>
-						<h2
+						<p
 							use:motion
 							class="text-4xl md:text-6xl lg:text-7xl font-extralight font-display leading-tight text-black mb-1"
 							style="font-family: 'Outfit', sans-serif;"
 						>
 							{$t('home.top.title2')}
-						</h2>
+						</p>
 					</Motion>
 					<Motion variants={fadeUpVariant} let:motion>
-						<h2
+						<p
 							use:motion
 							class="text-4xl md:text-6xl lg:text-7xl font-extralight font-display leading-tight text-black mb-6 md:mb-8"
 							style="font-family: 'Outfit', sans-serif;"
 						>
 							{$t('home.top.title3')}
-						</h2>
+						</p>
 					</Motion>
 
 					<Motion variants={fadeUpVariant} let:motion>

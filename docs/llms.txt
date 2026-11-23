@@ -1,0 +1,36 @@
+# Gustavo Lara
+
+> Gustavo Lara is a Brazilian Software Architect and Tech Lead (Cuiabá, Mato Grosso) with 8+ years of experience and 20+ delivered projects. He specializes in legacy modernization, distributed architectures, microservices in Go and Java, applied AI (local and cloud LLM orchestration), native code interoperability, and web, mobile and IoT ecosystems.
+
+Languages: Portuguese (native), English, Spanish. Education: Technology degree in Internet Systems, Instituto Federal de Mato Grosso (IFMT), Cuiabá campus.
+
+## Profile
+
+- [Portfolio home](https://gustavolara.pro/): about, stack, experience, education, projects and contact
+- [Curriculum Vitae (PT-BR, PDF)](https://gustavolara.pro/cv-gusdsl-ptbr.pdf)
+- [GitHub](https://github.com/gusdslara)
+- [LinkedIn](https://www.linkedin.com/in/gustavodslara/)
+- Contact: gustavodslara@gmail.com
+
+## Client work (Tech Lead / Software Architect)
+
+- [Simbium: Plataforma de Atendimento & Gestão com IA](https://simbium.com/)
+- [EduCanoas: App de gestão educacional](https://apkpure.com/br/educanoas/br.com.abaco.rs.canoas.educanoas)
+- [myQIMA: Certificações Internacionais & Gestão com IA](https://www.qima.com.br/food/myqima-food-safety-certification-platform)
+- Sucesso360: Plataforma de CRM & Pós-Vendas
+
+## Own projects (games, apps, Wear OS ports)
+
+- [Meu Tempero! — Cuiabá](https://meutempero.gustavolara.pro/)
+- [Deadly BiteZ (Bitez)](https://bitez.gustavolara.pro/)
+- [Tropicalia Launcher](https://tropicaliacraft.gustavolara.pro/downloads)
+- Crash Team Racing Native (Wear OS)
+- Super Mario World (Wear OS)
+- Pokémon FireRed (Wear OS)
+- Metal Gear Solid (Wear OS)
+- Final Fantasy Tactics Advance (Wear OS)
+- Super Monkey Ball Jr. (Wear OS)
+
+## Core skills
+
+Software architecture, technical leadership, system design, microservices, distributed systems, legacy modernization, applied AI, IoT, game development. Go, Java, Kotlin, Python, Rust, C/C++, TypeScript, Angular, NgRx, SvelteKit, Tauri, Android, Wear OS.
