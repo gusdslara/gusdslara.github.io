@@ -83,6 +83,7 @@ export const en = {
             viewProject: 'View Project',
             viewCode: 'View Code',
             downloadApk: 'Download APK (Wear OS)',
+            downloadApkAndroid: 'Download APK (Android)',
             romNote: 'The APK does not include any ROM/ISO. On first launch the watch shows a QR code: scan it with your phone and send your own copy over Wi-Fi.'
         },
         model3d: {
@@ -343,7 +344,8 @@ export const en = {
                 'Real-time local save directory monitoring with SHA-256 validation and conflict resolution',
                 'Integrated hub of native Recomps & Decomps with 1-click platform installation',
                 'Containerized Go (Fiber) backend with Docker, JWT authentication, and cloud storage',
-                'Lightweight cross-platform client built with Svelte 5, SvelteKit, and Tauri v2 (Rust)'
+                'Lightweight cross-platform client built with Svelte 5, SvelteKit, and Tauri v2 (Rust)',
+                'New in 0.1.6 (Android): per-console Tools page, keys/BIOS/firmware vault, each port\'s requirements shown before install, and port save folders linked to backup'
             ]
         },
         'm0': {

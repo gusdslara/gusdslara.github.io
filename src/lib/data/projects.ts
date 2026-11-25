@@ -576,10 +576,14 @@ export const moreProjects: ProjectData[] = [
             'Monitoramento em tempo real de diretórios locais com validação SHA-256 e resolução de conflitos',
             'Hub integrado de Recomps & Decomps nativos com instalação em 1 clique por plataforma',
             'Backend em Go (Fiber) containerizado em Docker com autenticação JWT e armazenamento em nuvem',
-            'Cliente multiplataforma leve construído com Svelte 5, SvelteKit e Tauri v2 (Rust)'
+            'Cliente multiplataforma leve construído com Svelte 5, SvelteKit e Tauri v2 (Rust)',
+            'Novo na 0.1.6 (Android): página Ferramentas por console, cofre de chaves/BIOS/firmware, requisitos de cada port exibidos antes de instalar e pastas de save do port ligadas ao backup'
         ],
         githubUrl: 'https://github.com/gustavodslara/svelte-memorycarddigital-landingpage',
-        link: 'https://memorycard.cloud/'
+        link: 'https://memorycard.cloud/',
+        // APK 0.1.6 (Android 7.0+, universal). Origem: portfolio/builds/memorycard/. SHA-256 f7d7add7…31a9
+        apkUrl: '/assets/downloads/memorycard.apk',
+        apkSize: '79,8 MB'
     },
     {
         id: 'm0',

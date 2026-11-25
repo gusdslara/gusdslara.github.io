@@ -83,6 +83,7 @@ export const es = {
             viewProject: 'Ver Proyecto',
             viewCode: 'Ver Código',
             downloadApk: 'Descargar APK (Wear OS)',
+            downloadApkAndroid: 'Descargar APK (Android)',
             romNote: 'El APK no incluye ROM/ISO. Al abrirlo, el reloj muestra un código QR: escanéalo con el celular y envía tu propia copia por Wi-Fi.'
         },
         model3d: {
@@ -343,7 +344,8 @@ export const es = {
                 'Monitoreo en tiempo real de directorios locales con validación SHA-256 y resolución de conflictos',
                 'Hub integrado de Recomps y Decomps nativos con instalación en 1 clic por plataforma',
                 'Backend en Go (Fiber) en contenedores Docker con autenticación JWT y almacenamiento en la nube',
-                'Cliente multiplataforma ligero construido con Svelte 5, SvelteKit y Tauri v2 (Rust)'
+                'Cliente multiplataforma ligero construido con Svelte 5, SvelteKit y Tauri v2 (Rust)',
+                'Novedades de la 0.1.6 (Android): página de Herramientas por consola, bóveda de claves/BIOS/firmware, requisitos de cada port mostrados antes de instalar y carpetas de guardado del port vinculadas al respaldo'
             ]
         },
         'm0': {

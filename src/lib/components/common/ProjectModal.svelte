@@ -538,7 +538,7 @@
 									d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
 								/>
 							</svg>
-							<span>{$t('common.modal.downloadApk')}</span>
+							<span>{$t(project.isWearOS ? 'common.modal.downloadApk' : 'common.modal.downloadApkAndroid')}</span>
 							{#if project.apkSize}
 								<span class="text-xs bg-emerald-800/80 px-2 py-0.5 rounded-full font-mono">{project.apkSize}</span>
 							{/if}
