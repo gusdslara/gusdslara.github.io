@@ -441,7 +441,7 @@
 						startBuildingCycle(600);
 					} else {
 						// Pick best initial animation for characters or weapon rack
-						const priorityClips = ['Idle', 'Zombie_Idle', 'Hunter_Crouch_Idle', 'Tank_Idle', 'Boomer_Idle', 'Inspect_Turntable'];
+						const priorityClips = ['Idle', 'Zombie_Idle', 'Hunter_Crouch_Idle', 'Tank_Idle', 'Boomer_Idle', 'Crawler_Crawl', 'Inspect_Turntable'];
 						const chosen = currentClips.find((a) => priorityClips.includes(a.name)) || currentClips[0];
 						playAnimation(chosen.name, 0);
 
