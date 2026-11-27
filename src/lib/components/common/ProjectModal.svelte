@@ -18,6 +18,8 @@
 		githubUrl?: string;
 		apkUrl?: string;
 		apkSize?: string;
+		companionApkUrl?: string;
+		companionApkSize?: string;
 		isWearOS?: boolean;
 		icon?: string;
 		wearosImages?: string[];
@@ -42,6 +44,10 @@
 
 	let closing = false;
 	let visible = false;
+
+	// Shared layout of the APK download buttons (primary watch APK + optional phone companion).
+	const downloadBtn =
+		'flex-1 min-w-[200px] px-6 py-3 rounded-xl font-semibold text-center transition-all flex items-center justify-center gap-2 no-underline shadow-md active:scale-98';
 
 	// Carousel state
 	let currentSlide = 0;
@@ -520,6 +526,11 @@
 						<svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-emerald-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="5" height="5" x="3" y="3" rx="1" /><rect width="5" height="5" x="16" y="3" rx="1" /><rect width="5" height="5" x="3" y="16" rx="1" /><path d="M21 16h-3a2 2 0 0 0-2 2v3" /><path d="M21 21v.01" /><path d="M12 7v3a2 2 0 0 1-2 2H7" /><path d="M3 12h.01" /><path d="M12 3h.01" /><path d="M12 16v.01" /><path d="M16 12h1" /><path d="M21 12v.01" /><path d="M12 21v-1" /></svg>
 						<span>{$t('common.modal.romNote')}</span>
 					</p>
+					<p class="mt-2 mb-0 flex items-start gap-2 text-xs sm:text-sm text-amber-900 bg-amber-50 border border-amber-200/80 rounded-xl px-3 py-2.5">
+						<!-- lucide: triangle-alert -->
+						<svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-amber-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" /><path d="M12 9v4" /><path d="M12 17h.01" /></svg>
+						<span>{$t('common.modal.reinstallNote')}</span>
+					</p>
 				{/if}
 
 				<!-- Action Buttons (Bottom) -->
@@ -528,7 +539,7 @@
 						<a
 							href={project.apkUrl}
 							download
-							class="flex-1 min-w-[200px] px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-semibold text-center transition-all flex items-center justify-center gap-2 no-underline shadow-md active:scale-98"
+							class="{downloadBtn} bg-emerald-600 hover:bg-emerald-700 text-white"
 						>
 							<svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 								<path
@@ -541,6 +552,20 @@
 							<span>{$t(project.isWearOS ? 'common.modal.downloadApk' : 'common.modal.downloadApkAndroid')}</span>
 							{#if project.apkSize}
 								<span class="text-xs bg-emerald-800/80 px-2 py-0.5 rounded-full font-mono">{project.apkSize}</span>
+							{/if}
+						</a>
+					{/if}
+					{#if project.companionApkUrl}
+						<a
+							href={project.companionApkUrl}
+							download
+							class="{downloadBtn} bg-white hover:bg-emerald-50 text-emerald-700 border border-emerald-600"
+						>
+							<!-- lucide: smartphone -->
+							<svg class="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="14" height="20" x="5" y="2" rx="2" ry="2" /><path d="M12 18h.01" /></svg>
+							<span>{$t('common.modal.downloadCompanion')}</span>
+							{#if project.companionApkSize}
+								<span class="text-xs bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full font-mono">{project.companionApkSize}</span>
 							{/if}
 						</a>
 					{/if}

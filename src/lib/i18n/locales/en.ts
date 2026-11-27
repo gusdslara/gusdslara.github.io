@@ -84,7 +84,9 @@ export const en = {
             viewCode: 'View Code',
             downloadApk: 'Download APK (Wear OS)',
             downloadApkAndroid: 'Download APK (Android)',
-            romNote: 'The APK does not include any ROM/ISO. On first launch the watch shows a QR code: scan it with your phone and send your own copy over Wi-Fi.'
+            romNote: 'No APK includes any ROM/ISO: you send your own copy, no internet needed. On first launch the watch shows a QR code to send it over Wi-Fi (same network or the watch\'s own network), or use the phone app, which sends over Wi-Fi or Bluetooth.',
+            reinstallNote: 'Have an older version installed? Uninstall it first: the APK signature changed.',
+            downloadCompanion: 'Phone app (optional)'
         },
         model3d: {
             loading: 'Loading 3D model...',
@@ -267,7 +269,7 @@ export const en = {
                 'Classic PlayStation controls (△, ✕, □, ○, L1/R1, L2/R2) and ergonomic arc D-Pad',
                 'Original synthesized stereo soundtrack and SFX via SDL3',
                 'Save State system and game progress preserved on smartwatch local storage',
-                'Direct APK download compatible with modern Android Wear OS devices'
+                'Bring your own ROM (.bin + .cue or .chd), sent over Wi-Fi via QR code, the watch\'s own network or the phone app over Bluetooth, no internet needed'
             ]
         },
         '4_my': {
@@ -280,7 +282,7 @@ export const en = {
                 'Ghost tap fix: Decoupled virtual D-Pad gesture and B button area to prevent accidental presses while walking',
                 'Full support for world map (Yoshi Island) and all levels',
                 'Power-efficient execution with high performance',
-                'Installable APK package for Wear OS smartwatches'
+                'Bring your own .sfc, sent directly over Wi-Fi via QR code, the watch\'s own network or the phone app over Bluetooth, no internet needed'
             ]
         },
         '5_my': {
@@ -293,7 +295,8 @@ export const en = {
                 'Typography and UI scaled for ergonomic smartwatch reading',
                 'Fast-paced Pokémon battle commands via touchscreen gestures',
                 'Rotating crown / bezel navigation support',
-                'Synchronized native audio and sound effects'
+                'Synchronized native audio and sound effects',
+                'Bring your own ROM, sent over Wi-Fi via QR code, the watch\'s own network or the phone app over Bluetooth, no internet needed'
             ]
         },
         '7_my': {
@@ -306,20 +309,20 @@ export const en = {
                 'Minimalist PlayStation touch overlay tailored for 432x432 px circular displays',
                 'Quick-access inventory (L) and weapon (R) touch shortcuts along upper bezel arc',
                 'Dedicated CODEC button on top bezel for instant radio communication',
-                'Direct APK package ready for installation on Wear OS smartwatches'
+                'Bring your own ROM (.bin + .cue or .chd), sent over Wi-Fi via QR code, the watch\'s own network or the phone app over Bluetooth, no internet needed'
             ]
         },
         '8_my': {
             name: 'Final Fantasy Tactics Advance (Wear OS)',
             caption: 'Native port of Final Fantasy Tactics Advance (GBA) with an undistorted round layout and crown cursor',
-            description: 'Native port of Final Fantasy Tactics Advance for Wear OS smartwatches, embedding the libmgba core in a custom SDL3 shell. Undistorted round layout with buttons in the free space of the glass, tap & drag gestures designed for the tactical grid, crown cursor and ROM transfer via QR code.',
+            description: 'Native port of Final Fantasy Tactics Advance for Wear OS smartwatches, embedding the libmgba core in a custom SDL3 shell. Undistorted round layout with buttons in the free space of the glass, tap & drag gestures designed for the tactical grid, crown cursor and offline ROM transfer (Wi-Fi via QR code or the phone app over Bluetooth).',
             features: [
                 'Whole 3:2 frame on the round glass, no cropping or distortion, with 3 zoom presets',
                 'Buttons in the free caps (L/M/R, B/>>/A, SELECT/START) never covering the game picture',
                 'Drag D-pad with an anchor that follows the thumb, tap = A and two-finger tap = B',
                 'Diagonal mode for isometric battle maps and 3× speed for long fights',
                 'Menu cursor on the rotary crown / bezel',
-                'Auto resume and ROM transfer via QR code over Wi-Fi'
+                'Auto resume; ROM sent over Wi-Fi via QR code, the watch\'s own network or the phone app over Bluetooth, no internet'
             ]
         },
         '9_my': {
@@ -332,7 +335,7 @@ export const en = {
                 'Round lens: the 3D stage fills the whole disc without bending the center',
                 'Native HUD redrawn for the round screen from the OAM sprites',
                 'Flat, undistorted menus with full-size buttons in the free space',
-                'Crown adjusts the lens strength; ROM sent via QR code over Wi-Fi'
+                'Crown adjusts the lens strength; ROM sent over Wi-Fi via QR code, the watch\'s network or the phone app over Bluetooth'
             ]
         },
         'all': 'All',

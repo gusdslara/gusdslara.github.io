@@ -41,6 +41,9 @@ export interface MyApp {
     openSource?: boolean;
     apkUrl?: string;
     apkSize?: string;
+    /** Optional phone companion APK (Wear OS ports: sends the ROM over Wi-Fi/Bluetooth). */
+    companionApkUrl?: string;
+    companionApkSize?: string;
     isWearOS?: boolean;
     /** App icon (round watch-style icon for the Wear OS ports). */
     icon?: string;
@@ -83,6 +86,9 @@ export interface ProjectData {
     link?: string;
     apkUrl?: string;
     apkSize?: string;
+    /** Optional phone companion APK (Wear OS ports: sends the ROM over Wi-Fi/Bluetooth). */
+    companionApkUrl?: string;
+    companionApkSize?: string;
     isWearOS?: boolean;
     wearosImages?: string[];
     additionalImages?: string[];

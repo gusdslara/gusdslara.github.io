@@ -305,12 +305,14 @@ export const myApps: MyApp[] = [
             'Controles clássicos de PlayStation (△, ✕, □, ○, L1/R1, L2/R2) e D-Pad em arco ergonômico',
             'Áudio e trilha sonora original sintetizada em tempo real via SDL3',
             'Sistema de Save State e progresso preservado no armazenamento do smartwatch',
-            'Instalação direta via APK compatível com Android Wear OS'
+            'Sua própria ROM (.bin + .cue ou .chd) enviada por Wi-Fi com QR Code, pela rede do próprio relógio ou pelo app do celular via Bluetooth, sem internet'
         ],
         background: '#FFF2EB',
         githubUrl: 'https://github.com/gusdslara/ctr-wearos',
         apkUrl: '/assets/downloads/ctr-wearos.apk',
-        apkSize: '13.4 MB',
+        apkSize: '13.3 MB',
+        companionApkUrl: '/assets/downloads/ctr-wearos-celular.apk',
+        companionApkSize: '1.7 MB',
         wearosImages: [
             '/assets/img/apps/wearos/ctr-round-controls.png',
             '/assets/img/apps/wearos/ctr-round-cove.png',
@@ -354,12 +356,14 @@ export const myApps: MyApp[] = [
             'Correção de Ghost Tap: D-Pad virtual e área do botão B desacoplados para evitar toques involuntários ao andar',
             'Mapeamento completo do mapa mundi (Yoshi Island) e fases',
             'Baixo consumo de bateria e alta performance',
-            'Pacote APK instalável diretamente em smartwatches Wear OS'
+            'Sua própria .sfc enviada direto por Wi-Fi com QR Code, pela rede do próprio relógio ou pelo app do celular via Bluetooth, sem internet'
         ],
         background: '#E8F8EE',
         githubUrl: 'https://github.com/gusdslara/smw-wearos',
         apkUrl: '/assets/downloads/smw-wearos.apk',
-        apkSize: '25.8 MB',
+        apkSize: '27.4 MB',
+        companionApkUrl: '/assets/downloads/smw-wearos-celular.apk',
+        companionApkSize: '1.7 MB',
         wearosImages: [
             '/assets/img/apps/wearos/smw-round-controls.png',
             '/assets/img/apps/wearos/smw-round-1.png',
@@ -399,12 +403,15 @@ export const myApps: MyApp[] = [
             'Renderização e texto ajustados para leitura ergonômica em smartwatch',
             'Navegação rápida em batalhas Pokémon por gestos na tela',
             'Suporte a rotação de menus pela coroa física / aro digital',
-            'Sistema de áudio e efeitos sonoros sincronizados'
+            'Sistema de áudio e efeitos sonoros sincronizados',
+            'Sua própria ROM enviada por Wi-Fi com QR Code, pela rede do próprio relógio ou pelo app do celular via Bluetooth, sem internet'
         ],
         background: '#FFF0F0',
         githubUrl: 'https://github.com/gusdslara/gen1recomp-wearos',
         apkUrl: '/assets/downloads/firered-wearos.apk',
-        apkSize: '84.1 MB',
+        apkSize: '84.3 MB',
+        companionApkUrl: '/assets/downloads/firered-wearos-celular.apk',
+        companionApkSize: '1.8 MB',
         wearosImages: [
             '/assets/img/apps/wearos/pkmn-round-controls.png',
             '/assets/img/apps/wearos/pkmn-round-pokecenter.png',
@@ -434,12 +441,14 @@ export const myApps: MyApp[] = [
             'Overlay tátil PlayStation minimalista de alta precisão adaptado para telas circulares de 432x432 px',
             'Atalhos táteis de acesso rápido ao inventário (L) e armamento (R) na curvatura superior',
             'Botão dedicado CODEC no topo para comunicações táticas via rádio',
-            'Pacote APK instalável diretamente em smartwatches Wear OS'
+            'Sua própria ROM (.bin + .cue ou .chd) enviada por Wi-Fi com QR Code, pela rede do próprio relógio ou pelo app do celular via Bluetooth, sem internet'
         ],
         background: '#EEF3EA',
         githubUrl: 'https://github.com/gusdslara/mgsone-recomp-wearos',
         apkUrl: '/assets/downloads/mgs-wearos.apk',
-        apkSize: '38.9 MB',
+        apkSize: '40.3 MB',
+        companionApkUrl: '/assets/downloads/mgs-wearos-celular.apk',
+        companionApkSize: '1.8 MB',
         wearosImages: [
             '/assets/img/apps/wearos/mgs-round-controls.png',
             '/assets/img/apps/wearos/mgs-round-circular.png',
@@ -460,9 +469,9 @@ export const myApps: MyApp[] = [
         role: 'Engenheiro de Porting & Sistemas Embarcados (C / SDL3 / Wear OS)',
         year: '2026',
         myRole:
-            '<p>Construí um shell nativo em <strong>C</strong> com <strong>SDL3</strong> embarcando o núcleo <strong>libmgba</strong> para rodar Final Fantasy Tactics Advance em smartwatches Wear OS, além de Android e desktop.</p><p><strong>Layout Circular sem Distorção:</strong> O quadro 240×160 é desenhado como o maior retângulo 3:2 que cabe no vidro redondo, sem cortes nem esticamentos, e os botões ocupam as calotas livres ao redor, com a borda interna acompanhando a imagem para nunca cobrir um pixel do jogo.</p><p><strong>Controles para Tática no Pulso:</strong> Implementei D-pad por arraste com âncora que segue o polegar e histerese anti-tremor, toque rápido como A, toque com dois dedos como B, modo diagonal para os mapas isométricos, velocidade 3× e cursor pela coroa/aro rotativo. Também criei o auto-resume do estado e a transferência da ROM por QR Code via Wi-Fi.</p>',
+            '<p>Construí um shell nativo em <strong>C</strong> com <strong>SDL3</strong> embarcando o núcleo <strong>libmgba</strong> para rodar Final Fantasy Tactics Advance em smartwatches Wear OS, além de Android e desktop.</p><p><strong>Layout Circular sem Distorção:</strong> O quadro 240×160 é desenhado como o maior retângulo 3:2 que cabe no vidro redondo, sem cortes nem esticamentos, e os botões ocupam as calotas livres ao redor, com a borda interna acompanhando a imagem para nunca cobrir um pixel do jogo.</p><p><strong>Controles para Tática no Pulso:</strong> Implementei D-pad por arraste com âncora que segue o polegar e histerese anti-tremor, toque rápido como A, toque com dois dedos como B, modo diagonal para os mapas isométricos, velocidade 3× e cursor pela coroa/aro rotativo. Também criei o auto-resume do estado e a transferência da ROM sem internet: Wi-Fi com QR Code, rede própria do relógio ou app do celular via Bluetooth.</p>',
         description:
-            'Port nativo de Final Fantasy Tactics Advance para smartwatches Wear OS com núcleo libmgba em um shell SDL3 próprio. Layout circular sem distorção com botões nas áreas livres do vidro, gestos de toque e arraste pensados para o grid tático, cursor pela coroa e transferência da ROM por QR Code.',
+            'Port nativo de Final Fantasy Tactics Advance para smartwatches Wear OS com núcleo libmgba em um shell SDL3 próprio. Layout circular sem distorção com botões nas áreas livres do vidro, gestos de toque e arraste pensados para o grid tático, cursor pela coroa e transferência da ROM sem internet (Wi-Fi com QR Code ou app do celular via Bluetooth).',
         technologies: ['C', 'SDL', 'Android', 'Wear OS'],
         features: [
             'Quadro 3:2 inteiro no vidro redondo, sem cortes nem distorção, com 3 presets de zoom',
@@ -470,11 +479,13 @@ export const myApps: MyApp[] = [
             'D-pad por arraste com âncora que segue o polegar, toque = A e dois dedos = B',
             'Modo diagonal para mapas isométricos de batalha e velocidade 3× para lutas longas',
             'Cursor de menus pela coroa / aro rotativo do relógio',
-            'Auto-resume do estado e transferência da ROM por QR Code via Wi-Fi'
+            'Auto-resume do estado; ROM enviada por Wi-Fi com QR Code, rede do próprio relógio ou app do celular via Bluetooth, sem internet'
         ],
         background: '#FBF4E4',
         apkUrl: '/assets/downloads/ffta-wearos.apk',
-        apkSize: '10.7 MB',
+        apkSize: '12.0 MB',
+        companionApkUrl: '/assets/downloads/ffta-wearos-celular.apk',
+        companionApkSize: '1.8 MB',
         wearosImages: [
             '/assets/img/apps/wearos/ffta-wear-05-story.webp',
             '/assets/img/apps/wearos/ffta-wear-07-battle-move.webp',
@@ -506,11 +517,13 @@ export const myApps: MyApp[] = [
             'Lente redonda: a fase 3D ocupa o disco inteiro sem distorcer o centro',
             'HUD nativo redesenhado para a tela circular a partir dos sprites da OAM',
             'Menus planos sem distorção, com botões grandes nas áreas livres',
-            'Coroa ajusta a força da lente; ROM enviada por QR Code via Wi-Fi'
+            'Coroa ajusta a força da lente; ROM enviada por Wi-Fi com QR Code, rede do relógio ou app do celular via Bluetooth'
         ],
         background: '#EEF8E6',
         apkUrl: '/assets/downloads/smbjr-wearos.apk',
-        apkSize: '4.9 MB',
+        apkSize: '6.4 MB',
+        companionApkUrl: '/assets/downloads/smbjr-wearos-celular.apk',
+        companionApkSize: '1.9 MB',
         wearosImages: [
             '/assets/img/apps/wearos/smbjr-wear-02-title.webp',
             '/assets/img/apps/wearos/smbjr-wear-12-rolling.webp',
