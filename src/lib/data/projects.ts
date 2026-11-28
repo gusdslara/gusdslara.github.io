@@ -310,7 +310,7 @@ export const myApps: MyApp[] = [
         background: '#FFF2EB',
         githubUrl: 'https://github.com/gusdslara/ctr-wearos',
         apkUrl: '/assets/downloads/ctr-wearos.apk',
-        apkSize: '13.3 MB',
+        apkSize: '17.2 MB',
         companionApkUrl: '/assets/downloads/ctr-wearos-celular.apk',
         companionApkSize: '1.7 MB',
         wearosImages: [
